@@ -151,7 +151,7 @@ public class ViewPlayer : MonoBehaviour
     
     private IEnumerator DrawCardsAux(IReadOnlyList<ACard> cards, Action callback)
     {
-        Debug.Log($"empezando a robar: {Character}, {cards.Count} cartas.");
+        // Debug.Log($"empezando a robar: {Character}, {cards.Count} cartas.");
         foreach (var card in cards)
         {
             var newCardGO = Instantiate(_config.CardPrefab, _deckSnap.position, _deckSnap.rotation, _hand);
@@ -170,11 +170,11 @@ public class ViewPlayer : MonoBehaviour
 
             bool isDone = false;
             
-            Debug.Log($"robando: {Character}");
+            // Debug.Log($"robando: {Character}");
             
             newPlayableCard.DrawTravel(location, () =>
             {
-                if(Character is PlayerCharacter.Overlord) Debug.Log("carta en su sitio!");
+                // if(Character is PlayerCharacter.Overlord) Debug.Log("carta en su sitio!");
                 isDone = true;
             }, false /*Character is PlayerCharacter.Overlord*/);
             
@@ -212,10 +212,6 @@ public class ViewPlayer : MonoBehaviour
 
     private IEnumerator ReposCardsInHand(PlayableCard[] exclude = null)
     {
-        if (Character is PlayerCharacter.Overlord)
-        {
-            Debug.Log("repos");
-        }
         
         for (int i = 0; i < Cards.Count; i++)
         {
