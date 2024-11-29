@@ -280,6 +280,10 @@ PrefabInstance:
       propertyPath: <Owner>k__BackingField
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1453369582830612511, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
+      propertyPath: <Owner>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1456191135619979085, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -425,6 +429,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1411861146247531843, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
+      propertyPath: <Owner>k__BackingField
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453369582830612511, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
       propertyPath: <Owner>k__BackingField
       value: 3
       objectReference: {fileID: 0}
@@ -760,6 +768,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1411861146247531843, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
+      propertyPath: <Owner>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453369582830612511, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
       propertyPath: <Owner>k__BackingField
       value: 2
       objectReference: {fileID: 0}

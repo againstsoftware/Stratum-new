@@ -27,6 +27,9 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     [SerializeField] private float _itemCamOffsetOnDrag;
     [SerializeField] private float _dropLocationCheckFrequency;
 
+    [SerializeField] private float _dragCardHeight = .2f;
+    [SerializeField] private float _dragCardSpeed = .2f;
+
     [SerializeField] private GameConfig _config;
 
 
@@ -92,8 +95,10 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
             case IInteractionSystem.State.Dragging:
                 var newPos = Camera.ScreenToWorldPoint(
                     new Vector3(_screenPointerPosition.x, _screenPointerPosition.y, _itemCamOffsetOnDrag));
-                newPos.y = Mathf.Max(.2f, newPos.y);
-                _dragItemTransform.position = newPos;
+                newPos.y = Mathf.Max(_dragCardHeight, newPos.y);
+                // _dragItemTransform.position = newPos;
+                _dragItemTransform.position = Vector3.MoveTowards(_dragItemTransform.position, newPos,
+                    _dragCardSpeed * Time.deltaTime);
                 _dropLocationCheckTimer += Time.deltaTime;
                 if (_dropLocationCheckTimer < _dropLocationCheckPeriod) return;
                 _dropLocationCheckTimer = 0f;
