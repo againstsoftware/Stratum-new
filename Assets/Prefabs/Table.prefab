@@ -211,7 +211,7 @@ MonoBehaviour:
   _fungalothRotation: 90
   _ygdraRotation: 180
   _overlordRotation: 270
-  _highlightedMaterial: {fileID: 2100000, guid: 135c47568d75b4545909a6620e9ae12f, type: 2}
+  _highlightedMaterial: {fileID: 2100000, guid: aeaed1c19d075d84ab4b767763268952, type: 2}
 --- !u!114 &8541876072037180344
 MonoBehaviour:
   m_ObjectHideFlags: 0

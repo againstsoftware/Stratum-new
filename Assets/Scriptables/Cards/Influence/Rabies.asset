@@ -12,27 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 863698b27f9e42c89ae77a75233b5832, type: 3}
   m_Name: Rabies
   m_EditorClassIdentifier: 
-  <ObverseTex>k__BackingField: {fileID: 2800000, guid: a599cec95de748543ac73b4c699e52c2, type: 3}
-  _name:
-    m_TableReference:
-      m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
-    m_TableEntryReference:
-      m_KeyId: 10957877249044480
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  _description:
-    m_TableReference:
-      m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
-    m_TableEntryReference:
-      m_KeyId: 10957914855174144
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  _newName: rabies_name
-  _newDescription: rabies_desc
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: ad47cfe03d602ff47947e747592996cf, type: 3}
+  _cardName: rabies_name
+  _cardDescription: rabies_desc
   _actionEffects:
   - ValidAction:
       <DropLocation>k__BackingField: 6
@@ -47,6 +29,3 @@ MonoBehaviour:
       <Receivers>k__BackingField: 04000000
     Effects: 0f00000010000000
   <IsPersistent>k__BackingField: 1
-  references:
-    version: 2
-    RefIds: []

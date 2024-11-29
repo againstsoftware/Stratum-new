@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-750817752844731167
+--- !u!114 &-4959344386459567616
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ojo
+  m_Name: TerritoryMat
   m_Shader: {fileID: -6465566751694194690, guid: 2d29dc3b7cc50c24a8d572ba836b0caa, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -32,12 +32,12 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties: 
+  m_LockedProperties: _Edge_Thickness
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 3c2a511135bba384a9474ec1a9e77cd8, type: 3}
+        m_Texture: {fileID: 2800000, guid: be029e5119020a24fa8668aeb6d4b38d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -61,11 +61,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 3c2a511135bba384a9474ec1a9e77cd8, type: 3}
+        m_Texture: {fileID: 2800000, guid: be029e5119020a24fa8668aeb6d4b38d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Main_Texture:
-        m_Texture: {fileID: 2800000, guid: ba803fccaf87067428ee8bffb4c6c114, type: 3}
+        m_Texture: {fileID: 2800000, guid: be029e5119020a24fa8668aeb6d4b38d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:

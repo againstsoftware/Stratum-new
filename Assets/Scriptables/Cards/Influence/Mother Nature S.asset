@@ -12,27 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06b9820290544fa98a9853d11201d178, type: 3}
   m_Name: Mother Nature S
   m_EditorClassIdentifier: 
-  <ObverseTex>k__BackingField: {fileID: 2800000, guid: e2fa090e8bdf3f24a8b57b36312c28b8, type: 3}
-  _name:
-    m_TableReference:
-      m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
-    m_TableEntryReference:
-      m_KeyId: 17078851686100992
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  _description:
-    m_TableReference:
-      m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
-    m_TableEntryReference:
-      m_KeyId: 17078907726196736
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  _newName: m_nature_name
-  _newDescription: m_nature_desc
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 8f1197965f0c7fd4383ed9fcfa964e37, type: 3}
+  _cardName: m_nature_name
+  _cardDescription: m_nature_desc
   _actionEffects:
   - ValidAction:
       <DropLocation>k__BackingField: 6
@@ -43,6 +25,3 @@ MonoBehaviour:
       <Receivers>k__BackingField: 
     Effects: 0d0000001e000000
   <IsPersistent>k__BackingField: 0
-  references:
-    version: 2
-    RefIds: []

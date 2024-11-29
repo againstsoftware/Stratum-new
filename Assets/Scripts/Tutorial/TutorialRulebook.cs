@@ -43,6 +43,7 @@ public class TutorialRulebook : MonoBehaviour
             PlayerCharacter.Fungaloth => -90f,
             PlayerCharacter.Ygdra => 180f,
             PlayerCharacter.Overlord => 90f,
+            _ => throw new ArgumentOutOfRangeException()
         };
         transform.rotation = Quaternion.identity;
         transform.RotateAround(Vector3.zero, Vector3.up, angle);

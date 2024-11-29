@@ -9,44 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 387971cd8248fbd49bd232d665bb6361, type: 3}
+  m_Script: {fileID: 11500000, guid: 802b0b2765c0ee844aa0b491ed7de678, type: 3}
   m_Name: Ecosystem Tutorial
   m_EditorClassIdentifier: 
-  _initialDialogues:
-  - _dialogueText: eco_0_0_0
-  - _dialogueText: eco_0_0
-  - _dialogueText: eco_0_1
-  - _dialogueText: eco_0_2
-  - _dialogueText: eco_0_3
-  - _dialogueText: eco_0_4
-  _dialoguesHerbivoresPlantsDie:
-  - _dialogueText: eco_1_0
-  - _dialogueText: eco_1_1
-  _dialoguesMushroom:
-  - _dialogueText: eco_2_0
-  - _dialogueText: eco_2_1
-  - _dialogueText: eco_2_2
-  _dialoguesHerbivoresPlantsGrow:
-  - _dialogueText: eco_2_3
-  _dialoguesHerbivoresPlantsAfter:
-  - _dialogueText: eco_3_0
-  - _dialogueText: eco_3_1
-  _dialoguesCarnivoresHerbivoresDie:
-  - _dialogueText: eco_4_0
-  - _dialogueText: eco_4_1
-  _dialoguesCarnHerbDieAfter:
-  - _dialogueText: eco_5_0
-  - _dialogueText: eco_5_1
-  _plantsCarnsHerbsDie:
-  - _dialogueText: eco_6_0
-  _plantsCarnsHerbsDieAfter:
-  - _dialogueText: eco_7_0
-  - _dialogueText: eco_7_1
-  _dialoguesCarnHerbGrow:
-  - _dialogueText: eco_8_0
-  _dialoguesCarnHerbGrowAfter:
-  - _dialogueText: eco_9_0
-  - _dialogueText: eco_9_1
-  - _dialogueText: eco_9_2
-  - _dialogueText: eco_9_3
-  - _dialogueText: eco_9_4
+  _initialDialogues: []
+  _dialoguesHerbivoresPlantsDie: []
+  _dialoguesMushroom: []
+  _dialoguesHerbivoresPlantsGrow: []
+  _dialoguesHerbivoresPlantsAfter: []
+  _dialoguesCarnivoresHerbivoresDie: []
+  _dialoguesCarnHerbDieAfter: []
+  _plantsCarnsHerbsDie: []
+  _plantsCarnsHerbsDieAfter: []
+  _dialoguesCarnHerbGrow: []
+  _dialoguesCarnHerbGrowAfter: []

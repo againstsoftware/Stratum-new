@@ -12,27 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b4f047c54bb4fa8a2ee1126e3985ef1, type: 3}
   m_Name: Leash
   m_EditorClassIdentifier: 
-  <ObverseTex>k__BackingField: {fileID: 2800000, guid: c8e2d92c95f53584aa8292ba3dc758ad, type: 3}
-  _name:
-    m_TableReference:
-      m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
-    m_TableEntryReference:
-      m_KeyId: 17096880021041152
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  _description:
-    m_TableReference:
-      m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
-    m_TableEntryReference:
-      m_KeyId: 17096917622976512
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  _newName: leash_name
-  _newDescription: leash_desc
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 211462feb599c124a9e419adf639f9af, type: 3}
+  _cardName: leash_name
+  _cardDescription: leash_desc
   _actionEffects:
   - ValidAction:
       <DropLocation>k__BackingField: 6
@@ -47,6 +29,3 @@ MonoBehaviour:
       <Receivers>k__BackingField: 04000000
     Effects: 0f0000001f000000
   <IsPersistent>k__BackingField: 1
-  references:
-    version: 2
-    RefIds: []

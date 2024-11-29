@@ -12,27 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3e78f34a01405240afc16a07ae3e997, type: 3}
   m_Name: Plant
   m_EditorClassIdentifier: 
-  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 846a39b8c3a039545bb51a40c4d1ae2f, type: 3}
-  _name:
-    m_TableReference:
-      m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
-    m_TableEntryReference:
-      m_KeyId: 7937924526080
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  _description:
-    m_TableReference:
-      m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
-    m_TableEntryReference:
-      m_KeyId: 8432806260736
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  _newName: plant_name
-  _newDescription: plant_desc
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 2c92fc6b78e4ca84e8d316e5f71ce0cc, type: 3}
+  _cardName: plant_name
+  _cardDescription: plant_desc
   _actionEffects:
   - ValidAction:
       <DropLocation>k__BackingField: 6
@@ -47,6 +29,3 @@ MonoBehaviour:
       <Receivers>k__BackingField: 00000000
     Effects: 00000000
   _populationType: 3
-  references:
-    version: 2
-    RefIds: []

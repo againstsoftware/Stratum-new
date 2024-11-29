@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,18 +9,17 @@ public class FungalothTutorial : ATutorialSequence
     public override PlayerCharacter LocalPlayer { get; protected set; } = PlayerCharacter.Fungaloth;
 
     [SerializeField] private MacrofungiToken _macrofungiToken;
-    
+
     [SerializeField] private List<ACard> _initialCardsRot;
     [SerializeField] private List<ACard> _cardsMold;
 
-    
-    
+
     [SerializeField] private TutorialDialogue[] _initialDialogues;
 
     [SerializeField] private TutorialDialogue[] _rotAndThenMacrofungiDialogues;
-    
+
     [SerializeField] private TutorialDialogue[] _moldAndThenMacrofungiDialogues;
-    
+
     [SerializeField] private TutorialDialogue[] _outroDialogue;
 
     public override IEnumerable<ITutorialElement> GetTutorialElements()
@@ -48,14 +46,14 @@ public class FungalothTutorial : ATutorialSequence
             new EffectCommands.PlaceCardOnSlotTutorial(mushroom, fungalothTerritory.Slots[0]),
             new EffectCommands.PlaceCardOnSlotTutorial(mushroom, fungalothTerritory.Slots[1]),
         });
-        
+
 
         elements.AddRange(_initialDialogues);
 
         elements.Add(initialCards);
 
         elements.Add(DrawFixed(_initialCardsRot));
-        
+
         elements.AddRange(_rotAndThenMacrofungiDialogues);
 
         var forceRot = new List<PlayerAction>()
@@ -72,13 +70,12 @@ public class FungalothTutorial : ATutorialSequence
         var playMacrofungi =
             new TutorialAction(true, null, forceMacrofungi, true);
 
-        
+
         elements.Add(playRot);
         elements.Add(playMacrofungi);
-        
+
         var wipeConstructionThenMold = new TutorialAction(false, new IEffectCommand[]
         {
-            
             new EffectCommands.PlaceCardOnFreeSlotTutorial(mushroom, sagitarioTerritory),
             new EffectCommands.PlaceCardOnFreeSlotTutorial(mushroom, sagitarioTerritory),
             new EffectCommands.PlaceCardOnSlotTutorial(plant, ygdraTerritory.Slots[0]),
@@ -86,24 +83,24 @@ public class FungalothTutorial : ATutorialSequence
             new EffectCommands.PlaceCardOnSlotTutorial(herbivore, ygdraTerritory.Slots[2]),
             new EffectCommands.PlaceConstructionTutorial(ygdraTerritory)
         });
-        
+
         elements.Add(wipeConstructionThenMold);
-        
+
         elements.Add(DrawFixed(_cardsMold));
 
-        
+
         elements.AddRange(_moldAndThenMacrofungiDialogues);
-        
+
         var forceMold = new List<PlayerAction>()
         {
             new PlayerAction(PlayerCharacter.Fungaloth, _cardsMold[0], null, 1)
         };
         var playMold =
             new TutorialAction(true, null, forceMold, true);
-        
+
         elements.Add(playMold);
         elements.Add(playMacrofungi);
-        
+
         elements.AddRange(_outroDialogue);
 
 
@@ -112,6 +109,6 @@ public class FungalothTutorial : ATutorialSequence
 
     public override void OnTutorialFinished()
     {
-        SceneTransition.Instance.TransitionToScene(0);
+        SceneTransition.Instance.TransitionToCurrentScene();
     }
 }
