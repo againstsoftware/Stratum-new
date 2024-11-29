@@ -21,7 +21,17 @@ public class ViewManager : MonoBehaviour, IView
         if (!_playersInitialized) InitPlayers();
     }
 
+    private void Start()
+    {
+        var comms = ServiceLocator.Get<ICommunicationSystem>();
+        comms.OnLocalPlayerChange += SetLocalPlayer;
+        SetLocalPlayer(comms.LocalPlayer, comms.Camera);
+    }
 
+    private void OnDestroy()
+    {
+        ServiceLocator.Get<ICommunicationSystem>().OnLocalPlayerChange -= SetLocalPlayer;
+    }
 
 
     public ViewPlayer GetViewPlayer(PlayerCharacter character)
@@ -91,8 +101,9 @@ public class ViewManager : MonoBehaviour, IView
     {
         _cameraMovement.ChangeToOverview(callback);
     }
-    
-    public void GrowPopulation(CardLocation location, Population population, Action callback, bool isEndOfAction = false)
+
+    public void GrowPopulation(CardLocation location, Population population, Action callback,
+        bool isEndOfAction = false)
     {
         var card = _config.GetPopulationCard(population);
         var playerOwner = _players[location.Owner];
@@ -102,10 +113,7 @@ public class ViewManager : MonoBehaviour, IView
         var newPlayableCard = newCardGO.GetComponent<PlayableCard>();
         newPlayableCard.InitializeOnSlot(card, location.Owner, slot);
         slot.AddCardOnTop(newPlayableCard);
-        StartCoroutine(DelayCall(() =>
-        {
-            callback?.Invoke();
-        }, .5f)); //de prueba
+        StartCoroutine(DelayCall(() => { callback?.Invoke(); }, .5f)); //de prueba
     }
 
     public void GrowMushroom(CardLocation location, Action callback, bool isEndOfAction = false)
@@ -118,10 +126,7 @@ public class ViewManager : MonoBehaviour, IView
         var newPlayableCard = newCardGO.GetComponent<PlayableCard>();
         newPlayableCard.InitializeOnSlot(card, location.Owner, slot);
         slot.AddCardAtTheBottom(newPlayableCard);
-        StartCoroutine(DelayCall(() =>
-        {
-            callback?.Invoke();
-        }, .5f)); //de prueba
+        StartCoroutine(DelayCall(() => { callback?.Invoke(); }, .5f)); //de prueba
     }
 
     public void GrowMacrofungi(CardLocation[] locations, Action callback)
@@ -161,7 +166,6 @@ public class ViewManager : MonoBehaviour, IView
             receiver = location.IsTerritory
                 ? receiverOwner.Territory
                 : receiverOwner.Territory.Slots[location.SlotIndex];
-        
         }
 
         playerActor.PlayAndDiscardInfluenceCard(card, receiver, callback, isEndOfAction);
@@ -208,7 +212,7 @@ public class ViewManager : MonoBehaviour, IView
         var playerActor = _players[actor];
         callback?.Invoke();
     }
-    
+
     public void PutLeash(PlayerCharacter actor, CardLocation location, Action callback)
     {
         var playerActor = _players[actor];
@@ -243,20 +247,14 @@ public class ViewManager : MonoBehaviour, IView
             return;
         }
 
-        StartCoroutine(DelayCall(() =>
-        {
-            callback?.Invoke();
-        }, 0.75f));
+        StartCoroutine(DelayCall(() => { callback?.Invoke(); }, 0.75f));
     }
 
     public void DestroyConstruction(PlayerCharacter territoryOwner, Action callback)
     {
         var playerOwner = _players[territoryOwner];
         playerOwner.Territory.DestroyConstruction();
-        StartCoroutine(DelayCall(() =>
-        {
-            callback?.Invoke();
-        }, 0.75f));
+        StartCoroutine(DelayCall(() => { callback?.Invoke(); }, 0.75f));
     }
 
     public void KillPlacedCard(CardLocation location, Action callback)
@@ -266,12 +264,9 @@ public class ViewManager : MonoBehaviour, IView
         var card = slot.Cards[location.CardIndex];
         // if (card.Card is not PopulationCard) throw new Exception("Error! La carta a matar no es de poblacion");
         DestroyCard(card, slot);
-        StartCoroutine(DelayCall(() =>
-        {
-            callback?.Invoke();
-        }, .5f)); //de prueba
+        StartCoroutine(DelayCall(() => { callback?.Invoke(); }, .5f)); //de prueba
     }
-    
+
 
     public void DiscardInfluenceFromPopulation(CardLocation location, Action callback)
     {
@@ -283,8 +278,9 @@ public class ViewManager : MonoBehaviour, IView
     }
 
 
-    public void SetLocalPlayer(PlayerCharacter localPlayer, Camera cam)
+    private void SetLocalPlayer(PlayerCharacter localPlayer, Camera cam)
     {
+        if (localPlayer is PlayerCharacter.None) return;
         _localPlayer = localPlayer;
         _cameraMovement = cam.GetComponent<CameraMovement>();
     }

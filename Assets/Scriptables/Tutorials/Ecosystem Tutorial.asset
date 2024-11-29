@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 802b0b2765c0ee844aa0b491ed7de678, type: 3}
   m_Name: Ecosystem Tutorial
   m_EditorClassIdentifier: 
-  _initialDialogues: []
+  _initialDialogues:
+  - _dialogueText: eco_0_0_0
   _dialoguesHerbivoresPlantsDie: []
   _dialoguesMushroom: []
   _dialoguesHerbivoresPlantsGrow: []

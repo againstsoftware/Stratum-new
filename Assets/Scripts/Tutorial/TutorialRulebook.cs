@@ -20,6 +20,18 @@ public class TutorialRulebook : MonoBehaviour
         _animator = GetComponentInChildren<Animator>();
     }
 
+    private void Start()
+    {
+        var comms = ServiceLocator.Get<ICommunicationSystem>();
+        comms.OnLocalPlayerChange += SetLocalPlayer;
+        SetLocalPlayer(comms.LocalPlayer, comms.Camera);
+    }
+
+    private void OnDestroy()
+    {
+        ServiceLocator.Get<ICommunicationSystem>().OnLocalPlayerChange += SetLocalPlayer;
+    }
+
     public void RandomizeSpeed()
     {
         _animator.SetFloat(_speed, Random.Range(_minSpeed, _maxSpeed));
@@ -31,8 +43,10 @@ public class TutorialRulebook : MonoBehaviour
         _rulebook.DisplayDialogue(dialogue, () => _animator.SetBool(_yap, false),onFinished);
     }
 
-    public void SetLocalPlayer(PlayerCharacter localPlayer, Camera cam)
+    private void SetLocalPlayer(PlayerCharacter localPlayer, Camera cam)
     {
+        if (localPlayer is PlayerCharacter.None) return;
+
         _rulebook = ServiceLocator.Get<IView>().GetViewPlayer(localPlayer).GetComponentInChildren<Rulebook>();
 
         //muy cutre perdon pero son las 12:04 y me quiero sobar

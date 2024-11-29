@@ -3,7 +3,17 @@ guid: 0250af69875821d4f8b664889ff3dc51
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cara
+    second: {fileID: 2100000, guid: cc46cf751351aee4a935a430bf30cdec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Libro
+    second: {fileID: 2100000, guid: 1b3640a8ca558fb40b2db9dd19223671, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

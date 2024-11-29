@@ -21,9 +21,14 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
 
     public bool IsRNGSynced { get; private set; }
 
+    public PlayerCharacter LocalPlayer { get; private set; } = PlayerCharacter.None;
+    public Camera Camera { get; private set; }
+    
+    public event Action<PlayerCharacter, Camera> OnLocalPlayerChange;
+
+
     [SerializeField] private GameConfig _config;
 
-    private PlayerCharacter _localPlayer;
     private void Awake()
     {
         var localID = NetworkManager.Singleton.LocalClientId;
@@ -31,7 +36,7 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
         var networkPlayers = FindObjectsByType<NetworkPlayer>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
         
         var localNetworkPlayer = networkPlayers.FirstOrDefault(np => np.ID.Value == localID);
-        _localPlayer = localNetworkPlayer.Character.Value;
+        LocalPlayer = localNetworkPlayer.Character.Value;
         foreach (PlayerCharacter character in Enum.GetValues(typeof(PlayerCharacter)))
         {
             if (character is PlayerCharacter.None) continue;
@@ -39,7 +44,7 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
             var viewPlayer = ServiceLocator.Get<IView>().GetViewPlayer(character);
             var cam = viewPlayer.MainCamera;
             
-            if (character != _localPlayer)
+            if (character != LocalPlayer)
             {
                 Destroy(cam.gameObject);
                 Destroy(viewPlayer.UICamera.gameObject);
@@ -54,8 +59,10 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
 
                 viewPlayer.IsLocalPlayer = true;
                                 
-                ServiceLocator.Get<IInteractionSystem>().SetLocalPlayer(_localPlayer, cam);
-                ServiceLocator.Get<IView>().SetLocalPlayer(_localPlayer, cam);
+                // ServiceLocator.Get<IInteractionSystem>().SetLocalPlayer(_localPlayer, cam);
+                // ServiceLocator.Get<IView>().SetLocalPlayer(_localPlayer, cam);
+                Camera = cam;
+                OnLocalPlayerChange?.Invoke(LocalPlayer, cam);
             }
         }
 
@@ -91,7 +98,7 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
         if (!IsSpawned)
             throw new Exception("Error! Mandando rpcs sin estar spawneado");
 
-        if (action.Actor != _localPlayer)
+        if (action.Actor != LocalPlayer)
             throw new Exception("Error! Mandando rpcs de accion sin ser el jugador local");
 
         ServiceLocator.Get<IExecutor>().ExecutePlayerActionEffects(action);
@@ -132,7 +139,7 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
     [ClientRpc]
     private void SendActionToExecuteInClientRpc(NetworkPlayerAction action)
     {
-        if (action.Actor == _localPlayer) return;
+        if (action.Actor == LocalPlayer) return;
         
         ServiceLocator.Get<IExecutor>().ExecutePlayerActionEffects(action.ToPlayerAction(_config));
     }

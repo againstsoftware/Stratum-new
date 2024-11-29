@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,7 +9,13 @@ public class TestModeCommunications : MonoBehaviour, ICommunicationSystem
     public bool IsAuthority => true;
     public bool IsRNGSynced => true;
 
+    public PlayerCharacter LocalPlayer { get; private set; } = PlayerCharacter.None;
+    public Camera Camera { get; private set; }
 
+
+    public event Action<PlayerCharacter, Camera> OnLocalPlayerChange;
+
+    
     [SerializeField] private GameConfig _config;
 
     private List<ViewPlayer> _players = new();
@@ -30,7 +37,6 @@ public class TestModeCommunications : MonoBehaviour, ICommunicationSystem
 
         ChangeActivePlayer(_config.TurnOrder[0]);
     }
-
 
     public void SyncRNGs()
     {
@@ -85,8 +91,13 @@ public class TestModeCommunications : MonoBehaviour, ICommunicationSystem
                 cam.GetComponent<PhysicsRaycaster>().enabled = true;
                 uicam.enabled = true;
                 _playerOnTurn.IsLocalPlayer = true;
-                ServiceLocator.Get<IInteractionSystem>().SetLocalPlayer(_playerOnTurn.Character, cam);
-                ServiceLocator.Get<IView>().SetLocalPlayer(_playerOnTurn.Character, cam);
+
+                LocalPlayer = _playerOnTurn.Character;
+                Camera = cam;
+                OnLocalPlayerChange?.Invoke(_playerOnTurn.Character, cam);
+                //
+                // ServiceLocator.Get<IInteractionSystem>().SetLocalPlayer(_playerOnTurn.Character, cam);
+                // ServiceLocator.Get<IView>().SetLocalPlayer(_playerOnTurn.Character, cam);
             }
         }
     }

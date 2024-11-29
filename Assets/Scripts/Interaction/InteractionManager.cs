@@ -69,6 +69,9 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     {
         ServiceLocator.Get<ITurnSystem>().OnTurnChanged += OnTurnChanged;
         ServiceLocator.Get<ITurnSystem>().OnActionEnded += OnActionEnded;
+        var comms = ServiceLocator.Get<ICommunicationSystem>();
+        comms.OnLocalPlayerChange += SetLocalPlayer;
+        SetLocalPlayer(comms.LocalPlayer, comms.Camera);
     }
 
 
@@ -79,6 +82,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         if (ts is null) return;
         ts.OnTurnChanged -= OnTurnChanged;
         ts.OnActionEnded -= OnActionEnded;
+        ServiceLocator.Get<ICommunicationSystem>().OnLocalPlayerChange -= SetLocalPlayer;
     }
 
 
@@ -264,6 +268,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
                 _draggingItem.OnDragCancel();
                 if (!_draggingItem.OnlyVisibleOnOverview) _cameraMovement.ChangeToDefault();
                 if (_selectedReceiver is not null) _selectedReceiver.OnChoosingDeselect();
+                foreach(var r in _selectedReceivers) r.OnChoosingDeselect();
                 break;
 
             case ActionAssembler.AssemblyState.Ongoing:
@@ -273,6 +278,8 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
             case ActionAssembler.AssemblyState.Completed:
                 CurrentState = IInteractionSystem.State.Waiting;
                 Debug.Log("accion ensamblada!!!");
+                if (_selectedReceiver is not null) _selectedReceiver.OnChoosingDeselect();
+                foreach(var r in _selectedReceivers) r.OnChoosingDeselect();
                 break;
         }
     }
@@ -282,7 +289,8 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         if (CurrentState is not IInteractionSystem.State.Choosing) return;
         if (!receiver.CanInteractWithoutOwnership) return;
         if (_selectedReceivers.Contains(receiver)) return;
-        if (_selectedReceiver is not null) _selectedReceiver.OnChoosingDeselect();
+        if (_selectedReceiver is not null && !_selectedReceivers.Contains(_selectedReceiver)) 
+            _selectedReceiver.OnChoosingDeselect();
         _selectedReceiver = receiver;
         receiver.OnChoosingSelect();
     }
@@ -340,8 +348,9 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
 
     private void OnActionEnded(PlayerCharacter onTurn)
     {
-        if(onTurn == LocalPlayer) TryStartAction();
+        if (onTurn == LocalPlayer) TryStartAction();
     }
+
     private void TryStartAction()
 
     {
@@ -371,11 +380,12 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     }
 
 
-
-    public void SetLocalPlayer(PlayerCharacter character, Camera cam)
+    private void SetLocalPlayer(PlayerCharacter character, Camera cam)
     {
         LocalPlayer = character;
         Camera = cam;
+        if (Camera is null || LocalPlayer is PlayerCharacter.None) return;
+        
         _cameraMovement = Camera.GetComponent<CameraMovement>();
         _rulebook = Camera.GetComponentInChildren<Rulebook>();
     }

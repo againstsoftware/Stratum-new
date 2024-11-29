@@ -10,11 +10,16 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
     public PlayerCharacter PlayerOnTurn { get; private set; }
     public bool IsAuthority => true;
     public bool IsRNGSynced => true;
+
+    public PlayerCharacter LocalPlayer { get; private set; } = PlayerCharacter.None;
+    public Camera Camera { get; private set; }
     
     public event Action<PlayerCharacter> OnTurnChanged;
     public event Action<PlayerCharacter> OnActionEnded;
     
     public event Action OnGameStart;
+    
+    public event Action<PlayerCharacter, Camera> OnLocalPlayerChange;
 
     [SerializeField] private TutorialRulebook _tutorialRulebook;
     [SerializeField] private float _delayBetweenElements;
@@ -61,7 +66,7 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
 
     private void SetLocalPlayer()
     {
-        var localPlayer = _tutorialSequence.LocalPlayer;
+        LocalPlayer = _tutorialSequence.LocalPlayer;
         foreach (PlayerCharacter character in Enum.GetValues(typeof(PlayerCharacter)))
         {
             if (character is PlayerCharacter.None) continue;
@@ -69,7 +74,7 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
             var viewPlayer = ServiceLocator.Get<IView>().GetViewPlayer(character);
             var cam = viewPlayer.MainCamera;
             
-            if (character != localPlayer)
+            if (character != LocalPlayer)
             {
                 Destroy(cam.gameObject);
                 Destroy(viewPlayer.UICamera.gameObject);
@@ -77,10 +82,13 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
             else
             {
                 viewPlayer.IsLocalPlayer = true;
+
+                Camera = cam;
+                OnLocalPlayerChange?.Invoke(LocalPlayer, cam);
                 
-                ServiceLocator.Get<IInteractionSystem>().SetLocalPlayer(localPlayer, cam);
-                ServiceLocator.Get<IView>().SetLocalPlayer(localPlayer, cam);
-                _tutorialRulebook.SetLocalPlayer(localPlayer, cam);
+                // ServiceLocator.Get<IInteractionSystem>().SetLocalPlayer(localPlayer, cam);
+                // ServiceLocator.Get<IView>().SetLocalPlayer(localPlayer, cam);
+                // _tutorialRulebook.SetLocalPlayer(localPlayer, cam);
             }
         }
         

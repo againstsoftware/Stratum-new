@@ -55,6 +55,4 @@ public interface IView : IService
     public void KillPlacedCard(CardLocation location, Action callback);
 
     public void DiscardInfluenceFromPopulation(CardLocation location, Action callback);
-
-    public void SetLocalPlayer(PlayerCharacter localPlayer, Camera cam);
 }

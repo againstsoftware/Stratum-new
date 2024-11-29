@@ -23,7 +23,5 @@ public interface IInteractionSystem : IService
     public void SelectReceiver(IActionReceiver receiver);
     public void DeselectReceiver(IActionReceiver receiver);
     public void ClickReceiver(IActionReceiver receiver);
-
-    public void SetLocalPlayer(PlayerCharacter character, Camera cam);
-
+    
 }
