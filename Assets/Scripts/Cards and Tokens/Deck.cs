@@ -38,7 +38,8 @@ public class Deck : ScriptableObject
     public ACard DrawCard()
     {
         if (!_initialized) Initialize();
-        return _deck[Random.Range(0, _size)];
+        int index = RNG.Range(0, _size);
+        return _deck[index];
     }
 
     private void Initialize()

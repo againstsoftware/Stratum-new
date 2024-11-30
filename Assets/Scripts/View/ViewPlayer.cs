@@ -180,9 +180,24 @@ public class ViewPlayer : MonoBehaviour
             
             yield return new WaitUntil(() => isDone);
             yield return null;
+            // RandomStateWrapper state = UnityEngine.Random.state;
+            // debugDraw += $"{counterD++}. {Character} ha robado {card.Name}\nSeed: {state.Log()}\n";
         }
         callback?.Invoke();
     }
+    
+    // private string debugDraw = "";
+    // private static int counterD = 0;
+    // private void OnGUI()
+    // {
+    //     int idx = Array.IndexOf(_config.TurnOrder, Character);
+    //     
+    //     GUIStyle textStyle = new GUIStyle();
+    //     textStyle.normal.textColor = Color.white;
+    //     textStyle.fontSize = 10;
+    //     GUI.Label(new Rect(10 + 300 * idx, 100, 200, 1000), debugDraw, textStyle);
+    //     
+    // }
 
     private void OnCardPlayed(PlayableCard card)
     {

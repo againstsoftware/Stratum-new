@@ -139,6 +139,10 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
     
     
     public void ChangeTurn(PlayerCharacter playerOnTurn) {}
-    public void SyncRNGs() {}
+
+    public void SyncRNGs()
+    {
+        RNG.Init(new System.Random().Next());
+    }
     public void SendTurnChange(PlayerCharacter playerOnTurn) {}
 }

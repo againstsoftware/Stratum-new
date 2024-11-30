@@ -66,9 +66,13 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
 
     }
 
+    private static bool synced = false;
     public void SyncRNGs()
     {
         if (!IsServer) return;
+
+        if (synced) throw new Exception("rng inicializado mas de 1 vez");
+        synced = true;
         GenerateSeedServerRpc();
     }
 
@@ -77,18 +81,28 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
     [ServerRpc]
     private void GenerateSeedServerRpc()
     {
-        var seed = Guid.NewGuid().GetHashCode();
+        var random = new System.Random();
+        var seed = random.Next();
         SendSeedToClientRpc(seed);
     }
 
     [ClientRpc]
     private void SendSeedToClientRpc(int seed)
     {
-        Random.InitState(seed);
+        RNG.Init(seed);
         IsRNGSynced = true;
+        // randDebug = $"random seed de local {LocalPlayer}: {seed}. {RNG.Range(0, 100)} {RNG.Range(0, 100)} {RNG.Range(0, 100)} {RNG.Range(0, 100)} {RNG.Range(0, 100)}";
     }
-
-
+    //
+    // private string randDebug = "SIN INICIALIZAR";
+    // private void OnGUI()
+    // {
+    //     GUIStyle textStyle = new GUIStyle();
+    //     textStyle.normal.textColor = Color.white;
+    //     textStyle.alignment = TextAnchor.MiddleCenter;
+    //     textStyle.fontSize = 15;
+    //     GUI.Label(new Rect(50, 50, 200, 30), randDebug, textStyle);
+    // }
 
 
     public void SendActionToAuthority(PlayerAction action)
