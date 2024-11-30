@@ -52,15 +52,13 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
             else
             {
                 //temporal mientras no hay mas luces
-                var lightTransform = FindAnyObjectByType<Light>().transform.parent;
-                lightTransform.LookAt(cam.transform.forward);
+                // var lightTransform = FindAnyObjectByType<Light>().transform.parent;
+                // lightTransform.LookAt(cam.transform.forward);
                 
                 /*var input = */FindAnyObjectByType<PlayerInput>().camera = cam;
 
                 viewPlayer.IsLocalPlayer = true;
-                                
-                // ServiceLocator.Get<IInteractionSystem>().SetLocalPlayer(_localPlayer, cam);
-                // ServiceLocator.Get<IView>().SetLocalPlayer(_localPlayer, cam);
+
                 Camera = cam;
                 OnLocalPlayerChange?.Invoke(LocalPlayer, cam);
             }

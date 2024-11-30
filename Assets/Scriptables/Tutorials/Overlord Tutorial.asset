@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d4a97967e864581a65cb64381e928c3, type: 3}
+  m_Name: Overlord Tutorial
+  m_EditorClassIdentifier: 
+  _constructionToken: {fileID: 11400000, guid: 6181fded5cad13a4faf491db26c1a0de, type: 2}
+  _initialCards:
+  - {fileID: 11400000, guid: 73f4942f266a15a469148e02341ce42b, type: 2}
+  - {fileID: 11400000, guid: 925fd89a28ebfd44cabbdd3e279d2a5e, type: 2}
+  - {fileID: 11400000, guid: d02a1b287d0f44046a658bdc3266c2e7, type: 2}
+  - {fileID: 11400000, guid: 73f4942f266a15a469148e02341ce42b, type: 2}
+  - {fileID: 11400000, guid: 925fd89a28ebfd44cabbdd3e279d2a5e, type: 2}
+  _leashCard:
+  - {fileID: 11400000, guid: 4396c85db1e881740a2a6709bc93ac34, type: 2}
+  _initialDialogues:
+  - _dialogueText: ov_0_0
+  - _dialogueText: ov_0_1
+  - _dialogueText: ov_0_2
+  - _dialogueText: ov_0_3
+  - _dialogueText: ov_0_4
+  _plantThenConstructDialogues:
+  - _dialogueText: ov_1_0
+  _constructionDestroyedDialogues:
+  - _dialogueText: ov_2_0
+  - _dialogueText: ov_2_1
+  - _dialogueText: ov_2_2
+  _buildWithAnimalDialogues:
+  - _dialogueText: ov_3_0
+  _useLeashDialogues:
+  - _dialogueText: ov_4_0
+  - _dialogueText: ov_4_1
+  - _dialogueText: ov_4_2
+  - _dialogueText: ov_4_3
+  _endDialogues:
+  - _dialogueText: ov_5_0
+  - _dialogueText: ov_5_1

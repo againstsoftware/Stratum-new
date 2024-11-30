@@ -1,44 +1,9 @@
 fileFormatVersion: 2
-guid: 5b72a7c29b8850f40b4e500ac047c07e
+guid: e57e24a7261d7774c8ad4bb112b02b65
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Base
-    second: {fileID: 2100000, guid: 8c2780c3973371140a474aaeb84b2430, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Casitas
-    second: {fileID: 2100000, guid: 0255d9979fbbabc4fb17d20991bc9951, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Cristal
-    second: {fileID: 2100000, guid: 203caee3a8e2d86408b7b58c28aceeef, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Metalico
-    second: {fileID: 2100000, guid: a01e2c556a4f4e24f9f76d31a3297cb2, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Oscuro
-    second: {fileID: 2100000, guid: 9463ac2a3cd0bab4a830604bf7222491, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Rojo
-    second: {fileID: 2100000, guid: ef6120dd819544c4490d068ec2335b20, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Tubito
-    second: {fileID: 2100000, guid: f903ea1e79ebfaf4c91408d1de779710, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

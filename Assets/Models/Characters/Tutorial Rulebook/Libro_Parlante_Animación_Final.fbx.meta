@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5b72a7c29b8850f40b4e500ac047c07e
+guid: 742f98fb3e15cf24780c4a687e272dc7
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,38 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Base
-    second: {fileID: 2100000, guid: 8c2780c3973371140a474aaeb84b2430, type: 2}
+      name: Cara
+    second: {fileID: 2100000, guid: cc46cf751351aee4a935a430bf30cdec, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Casitas
-    second: {fileID: 2100000, guid: 0255d9979fbbabc4fb17d20991bc9951, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Cristal
-    second: {fileID: 2100000, guid: 203caee3a8e2d86408b7b58c28aceeef, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Metalico
-    second: {fileID: 2100000, guid: a01e2c556a4f4e24f9f76d31a3297cb2, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Oscuro
-    second: {fileID: 2100000, guid: 9463ac2a3cd0bab4a830604bf7222491, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Rojo
-    second: {fileID: 2100000, guid: ef6120dd819544c4490d068ec2335b20, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Tubito
-    second: {fileID: 2100000, guid: f903ea1e79ebfaf4c91408d1de779710, type: 2}
+      name: Libro
+    second: {fileID: 2100000, guid: 1b3640a8ca558fb40b2db9dd19223671, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -66,7 +41,36 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: talk
+      takeName: Scene
+      internalID: -623603649343465320
+      firstFrame: 0
+      lastFrame: 14
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []

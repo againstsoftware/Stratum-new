@@ -19,6 +19,12 @@ public class DiscardPileReceiver : MonoBehaviour, IActionReceiver
         _material = GetComponent<MeshRenderer>().material;
     }
 
+    public void ShowDiscarded()
+    {
+        if(!SnapTransform.GetChild(0).gameObject.activeSelf)
+            SnapTransform.GetChild(0).gameObject.SetActive(true);
+    }
+
     public void OnDraggingSelect()
     {
         GetComponent<MeshRenderer>().material = _highlightedMaterial;

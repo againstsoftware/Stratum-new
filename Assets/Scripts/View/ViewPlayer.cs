@@ -232,6 +232,7 @@ public class ViewPlayer : MonoBehaviour
     {
         yield return null;
         Destroy(card);
+        DiscardPile.ShowDiscarded();
         callback?.Invoke();
     }
     

@@ -215,7 +215,7 @@ MonoBehaviour:
   _fungalothRotation: 90
   _ygdraRotation: 180
   _overlordRotation: 270
-  _highlightedMaterial: {fileID: 2100000, guid: aeaed1c19d075d84ab4b767763268952, type: 2}
+  _highlightedMaterial: {fileID: 2100000, guid: 190d790bf2ba2a14bbf0fe344dc58b24, type: 2}
 --- !u!114 &8541876072037180344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,26 +279,6 @@ PrefabInstance:
     - target: {fileID: 7282386773100405614, guid: 02e275d9af96de14090325a5811849ac, type: 3}
       propertyPath: m_Name
       value: Abacus
-      objectReference: {fileID: 0}
-    - target: {fileID: 8382791859374865573, guid: 02e275d9af96de14090325a5811849ac, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.81
-      objectReference: {fileID: 0}
-    - target: {fileID: 8382791859374865573, guid: 02e275d9af96de14090325a5811849ac, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8382791859374865573, guid: 02e275d9af96de14090325a5811849ac, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9963768
-      objectReference: {fileID: 0}
-    - target: {fileID: 8382791859374865573, guid: 02e275d9af96de14090325a5811849ac, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.08504872
-      objectReference: {fileID: 0}
-    - target: {fileID: 8382791859374865573, guid: 02e275d9af96de14090325a5811849ac, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 9.758
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
