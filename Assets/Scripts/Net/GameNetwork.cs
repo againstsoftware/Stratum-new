@@ -1,4 +1,3 @@
-
 using System;
 using System.Linq;
 using Unity.Netcode;
@@ -23,18 +22,20 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
 
     public PlayerCharacter LocalPlayer { get; private set; } = PlayerCharacter.None;
     public Camera Camera { get; private set; }
-    
+
     public event Action<PlayerCharacter, Camera> OnLocalPlayerChange;
 
 
     [SerializeField] private GameConfig _config;
 
+
     private void Awake()
     {
         var localID = NetworkManager.Singleton.LocalClientId;
+        NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnected;
 
         var networkPlayers = FindObjectsByType<NetworkPlayer>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
-        
+
         var localNetworkPlayer = networkPlayers.FirstOrDefault(np => np.ID.Value == localID);
         LocalPlayer = localNetworkPlayer.Character.Value;
         foreach (PlayerCharacter character in Enum.GetValues(typeof(PlayerCharacter)))
@@ -43,7 +44,7 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
 
             var viewPlayer = ServiceLocator.Get<IView>().GetViewPlayer(character);
             var cam = viewPlayer.MainCamera;
-            
+
             if (character != LocalPlayer)
             {
                 Destroy(cam.gameObject);
@@ -54,8 +55,9 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
                 //temporal mientras no hay mas luces
                 // var lightTransform = FindAnyObjectByType<Light>().transform.parent;
                 // lightTransform.LookAt(cam.transform.forward);
-                
-                /*var input = */FindAnyObjectByType<PlayerInput>().camera = cam;
+
+                /*var input = */
+                FindAnyObjectByType<PlayerInput>().camera = cam;
 
                 viewPlayer.IsLocalPlayer = true;
 
@@ -63,21 +65,35 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
                 OnLocalPlayerChange?.Invoke(LocalPlayer, cam);
             }
         }
-
     }
 
-    private static bool synced = false;
+
     public void SyncRNGs()
     {
         if (!IsServer) return;
-
-        if (synced) throw new Exception("rng inicializado mas de 1 vez");
-        synced = true;
         GenerateSeedServerRpc();
     }
 
-    
-    
+    private void OnClientDisconnected(ulong id)
+    {
+        if (IsServer)
+            DisconnectClientRpc();
+        else Disconnect();
+    }
+
+    [ClientRpc]
+    private void DisconnectClientRpc()
+    {
+       Disconnect();
+    }
+
+    private void Disconnect()
+    {
+        NetworkManager.Singleton.Shutdown();
+        SceneTransition.Instance.TransitionToScene("Disconnection");   
+    }
+
+
     [ServerRpc]
     private void GenerateSeedServerRpc()
     {
@@ -89,20 +105,9 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
     [ClientRpc]
     private void SendSeedToClientRpc(int seed)
     {
-        RNG.Init(seed);
+        ServiceLocator.Get<IRNG>().Init(seed);
         IsRNGSynced = true;
-        // randDebug = $"random seed de local {LocalPlayer}: {seed}. {RNG.Range(0, 100)} {RNG.Range(0, 100)} {RNG.Range(0, 100)} {RNG.Range(0, 100)} {RNG.Range(0, 100)}";
     }
-    //
-    // private string randDebug = "SIN INICIALIZAR";
-    // private void OnGUI()
-    // {
-    //     GUIStyle textStyle = new GUIStyle();
-    //     textStyle.normal.textColor = Color.white;
-    //     textStyle.alignment = TextAnchor.MiddleCenter;
-    //     textStyle.fontSize = 15;
-    //     GUI.Label(new Rect(50, 50, 200, 30), randDebug, textStyle);
-    // }
 
 
     public void SendActionToAuthority(PlayerAction action)
@@ -122,7 +127,6 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
         {
             SendActionToServerRpc(new NetworkPlayerAction(action, _config));
         }
-
     }
 
     public void SendTurnChange(PlayerCharacter playerOnTurn)
@@ -141,10 +145,10 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
     private void SendActionToServerRpc(NetworkPlayerAction networkAction) //comporueba las reglas en el server 
     {
         var action = networkAction.ToPlayerAction(_config);
-        
+
         if (!ServiceLocator.Get<IRulesSystem>().IsValidAction(action))
             throw new Exception($"JUGADOR {action.Actor} HA HECHO TRAMPA! HAY INCONSISTENCIAS!");
-       
+
         else SendActionToExecuteInClientRpc(networkAction);
     }
 
@@ -152,7 +156,7 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
     private void SendActionToExecuteInClientRpc(NetworkPlayerAction action)
     {
         if (action.Actor == LocalPlayer) return;
-        
+
         ServiceLocator.Get<IExecutor>().ExecutePlayerActionEffects(action.ToPlayerAction(_config));
     }
 }

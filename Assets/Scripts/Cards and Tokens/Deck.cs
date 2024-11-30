@@ -38,7 +38,7 @@ public class Deck : ScriptableObject
     public ACard DrawCard()
     {
         if (!_initialized) Initialize();
-        int index = RNG.Range(0, _size);
+        int index = ServiceLocator.Get<IRNG>().Range(0, _size);
         return _deck[index];
     }
 

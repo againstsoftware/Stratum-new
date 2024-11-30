@@ -41,7 +41,7 @@ public class TestModeCommunications : MonoBehaviour, ICommunicationSystem
 
     public void SyncRNGs()
     {
-        RNG.Init(new Random().Next());
+        ServiceLocator.Get<IRNG>().Init(new Random().Next());
     }
 
     public void SendActionToAuthority(PlayerAction action)

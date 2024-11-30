@@ -142,7 +142,7 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
 
     public void SyncRNGs()
     {
-        RNG.Init(new System.Random().Next());
+        ServiceLocator.Get<IRNG>().Init(new System.Random().Next());
     }
     public void SendTurnChange(PlayerCharacter playerOnTurn) {}
 }

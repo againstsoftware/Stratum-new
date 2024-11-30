@@ -186,7 +186,7 @@ public static class EffectCommands
             {
                 count--;
                 
-                var index = RNG.Range(0, players.Count);
+                var index = ServiceLocator.Get<IRNG>().Range(0, players.Count);
                 
                 var slotOwner = players[index];
                 players.RemoveAt(index);

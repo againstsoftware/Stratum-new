@@ -83,6 +83,7 @@ ov_4_2;;Para evitar esto, tienes la carta de Influencia Correa. Esta, al jugarla
 ov_4_3;;Juega tu carta Correa sobre un herbívoro del territorio en el que acabas de construir.;a;
 ov_5_0;;Descubrirás el resto de cartas de Influencia del Magnate jugando.;a;
 ov_5_1;;¡Has llegado al final del tutorial! Ya estás preparado para jugar una partida de Stratum. ;a;
+desconnection_0;;Ups. Parece que uno de los jugadores ha abandonado la partida. Más suerte la próxima...;a;
 ;;;;
 ;;;;
 ;;;;

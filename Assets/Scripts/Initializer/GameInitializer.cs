@@ -15,6 +15,8 @@ public class GameInitializer : MonoBehaviour
     {
         LocalizationGod.Init();
         
+        ServiceLocator.Register<IRNG>(new RNG());
+        
         var gameModel = new GameModel(_config, _decks);
         
         ServiceLocator.Register<IModel>(gameModel);
@@ -58,5 +60,10 @@ public class GameInitializer : MonoBehaviour
     {
         yield return null;
         ServiceLocator.Get<ITurnSystem>().StartGame();
+    }
+
+    private void OnDestroy()
+    {
+        ServiceLocator.Clear();
     }
 }
