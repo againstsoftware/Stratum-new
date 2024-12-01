@@ -62,6 +62,9 @@ public class Rules : AInteractableObject
     IEnumerator WaitForOneSecond()
     {
         yield return new WaitForSeconds(waitTime);
-        ShowText();
+        if(_isEnabled)
+        {
+            ShowText();
+        }
     }
 }
