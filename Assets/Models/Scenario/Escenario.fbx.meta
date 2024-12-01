@@ -18,27 +18,27 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: BigCandelabra
-    second: {fileID: 2100000, guid: c635b16b9f896f0409c824eac8ec603c, type: 2}
+    second: {fileID: 2100000, guid: 0db8a07e163620844a980c7c5839b97d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Bookshelf
-    second: {fileID: 2100000, guid: ce41142e01e30b749a9fc7534225bc9a, type: 2}
+    second: {fileID: 2100000, guid: 118690d3504dc8b40af51b4924ac3d9b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Gold
-    second: {fileID: 2100000, guid: 558eb3597adc0c8469451dca0656b028, type: 2}
+    second: {fileID: 2100000, guid: 8bacb17eefff03948a360f297edf0cfa, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Lamp1
-    second: {fileID: 2100000, guid: 0f80daa000bfbcb4ca2fb82043b6e1ab, type: 2}
+    second: {fileID: 2100000, guid: 63320463d6b1c5d479478c48e7c30a9c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Lamp2
-    second: {fileID: 2100000, guid: f8c28416c73ea3141a683f35cd32b3de, type: 2}
+    second: {fileID: 2100000, guid: 11c9d8122ca286b4abae5635877917c6, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -48,7 +48,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: MidleCandelabra
-    second: {fileID: 2100000, guid: a0562f4799d4c294b8cf077719bc739f, type: 2}
+    second: {fileID: 2100000, guid: 3e0707a93618dd841943635011a6a18d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -73,12 +73,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Shelf
-    second: {fileID: 2100000, guid: 4ecf013851b60124e8f81f609f759c2c, type: 2}
+    second: {fileID: 2100000, guid: ec59d20573a56e84f8d9da2342159fc2, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: SmallCandelabra
-    second: {fileID: 2100000, guid: 64f98632c1a74e948ba7da79b0b7f1a3, type: 2}
+    second: {fileID: 2100000, guid: b1b41a777456fd54085b47a6c8c028c5, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -98,7 +98,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Window
-    second: {fileID: 2100000, guid: a799d7a280454e044897de245006ccad, type: 2}
+    second: {fileID: 2100000, guid: 18b0f25e6be46f04cab89c554ef96b9c, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule

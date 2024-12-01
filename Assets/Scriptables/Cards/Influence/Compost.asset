@@ -12,29 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9fd99fa6bf54555be1a743029b7468a, type: 3}
   m_Name: Compost
   m_EditorClassIdentifier: 
-  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 2781de06f0f71524d9ae503c7b42cb0e, type: 3}
-  _name:
-    m_TableReference:
-      m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
-    m_TableEntryReference:
-      m_KeyId: 11345899178160128
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  _description:
-    m_TableReference:
-      m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
-    m_TableEntryReference:
-      m_KeyId: 11345953246932992
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  _newName: compost_name
-  _newDescription: 'compost_desc
-
-'
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: bd0989e1a1efbf744927d58997c524db, type: 3}
+  _cardName: compost_name
+  _cardDescription: compost_desc
   _actionEffects:
   - ValidAction:
       <DropLocation>k__BackingField: 6
@@ -49,6 +29,3 @@ MonoBehaviour:
       <Receivers>k__BackingField: 01000000
     Effects: 0d0000001300000017000000
   <IsPersistent>k__BackingField: 0
-  references:
-    version: 2
-    RefIds: []

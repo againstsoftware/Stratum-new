@@ -151,7 +151,7 @@ public class ViewPlayer : MonoBehaviour
     
     private IEnumerator DrawCardsAux(IReadOnlyList<ACard> cards, Action callback)
     {
-        Debug.Log($"empezando a robar: {Character}, {cards.Count} cartas.");
+        // Debug.Log($"empezando a robar: {Character}, {cards.Count} cartas.");
         foreach (var card in cards)
         {
             var newCardGO = Instantiate(_config.CardPrefab, _deckSnap.position, _deckSnap.rotation, _hand);
@@ -170,19 +170,34 @@ public class ViewPlayer : MonoBehaviour
 
             bool isDone = false;
             
-            Debug.Log($"robando: {Character}");
+            // Debug.Log($"robando: {Character}");
             
             newPlayableCard.DrawTravel(location, () =>
             {
-                if(Character is PlayerCharacter.Overlord) Debug.Log("carta en su sitio!");
+                // if(Character is PlayerCharacter.Overlord) Debug.Log("carta en su sitio!");
                 isDone = true;
             }, false /*Character is PlayerCharacter.Overlord*/);
             
             yield return new WaitUntil(() => isDone);
             yield return null;
+            // RandomStateWrapper state = UnityEngine.Random.state;
+            // debugDraw += $"{counterD++}. {Character} ha robado {card.Name}\nSeed: {state.Log()}\n";
         }
         callback?.Invoke();
     }
+    
+    // private string debugDraw = "";
+    // private static int counterD = 0;
+    // private void OnGUI()
+    // {
+    //     int idx = Array.IndexOf(_config.TurnOrder, Character);
+    //     
+    //     GUIStyle textStyle = new GUIStyle();
+    //     textStyle.normal.textColor = Color.white;
+    //     textStyle.fontSize = 10;
+    //     GUI.Label(new Rect(10 + 300 * idx, 100, 200, 1000), debugDraw, textStyle);
+    //     
+    // }
 
     private void OnCardPlayed(PlayableCard card)
     {
@@ -212,10 +227,6 @@ public class ViewPlayer : MonoBehaviour
 
     private IEnumerator ReposCardsInHand(PlayableCard[] exclude = null)
     {
-        if (Character is PlayerCharacter.Overlord)
-        {
-            Debug.Log("repos");
-        }
         
         for (int i = 0; i < Cards.Count; i++)
         {
@@ -236,6 +247,7 @@ public class ViewPlayer : MonoBehaviour
     {
         yield return null;
         Destroy(card);
+        DiscardPile.ShowDiscarded();
         callback?.Invoke();
     }
     

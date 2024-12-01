@@ -57,7 +57,7 @@ public class CSVLoader : MonoBehaviour
         }
 
         Debug.Log("Archivo CSV procesado exitosamente.");
-
+        
         // Llamar al callback si se pasó
         onCompleted?.Invoke();
 

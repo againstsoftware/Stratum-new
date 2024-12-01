@@ -67,6 +67,8 @@ MonoBehaviour:
   _closestCardZ: -0.025
   _mesh: {fileID: 9088813877132267383}
   _nameText: {fileID: 8874135323090283735}
+  _transparentObverse: {fileID: 2100000, guid: acfcb75d0417a5c48808fd0a261e8d4a, type: 2}
+  _transparentReverse: {fileID: 2100000, guid: acfcb75d0417a5c48808fd0a261e8d4a, type: 2}
 --- !u!1 &2967130977452411895
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,8 +238,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: CARD NAME
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9e94cbd5b4ac28a459264149dc9a45ba, type: 2}
-  m_sharedMaterial: {fileID: 5416262015474853922, guid: 9e94cbd5b4ac28a459264149dc9a45ba, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d875ab9f36442de4bbe546d167ecc873, type: 2}
+  m_sharedMaterial: {fileID: -3307321991562224759, guid: d875ab9f36442de4bbe546d167ecc873, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

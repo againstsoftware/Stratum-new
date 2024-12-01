@@ -31,15 +31,28 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     [SerializeField] private MeshRenderer _mesh;
     [SerializeField] private TextMeshProUGUI _nameText;
 
+    
+    [SerializeField] private Material _transparentObverse;
+    [SerializeField] private Material _transparentReverse;
 
     private float _startZ;
     private bool _canInteractWithoutOwnership = false;
 
     private Transform _hand;
+    private static readonly int _mainTexture = Shader.PropertyToID("_Main_Texture");
 
-    protected override void Start()
+    private Material _opaqueObverse, _opaqueReverse;
+    
+    
+    protected override void Awake()
     {
+        base.Awake();
+        
         _hand = transform.parent;
+        _opaqueReverse = _mesh.materials[0];
+        _opaqueObverse = _mesh.materials[1];
+
+        _transparentObverse = Instantiate(_transparentObverse); //reverso no hace falta pq no lo cambiamos
     }
 
 
@@ -187,17 +200,26 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     }
 
 
+    public override void OnDrag()
+    {
+        base.OnDrag();
+
+        SetTransparency(true);
+    }
+
     public override void OnDrop(IActionReceiver dropLocation)
     {
         base.OnDrop(dropLocation);
         transform.parent = null;
         transform.rotation = dropLocation.GetSnapTransform(Owner).rotation; //?????? hay que cambiarlo
+        SetTransparency(false);
     }
 
     public override void OnDragCancel()
     {
         transform.parent = _hand;
         base.OnDragCancel();
+        SetTransparency(false);
     }
 
 
@@ -264,7 +286,9 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     public void SetCard(ACard card)
     {
         Card = card;
-        _mesh.materials[1].mainTexture = card.ObverseTex;
+        // _mesh.materials[1].SetTexture(_mainTexture, card.ObverseTex);
+        _opaqueObverse.SetTexture(_mainTexture, card.ObverseTex);
+        _transparentObverse.mainTexture = card.ObverseTex;
 
         _mesh.GetComponent<Collider>().enabled = true;
 
@@ -280,6 +304,12 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     {
         if (InfluenceCardOnTop is null) throw new Exception("carta del view no tenia influencia encima!");
         InfluenceCardOnTop = null;
+    }
+
+
+    private void SetTransparency(bool on)
+    {
+        _mesh.materials = on ? new[] { _transparentReverse, _transparentObverse } : new[] { _opaqueReverse, _opaqueObverse };
     }
     
 }

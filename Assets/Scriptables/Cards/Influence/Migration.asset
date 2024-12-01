@@ -12,27 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b106f39b368bae74ea403e1e6aa46e76, type: 3}
   m_Name: Migration
   m_EditorClassIdentifier: 
-  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 9a071098859b14848b23167006bbb257, type: 3}
-  _name:
-    m_TableReference:
-      m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
-    m_TableEntryReference:
-      m_KeyId: 10122221576777728
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  _description:
-    m_TableReference:
-      m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
-    m_TableEntryReference:
-      m_KeyId: 10122316158332928
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  _newName: migration_name
-  _newDescription: migration_desc
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 314741b642bc1b34c92bab016f535c6d, type: 3}
+  _cardName: migration_name
+  _cardDescription: migration_desc
   _actionEffects:
   - ValidAction:
       <DropLocation>k__BackingField: 6
@@ -47,6 +29,3 @@ MonoBehaviour:
       <Receivers>k__BackingField: 0300000001000000
     Effects: 0d0000000e000000
   <IsPersistent>k__BackingField: 0
-  references:
-    version: 2
-    RefIds: []

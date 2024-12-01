@@ -185,7 +185,9 @@ public static class EffectCommands
             while (count > 0)
             {
                 count--;
-                var index = UnityEngine.Random.Range(0, players.Count);
+                
+                var index = ServiceLocator.Get<IRNG>().Range(0, players.Count);
+                
                 var slotOwner = players[index];
                 players.RemoveAt(index);
 

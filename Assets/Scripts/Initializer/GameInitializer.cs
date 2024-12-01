@@ -11,9 +11,12 @@ public class GameInitializer : MonoBehaviour
     public enum GameMode { Match, Tutorial, Test }
 
     [SerializeField] private GameMode _gameMode;
+    
     private void Awake()
     {
         LocalizationGod.Init();
+        
+        ServiceLocator.Register<IRNG>(new RNG());
         
         var gameModel = new GameModel(_config, _decks);
         
@@ -51,12 +54,20 @@ public class GameInitializer : MonoBehaviour
         ServiceLocator.Register<IExecutor>(executor);
         executor.IsOnTutorial = _gameMode is GameMode.Tutorial;
 
-
     }
 
     private IEnumerator Start()
     {
+        Debug.Log("Esperando a que se carguen las tablas de localizacion...");
         yield return null;
+        yield return new WaitUntil(() => LocalizationGod.IsInitialized);
+        
+        
         ServiceLocator.Get<ITurnSystem>().StartGame();
+    }
+
+    private void OnDestroy()
+    {
+        ServiceLocator.Clear();
     }
 }

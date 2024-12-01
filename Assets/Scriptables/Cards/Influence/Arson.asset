@@ -12,27 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51c07a7cab5842139d640e4e53b10ff3, type: 3}
   m_Name: Arson
   m_EditorClassIdentifier: 
-  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 93d6d0d17beb61a4ba85154bb2c825cb, type: 3}
-  _name:
-    m_TableReference:
-      m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
-    m_TableEntryReference:
-      m_KeyId: 11272742639497216
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  _description:
-    m_TableReference:
-      m_TableCollectionName: GUID:efc3f8396dc33fd4790de92a4a4ce8d4
-    m_TableEntryReference:
-      m_KeyId: 11272787711488000
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  _newName: arson_name
-  _newDescription: arson_desc
+  <ObverseTex>k__BackingField: {fileID: 2800000, guid: 712e3e486a6b1bd46b2d45a6a7ee8604, type: 3}
+  _cardName: arson_name
+  _cardDescription: arson_desc
   _actionEffects:
   - ValidAction:
       <DropLocation>k__BackingField: 6
@@ -47,6 +29,3 @@ MonoBehaviour:
       <Receivers>k__BackingField: 02000000
     Effects: 0d00000011000000
   <IsPersistent>k__BackingField: 0
-  references:
-    version: 2
-    RefIds: []

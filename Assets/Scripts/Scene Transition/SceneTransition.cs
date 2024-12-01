@@ -36,16 +36,12 @@ public class SceneTransition : MonoBehaviour
         if (Instance != this) return;
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-
-    public void TransitionToScene(int buildIndex, bool net = false)
-    {
-        TransitionToScene(SceneManager.GetSceneByBuildIndex(buildIndex).name, net);
-    }
+    
     
 
     public void TransitionToCurrentScene(bool net = false)
     {
-        TransitionToScene(SceneManager.GetActiveScene().buildIndex, net);   
+        TransitionToScene(SceneManager.GetActiveScene().name, net);   
     }
     
     public void TransitionToScene(string sceneName, bool net = false)

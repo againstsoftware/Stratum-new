@@ -63,7 +63,6 @@ public class LobbyNetwork : NetworkBehaviour
         while (players.Any())
         {
             int randomIndex = Random.Range(0, players.Count);
-            Debug.Log($"random: {randomIndex}");
             var player = players[randomIndex];
             players.RemoveAt(randomIndex);
             var character = characters[^1];

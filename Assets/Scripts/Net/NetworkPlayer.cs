@@ -12,7 +12,7 @@ public class NetworkPlayer : NetworkBehaviour
     {
         DontDestroyOnLoad(gameObject);
 
-        Character.OnValueChanged += (_, pc) => Debug.Log($"player {ID.Value} is {Character.Value}");
+        // Character.OnValueChanged += (_, pc) => Debug.Log($"player {ID.Value} is {Character.Value}");
     }
 
     public override void OnNetworkSpawn()

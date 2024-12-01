@@ -1,4 +1,3 @@
-
 using System;
 using System.Linq;
 using Unity.Netcode;
@@ -21,25 +20,34 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
 
     public bool IsRNGSynced { get; private set; }
 
+    public PlayerCharacter LocalPlayer { get; private set; } = PlayerCharacter.None;
+    public Camera Camera { get; private set; }
+
+    public event Action<PlayerCharacter, Camera> OnLocalPlayerChange;
+
+    public NetworkVariable<int> RandomSeed { get; private set; } = new(-1);
+    public NetworkVariable<bool> IsRandomSeedInit { get; private set; } = new(false);
+
     [SerializeField] private GameConfig _config;
 
-    private PlayerCharacter _localPlayer;
+
     private void Awake()
     {
         var localID = NetworkManager.Singleton.LocalClientId;
+        NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnected;
 
         var networkPlayers = FindObjectsByType<NetworkPlayer>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
-        
+
         var localNetworkPlayer = networkPlayers.FirstOrDefault(np => np.ID.Value == localID);
-        _localPlayer = localNetworkPlayer.Character.Value;
+        LocalPlayer = localNetworkPlayer.Character.Value;
         foreach (PlayerCharacter character in Enum.GetValues(typeof(PlayerCharacter)))
         {
             if (character is PlayerCharacter.None) continue;
 
             var viewPlayer = ServiceLocator.Get<IView>().GetViewPlayer(character);
             var cam = viewPlayer.MainCamera;
-            
-            if (character != _localPlayer)
+
+            if (character != LocalPlayer)
             {
                 Destroy(cam.gameObject);
                 Destroy(viewPlayer.UICamera.gameObject);
@@ -47,43 +55,91 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
             else
             {
                 //temporal mientras no hay mas luces
-                var lightTransform = FindAnyObjectByType<Light>().transform.parent;
-                lightTransform.LookAt(cam.transform.forward);
-                
-                /*var input = */FindAnyObjectByType<PlayerInput>().camera = cam;
+                // var lightTransform = FindAnyObjectByType<Light>().transform.parent;
+                // lightTransform.LookAt(cam.transform.forward);
+
+                /*var input = */
+                FindAnyObjectByType<PlayerInput>().camera = cam;
 
                 viewPlayer.IsLocalPlayer = true;
-                                
-                ServiceLocator.Get<IInteractionSystem>().SetLocalPlayer(_localPlayer, cam);
-                ServiceLocator.Get<IView>().SetLocalPlayer(_localPlayer, cam);
+
+                Camera = cam;
+                OnLocalPlayerChange?.Invoke(LocalPlayer, cam);
             }
         }
-
     }
+
 
     public void SyncRNGs()
     {
-        if (!IsServer) return;
-        GenerateSeedServerRpc();
+        if (!IsServer)
+        {
+            // bool init = IsRandomSeedInit.Value;
+            // Debug.Log($"spawneado gamenetwork: {IsSpawned}");
+            // Debug.Log($"random inicializado en server: {init}");
+            if (IsRNGSynced) return;
+            
+            if (IsRandomSeedInit.Value)
+            {
+                Debug.Log($"early init seed: {RandomSeed.Value}");
+                SetRNGSeed(RandomSeed.Value);
+            }
+            else
+            {
+                Debug.Log($"Seed no sincronizada aun, su valor es {RandomSeed.Value}");
+                RandomSeed.OnValueChanged += OnRandomSeedInit;
+            }
+
+            return;
+        }
+        Debug.Log("generando la seed en el server...");
+        var random = new System.Random();
+        RandomSeed.Value = random.Next();
+        IsRandomSeedInit.Value = true;
+        SendSeedToClientRpc(RandomSeed.Value);
     }
 
-    
-    
-    [ServerRpc]
-    private void GenerateSeedServerRpc()
+    private void OnRandomSeedInit(int __, int _)
     {
-        var seed = Guid.NewGuid().GetHashCode();
-        SendSeedToClientRpc(seed);
+        RandomSeed.OnValueChanged -= OnRandomSeedInit;
+        
+        Debug.Log($"late init seed: {RandomSeed.Value}");
+        SetRNGSeed(RandomSeed.Value);
     }
+
+    private void OnClientDisconnected(ulong id)
+    {
+        if (IsServer)
+            DisconnectClientRpc();
+        else Disconnect();
+    }
+
+    [ClientRpc]
+    private void DisconnectClientRpc()
+    {
+        Disconnect();
+    }
+
+    private void Disconnect()
+    {
+        NetworkManager.Singleton.Shutdown();
+        SceneTransition.Instance.TransitionToScene("Disconnection");
+    }
+
 
     [ClientRpc]
     private void SendSeedToClientRpc(int seed)
     {
-        Random.InitState(seed);
-        IsRNGSynced = true;
+        Debug.Log("Recibiendo la seed en el cliente...");
+        SetRNGSeed(seed);
     }
 
-
+    private void SetRNGSeed(int seed)
+    {
+        ServiceLocator.Get<IRNG>().Init(seed);
+        IsRNGSynced = true;
+        Debug.Log($"random sync en el cliente. seed: {seed}");
+    }
 
 
     public void SendActionToAuthority(PlayerAction action)
@@ -91,7 +147,7 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
         if (!IsSpawned)
             throw new Exception("Error! Mandando rpcs sin estar spawneado");
 
-        if (action.Actor != _localPlayer)
+        if (action.Actor != LocalPlayer)
             throw new Exception("Error! Mandando rpcs de accion sin ser el jugador local");
 
         ServiceLocator.Get<IExecutor>().ExecutePlayerActionEffects(action);
@@ -103,7 +159,6 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
         {
             SendActionToServerRpc(new NetworkPlayerAction(action, _config));
         }
-
     }
 
     public void SendTurnChange(PlayerCharacter playerOnTurn)
@@ -122,18 +177,18 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
     private void SendActionToServerRpc(NetworkPlayerAction networkAction) //comporueba las reglas en el server 
     {
         var action = networkAction.ToPlayerAction(_config);
-        
+
         if (!ServiceLocator.Get<IRulesSystem>().IsValidAction(action))
             throw new Exception($"JUGADOR {action.Actor} HA HECHO TRAMPA! HAY INCONSISTENCIAS!");
-       
+
         else SendActionToExecuteInClientRpc(networkAction);
     }
 
     [ClientRpc]
     private void SendActionToExecuteInClientRpc(NetworkPlayerAction action)
     {
-        if (action.Actor == _localPlayer) return;
-        
+        if (action.Actor == LocalPlayer) return;
+
         ServiceLocator.Get<IExecutor>().ExecutePlayerActionEffects(action.ToPlayerAction(_config));
     }
 }

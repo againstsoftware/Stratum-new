@@ -5,7 +5,8 @@ using UnityEngine.Serialization;
 
 public class PlayableToken : APlayableItem, IRulebookEntry
 {
-    public override bool OnlyVisibleOnOverview => true;
+    // public override bool OnlyVisibleOnOverview => true;
+    public override bool OnlyVisibleOnOverview => false;
     public override bool CanInteractWithoutOwnership => true;
 
     [SerializeField] private AToken _token;
