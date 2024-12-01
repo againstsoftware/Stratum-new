@@ -33,6 +33,7 @@ public class TurnManager : MonoBehaviour, ITurnSystem
         // _actionsLeft = _numberOfActions;
         // OnTurnChanged?.Invoke(PlayerOnTurn);
 
+        Debug.Log("Comienza el juego!");
 
         _orderIdx = -1;
         _actionsLeft = 1;

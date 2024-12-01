@@ -102,7 +102,7 @@ public static class LocalizationGod
     {
         if (IsInitialized) return;
         
-        
+        Debug.Log("inicializando localizacion...");
         LoadTable("Cards", () => _cardsLoaded = true);
         LoadTable("Tutorial", () => _tutorialLoaded = true);
     }

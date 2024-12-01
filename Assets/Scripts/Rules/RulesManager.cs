@@ -113,6 +113,7 @@ public class RulesManager : MonoBehaviour, IRulesSystem
     private IEnumerator StartGame()
     {
         var comms = ServiceLocator.Get<ICommunicationSystem>();
+        Debug.Log("sincronizando random...");
         comms.SyncRNGs();
         while (!comms.IsRNGSynced) yield return null;
         Debug.Log("random sincronizado!");

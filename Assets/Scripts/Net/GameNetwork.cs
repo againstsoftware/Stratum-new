@@ -25,6 +25,8 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
 
     public event Action<PlayerCharacter, Camera> OnLocalPlayerChange;
 
+    public NetworkVariable<int> RandomSeed { get; private set; } = new(-1);
+    public NetworkVariable<bool> IsRandomSeedInit { get; private set; } = new(false);
 
     [SerializeField] private GameConfig _config;
 
@@ -70,8 +72,39 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
 
     public void SyncRNGs()
     {
-        if (!IsServer) return;
-        GenerateSeedServerRpc();
+        if (!IsServer)
+        {
+            // bool init = IsRandomSeedInit.Value;
+            // Debug.Log($"spawneado gamenetwork: {IsSpawned}");
+            // Debug.Log($"random inicializado en server: {init}");
+            if (IsRNGSynced) return;
+            
+            if (IsRandomSeedInit.Value)
+            {
+                Debug.Log($"early init seed: {RandomSeed.Value}");
+                SetRNGSeed(RandomSeed.Value);
+            }
+            else
+            {
+                Debug.Log($"Seed no sincronizada aun, su valor es {RandomSeed.Value}");
+                RandomSeed.OnValueChanged += OnRandomSeedInit;
+            }
+
+            return;
+        }
+        Debug.Log("generando la seed en el server...");
+        var random = new System.Random();
+        RandomSeed.Value = random.Next();
+        IsRandomSeedInit.Value = true;
+        SendSeedToClientRpc(RandomSeed.Value);
+    }
+
+    private void OnRandomSeedInit(int __, int _)
+    {
+        RandomSeed.OnValueChanged -= OnRandomSeedInit;
+        
+        Debug.Log($"late init seed: {RandomSeed.Value}");
+        SetRNGSeed(RandomSeed.Value);
     }
 
     private void OnClientDisconnected(ulong id)
@@ -84,29 +117,28 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
     [ClientRpc]
     private void DisconnectClientRpc()
     {
-       Disconnect();
+        Disconnect();
     }
 
     private void Disconnect()
     {
         NetworkManager.Singleton.Shutdown();
-        SceneTransition.Instance.TransitionToScene("Disconnection");   
+        SceneTransition.Instance.TransitionToScene("Disconnection");
     }
 
-
-    [ServerRpc]
-    private void GenerateSeedServerRpc()
-    {
-        var random = new System.Random();
-        var seed = random.Next();
-        SendSeedToClientRpc(seed);
-    }
 
     [ClientRpc]
     private void SendSeedToClientRpc(int seed)
     {
+        Debug.Log("Recibiendo la seed en el cliente...");
+        SetRNGSeed(seed);
+    }
+
+    private void SetRNGSeed(int seed)
+    {
         ServiceLocator.Get<IRNG>().Init(seed);
         IsRNGSynced = true;
+        Debug.Log($"random sync en el cliente. seed: {seed}");
     }
 
 
