@@ -86,8 +86,10 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
             }
             else
             {
-                Debug.Log($"Seed no sincronizada aun, su valor es {RandomSeed.Value}");
-                RandomSeed.OnValueChanged += OnRandomSeedInit;
+                Debug.Log($"Seed no sincronizada aun, su valor es {RandomSeed.Value}. Peticion al server...");
+                // RandomSeed.OnValueChanged += OnRandomSeedInit;
+                //le pedimos al server que nos de la key
+                QuerySeedToServerRpc(LocalPlayer);
             }
 
             return;
@@ -99,13 +101,25 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
         SendSeedToClientRpc(RandomSeed.Value);
     }
 
-    private void OnRandomSeedInit(int __, int _)
+    // private void OnRandomSeedInit(int __, int _)
+    // {
+    //     RandomSeed.OnValueChanged -= OnRandomSeedInit;
+    //     
+    //     Debug.Log($"late init seed: {RandomSeed.Value}");
+    //     SetRNGSeed(RandomSeed.Value);
+    // }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void QuerySeedToServerRpc(PlayerCharacter clientCharacter)
     {
-        RandomSeed.OnValueChanged -= OnRandomSeedInit;
-        
-        Debug.Log($"late init seed: {RandomSeed.Value}");
-        SetRNGSeed(RandomSeed.Value);
+        Debug.Log("recibida peticion de seed");
+        if(IsRandomSeedInit.Value) 
+            SendSeedToSpecificClientRpc(clientCharacter, RandomSeed.Value);
+        else
+            Debug.Log("random aun no iniciado, cuando se inicie se mandara la seed a todos.");
     }
+
+
 
     private void OnClientDisconnected(ulong id)
     {
@@ -131,6 +145,14 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
     private void SendSeedToClientRpc(int seed)
     {
         Debug.Log("Recibiendo la seed en el cliente...");
+        SetRNGSeed(seed);
+    }
+    
+    [ClientRpc]
+    private void SendSeedToSpecificClientRpc(PlayerCharacter clientCharacter, int seed)
+    {
+        if (LocalPlayer != clientCharacter) return;
+        Debug.Log("Recibiendo la seed en el cliente especifico...");
         SetRNGSeed(seed);
     }
 
