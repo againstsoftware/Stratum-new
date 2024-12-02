@@ -105,6 +105,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Highlighted: 0
+    - _LightingCutoff_2: -0.35
     - _Lighting_cutoff: 0.3
     - _Metallic: 0
     - _Mode: 0
