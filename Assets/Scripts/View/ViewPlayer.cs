@@ -23,8 +23,13 @@ public class ViewPlayer : MonoBehaviour
             _isLocalPlayer = value;
             if (_isLocalPlayer)
             {
-                Destroy(Mesh);
-                Mesh = null;
+                //Destroy(Mesh);
+                //Mesh = null;
+                Mesh.SetActive(false);
+            }
+            else
+            {
+                Mesh.SetActive(true);
             }
         }
     }
