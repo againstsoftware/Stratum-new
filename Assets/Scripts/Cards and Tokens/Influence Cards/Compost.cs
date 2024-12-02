@@ -4,6 +4,7 @@ public class Compost : AInfluenceCard
 {
     protected override bool CheckInfluenceCardAction(PlayerAction action)
     {
+        _feedbackKey = "fatal_error";
         if (action.Receivers.Length != 1)
         {
             return false;
@@ -23,6 +24,8 @@ public class Compost : AInfluenceCard
 
         var slotOwner = ServiceLocator.Get<IModel>().GetPlayer(receiver.LocationOwner);
         var slot = slotOwner.Territory.Slots[receiver.Index];
+
+        _feedbackKey = "on_empty_slot";
         if (slot.PlacedCards.Any())
         {
             return false;

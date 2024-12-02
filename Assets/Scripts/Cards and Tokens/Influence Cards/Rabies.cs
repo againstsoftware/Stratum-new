@@ -4,6 +4,7 @@ public class Rabies : AInfluenceCard
 {
     protected override bool CheckInfluenceCardAction(PlayerAction action)
     {
+        _feedbackKey = "fatal_error";
         if (action.Receivers.Length != 1)
         {
             return false;
@@ -31,6 +32,7 @@ public class Rabies : AInfluenceCard
 
         var card = cardOwnerPlacedCards[receiver.SecondIndex];
 
+        _feedbackKey = "influence_ontop";
         if (card.InfluenceCardOnTop is not null)
         {
             return false;
@@ -41,6 +43,7 @@ public class Rabies : AInfluenceCard
             return false;
         }
 
+        _feedbackKey = "on_herbivore";
         if (!card.GetPopulations().Contains(Population.Herbivore))
         {
             return false;

@@ -9,16 +9,20 @@ public abstract class AInfluenceCard : ACard
     [field: SerializeField]public bool IsPersistent { get; private set; }
     public override bool CanHaveInfluenceCardOnTop => false;
 
+    protected string _feedbackKey;
 
-    protected override bool CheckCardAction(PlayerAction action)
+    protected override bool CheckCardAction(PlayerAction action, out string feedbackKey)
     {
         if (ServiceLocator.Get<IModel>().GetPlayer(action.Actor).InfluencePlayed)
         {
+            feedbackKey = "influence_played";
             Debug.Log("rechazada porque ya jugo influencia este turno");
             return false;
         }
 
-        return CheckInfluenceCardAction(action);
+        bool valid = CheckInfluenceCardAction(action);
+        feedbackKey = _feedbackKey;
+        return valid;
     }
 
     protected abstract bool CheckInfluenceCardAction(PlayerAction action);

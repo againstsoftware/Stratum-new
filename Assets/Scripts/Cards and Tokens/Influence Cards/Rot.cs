@@ -4,6 +4,7 @@ public class Rot : AInfluenceCard
 {
     protected override bool CheckInfluenceCardAction(PlayerAction action)
     {
+        _feedbackKey = "fatal_error";
         if (action.Receivers.Length != 1)
         {
             return false;
@@ -33,6 +34,7 @@ public class Rot : AInfluenceCard
 
         if (!card.GetPopulations().Contains(Population.Plant))
         {
+            _feedbackKey = "on_plant";
             return false;
         }
 

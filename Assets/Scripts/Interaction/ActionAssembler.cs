@@ -14,6 +14,9 @@ public static class ActionAssembler
     private static IInteractionSystem _interactionSystem;
     private static ValidAction _validAction;
 
+    private const string _cardFeedback = "assembler_card";
+    private const string _tokenFeedback = "assembler_token";
+
     public enum AssemblyState
     {
         Failed,
@@ -21,7 +24,7 @@ public static class ActionAssembler
         Completed
     }
 
-    public static AssemblyState TryAssembleAction(APlayableItem playableItem, IActionReceiver dropLocation)
+    public static AssemblyState TryAssembleAction(APlayableItem playableItem, IActionReceiver dropLocation, out string feedbackKey)
     {
         _interactionSystem ??= ServiceLocator.Get<IInteractionSystem>();
 
@@ -30,14 +33,15 @@ public static class ActionAssembler
         _receiversList.Clear();
         _actionReceivers.Clear();
         _validAction = null;
-
+        feedbackKey = null;
         foreach (var validAction in playableItem.ActionItem.GetValidActions())
         {
             if (!CheckIfValid(playableItem, dropLocation, validAction)) continue;
-            return AssembleAction(playableItem, dropLocation, validAction);
+            return AssembleAction(playableItem, dropLocation, validAction, out feedbackKey);
         }
 
         //notificar fallo
+        feedbackKey = playableItem is PlayableCard ? _cardFeedback : _tokenFeedback;
         return AssemblyState.Failed;
     }
 
@@ -58,12 +62,13 @@ public static class ActionAssembler
 
 
     private static AssemblyState AssembleAction(APlayableItem playableItem, IActionReceiver dropLocation,
-        ValidAction validAction)
+        ValidAction validAction, out string feedbackKey)
     {
         _receiversQueue.Clear();
         _receiversList.Clear();
         _validAction = validAction;
         PlayableItem = playableItem;
+        feedbackKey = null;
         foreach (var receiver in validAction.Receivers) _receiversQueue.Enqueue(receiver);
         if (dropLocation is not TableCenter)
         {
@@ -78,11 +83,12 @@ public static class ActionAssembler
         }
 
         //le mandamos la accion ya completada al sistema de reglas
-        return SendCompletedAction() ? AssemblyState.Completed : AssemblyState.Failed;
+        return SendCompletedAction(out feedbackKey) ? AssemblyState.Completed : AssemblyState.Failed;
     }
 
-    public static AssemblyState AddReceiver(IActionReceiver receiver)
+    public static AssemblyState AddReceiver(IActionReceiver receiver, out string feedbackKey)
     {
+        feedbackKey = null;
         var validReceiver = _receiversQueue.Dequeue();
         bool isValid = validReceiver switch
         {
@@ -97,6 +103,7 @@ public static class ActionAssembler
         if (!isValid)
         {
             //le decimos al sistema que vuelva a idle
+            feedbackKey = PlayableItem is PlayableCard ? _cardFeedback : _tokenFeedback;
             return AssemblyState.Failed;
         }
 
@@ -106,18 +113,19 @@ public static class ActionAssembler
         if (_receiversQueue.Count > 0) return AssemblyState.Ongoing;
 
         //si la cola esta vacia, hemos terminado y hay que enviar la jugada al sistema de reglas
-        return SendCompletedAction() ? AssemblyState.Completed : AssemblyState.Failed;
+        return SendCompletedAction(out feedbackKey) ? AssemblyState.Completed : AssemblyState.Failed;
     }
 
-    private static bool SendCompletedAction()
+    private static bool SendCompletedAction(out string feedbackKey)
     {
+        feedbackKey = null;
         var playerActionStruct = new PlayerAction(
             PlayableItem.Owner,
             PlayableItem.ActionItem,
             _receiversList.ToArray(),
             _validAction.Index);
 
-        if (!ServiceLocator.Get<IRulesSystem>().IsValidAction(playerActionStruct))
+        if (!ServiceLocator.Get<IRulesSystem>().IsValidAction(playerActionStruct, out feedbackKey))
         {
             Debug.Log("Accion no valida tras comprobacion en local.");
             return false;

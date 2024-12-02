@@ -92,11 +92,12 @@ public static class LocalizationGod
 
     public static bool IsInitialized
     {
-        get => _cardsLoaded && _tutorialLoaded;
+        get => _cardsLoaded && _tutorialLoaded && _feedbackLoaded;
     }
     
     private static bool _cardsLoaded = false;
     private static bool _tutorialLoaded = false;
+    private static bool _feedbackLoaded = false;
 
     public static void Init()
     {
@@ -105,6 +106,7 @@ public static class LocalizationGod
         Debug.Log("inicializando localizacion...");
         LoadTable("Cards", () => _cardsLoaded = true);
         LoadTable("Tutorial", () => _tutorialLoaded = true);
+        LoadTable("Feedback", () => _feedbackLoaded = true);
     }
 
     public static string GetLocalized(string tableName, string tablekey)

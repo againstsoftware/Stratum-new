@@ -7,7 +7,7 @@ public static class RulesCheck
 {
     public static GameConfig Config { get; set; }
 
-    public static bool CheckAction(PlayerAction action)
+    public static bool CheckAction(PlayerAction action, out string feedbackKey)
     {
         // Debug.Log($@"
         // recibida player action para checkear:
@@ -23,17 +23,19 @@ public static class RulesCheck
 
         if (action.Actor is PlayerCharacter.None)
         {
+            feedbackKey = "fatal_error";
             return false;
         }
 
         // es el jugador del turno actual
         if (action.Actor != ServiceLocator.Get<IModel>().PlayerOnTurn)
         {
+            feedbackKey = "fatal_error";
             Debug.Log($"rechazada porque le toca a {ServiceLocator.Get<IModel>().PlayerOnTurn}");
             return false;
         }
 
-        return action.ActionItem.CheckAction(action);
+        return action.ActionItem.CheckAction(action, out feedbackKey);
     }
 
 

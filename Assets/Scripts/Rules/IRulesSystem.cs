@@ -5,7 +5,7 @@ public interface IRulesSystem : IService
     public event Action<PlayerCharacter[]> OnGameOver;
     
     // comprobación local
-    public bool IsValidAction(PlayerAction action); //esta comprueba en local
+    public bool IsValidAction(PlayerAction action, out string feedbackKey); //esta comprueba en local
 
     
     

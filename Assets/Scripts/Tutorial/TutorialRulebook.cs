@@ -66,7 +66,7 @@ public class TutorialRulebook : MonoBehaviour
     public void DisplayTutorialDialogue(TutorialDialogue dialogue, Action onFinished)
     {
         _animator.SetBool(_yap, true);
-        _rulebook.DisplayDialogue(dialogue, () => _animator.SetBool(_yap, false), onFinished);
+        _rulebook.DisplayDialogue(dialogue.Text, () => _animator.SetBool(_yap, false), onFinished);
     }
 
     private void SetLocalPlayer(PlayerCharacter localPlayer, Camera cam)

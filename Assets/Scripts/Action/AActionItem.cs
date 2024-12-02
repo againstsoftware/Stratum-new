@@ -9,6 +9,6 @@ public abstract class AActionItem : ScriptableObject
     
     public abstract IEnumerable<Effect> GetEffects(int index);
     
-    public abstract bool CheckAction(PlayerAction action);
+    public abstract bool CheckAction(PlayerAction action, out string feedbackKey);
 
 }

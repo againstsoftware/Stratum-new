@@ -34,12 +34,8 @@ public class Migration : AInfluenceCard
 
         var card = modelCards[receivers[0].SecondIndex];
 
+        _feedbackKey = "on_animal";
         if (card.Card is not PopulationCard)
-        {
-            return false;
-        }
-
-        if (card.HasLeash)
         {
             return false;
         }
@@ -51,7 +47,13 @@ public class Migration : AInfluenceCard
             return false;
         }
 
+        _feedbackKey = "has_leash";
+        if (card.HasLeash)
+        {
+            return false;
+        }
 
+        _feedbackKey = "mig";
         if (receivers[1].LocationOwner == action.Actor)
         {
             return false;

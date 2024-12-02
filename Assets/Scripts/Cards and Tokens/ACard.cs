@@ -49,28 +49,37 @@ public abstract class ACard : AActionItem
         return validActions;
     }
     
-    public override bool CheckAction(PlayerAction action)
+    public override bool CheckAction(PlayerAction action, out string feedbackKey)
     {
         var p = ServiceLocator.Get<IModel>().GetPlayer(action.Actor);
         if (!p.HandOfCards.Contains(this))
         {
             Debug.Log($"rechazada porque la carta no esta en la mano del model");
+            feedbackKey = "fatal_error";
             return false;
         }
 
         //si es accion de descarte
         if (action.Receivers.Length == 1 && action.Receivers[0].Location is ValidDropLocation.DiscardPile)
         {
+            feedbackKey = null;
+
             var owner = action.Receivers[0].LocationOwner;
             if (owner == action.Actor) return true;
+            
+            feedbackKey = "fatal_error";
             Debug.Log("rechazada porque la pila de descarte no es del que jugo la carta!");
             return false;
         }
 
-        return CheckCardAction(action);
+        return CheckCardAction(action, out feedbackKey);
 
     }
 
-    protected virtual bool CheckCardAction(PlayerAction action) => false;
+    protected virtual bool CheckCardAction(PlayerAction action, out string feedbackKey)
+    { //esto debe ser overrideado sin llamar al base en cartas jugables!
+        feedbackKey = "fatal_error";
+        return false;
+    }
 
 }

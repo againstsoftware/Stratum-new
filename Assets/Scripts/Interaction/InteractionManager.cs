@@ -231,12 +231,14 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         SelectedDropLocation.OnDraggingDeselect();
         SelectedDropLocation = null;
 
-        switch (ActionAssembler.TryAssembleAction(item, dropLocation))
+        switch (ActionAssembler.TryAssembleAction(item, dropLocation, out string feedbackKey))
         {
             case ActionAssembler.AssemblyState.Failed:
                 CurrentState = IInteractionSystem.State.Idle;
                 item.OnDragCancel();
                 if (!item.OnlyVisibleOnOverview) _cameraMovement.ChangeToDefault();
+                _rulebook.DisplayDialogue(LocalizationGod.GetLocalized("Feedback", feedbackKey), null, null);
+
                 break;
 
             case ActionAssembler.AssemblyState.Ongoing:
@@ -261,7 +263,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         if (!receiver.CanInteractWithoutOwnership) return;
         if (_selectedReceivers.Contains(receiver)) return;
 
-        switch (ActionAssembler.AddReceiver(receiver))
+        switch (ActionAssembler.AddReceiver(receiver, out string feedbackKey))
         {
             case ActionAssembler.AssemblyState.Failed:
                 CurrentState = IInteractionSystem.State.Idle;
@@ -269,6 +271,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
                 if (!_draggingItem.OnlyVisibleOnOverview) _cameraMovement.ChangeToDefault();
                 if (_selectedReceiver is not null) _selectedReceiver.OnChoosingDeselect();
                 foreach(var r in _selectedReceivers) r.OnChoosingDeselect();
+                _rulebook.DisplayDialogue(LocalizationGod.GetLocalized("Feedback", feedbackKey), null, null);
                 break;
 
             case ActionAssembler.AssemblyState.Ongoing:

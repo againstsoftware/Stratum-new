@@ -4,6 +4,7 @@ public class Fireworks : AInfluenceCard
 {
     protected override bool CheckInfluenceCardAction(PlayerAction action)
     {
+        _feedbackKey = "fatal_error";
         var receivers = action.Receivers;
 
         if (receivers.Length != 2)
@@ -32,6 +33,7 @@ public class Fireworks : AInfluenceCard
 
         var card = cardOwnerPlacedCards[receivers[0].SecondIndex];
 
+        _feedbackKey = "on_animal";
         if (card.Card is not PopulationCard)
         {
             return false;
@@ -39,6 +41,7 @@ public class Fireworks : AInfluenceCard
         
         if (card.HasLeash)
         {
+            _feedbackKey = "has_leash";
             return false;
         }
 
@@ -48,7 +51,7 @@ public class Fireworks : AInfluenceCard
             return false;
         }
 
-
+        _feedbackKey = "firew";
         if (receivers[1].Location is not ValidDropLocation.AnySlot)
         {
             return false;

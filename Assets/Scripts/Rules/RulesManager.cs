@@ -18,6 +18,8 @@ public class RulesManager : MonoBehaviour, IRulesSystem
     private IReadOnlyList<PlayerAction> _forcedActions;
     private bool _checkOnlyActionItem;
 
+    private const string _forcedFeedbackKey = "forced";
+
     private void Start()
     {
         ServiceLocator.Get<ITurnSystem>().OnGameStart += OnGameStart;
@@ -38,19 +40,19 @@ public class RulesManager : MonoBehaviour, IRulesSystem
     }
 
 
-    public bool IsValidAction(PlayerAction action)
+    public bool IsValidAction(PlayerAction action, out string feedbackKey)
     {
         if (_forcedActions is not null && _forcedActions.Count > 0)
         {
             if (IsValidForcedAction(action))
             {
-                return RulesCheck.CheckAction(action);
+                return RulesCheck.CheckAction(action, out feedbackKey);
             }
 
-            Debug.Log("accion del jugador incorrecta");
+            feedbackKey = _forcedFeedbackKey;
             return false;
         }
-        else return RulesCheck.CheckAction(action);   
+        else return RulesCheck.CheckAction(action, out feedbackKey);   
         
     }
 

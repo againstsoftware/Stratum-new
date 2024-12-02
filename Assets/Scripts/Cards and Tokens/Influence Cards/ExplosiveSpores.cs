@@ -18,7 +18,7 @@ public class ExplosiveSpores : AInfluenceCard
 
         var playerOwner = ServiceLocator.Get<IModel>().GetPlayer(receiver.LocationOwner);
 
-        return playerOwner.Territory.Slots.SelectMany(slot => slot.PlacedCards)
-            .Any(card => card.Card is MushroomCard or MacrofungiCard);
+        _feedbackKey = "on_fungi_terr";
+        return ExistsFungiOnTerritory(playerOwner.Territory);
     }
 }

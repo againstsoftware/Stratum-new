@@ -35,7 +35,8 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
     {
         var localID = NetworkManager.Singleton.LocalClientId;
         NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnected;
-
+        NetworkManager.Singleton.OnServerStopped += OnServerStopped;
+        
         var networkPlayers = FindObjectsByType<NetworkPlayer>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
 
         var localNetworkPlayer = networkPlayers.FirstOrDefault(np => np.ID.Value == localID);
@@ -127,6 +128,11 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
             DisconnectClientRpc();
         else Disconnect();
     }
+    
+    private void OnServerStopped(bool _)
+    {
+        Disconnect(); 
+    }
 
     [ClientRpc]
     private void DisconnectClientRpc()
@@ -200,7 +206,7 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
     {
         var action = networkAction.ToPlayerAction(_config);
 
-        if (!ServiceLocator.Get<IRulesSystem>().IsValidAction(action))
+        if (!ServiceLocator.Get<IRulesSystem>().IsValidAction(action, out _))
             throw new Exception($"JUGADOR {action.Actor} HA HECHO TRAMPA! HAY INCONSISTENCIAS!");
 
         else SendActionToExecuteInClientRpc(networkAction);

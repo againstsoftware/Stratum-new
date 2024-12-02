@@ -4,6 +4,7 @@ public class PheromoneFragance : AInfluenceCard
 {
     protected override bool CheckInfluenceCardAction(PlayerAction action)
     {
+        _feedbackKey = "fatal_error";
         var receivers = action.Receivers;
 
         if (receivers.Length != 2)
@@ -22,11 +23,6 @@ public class PheromoneFragance : AInfluenceCard
         }
 
 
-        if (receivers[0].LocationOwner == action.Actor)
-        {
-            return false;
-        }
-
         var cardOwner = ServiceLocator.Get<IModel>().GetPlayer(receivers[0].LocationOwner);
 
         var cardOwnerPlacedCards = cardOwner.Territory.Slots[receivers[0].Index].PlacedCards;
@@ -35,9 +31,17 @@ public class PheromoneFragance : AInfluenceCard
         {
             return false;
         }
+        
+        if (receivers[0].LocationOwner == action.Actor)
+        {
+            _feedbackKey = "frag1";
+            return false;
+        }
+
 
         var card = cardOwnerPlacedCards[receivers[0].SecondIndex];
 
+        _feedbackKey = "on_animal";
         if (card.Card is not PopulationCard)
         {
             return false;
@@ -45,6 +49,7 @@ public class PheromoneFragance : AInfluenceCard
         
         if (card.HasLeash)
         {
+            _feedbackKey = "has_leash";
             return false;
         }
 
@@ -54,7 +59,7 @@ public class PheromoneFragance : AInfluenceCard
             return false;
         }
 
-
+        _feedbackKey = "frag2";
         if (receivers[1].LocationOwner != action.Actor)
         {
             return false;
@@ -67,6 +72,7 @@ public class PheromoneFragance : AInfluenceCard
 
         if (receivers[1].Index is < 0 or >= 5)
         {
+            _feedbackKey = "fatal_error";
             return false;
         }
 

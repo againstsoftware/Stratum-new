@@ -59,7 +59,7 @@ public class Rulebook : MonoBehaviour
         StartCoroutine(HideDelayAux());
     }
 
-    public void DisplayDialogue(TutorialDialogue dialogue, Action endCallback, Action nextCallback)
+    public void DisplayDialogue(string dialogueText, Action endCallback, Action nextCallback)
     {
         if (_isOnDialogue) return;
 
@@ -80,7 +80,7 @@ public class Rulebook : MonoBehaviour
             _isUp = true;
         }
         
-        StartCoroutine(TypeDialogue(dialogue));
+        StartCoroutine(TypeDialogue(dialogueText));
     }
 
     private IEnumerator HideDelayAux()
@@ -98,12 +98,12 @@ public class Rulebook : MonoBehaviour
         HideRulebook();
     }
 
-    private IEnumerator TypeDialogue(TutorialDialogue dialogue)
+    private IEnumerator TypeDialogue(string dialogue)
     {
         _isOnDialogue = true;
         _nameText.text = "";
         _descriptionText.text = "";
-        _dialogueText.text = dialogue.Text;
+        _dialogueText.text = dialogue;
         _dialogueText.ForceMeshUpdate();
 
         _dialogueText.alpha = 0; // Inicialmente, el texto completo es transparente
@@ -148,7 +148,7 @@ public class Rulebook : MonoBehaviour
         yield return new WaitUntil(() => _hasClickedOnDialogue);
         _isOnDialogue = false;
         ServiceLocator.Get<IInteractionSystem>().Input.Press -= OnPress;
-        _nextDialogueCallback.Invoke();
+        _nextDialogueCallback?.Invoke();
         _nextDialogueCallback = null;
         _dialogueText.text = "";
         HideRulebook();

@@ -5,6 +5,7 @@ public class AppetizingMushroom : AInfluenceCard
 {
     protected override bool CheckInfluenceCardAction(PlayerAction action)
     {
+        _feedbackKey = "fatal_error";
         var receivers = action.Receivers;
 
         if (receivers.Length != 2)
@@ -33,6 +34,9 @@ public class AppetizingMushroom : AInfluenceCard
 
         var card = cardOwnerPlacedCards[receivers[0].SecondIndex];
 
+
+        _feedbackKey = "on_animal";
+        
         if (card.Card is not PopulationCard)
         {
             return false;
@@ -40,6 +44,7 @@ public class AppetizingMushroom : AInfluenceCard
         
         if (card.HasLeash)
         {
+            _feedbackKey = "has_leash";
             return false;
         }
 
@@ -49,6 +54,8 @@ public class AppetizingMushroom : AInfluenceCard
             return false;
         }
 
+        
+        _feedbackKey = "ap_mush";
 
         if (receivers[1].Location is not ValidDropLocation.AnySlot)
         {

@@ -4,6 +4,7 @@ public class Mold : AInfluenceCard
 {
     protected override bool CheckInfluenceCardAction(PlayerAction action)
     {
+        _feedbackKey = "fatal_error";
         if (action.Receivers.Length != 1)
         {
             return false;
@@ -16,6 +17,7 @@ public class Mold : AInfluenceCard
             return false;
         }
 
+        _feedbackKey = "mold";
         var territory = ServiceLocator.Get<IModel>().GetPlayer(receiver.LocationOwner).Territory;
         var slot = territory.Slots[receiver.Index];
         if (slot.PlacedCards.Any())

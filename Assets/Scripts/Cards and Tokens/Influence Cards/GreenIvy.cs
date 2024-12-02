@@ -5,6 +5,7 @@ public class GreenIvy : AInfluenceCard
 {
     protected override bool CheckInfluenceCardAction(PlayerAction action)
     {
+        _feedbackKey = "fatal_error";
         if (action.Receivers.Length != 1)
         {
             return false;
@@ -34,9 +35,11 @@ public class GreenIvy : AInfluenceCard
 
         if (card.InfluenceCardOnTop is not null)
         {
+            _feedbackKey = "influence_ontop";
             return false;
         }
 
+        _feedbackKey = "on_plant";
         if (!card.GetPopulations().Contains(Population.Plant))
         {
             return false;
