@@ -79,6 +79,10 @@ public class Registry : AInteractableObject
     IEnumerator WaitForOneSecond()
     {
         yield return new WaitForSeconds(waitTime);
-        ShowText();
+        if(_isEnabled)
+        {
+            ShowText();
+        }
+        
     }
 }
