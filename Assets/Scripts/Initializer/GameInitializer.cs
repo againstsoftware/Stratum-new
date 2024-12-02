@@ -11,7 +11,8 @@ public class GameInitializer : MonoBehaviour
     public enum GameMode { Match, Tutorial, Test }
 
     [SerializeField] private GameMode _gameMode;
-    
+    private static readonly int _globalLightPos = Shader.PropertyToID("_GlobalLightPos");
+
     private void Awake()
     {
         LocalizationGod.Init();
@@ -54,6 +55,9 @@ public class GameInitializer : MonoBehaviour
         ServiceLocator.Register<IExecutor>(executor);
         executor.IsOnTutorial = _gameMode is GameMode.Tutorial;
 
+        var lightPos = FindAnyObjectByType<Light>().transform.position;
+        Shader.SetGlobalVector(_globalLightPos, lightPos);
+
     }
 
     private IEnumerator Start()
@@ -64,6 +68,13 @@ public class GameInitializer : MonoBehaviour
         
         
         ServiceLocator.Get<ITurnSystem>().StartGame();
+    }
+
+    private void Update()
+    {
+        var lightPos = FindAnyObjectByType<Light>().transform.position;
+        Shader.SetGlobalVector(_globalLightPos, lightPos);
+
     }
 
     private void OnDestroy()

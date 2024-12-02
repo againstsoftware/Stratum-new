@@ -39,7 +39,7 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     private bool _canInteractWithoutOwnership = false;
 
     private Transform _hand;
-    private static readonly int _mainTexture = Shader.PropertyToID("_Main_Texture");
+    // private static readonly int _mainTexture = Shader.PropertyToID("_Main_Texture");
 
     private Material _opaqueObverse, _opaqueReverse;
     
@@ -287,7 +287,9 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     {
         Card = card;
         // _mesh.materials[1].SetTexture(_mainTexture, card.ObverseTex);
-        _opaqueObverse.SetTexture(_mainTexture, card.ObverseTex);
+        // _opaqueObverse.SetTexture(_mainTexture, card.ObverseTex);
+        
+        _opaqueObverse.mainTexture = card.ObverseTex;
         _transparentObverse.mainTexture = card.ObverseTex;
 
         _mesh.GetComponent<Collider>().enabled = true;
