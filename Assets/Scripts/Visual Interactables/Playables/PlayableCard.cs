@@ -35,13 +35,16 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     [SerializeField] private Material _transparentObverse;
     [SerializeField] private Material _transparentReverse;
 
+    [SerializeField] private float _validSelectedIntensity;
+
     private float _startZ;
     private bool _canInteractWithoutOwnership = false;
 
     private Transform _hand;
 
     private Material _opaqueObverse, _opaqueReverse;
-    
+
+    private Color _defaultColor;
     
     protected override void Awake()
     {
@@ -52,6 +55,8 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
         _opaqueObverse = _mesh.materials[1];
 
         _transparentObverse = Instantiate(_transparentObverse); //reverso no hace falta pq no lo cambiamos
+
+        _defaultColor = _opaqueObverse.color;
     }
 
 
@@ -191,6 +196,16 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     public void OnChoosingDeselect()
     {
         OnDeselect();
+    }
+
+    public void OnValidSelect()
+    {
+        _opaqueObverse.color = _defaultColor * _validSelectedIntensity;
+    }
+
+    public void OnValidDeselect()
+    {
+        _opaqueObverse.color = _defaultColor;
     }
 
 

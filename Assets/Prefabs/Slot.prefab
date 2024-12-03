@@ -168,6 +168,7 @@ MonoBehaviour:
   <SnapTransformBottom>k__BackingField: {fileID: 1934123973800191}
   _offset: {x: 0, y: 0.015, z: -0.2}
   _highlightedMaterial: {fileID: 2100000, guid: 2fe0b45f3ee9dcd46a7c36319abc8ebb, type: 2}
+  _validSelectedIntensity: 2
 --- !u!114 &4592363287302191494
 MonoBehaviour:
   m_ObjectHideFlags: 0

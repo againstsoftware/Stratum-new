@@ -216,6 +216,7 @@ MonoBehaviour:
   _ygdraRotation: 180
   _overlordRotation: 270
   _highlightedMaterial: {fileID: 2100000, guid: 190d790bf2ba2a14bbf0fe344dc58b24, type: 2}
+  _validSelectedIntensity: 2
 --- !u!114 &8541876072037180344
 MonoBehaviour:
   m_ObjectHideFlags: 0

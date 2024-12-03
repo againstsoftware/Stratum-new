@@ -2,12 +2,12 @@ using System.Linq;
 
 public class Fireworks : AInfluenceCard
 {
-    protected override bool CheckInfluenceCardAction(PlayerAction action)
+    protected override bool CheckInfluenceCardAction(PlayerAction action, bool checkOnlyFirstReceiver)
     {
         _feedbackKey = "fatal_error";
         var receivers = action.Receivers;
 
-        if (receivers.Length != 2)
+        if (!checkOnlyFirstReceiver && receivers.Length != 2)
         {
             return false;
         }
@@ -50,6 +50,12 @@ public class Fireworks : AInfluenceCard
         {
             return false;
         }
+
+        
+        
+        if (checkOnlyFirstReceiver) return true;
+        
+        
 
         _feedbackKey = "firew";
         if (receivers[1].Location is not ValidDropLocation.AnySlot)

@@ -8,7 +8,7 @@ public abstract class AActionItem : ScriptableObject
     public abstract IEnumerable<ValidAction> GetValidActions();
     
     public abstract IEnumerable<Effect> GetEffects(int index);
-    
-    public abstract bool CheckAction(PlayerAction action, out string feedbackKey);
+
+    public abstract bool CheckAction(PlayerAction action, out string feedbackKey, bool checkOnlyFirstReceiver);
 
 }

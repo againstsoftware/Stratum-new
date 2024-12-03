@@ -1,15 +1,14 @@
 public class MacrofungiToken : AToken
 {
-    public override bool CheckAction(PlayerAction action, out string feedbackKey)
+    public override bool CheckAction(PlayerAction action, out string feedbackKey, bool checkOnlyFirstReceiver)
     {
         feedbackKey = null;
         // comprobar receivers 3 elementos
-        if (action.Receivers.Length != 3)
+        if (!checkOnlyFirstReceiver && action.Receivers.Length != 3)
         {
             feedbackKey = "fatal_error";
             return false;
         }
-        
         
         var actor = ServiceLocator.Get<IModel>().GetPlayer(action.Actor);
         if (actor.TokenPlayed)
@@ -28,6 +27,7 @@ public class MacrofungiToken : AToken
                 feedbackKey = "macrofungi";
                 return false;
             }
+            else if (checkOnlyFirstReceiver) return true;
         }
 
         return true;

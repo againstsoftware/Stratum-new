@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Abacus : MonoBehaviour
 {
+
+    
     [SerializeField] private Transform _plantsColumn;
     [SerializeField] private Transform _herbsColumn;
     [SerializeField] private Transform _carnsColumn;
@@ -15,7 +17,7 @@ public class Abacus : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _herbsText;
     [SerializeField] private TextMeshProUGUI _carnsText;
     [SerializeField] private TextMeshProUGUI _growthsText;
-
+    
     private class BeadColumn
     {
         public Bead[] Beads;
@@ -80,6 +82,8 @@ public class Abacus : MonoBehaviour
     {
         StartCoroutine(SetBeads(amount, _growthsBeads));
     }
+    
+   
 
     private void InitBeads(Transform parent, BeadColumn beadColumn, TextMeshProUGUI text)
     {

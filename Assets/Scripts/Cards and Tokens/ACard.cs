@@ -49,7 +49,7 @@ public abstract class ACard : AActionItem
         return validActions;
     }
     
-    public override bool CheckAction(PlayerAction action, out string feedbackKey)
+    public override bool CheckAction(PlayerAction action, out string feedbackKey, bool checkOnlyFirstReceiver)
     {
         var p = ServiceLocator.Get<IModel>().GetPlayer(action.Actor);
         if (!p.HandOfCards.Contains(this))
@@ -72,11 +72,11 @@ public abstract class ACard : AActionItem
             return false;
         }
 
-        return CheckCardAction(action, out feedbackKey);
+        return CheckCardAction(action, out feedbackKey, checkOnlyFirstReceiver);
 
     }
 
-    protected virtual bool CheckCardAction(PlayerAction action, out string feedbackKey)
+    protected virtual bool CheckCardAction(PlayerAction action, out string feedbackKey, bool checkOnlyFirstReceiver)
     { //esto debe ser overrideado sin llamar al base en cartas jugables!
         feedbackKey = "fatal_error";
         return false;

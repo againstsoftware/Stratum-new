@@ -11,7 +11,7 @@ public abstract class AInfluenceCard : ACard
 
     protected string _feedbackKey;
 
-    protected override bool CheckCardAction(PlayerAction action, out string feedbackKey)
+    protected override bool CheckCardAction(PlayerAction action, out string feedbackKey, bool checkOnlyFirstReceiver)
     {
         if (ServiceLocator.Get<IModel>().GetPlayer(action.Actor).InfluencePlayed)
         {
@@ -20,12 +20,12 @@ public abstract class AInfluenceCard : ACard
             return false;
         }
 
-        bool valid = CheckInfluenceCardAction(action);
+        bool valid = CheckInfluenceCardAction(action, checkOnlyFirstReceiver);
         feedbackKey = _feedbackKey;
         return valid;
     }
 
-    protected abstract bool CheckInfluenceCardAction(PlayerAction action);
+    protected abstract bool CheckInfluenceCardAction(PlayerAction action, bool checkOnlyFirstReceiver);
     
     
     protected static bool ArePlayersOpposites(PlayerCharacter a, PlayerCharacter b)

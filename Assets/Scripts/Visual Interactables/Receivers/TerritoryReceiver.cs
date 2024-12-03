@@ -13,13 +13,19 @@ public class TerritoryReceiver : MonoBehaviour, IActionReceiver
 
     public bool HasConstruction { get; private set; }
     [SerializeField] private Material _highlightedMaterial;
+    [SerializeField] private float _validSelectedIntensity = 2f;
 
     [SerializeField] private GameObject _construction;
     
     private Material _material;
+    private Color _defaultColor;
+    private static readonly int _color = Shader.PropertyToID("_Color");
+    private MeshRenderer _meshRenderer;
     private void Awake()
     {
-        _material = transform.Find("Mesh").GetComponent<MeshRenderer>().material;
+        _meshRenderer = transform.Find("Mesh").GetComponent<MeshRenderer>();
+        _material = _meshRenderer.material;
+        _defaultColor = _material.color;
 
         for (int i = 0; i < Slots.Length; i++)
         {
@@ -45,12 +51,12 @@ public class TerritoryReceiver : MonoBehaviour, IActionReceiver
 
     public void OnDraggingSelect()
     {
-        transform.Find("Mesh").GetComponent<MeshRenderer>().material = _highlightedMaterial;
+        _meshRenderer.material = _highlightedMaterial;
     }
 
     public void OnDraggingDeselect()
     {
-        transform.Find("Mesh").GetComponent<MeshRenderer>().material = _material;
+        _meshRenderer.material = _material;
     }
     
     
@@ -62,6 +68,16 @@ public class TerritoryReceiver : MonoBehaviour, IActionReceiver
     public void OnChoosingDeselect()
     {
         OnDraggingDeselect();
+    }
+    
+    public void OnValidSelect()
+    {
+        _material.SetColor(_color, _defaultColor * _validSelectedIntensity);
+    }
+
+    public void OnValidDeselect()
+    {
+        _material.SetColor(_color, _defaultColor);
     }
     
     public Receiver GetReceiverStruct(ValidDropLocation actionDropLocation) => 

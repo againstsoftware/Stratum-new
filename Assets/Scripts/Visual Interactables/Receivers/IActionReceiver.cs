@@ -14,6 +14,9 @@ public interface IActionReceiver
     public void OnChoosingSelect();
     public void OnChoosingDeselect();
 
+    public void OnValidSelect();
+    public void OnValidDeselect();
+
     public Receiver GetReceiverStruct(ValidDropLocation actionDropLocation);
 
     public Transform GetSnapTransform(PlayerCharacter character);

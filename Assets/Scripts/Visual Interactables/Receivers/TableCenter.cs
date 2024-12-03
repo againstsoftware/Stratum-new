@@ -16,15 +16,20 @@ public class TableCenter : MonoBehaviour, IActionReceiver
 
     [SerializeField] private float _sagitarioRotation, _fungalothRotation, _ygdraRotation, _overlordRotation;
     [SerializeField] private Material _highlightedMaterial;
+    [SerializeField] private float _validSelectedIntensity = 2f;
 
     
+    
+    private static readonly int _color = Shader.PropertyToID("_Color");
     private Material _material;
+    private Color _defaultColor;
     private Vector3 _defaultEulers;
     
     private void Awake()
     {
         _material = _tableMesh.material;
         _defaultEulers = SnapTransform.localRotation.eulerAngles;
+        _defaultColor = _material.color;
     }
 
     public void OnDraggingSelect()
@@ -47,9 +52,20 @@ public class TableCenter : MonoBehaviour, IActionReceiver
     {
         OnDraggingDeselect();
     }
+    
+    public void OnValidSelect()
+    {
+        _material.SetColor(_color, _defaultColor * _validSelectedIntensity);
+    }
+
+    public void OnValidDeselect()
+    {
+        _material.SetColor(_color, _defaultColor);
+    }
 
     public Receiver GetReceiverStruct(ValidDropLocation actionDropLocation)
     {
+        return new Receiver(ValidDropLocation.TableCenter, PlayerCharacter.None, -1, -1);   
         throw new Exception("El centro de la mesa no es un receiver valido!! solo sirve para ensamblar la jugada!");
     }
 

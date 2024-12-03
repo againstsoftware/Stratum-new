@@ -1,6 +1,6 @@
 public class Arson : AInfluenceCard
 {
-    protected override bool CheckInfluenceCardAction(PlayerAction action)
+    protected override bool CheckInfluenceCardAction(PlayerAction action, bool _)
     {
         _feedbackKey = "fatal_error";
         if (action.Receivers.Length != 1)

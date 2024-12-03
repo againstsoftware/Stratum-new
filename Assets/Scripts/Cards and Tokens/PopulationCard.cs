@@ -12,7 +12,7 @@ public class PopulationCard : ACard
 
     public Population PopulationType => _populationType;
 
-    protected override bool CheckCardAction(PlayerAction action, out string feedbackKey)
+    protected override bool CheckCardAction(PlayerAction action, out string feedbackKey, bool _)
     {
         if (action.Receivers.Length != 1)
         {

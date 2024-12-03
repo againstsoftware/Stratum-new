@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -49,6 +50,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     private readonly HashSet<IActionReceiver> _selectedReceivers = new();
     private IActionReceiver _selectedReceiver;
 
+    private IActionReceiver[] _allReceivers;
 
     private int _actionsLeft;
 
@@ -72,6 +74,12 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         var comms = ServiceLocator.Get<ICommunicationSystem>();
         comms.OnLocalPlayerChange += SetLocalPlayer;
         SetLocalPlayer(comms.LocalPlayer, comms.Camera);
+
+        var allComponents = FindObjectsOfType<Component>();
+
+        _allReceivers = allComponents
+            .OfType<IActionReceiver>()
+            .ToArray();
     }
 
 
@@ -205,6 +213,22 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
             _isSelectedRulebookOpener = false;
             _rulebook.HideRulebook();
         }
+        
+        //ahora vamos a coger a todos los receivers de la escena y pasarlos por el isvalid del action item para 
+        //si son validos medio highlightearlos par que el jugador sepa donde jugar
+        
+        //esto si el juego va lento hay que optimizarlo
+        var allComponents = FindObjectsOfType<Component>();
+        _allReceivers = allComponents
+            .OfType<IActionReceiver>()
+            .ToArray();
+        
+        foreach (var receiver in _allReceivers)
+        {
+            if(ActionAssembler.CheckFirstReceiver(_draggingItem, receiver))
+                receiver.OnValidSelect();
+        }
+        
     }
 
     public void DropPlayableItem(APlayableItem item)
@@ -216,6 +240,9 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
             // throw new Exception("drop called with non selected item!");
             return;
         }
+        
+        foreach(var receiver in _allReceivers) receiver.OnValidDeselect();
+
 
         var dropLocation = SelectedDropLocation;
         DeselectInteractable(SelectedInteractable);
@@ -230,6 +257,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
 
         SelectedDropLocation.OnDraggingDeselect();
         SelectedDropLocation = null;
+        
 
         switch (ActionAssembler.TryAssembleAction(item, dropLocation, out string feedbackKey))
         {
@@ -254,6 +282,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
                 item.OnDrop(dropLocation);
                 break;
         }
+        
     }
 
 

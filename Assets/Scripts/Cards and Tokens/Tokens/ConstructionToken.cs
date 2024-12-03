@@ -4,7 +4,7 @@ using System.Linq;
 public class ConstructionToken : AToken
 {
     
-    public override bool CheckAction(PlayerAction action, out string feedbackKey)
+    public override bool CheckAction(PlayerAction action, out string feedbackKey, bool _)
     {
         var receivers = action.Receivers;
 

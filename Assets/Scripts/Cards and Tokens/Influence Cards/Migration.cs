@@ -3,11 +3,11 @@ using System.Linq;
 
 public class Migration : AInfluenceCard
 {
-    protected override bool CheckInfluenceCardAction(PlayerAction action)
+    protected override bool CheckInfluenceCardAction(PlayerAction action, bool checkOnlyFirstReceiver)
     {
         var receivers = action.Receivers;
 
-        if (receivers.Length != 2)
+        if (!checkOnlyFirstReceiver && receivers.Length != 2)
         {
             return false;
         }
@@ -52,6 +52,8 @@ public class Migration : AInfluenceCard
         {
             return false;
         }
+
+        if (checkOnlyFirstReceiver) return true;
 
         _feedbackKey = "mig";
         if (receivers[1].LocationOwner == action.Actor)

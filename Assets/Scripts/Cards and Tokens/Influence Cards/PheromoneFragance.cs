@@ -2,12 +2,12 @@ using System.Linq;
 
 public class PheromoneFragance : AInfluenceCard
 {
-    protected override bool CheckInfluenceCardAction(PlayerAction action)
+    protected override bool CheckInfluenceCardAction(PlayerAction action, bool checkOnlyFirstReceiver)
     {
         _feedbackKey = "fatal_error";
         var receivers = action.Receivers;
 
-        if (receivers.Length != 2)
+        if (!checkOnlyFirstReceiver && receivers.Length != 2)
         {
             return false;
         }
@@ -58,6 +58,10 @@ public class PheromoneFragance : AInfluenceCard
         {
             return false;
         }
+
+
+        if (checkOnlyFirstReceiver) return true;
+        
 
         _feedbackKey = "frag2";
         if (receivers[1].LocationOwner != action.Actor)

@@ -2,7 +2,7 @@ using System.Linq;
 
 public class ExplosiveSpores : AInfluenceCard
 {
-    protected override bool CheckInfluenceCardAction(PlayerAction action)
+    protected override bool CheckInfluenceCardAction(PlayerAction action, bool _)
     {
         if (action.Receivers.Length != 1)
         {

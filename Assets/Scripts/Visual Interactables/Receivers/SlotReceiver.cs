@@ -9,20 +9,29 @@ public class SlotReceiver : MonoBehaviour, IActionReceiver
     [field:SerializeField] public Transform SnapTransform { get; private set; }
     public Transform GetSnapTransform(PlayerCharacter _) => SnapTransform;
     [field:SerializeField] public Transform SnapTransformBottom { get; private set; }
-    [SerializeField] private Vector3 _offset;
-    [SerializeField] private Material _highlightedMaterial;
     public bool IsDropEnabled { get; private set; } = true;
     public bool CanInteractWithoutOwnership => true;
     public int IndexOnTerritory { get; set; }
 
     public IReadOnlyList<PlayableCard> Cards => _cards;
     
+    
+    
+    [SerializeField] private Vector3 _offset;
+    [SerializeField] private Material _highlightedMaterial;
+    [SerializeField] private float _validSelectedIntensity = 2f;
+
+    private static readonly int _color = Shader.PropertyToID("_Color");
+
     private readonly List<PlayableCard> _cards = new();
     
     private Material _material;
+    private Color _defaultColor;
+
     private void Awake()
     {
         _material = GetComponent<MeshRenderer>().material;
+        _defaultColor = _material.color;
     }
 
     public void OnDraggingSelect()
@@ -45,6 +54,17 @@ public class SlotReceiver : MonoBehaviour, IActionReceiver
     {
         OnDraggingDeselect();
     }
+    
+    public void OnValidSelect()
+    {
+        _material.SetColor(_color, _defaultColor * _validSelectedIntensity);
+    }
+
+    public void OnValidDeselect()
+    {
+        _material.SetColor(_color, _defaultColor);
+    }
+
     
     public Receiver GetReceiverStruct(ValidDropLocation actionDropLocation) => 
         new (actionDropLocation, Owner, IndexOnTerritory, -1);

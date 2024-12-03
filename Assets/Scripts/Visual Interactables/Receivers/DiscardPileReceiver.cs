@@ -11,12 +11,17 @@ public class DiscardPileReceiver : MonoBehaviour, IActionReceiver
     public bool CanInteractWithoutOwnership => false;
 
     [SerializeField] private Material _highlightedMaterial;
+    [SerializeField] private float _validSelectedIntensity = 2f;
 
 
     private Material _material;
+    private Color _defaultColor;
+    private static readonly int _color = Shader.PropertyToID("_Color");
+
     private void Awake()
     {
         _material = GetComponent<MeshRenderer>().material;
+        _defaultColor = _material.color;
     }
 
     public void ShowDiscarded()
@@ -43,6 +48,16 @@ public class DiscardPileReceiver : MonoBehaviour, IActionReceiver
     public void OnChoosingDeselect()
     {
         OnDraggingDeselect();
+    }
+
+    public void OnValidSelect()
+    {
+        _material.SetColor(_color, _defaultColor * _validSelectedIntensity);
+    }
+
+    public void OnValidDeselect()
+    {
+        _material.SetColor(_color, _defaultColor);
     }
 
     public Receiver GetReceiverStruct(ValidDropLocation actionDropLocation) => 

@@ -45,6 +45,25 @@ public static class ActionAssembler
         return AssemblyState.Failed;
     }
 
+    public static bool CheckFirstReceiver(APlayableItem playableItem, IActionReceiver dropLocation)
+    {
+        _interactionSystem ??= ServiceLocator.Get<IInteractionSystem>();
+        
+        PlayableItem = null;
+        _receiversQueue.Clear();
+        _receiversList.Clear();
+        _actionReceivers.Clear();
+        _validAction = null;
+        foreach (var validAction in playableItem.ActionItem.GetValidActions())
+        {
+            if (!CheckIfValid(playableItem, dropLocation, validAction)) continue;
+            if (AssembleIncompleteAction(playableItem, dropLocation, validAction))
+                return true;
+        }
+
+        return false;
+    }
+
     private static bool CheckIfValid(APlayableItem playableItem, IActionReceiver dropLocation,
         ValidAction validAction) =>
         validAction.DropLocation switch
@@ -84,6 +103,24 @@ public static class ActionAssembler
 
         //le mandamos la accion ya completada al sistema de reglas
         return SendCompletedAction(out feedbackKey) ? AssemblyState.Completed : AssemblyState.Failed;
+    }
+    
+    private static bool AssembleIncompleteAction(APlayableItem playableItem, IActionReceiver dropLocation,
+        ValidAction validAction)
+    {
+        _receiversQueue.Clear();
+        _receiversList.Clear();
+        _validAction = validAction;
+        PlayableItem = playableItem;
+        foreach (var receiver in validAction.Receivers) _receiversQueue.Enqueue(receiver);
+        //if (dropLocation is not TableCenter)
+        {
+            _actionReceivers.Add(dropLocation);
+            _receiversList.Add(dropLocation.GetReceiverStruct(validAction.DropLocation));
+        }
+
+        //le mandamos la accion ya completada al sistema de reglas
+        return CheckIncompleteAction();
     }
 
     public static AssemblyState AddReceiver(IActionReceiver receiver, out string feedbackKey)
@@ -136,5 +173,17 @@ public static class ActionAssembler
         ServiceLocator.Get<IRulesSystem>().PerformAction(playerActionStruct);
         //devolver true desactiva el Interaction System, lo vuelve a activar el sistema de turnos cuando acaben los efectos
         return true;
+    }
+
+    private static bool CheckIncompleteAction()
+    {
+        var playerActionStruct = new PlayerAction(
+            PlayableItem.Owner,
+            PlayableItem.ActionItem,
+            _receiversList.ToArray(),
+            _validAction.Index);
+
+        return PlayableItem.ActionItem.CheckAction(playerActionStruct, out var _, true);
+
     }
 }
