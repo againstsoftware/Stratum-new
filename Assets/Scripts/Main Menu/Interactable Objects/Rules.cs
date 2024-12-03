@@ -10,37 +10,37 @@ public class Rules : AInteractableObject
     private Animator _animator;
     private float waitTime = 0.3f;
 
-    private void Start()
+    protected override void  Awake()
     {
+        base.Awake();
+        
         _animator = GetComponent<Animator>();
+        ShowText();
     }
 
     public override void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Libro pulsaod");
     }
 
     public override void EnableInteraction()
     {
-        _isEnabled = true;
+        base.EnableInteraction();
         _animator.SetBool("_isEnabled", _isEnabled);
-        if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-        {
-            StartCoroutine(WaitForOneSecond());
-        }
+        // if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        // {
+        //     StartCoroutine(WaitForOneSecond());
+        // }
 
     }
 
     public override void DisableInteraction()
     {
-        _isEnabled = false;
+        base.DisableInteraction();
         _animator.SetBool("_isEnabled", _isEnabled);
-        if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Open"))
-        {
-            HideText();
-        }
-
-        gameObject.transform.localScale /= scaleIncrease;
+        // if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Open"))
+        // {
+        //     HideText();
+        // }
     }
     
     private void ShowText()

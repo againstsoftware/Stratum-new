@@ -20,7 +20,7 @@ public class InputHandlerMenu
         _inputActions = inputActions;
         //_inputActions.FindAction("Scroll").performed += OnScroll; 
         _inputActions.FindAction("PointerPosition").performed += OnPointerPositionChanged;
-        _inputActions.FindAction("PointerPress").performed += OnPointerPress;
+        _inputActions.FindAction("TapPress").performed += OnPointerPress;
     }
 
 
@@ -28,7 +28,7 @@ public class InputHandlerMenu
     {
         //_inputActions.FindAction("Scroll").performed -= OnScroll;
         _inputActions.FindAction("PointerPosition").performed -= OnPointerPositionChanged;
-        _inputActions.FindAction("PointerPress").performed -= OnPointerPress;
+        _inputActions.FindAction("TapPress").performed -= OnPointerPress;
     }
 
     private void OnPointerPositionChanged(InputAction.CallbackContext ctx)

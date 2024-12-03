@@ -36,35 +36,6 @@ public class Gramophone : AInteractableObject
         }
     }
     
-
-    // private IEnumerator ToggleLanguage()
-    // {
-    //     
-    //     yield return new WaitUntil(() => _localesInit);
-    //
-    //     var currentLocale = LocalizationSettings.SelectedLocale;
-    //     string newLocaleCode = currentLocale.Identifier.Code == "en" ? "es" : "en";
-    //     
-    //
-    //     var newLocale = LocalizationSettings.AvailableLocales.GetLocale(newLocaleCode);
-    //     LocalizationSettings.SelectedLocale = newLocale;
-    //
-    //     PlayerPrefs.SetString(GamePrefs.LanguagePrefKey, newLocaleCode);
-    //     PlayerPrefs.Save();
-    //     
-    //     _animations.VinylAnim();
-    //
-    //     // para no liarla mientras se mueve el disco
-    //     _interactionSystemMenu.GetComponent<PlayerInput>().enabled = false;
-    //     while(!_animations.vinylEnd)
-    //     {
-    //         yield return null;
-    //     }
-    //     _interactionSystemMenu.GetComponent<PlayerInput>().enabled = true;
-    //
-    //
-    // }
-    
     
     private IEnumerator ToggleLanguage()
     {
@@ -89,7 +60,7 @@ public class Gramophone : AInteractableObject
     {
         int currentQuality = QualitySettings.GetQualityLevel();
 
-        int newQuality = (currentQuality + 1) % 3;
+        int newQuality = (currentQuality + 1) % 2;
         QualitySettings.SetQualityLevel(newQuality);
 
         QualitySettings.renderPipeline = _qualityLevels[newQuality];

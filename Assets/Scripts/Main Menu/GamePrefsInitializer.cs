@@ -6,6 +6,7 @@ using UnityEngine.Rendering;
 public class GamePrefsInitializer : MonoBehaviour
 {
     [SerializeField] public RenderPipelineAsset[] _qualityLevels;
+    private static readonly int _globalLightPos = Shader.PropertyToID("_GlobalLightPos");
 
     private void Start()
     {
@@ -15,6 +16,9 @@ public class GamePrefsInitializer : MonoBehaviour
         LoadAudioVolume();
         
         LocalizationGod.Init();
+        
+        var lightPos = FindAnyObjectByType<Light>().transform.position;
+        Shader.SetGlobalVector(_globalLightPos, lightPos);
     }
     private void LoadSavedLanguage()
     {
@@ -33,7 +37,7 @@ public class GamePrefsInitializer : MonoBehaviour
 
     private void LoadGraphicsQuality()
     {
-        int savedQuality = PlayerPrefs.GetInt(GamePrefs.QualityPrefKey, 2);
+        int savedQuality = PlayerPrefs.GetInt(GamePrefs.QualityPrefKey, 1);
         QualitySettings.SetQualityLevel(savedQuality);
 
         QualitySettings.renderPipeline = _qualityLevels[savedQuality];

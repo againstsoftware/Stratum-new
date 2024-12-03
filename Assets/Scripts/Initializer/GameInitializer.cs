@@ -70,12 +70,12 @@ public class GameInitializer : MonoBehaviour
         ServiceLocator.Get<ITurnSystem>().StartGame();
     }
 
-    private void Update()
-    {
-        var lightPos = FindAnyObjectByType<Light>().transform.position;
-        Shader.SetGlobalVector(_globalLightPos, lightPos);
-
-    }
+    // private void Update()
+    // {
+    //     var lightPos = FindAnyObjectByType<Light>().transform.position;
+    //     Shader.SetGlobalVector(_globalLightPos, lightPos);
+    //
+    // }
 
     private void OnDestroy()
     {

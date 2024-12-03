@@ -12,9 +12,13 @@ public class Registry : AInteractableObject
     [SerializeField] private Collider _Link;
     private float waitTime = 0.5f;
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
+        
         _animator = GetComponent<Animator>();
+        ShowText();
+        _Link.enabled = false;
     }
 
     public override void OnPointerClick(PointerEventData eventData)
@@ -27,25 +31,28 @@ public class Registry : AInteractableObject
 
     public override void EnableInteraction()
     {
-        _isEnabled = true;
+        base.EnableInteraction();
+        
         _animator.SetBool("_isEnabled", _isEnabled);
         if(_animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
             StartCoroutine(WaitForOneSecond());
+            
         }
-
     }
 
     public override void DisableInteraction()
     {
+        base.DisableInteraction();
+        
+        
         _isEnabled = false;
         _animator.SetBool("_isEnabled", _isEnabled);
-        if(_animator.GetCurrentAnimatorStateInfo(0).IsName("Open"))
-        {
-            HideText();
-        }
-
-        gameObject.transform.localScale /= scaleIncrease;
+        // if(_animator.GetCurrentAnimatorStateInfo(0).IsName("Open"))
+        // {
+        //     HideText();
+        // }
+        _Link.enabled = false;
     }
 
     private void ShowText()
@@ -59,7 +66,7 @@ public class Registry : AInteractableObject
         if(language == "en")
         {
             _leftText.text = "CREDITS";
-            _rightText.text = "Press to visit our social medias!";
+            _rightText.text = "Press to visit our social media!";
         }
         if(language == "es")
         {
@@ -74,6 +81,8 @@ public class Registry : AInteractableObject
         {
             child.gameObject.SetActive(false);   
         }
+
+        _rightText.text = "";
     }
 
     IEnumerator WaitForOneSecond()
@@ -81,7 +90,8 @@ public class Registry : AInteractableObject
         yield return new WaitForSeconds(waitTime);
         if(_isEnabled)
         {
-            ShowText();
+            // ShowText();
+            _Link.enabled = true;
         }
         
     }

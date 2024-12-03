@@ -3,7 +3,42 @@ guid: d2e799c0bb99cf643b5c696430d3ca4c
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Madera_Clarita
+    second: {fileID: 2100000, guid: ef59c55bcf0d71c45bac4b9695eb55ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Madera_Oscura
+    second: {fileID: 2100000, guid: 5fb9d9302661eb2428306db069c9b82d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal_Gris
+    second: {fileID: 2100000, guid: 2514660d82325c145a070ccf42a13302, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Oro
+    second: {fileID: 2100000, guid: 8243e8627d6043f48adef301713f08fa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plastico
+    second: {fileID: 2100000, guid: b58e5cb943800f9419201902ba5a2b05, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Vinilo
+    second: {fileID: 2100000, guid: 969400cc5b3027643b11f48d55e24174, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Vinilo2
+    second: {fileID: 2100000, guid: bef57918561841240befb3c900fea737, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -86,16 +86,16 @@ public class GramophoneAnimations : MonoBehaviour
 
     private void CheckHandleInitState()
     {
-        int qualityLevel = PlayerPrefs.GetInt(GamePrefs.QualityPrefKey, 2);
+        int qualityLevel = PlayerPrefs.GetInt(GamePrefs.QualityPrefKey, 1);
         switch (qualityLevel)
         {
             case 0:
                 _Handle.transform.localRotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
                 break;
+            // case 1:
+            //     _Handle.transform.localRotation = Quaternion.Euler(new Vector3(0f, 0f, -91f));
+            //     break;
             case 1:
-                _Handle.transform.localRotation = Quaternion.Euler(new Vector3(0f, 0f, -91f));
-                break;
-            case 2:
                 _Handle.transform.localRotation = Quaternion.Euler(new Vector3(0f, 0f, -181f));
                 break;
         }
@@ -103,7 +103,7 @@ public class GramophoneAnimations : MonoBehaviour
 
     public void HandleAnim()
     {
-        int qualityLevel = PlayerPrefs.GetInt("graphics_quality", 2);
+        int qualityLevel = PlayerPrefs.GetInt("graphics_quality", 1);
 
         switch (qualityLevel)
         {
@@ -111,11 +111,11 @@ public class GramophoneAnimations : MonoBehaviour
                 _targetRotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
                 _isHandleMoving = true;
                 break;
+            // case 1:
+            //     _targetRotation = Quaternion.Euler(new Vector3(0f, 0f, -91f));
+            //     _isHandleMoving = true;
+            //     break;
             case 1:
-                _targetRotation = Quaternion.Euler(new Vector3(0f, 0f, -91f));
-                _isHandleMoving = true;
-                break;
-            case 2:
                 _targetRotation = Quaternion.Euler(new Vector3(0f, 0f, -180f));
                 _isHandleMoving = true;
                 break;
