@@ -28,6 +28,11 @@ public class Rulebook : MonoBehaviour
         _nameText.text = _descriptionText.text = "";
     }
 
+    private void Start()
+    {
+        ServiceLocator.Get<IInteractionSystem>().Input.TapPress += OnTapPress;
+    }
+
     public void ShowRulebookEntry(IRulebookEntry entry)
     {
         if (_isOnDialogue) return;
@@ -63,7 +68,6 @@ public class Rulebook : MonoBehaviour
     {
         if (_isOnDialogue) return;
 
-        ServiceLocator.Get<IInteractionSystem>().Input.Press += OnPress;
         _hasClickedOnDialogue = false;
 
         
@@ -147,14 +151,14 @@ public class Rulebook : MonoBehaviour
         _hasClickedOnDialogue = false;
         yield return new WaitUntil(() => _hasClickedOnDialogue);
         _isOnDialogue = false;
-        ServiceLocator.Get<IInteractionSystem>().Input.Press -= OnPress;
+        ServiceLocator.Get<IInteractionSystem>().Input.Press -= OnTapPress;
         _nextDialogueCallback?.Invoke();
         _nextDialogueCallback = null;
         _dialogueText.text = "";
         HideRulebook();
     }
 
-    private void OnPress()
+    private void OnTapPress()
     {
         if (!_isOnDialogue) return;
 

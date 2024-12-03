@@ -1107,7 +1107,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 616804911}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -13.6}
   m_LocalScale: {x: 0.76, y: 0.76, z: 0.76}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -1971,15 +1971,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3083120560931908697, guid: 5512aedcaa711374bb6489467e98b3e1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 54.363945
+      value: -34.717373
       objectReference: {fileID: 0}
     - target: {fileID: 3083120560931908697, guid: 5512aedcaa711374bb6489467e98b3e1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0.0000359203
+      value: 0.00000076262523
       objectReference: {fileID: 0}
     - target: {fileID: 3083120560931908697, guid: 5512aedcaa711374bb6489467e98b3e1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0.00003249031
+      value: 0.000022258298
       objectReference: {fileID: 0}
     - target: {fileID: 4021619187272719130, guid: 5512aedcaa711374bb6489467e98b3e1, type: 3}
       propertyPath: m_Layer
@@ -2003,15 +2003,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 0fdb57d4a61eca94690b707cfdcb9657, type: 2}
     - target: {fileID: 9044806412961212599, guid: 5512aedcaa711374bb6489467e98b3e1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -0.000008617777
+      value: 0.000027320755
       objectReference: {fileID: 0}
     - target: {fileID: 9044806412961212599, guid: 5512aedcaa711374bb6489467e98b3e1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 50.37417
+      value: -38.707127
       objectReference: {fileID: 0}
     - target: {fileID: 9044806412961212599, guid: 5512aedcaa711374bb6489467e98b3e1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 90.000015
+      value: 90.00001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2062,7 +2062,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.962022, y: 1, z: 3.0964575}
+  m_Size: {x: 1.962022, y: 0.4, z: 3.0964575}
   m_Center: {x: -1.3183303, y: -0.00000019560564, z: 0.16016975}
 --- !u!95 &932672740
 Animator:

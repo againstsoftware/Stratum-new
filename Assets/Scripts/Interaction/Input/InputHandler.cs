@@ -9,6 +9,7 @@ public class InputHandler
     public event Action<float> Scroll;
     public event Action<Vector2> PointerPosition;
     public event Action Press;
+    public event Action TapPress;
 
     private Vector2 _pointerPosition;
     private IInteractionSystem _interactionSystem;
@@ -23,6 +24,8 @@ public class InputHandler
         _inputActions.FindAction("PointerPosition").performed += OnPointerPositionChanged;
         _inputActions.FindAction("Tap").performed += OnTap;
         _inputActions.FindAction("PointerPress").performed += OnPress;
+        _inputActions.FindAction("PointerPress").performed += OnPress;
+        _inputActions.FindAction("TapPress").performed += OnTapPress;
 
 
     }
@@ -69,4 +72,8 @@ public class InputHandler
         Press?.Invoke();
     }
 
+    private void OnTapPress(InputAction.CallbackContext ctx)
+    {
+        TapPress?.Invoke();
+    }
 }
