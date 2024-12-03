@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1c38c26b22c157a409b6d595239b5a70
+guid: 3e64f6f8495697546a956b6a7a6a9688
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -17,14 +17,21 @@ ModelImporter:
     removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
+      copied configuration does not match position in animation file:\n\t'mixamorig:LeftUpLeg'
+      : position error = 122.822678 mm\n\t'mixamorig:LeftLeg' : position error =
+      437.671204 mm\n\t'mixamorig:LeftFoot' : position error = 348.607361 mm\n\t'mixamorig:LeftToeBase'
+      : position error = 103.864456 mm\n\t'mixamorig:RightUpLeg' : position error
+      = 122.789085 mm\n\t'mixamorig:RightLeg' : position error = 437.668732 mm\n\t'mixamorig:RightFoot'
+      : position error = 349.036560 mm\n\t'mixamorig:RightToeBase' : position error
+      = 95.884460 mm\n"
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -33,21 +40,21 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: sit-idle
+      name: sit-die
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 192
+      lastFrame: 140
       wrapMode: 0
       orientationOffsetY: 0
-      level: 0
+      level: -0.6
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
-      loopBlendPositionY: 0
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
@@ -870,11 +877,11 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 1c38c26b22c157a409b6d595239b5a70, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0

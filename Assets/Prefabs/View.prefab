@@ -281,8 +281,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ikActive: 1
-  rightHandTarget: {fileID: 3855230845447534418}
-  leftHandTarget: {fileID: 2309816027783085759}
+  RightHandTarget: {fileID: 0}
+  LeftHandTarget: {fileID: 0}
+  _rightHandTargetBase: {fileID: 3855230845447534418}
+  _leftHandTargetBase: {fileID: 2309816027783085759}
+  _resetTime: 0.75
   thumbBendAngle: 7.2
   fingersBendAngle: 18.8
 --- !u!1001 &1865764202250974118
@@ -305,6 +308,10 @@ PrefabInstance:
       propertyPath: <Owner>k__BackingField
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1217294250546606014, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 1411861146247531843, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
       propertyPath: <Owner>k__BackingField
       value: 1
@@ -397,6 +404,10 @@ PrefabInstance:
       propertyPath: <Owner>k__BackingField
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6601713574413204950, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 6687338534968287706, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
       propertyPath: <Owner>k__BackingField
       value: 1
@@ -967,8 +978,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ikActive: 1
-  rightHandTarget: {fileID: 4850533770069269282}
-  leftHandTarget: {fileID: 6259470994525065935}
+  RightHandTarget: {fileID: 0}
+  LeftHandTarget: {fileID: 0}
+  _rightHandTargetBase: {fileID: 4850533770069269282}
+  _leftHandTargetBase: {fileID: 6259470994525065935}
+  _resetTime: 0.75
   thumbBendAngle: 7.2
   fingersBendAngle: 18.8
 --- !u!4 &4398954124387862432 stripped
@@ -1428,8 +1442,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ikActive: 1
-  rightHandTarget: {fileID: 3036841742014690852}
-  leftHandTarget: {fileID: 4587921234793725897}
+  RightHandTarget: {fileID: 0}
+  LeftHandTarget: {fileID: 0}
+  _rightHandTargetBase: {fileID: 3036841742014690852}
+  _leftHandTargetBase: {fileID: 4587921234793725897}
+  _resetTime: 0.75
   thumbBendAngle: 7.2
   fingersBendAngle: 18.8
 --- !u!4 &6419056709215914762 stripped
@@ -1850,7 +1867,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ikActive: 1
-  rightHandTarget: {fileID: 8271966931894009394}
-  leftHandTarget: {fileID: 7441489673284040671}
+  RightHandTarget: {fileID: 0}
+  LeftHandTarget: {fileID: 0}
+  _rightHandTargetBase: {fileID: 8271966931894009394}
+  _leftHandTargetBase: {fileID: 7441489673284040671}
+  _resetTime: 0.75
   thumbBendAngle: 7.2
   fingersBendAngle: 18.8

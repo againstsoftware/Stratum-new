@@ -39,7 +39,6 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     private bool _canInteractWithoutOwnership = false;
 
     private Transform _hand;
-    // private static readonly int _mainTexture = Shader.PropertyToID("_Main_Texture");
 
     private Material _opaqueObverse, _opaqueReverse;
     
@@ -56,7 +55,7 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     }
 
 
-    public void Play(IActionReceiver playLocation, Action onPlayedCallback, bool isEndOfAction = true)
+    public void Play(IActionReceiver playLocation, Action onPlayedCallback, bool isEndOfAction = true, bool isIKTargeted = false)
     {
         OnCardPlayed?.Invoke(this);
 
@@ -82,9 +81,12 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
             onPlayedCallback();
             return;
         }
-
+        
+        
         //no se ha jugado visualmente a la mesa
-        Travel(playLocation.GetSnapTransform(Owner), _playTravelDuration, State.Played, () =>
+        float duration = isIKTargeted ? _playTravelDuration * 2f : _playTravelDuration;
+        
+        Travel(playLocation.GetSnapTransform(Owner), duration, State.Played, () =>
         {
             if (Card is AInfluenceCard { IsPersistent: true })
             {
@@ -106,15 +108,11 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
         });
     }
 
-    //PARA CARTAS DE INFLUENCIA QUE SON DESTRUIDAS ANTES DE REPORTART EL CALLBACK DE FIN DE ACCION
+    //PARA CARTAS DE INFLUENCIA QUE SON DESTRUIDAS ANTES DE REPORTAR EL CALLBACK DE FIN DE ACCION
 
 
     private void OnPopulationPlayed(IActionReceiver playLocation)
     {
-        if (_dbWasObv)
-        {
-            Debug.Log("poblacion de overlord jugada");
-        }
         CurrentState = State.Played;
         IsDropEnabled = true;
         _canInteractWithoutOwnership = true;
@@ -143,10 +141,6 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
 
     private void OnPersistentPlayed(PlayableCard cardWherePlaced)
     {
-        if (_dbWasObv)
-        {
-            Debug.Log("influencia persistente de overlord jugada");
-        }
         CurrentState = State.Played;
         IsDropEnabled = false;
         _canInteractWithoutOwnership = true;
@@ -233,11 +227,11 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     }
 
 
-    public void DrawTravel(Transform target, Action callback, bool dbIsOv)
+    public void DrawTravel(Transform target, Action callback)
     {
         InHandPosition = target.position;
         InHandRotation = target.rotation;
-        Travel(target, _drawTravelDuration, State.Playable, callback, dbIsOv);
+        Travel(target, _drawTravelDuration, State.Playable, callback);
     }
 
     public void ReposInHand(Transform target, Action callback)
@@ -255,10 +249,7 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
 
         SetCard(card);
         Owner = owner;
-        if (_dbWasObv)
-        {
-            Debug.Log("carta de overlord inicializada");
-        }
+
         CurrentState = initialState;
     }
 
@@ -272,10 +263,7 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
 
         SetCard(card);
         Owner = slotOwner;
-        if (_dbWasObv)
-        {
-            Debug.Log("carta de overlord inicializada en slot");
-        }
+
         CurrentState = State.Played;
         IsDropEnabled = true;
         _canInteractWithoutOwnership = true;
@@ -286,8 +274,6 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     public void SetCard(ACard card)
     {
         Card = card;
-        // _mesh.materials[1].SetTexture(_mainTexture, card.ObverseTex);
-        // _opaqueObverse.SetTexture(_mainTexture, card.ObverseTex);
         
         _opaqueObverse.mainTexture = card.ObverseTex;
         _transparentObverse.mainTexture = card.ObverseTex;

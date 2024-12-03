@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _meshInChild: 1
-  _playTravelDuration: 0.2
+  _playTravelDuration: 0.3
   <SnapTransform>k__BackingField: {fileID: 5258903042657958836}
   _drawTravelDuration: 0.225
   _reposInHandTravelDuration: 0.1

@@ -60,7 +60,6 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
     {
     }
 
-    protected bool _dbWasObv = false;
     private void Update()
     {
         if (CurrentState is not State.Traveling) return;
@@ -68,13 +67,9 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
         transform.position = Vector3.Lerp(_travelStartPosition, _travelEndPosition, _t);
         transform.rotation = Quaternion.Lerp(_travelStartRotation, _travelEndRotation, _t);
         _t += Time.deltaTime / _travelDuration;
-        if (_dbIsOv || _dbWasObv)
-        {
-            Debug.Log($"T de carta {c_id}: {_t}. es ov:{_dbIsOv}");
-        }
+
         if (_t >= 1f)
         {
-            if(_dbWasObv) Debug.Log("t > 1 en carta de oberlord");
             _collider.enabled = true;
             transform.SetPositionAndRotation(_travelEndPosition, _travelEndRotation);
             CurrentState = _travelEndState;
@@ -85,10 +80,6 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
 
     private void OnDestroy()
     {
-        if (_dbWasObv)
-        {
-            Debug.Log("destroyendo carta de overlord");
-        }
         _destroyed = true;
         OnDiscard?.Invoke();
     }
@@ -107,10 +98,6 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
 
     public virtual void OnDrag()
     {
-        if (_dbWasObv)
-        {
-            Debug.Log("Drageando item de overlord");
-        }
         CurrentState = State.Dragging;
         OnDeselect();
         OnItemDrag?.Invoke(this);
@@ -125,10 +112,6 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
     {
         //se snappea a la drop location
         transform.position = dropLocation.GetSnapTransform(Owner).position;
-        if (_dbWasObv)
-        {
-            Debug.Log("Droppeando item de overlord");
-        }
         CurrentState = State.Waiting;
         // _actionCompletedCallback = actionCompletedCallback;
         OnItemDrop?.Invoke(this);
@@ -153,8 +136,7 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
         _onTravelEndCallback = callback;
     }
 
-    protected bool _dbIsOv = false;
-    protected void Travel(Transform target, float duration, State endState, Action callback, bool dbIsOv = false)
+    protected void Travel(Transform target, float duration, State endState, Action callback)
     {
         //animacion para viajar a la drop location
         CurrentState = State.Traveling;
@@ -174,13 +156,7 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
         }
         
         _onTravelEndCallback = callback;
-
-        if (_dbIsOv) _dbWasObv = true;
-        _dbIsOv = dbIsOv;
-        if (_dbWasObv)
-        {
-            Debug.Log("viajando carta de overlord");
-        }
+        
     }
 
     protected bool IsOnPlayLocation(IActionReceiver playLocation)
