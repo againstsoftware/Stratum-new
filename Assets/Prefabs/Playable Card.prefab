@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7176350047098553346}
   - component: {fileID: 76898627352878963}
   - component: {fileID: 7243185845805658137}
+  - component: {fileID: 3816485977412938156}
   m_Layer: 9
   m_Name: Playable Card
   m_TagString: Untagged
@@ -72,6 +73,25 @@ MonoBehaviour:
   _transparentReverse: {fileID: 2100000, guid: acfcb75d0417a5c48808fd0a261e8d4a, type: 2}
   _validSelectedIntensity: 2
   _preview: {fileID: 2970489536605305780}
+  _destroyableCard: {fileID: 3816485977412938156}
+--- !u!114 &3816485977412938156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141958488974887041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90341d3df5f441868c5a633fb0be9e4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 9088813877132267383}
+  _initialCutoff: 2
+  _endCutoff: -1
+  _destroyDuration: 2
+  _dissolveMaterial: {fileID: 2100000, guid: 9f3805382171768439c5078f34e3209b, type: 2}
+  _cardText: {fileID: 8874135323090283735}
 --- !u!1 &2967130977452411895
 GameObject:
   m_ObjectHideFlags: 0

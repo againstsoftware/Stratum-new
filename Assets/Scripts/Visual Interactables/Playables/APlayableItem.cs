@@ -17,7 +17,8 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
         Dragging,
         Traveling,
         Waiting,
-        Played
+        Played,
+        Destroying
     }
 
     public State CurrentState { get; protected set; } = State.Playable;

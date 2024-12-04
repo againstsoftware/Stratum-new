@@ -82,7 +82,8 @@ public class ViewManager : MonoBehaviour, IView
         var card = slot.Cards[^1]; //la carta de mas arriba del slot
         if (card.Card is not PopulationCard) throw new Exception("Error! La carta a matar no es de poblacion");
         slot.RemoveCard(card);
-        Destroy(card.gameObject);
+        // Destroy(card.gameObject);
+        card.DestroyCard(null);
         StartCoroutine(DelayCall(callback, 1f)); //de prueba
     }
 
@@ -235,8 +236,8 @@ public class ViewManager : MonoBehaviour, IView
             while (toBeRemoved.Any())
             {
                 var card = toBeRemoved.Pop();
-                slot.RemoveCard(card);
-                Destroy(card.gameObject);
+                
+                DestroyCard(card, slot, null);
             }
         }
 
@@ -263,8 +264,8 @@ public class ViewManager : MonoBehaviour, IView
         var slot = playerOwner.Territory.Slots[location.SlotIndex];
         var card = slot.Cards[location.CardIndex];
         // if (card.Card is not PopulationCard) throw new Exception("Error! La carta a matar no es de poblacion");
-        DestroyCard(card, slot);
-        StartCoroutine(DelayCall(() => { callback?.Invoke(); }, .5f)); //de prueba
+        DestroyCard(card, slot, callback);
+        // StartCoroutine(DelayCall(() => { callback?.Invoke(); }, .5f)); //de prueba
     }
 
 
@@ -284,14 +285,7 @@ public class ViewManager : MonoBehaviour, IView
         _localPlayer = localPlayer;
         _cameraMovement = cam.GetComponent<CameraMovement>();
     }
-
-
-    // private IEnumerator DestroyCard(GameObject card, Action callback = null)
-    // {
-    //     yield return null;
-    //     Destroy(card);
-    //     callback?.Invoke();
-    // }
+    
 
 
     private void InitPlayers()
@@ -367,7 +361,7 @@ public class ViewManager : MonoBehaviour, IView
             var card = slot.Cards[0]; //la carta de mas abajo del slot
             if (card.Card is not MushroomCard) throw new Exception("Error! La carta para macrohongo no es seta!");
 
-            DestroyCard(card, slot);
+            DestroyCard(card, slot, null);
 
             yield return new WaitForSeconds(.5f);
         }
@@ -396,9 +390,9 @@ public class ViewManager : MonoBehaviour, IView
         var slot2 = territory.Slots[plant2Location.SlotIndex];
         var card2 = slot2.Cards[plant2Location.CardIndex];
 
-        DestroyCard(card1, slot1);
+        DestroyCard(card1, slot1, null);
         yield return new WaitForSeconds(.25f);
-        DestroyCard(card2, slot2);
+        DestroyCard(card2, slot2, null);
         yield return new WaitForSeconds(.25f);
 
 
@@ -408,9 +402,9 @@ public class ViewManager : MonoBehaviour, IView
         callback?.Invoke();
     }
 
-    private void DestroyCard(PlayableCard card, SlotReceiver slot)
+    private void DestroyCard(PlayableCard card, SlotReceiver slot, Action callback)
     {
         slot.RemoveCard(card);
-        Destroy(card.gameObject);
+        card.DestroyCard(callback);
     }
 }

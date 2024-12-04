@@ -106,7 +106,7 @@ public class ViewPlayer : MonoBehaviour
             {
                 playableCard.Play(DiscardPile, () => //probablemente la destruyamos in place
                 {
-                    StartCoroutine(DestroyCard(playableCard.gameObject, callback));
+                    StartCoroutine(DestroyDiscardedCard(playableCard.gameObject, callback));
                 }, isEndOfAction);
             }, .3f)); //delayeamos 1 frame (mas) (perdon)
         }, false, !IsLocalPlayer);
@@ -129,13 +129,13 @@ public class ViewPlayer : MonoBehaviour
         playableCard.Play(DiscardPile, () =>
         {
             if (!IsLocalPlayer) _ikController.ResetTarget(null);
-            StartCoroutine(DestroyCard(playableCard.gameObject, callback));
+            StartCoroutine(DestroyDiscardedCard(playableCard.gameObject, callback));
         }, true, !IsLocalPlayer);
     }
 
     public void DiscardInfluenceFromPopulation(PlayableCard influenceCard, Action callback)
     {
-        influenceCard.Play(DiscardPile, () => { StartCoroutine(DestroyCard(influenceCard.gameObject, callback)); });
+        influenceCard.Play(DiscardPile, () => { StartCoroutine(DestroyDiscardedCard(influenceCard.gameObject, callback)); });
     }
 
     public void PlaceCardFromDeck(ACard card, SlotReceiver slot, Action callback)
@@ -254,10 +254,11 @@ public class ViewPlayer : MonoBehaviour
         
     }
 
-    private IEnumerator DestroyCard(GameObject card, Action callback = null)
+    private IEnumerator DestroyDiscardedCard(GameObject card, Action callback = null)
     {
         yield return null;
         Destroy(card);
+        
         DiscardPile.ShowDiscarded();
         callback?.Invoke();
     }

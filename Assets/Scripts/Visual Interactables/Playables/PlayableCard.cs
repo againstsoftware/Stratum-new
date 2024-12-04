@@ -38,6 +38,8 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     [SerializeField] private float _validSelectedIntensity;
     [SerializeField] private GameObject _preview;
 
+    [SerializeField] private DestroyableCard _destroyableCard;
+
     private float _startZ;
     private bool _canInteractWithoutOwnership = false;
 
@@ -312,10 +314,18 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
         InfluenceCardOnTop = null;
     }
 
+    public void DestroyCard(Action callback)
+    {
+        _destroyableCard.StartDestroying(callback);
+        CurrentState = State.Destroying;
+    }
+
 
     private void SetTransparency(bool on)
     {
         _mesh.materials = on ? new[] { _transparentReverse, _transparentObverse } : new[] { _opaqueReverse, _opaqueObverse };
     }
+    
+    
     
 }

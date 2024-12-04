@@ -29,6 +29,11 @@ public class DiscardPileReceiver : MonoBehaviour, IActionReceiver
     {
         if(!SnapTransform.GetChild(0).gameObject.activeSelf)
             SnapTransform.GetChild(0).gameObject.SetActive(true);
+        else
+        {
+            SnapTransform.GetChild(1).gameObject.SetActive(false);
+            SnapTransform.GetChild(1).gameObject.SetActive(true);
+        }
     }
 
     public void OnDraggingSelect()
