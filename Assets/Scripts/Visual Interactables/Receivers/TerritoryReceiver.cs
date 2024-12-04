@@ -16,6 +16,7 @@ public class TerritoryReceiver : MonoBehaviour, IActionReceiver
     [SerializeField] private float _validSelectedIntensity = 2f;
 
     [SerializeField] private GameObject _construction;
+    [SerializeField] private GameObject _preview;
     
     private Material _material;
     private Color _defaultColor;
@@ -73,11 +74,13 @@ public class TerritoryReceiver : MonoBehaviour, IActionReceiver
     public void OnValidSelect()
     {
         _material.SetColor(_color, _defaultColor * _validSelectedIntensity);
+        _preview.SetActive(true);
     }
 
     public void OnValidDeselect()
     {
         _material.SetColor(_color, _defaultColor);
+        _preview.SetActive(false);
     }
     
     public Receiver GetReceiverStruct(ValidDropLocation actionDropLocation) => 

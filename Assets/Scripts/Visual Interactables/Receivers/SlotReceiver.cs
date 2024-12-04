@@ -20,6 +20,7 @@ public class SlotReceiver : MonoBehaviour, IActionReceiver
     [SerializeField] private Vector3 _offset;
     [SerializeField] private Material _highlightedMaterial;
     [SerializeField] private float _validSelectedIntensity = 2f;
+    [SerializeField] private GameObject _preview;
 
     private static readonly int _color = Shader.PropertyToID("_Color");
 
@@ -58,11 +59,13 @@ public class SlotReceiver : MonoBehaviour, IActionReceiver
     public void OnValidSelect()
     {
         _material.SetColor(_color, _defaultColor * _validSelectedIntensity);
+        _preview.SetActive(true);
     }
 
     public void OnValidDeselect()
     {
         _material.SetColor(_color, _defaultColor);
+        _preview.SetActive(false);
     }
 
     

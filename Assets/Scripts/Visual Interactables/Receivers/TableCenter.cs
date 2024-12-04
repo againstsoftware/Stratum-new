@@ -17,7 +17,7 @@ public class TableCenter : MonoBehaviour, IActionReceiver
     [SerializeField] private float _sagitarioRotation, _fungalothRotation, _ygdraRotation, _overlordRotation;
     [SerializeField] private Material _highlightedMaterial;
     [SerializeField] private float _validSelectedIntensity = 2f;
-
+    [SerializeField] private GameObject _preview;
     
     
     private static readonly int _color = Shader.PropertyToID("_Color");
@@ -56,11 +56,13 @@ public class TableCenter : MonoBehaviour, IActionReceiver
     public void OnValidSelect()
     {
         _material.SetColor(_color, _defaultColor * _validSelectedIntensity);
+        _preview.SetActive(true);
     }
 
     public void OnValidDeselect()
     {
         _material.SetColor(_color, _defaultColor);
+        _preview.SetActive(false);
     }
 
     public Receiver GetReceiverStruct(ValidDropLocation actionDropLocation)

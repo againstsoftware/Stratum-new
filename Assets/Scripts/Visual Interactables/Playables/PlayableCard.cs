@@ -36,6 +36,7 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     [SerializeField] private Material _transparentReverse;
 
     [SerializeField] private float _validSelectedIntensity;
+    [SerializeField] private GameObject _preview;
 
     private float _startZ;
     private bool _canInteractWithoutOwnership = false;
@@ -201,11 +202,13 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     public void OnValidSelect()
     {
         _opaqueObverse.color = _defaultColor * _validSelectedIntensity;
+        _preview.SetActive(true);
     }
 
     public void OnValidDeselect()
     {
         _opaqueObverse.color = _defaultColor;
+        _preview.SetActive(false);
     }
 
 

@@ -12,6 +12,7 @@ public class DiscardPileReceiver : MonoBehaviour, IActionReceiver
 
     [SerializeField] private Material _highlightedMaterial;
     [SerializeField] private float _validSelectedIntensity = 2f;
+    [SerializeField] private GameObject _preview;
 
 
     private Material _material;
@@ -53,11 +54,13 @@ public class DiscardPileReceiver : MonoBehaviour, IActionReceiver
     public void OnValidSelect()
     {
         _material.SetColor(_color, _defaultColor * _validSelectedIntensity);
+        _preview.SetActive(true);
     }
 
     public void OnValidDeselect()
     {
         _material.SetColor(_color, _defaultColor);
+        _preview.SetActive(false);
     }
 
     public Receiver GetReceiverStruct(ValidDropLocation actionDropLocation) => 

@@ -201,6 +201,7 @@ public class ViewPlayer : MonoBehaviour
             yield return new WaitUntil(() => isDone);
             yield return null;
         }
+        yield return ReposCardsInHand();
 
         callback?.Invoke();
     }
