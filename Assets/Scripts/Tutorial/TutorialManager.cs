@@ -1,5 +1,6 @@
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -21,6 +22,8 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
     
     public event Action<PlayerCharacter, Camera> OnLocalPlayerChange;
 
+    public bool CanTriggerRepeat => _isCurrentPlayerAction;
+
     [SerializeField] private TutorialRulebook _tutorialRulebook;
     [SerializeField] private float _delayBetweenElements;
 
@@ -28,10 +31,15 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
     private ATutorialSequence _tutorialSequence;
     private bool _isCurrentPlayerAction;
 
+    private List<TutorialDialogue[]> _dialogueBatches;
+
+    private int _currentBatchIndex = -1;
+    private bool _wasLastDialogue = false;
+    private bool _isRepeating = false;
+
     private void Start()
     {
-        _tutorialSequence = TutorialProgression.Instance.GetTutorial();
-        _tutorialElements = new(_tutorialSequence.GetTutorialElements());
+        InitTutorialElements();
         
         SetLocalPlayer();
 
@@ -43,7 +51,6 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
 
         OnGameStart?.Invoke();
         
-        // ExecuteNextTutorialElement();
     }
     
     public void SendActionToAuthority(PlayerAction action)
@@ -87,14 +94,8 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
 
                 Camera = cam;
                 OnLocalPlayerChange?.Invoke(LocalPlayer, cam);
-                
-                // ServiceLocator.Get<IInteractionSystem>().SetLocalPlayer(localPlayer, cam);
-                // ServiceLocator.Get<IView>().SetLocalPlayer(localPlayer, cam);
-                // _tutorialRulebook.SetLocalPlayer(localPlayer, cam);
             }
         }
-        
-        
     }
 
     private void ExecuteNextTutorialElement()
@@ -109,12 +110,15 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
 
         if (element is TutorialDialogue dialogue)
         {
+            if (!_wasLastDialogue) _currentBatchIndex++;
+            _wasLastDialogue = true;
             PlayerOnTurn = PlayerCharacter.None;
             ShowTutorialDialogue(dialogue);
             ServiceLocator.Get<IRulesSystem>().DisableForcedAction();
         }
         else if (element is TutorialAction action)
         {
+            _wasLastDialogue = false;
             if (action.IsPlayerAction)
             {
                 _isCurrentPlayerAction = true;
@@ -135,6 +139,53 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
     private void ShowTutorialDialogue(TutorialDialogue dialogue)
     {
         _tutorialRulebook.DisplayTutorialDialogue(dialogue, EndAction);
+    }
+
+    public void RepeatLastTutorialDialogueBatch()
+    {
+        if (!_isCurrentPlayerAction) return;
+        
+        var batch = _dialogueBatches[_currentBatchIndex];
+        StartCoroutine(RepeatDialogues(batch));
+    }
+
+    private IEnumerator RepeatDialogues(TutorialDialogue[] dialogues)
+    {
+        _isRepeating = true;
+        foreach(var dialogue in dialogues)
+        {
+            bool finished = false;
+            _tutorialRulebook.DisplayTutorialDialogue(dialogue, () => finished = true);
+
+            yield return new WaitUntil(() => finished);
+            yield return null;
+        }
+
+        _isRepeating = false;
+    }
+
+    private void InitTutorialElements()
+    {
+        _tutorialSequence = TutorialProgression.Instance.GetTutorial();
+        _tutorialElements = new();
+        _dialogueBatches = new();
+
+        var batch = new List<TutorialDialogue>();
+        
+        foreach (var element in _tutorialSequence.GetTutorialElements())
+        {
+            _tutorialElements.Enqueue(element);
+
+            if (element is TutorialDialogue tutorialDialogue)
+            {
+                batch.Add(tutorialDialogue);
+            }
+            else if (batch.Count > 0)
+            {
+                _dialogueBatches.Add(batch.ToArray());
+                batch.Clear();
+            }
+        }
     }
 
     

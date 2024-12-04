@@ -33,6 +33,7 @@ MonoBehaviour:
   _initialDialogues:
   - _dialogueText: sag_0_0
   - _dialogueText: sag_0_1
+  - _dialogueText: sag_0_2
   _cardTutorialDialogues:
   - _dialogueText: sag_1_0
   - _dialogueText: sag_1_1

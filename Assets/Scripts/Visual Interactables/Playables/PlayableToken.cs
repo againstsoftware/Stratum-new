@@ -8,10 +8,14 @@ public class PlayableToken : APlayableItem, IRulebookEntry
     // public override bool OnlyVisibleOnOverview => true;
     public override bool OnlyVisibleOnOverview => false;
     public override bool CanInteractWithoutOwnership => true;
+    public override AActionItem ActionItem => _token;
 
     [SerializeField] private AToken _token;
     [SerializeField] private PlayerCharacter _owner;
-    public override AActionItem ActionItem => _token;
+    [SerializeField] private Material _transparentMat;
+
+    private Material _defaultMaterial;
+    private MeshRenderer[] _renderers;
 
     public string GetName() => _token.Name;
 
@@ -24,6 +28,9 @@ public class PlayableToken : APlayableItem, IRulebookEntry
         InHandPosition = transform.position;
         InHandRotation = transform.rotation;
         Owner = _owner;
+
+        _renderers = GetComponentsInChildren<MeshRenderer>();
+        _defaultMaterial = _renderers[0].material;
     }
 
     public void Play(IActionReceiver playLocation, Action onPlayedCallback)
@@ -43,11 +50,39 @@ public class PlayableToken : APlayableItem, IRulebookEntry
             }));
         });
     }
+    
+    public override void OnDrag()
+    {
+        base.OnDrag();
+
+        SetTransparency(true);
+    }
+
+    public override void OnDrop(IActionReceiver dropLocation)
+    {
+        base.OnDrop(dropLocation);
+        transform.rotation = Quaternion.identity;
+        SetTransparency(false);
+    }
+
+    public override void OnDragCancel()
+    {
+        base.OnDragCancel();
+        SetTransparency(false);
+    }
 
     private IEnumerator WaitAndDo(float delay, Action callback)
     {
         yield return new WaitForSeconds(delay);
         callback?.Invoke();
+    }
+
+    private void SetTransparency(bool on)
+    {
+        foreach (var r in _renderers)
+        {
+            r.material = on ? _transparentMat : _defaultMaterial;
+        }
     }
     
 }

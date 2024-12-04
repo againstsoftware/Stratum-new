@@ -265,6 +265,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
                 CurrentState = IInteractionSystem.State.Idle;
                 item.OnDragCancel();
                 if (!item.OnlyVisibleOnOverview) _cameraMovement.ChangeToDefault();
+                
                 _rulebook.DisplayDialogue(LocalizationGod.GetLocalized("Feedback", feedbackKey), null, null);
 
                 break;
@@ -334,6 +335,17 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
 
         receiver.OnChoosingDeselect();
         _selectedReceiver = null;
+    }
+
+
+    public void Disable()
+    {
+        CurrentState = IInteractionSystem.State.Waiting;
+    }
+
+    public void Enable()
+    {
+        CurrentState = IInteractionSystem.State.Idle;
     }
 
 

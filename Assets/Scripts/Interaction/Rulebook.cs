@@ -69,7 +69,8 @@ public class Rulebook : MonoBehaviour
         if (_isOnDialogue) return;
 
         _hasClickedOnDialogue = false;
-
+        
+        ServiceLocator.Get<IInteractionSystem>().Disable();
         
         Debug.Log("comenzando dialogo");
         if (_nextDialogueCallback is not null)
@@ -156,6 +157,7 @@ public class Rulebook : MonoBehaviour
         _nextDialogueCallback = null;
         _dialogueText.text = "";
         HideRulebook();
+        ServiceLocator.Get<IInteractionSystem>().Enable();
     }
 
     private void OnTapPress()

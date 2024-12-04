@@ -19,6 +19,7 @@ public class MacrofungiToken : AToken
 
         foreach (var receiver in action.Receivers)
         {
+            if (receiver.Location is not ValidDropLocation.AnyCard) return false;
             Slot slot = ServiceLocator.Get<IModel>().GetPlayer(receiver.LocationOwner).Territory.Slots[receiver.Index];
 
             var placedCard = slot.PlacedCards[receiver.SecondIndex];

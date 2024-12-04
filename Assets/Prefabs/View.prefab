@@ -50,6 +50,7 @@ MonoBehaviour:
   _playTravelDuration: 0.3
   _token: {fileID: 11400000, guid: cb4d7773b65c8644791d211c81c30775, type: 2}
   _owner: 2
+  _transparentMat: {fileID: 2100000, guid: 157276f6970ccea47905f39dc14ec533, type: 2}
 --- !u!114 &3364258935315834384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +167,7 @@ MonoBehaviour:
   _playTravelDuration: 0.3
   _token: {fileID: 11400000, guid: 6181fded5cad13a4faf491db26c1a0de, type: 2}
   _owner: 3
+  _transparentMat: {fileID: 2100000, guid: 157276f6970ccea47905f39dc14ec533, type: 2}
 --- !u!114 &3633787597434820414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,7 +287,6 @@ MonoBehaviour:
   LeftHandTarget: {fileID: 0}
   _rightHandTargetBase: {fileID: 3855230845447534418}
   _leftHandTargetBase: {fileID: 2309816027783085759}
-  _resetTime: 0.75
   thumbBendAngle: 7.2
   fingersBendAngle: 18.8
 --- !u!1001 &1865764202250974118
@@ -982,7 +983,6 @@ MonoBehaviour:
   LeftHandTarget: {fileID: 0}
   _rightHandTargetBase: {fileID: 4850533770069269282}
   _leftHandTargetBase: {fileID: 6259470994525065935}
-  _resetTime: 0.75
   thumbBendAngle: 7.2
   fingersBendAngle: 18.8
 --- !u!4 &4398954124387862432 stripped
@@ -1446,7 +1446,6 @@ MonoBehaviour:
   LeftHandTarget: {fileID: 0}
   _rightHandTargetBase: {fileID: 3036841742014690852}
   _leftHandTargetBase: {fileID: 4587921234793725897}
-  _resetTime: 0.75
   thumbBendAngle: 7.2
   fingersBendAngle: 18.8
 --- !u!4 &6419056709215914762 stripped
@@ -1871,6 +1870,5 @@ MonoBehaviour:
   LeftHandTarget: {fileID: 0}
   _rightHandTargetBase: {fileID: 8271966931894009394}
   _leftHandTargetBase: {fileID: 7441489673284040671}
-  _resetTime: 0.75
   thumbBendAngle: 7.2
   fingersBendAngle: 18.8
