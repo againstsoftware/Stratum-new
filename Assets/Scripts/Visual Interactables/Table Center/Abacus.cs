@@ -42,10 +42,6 @@ public class Abacus : MonoBehaviour
     private void Start()
     {
         ServiceLocator.Get<IModel>().Ecosystem.OnEcosystemChange += UpdateInfo;
-
-        var comms = ServiceLocator.Get<ICommunicationSystem>();
-        comms.OnLocalPlayerChange += SetLocalPlayer;
-        SetLocalPlayer(comms.LocalPlayer, comms.Camera);
     }
 
     private void OnDestroy()
@@ -53,14 +49,7 @@ public class Abacus : MonoBehaviour
         ServiceLocator.Get<IModel>().Ecosystem.OnEcosystemChange -= UpdateInfo;
     }
 
-    private void SetLocalPlayer(PlayerCharacter localPlayer, Camera cam)
-    {
-        if (localPlayer is PlayerCharacter.None) return;
 
-        var camPos = cam.transform.position;
-        camPos.y = transform.position.y;
-        transform.LookAt(camPos);
-    }
 
 
     public void SetPlants(int amount)

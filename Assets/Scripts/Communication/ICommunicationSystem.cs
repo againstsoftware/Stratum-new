@@ -19,4 +19,6 @@ public interface ICommunicationSystem : IService
 
     public void SendTurnChange(PlayerCharacter playerOnTurn);
 
+    public void Disconnect();
+
 }

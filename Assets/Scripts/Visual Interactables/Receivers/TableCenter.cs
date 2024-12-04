@@ -32,6 +32,13 @@ public class TableCenter : MonoBehaviour, IActionReceiver
         _defaultColor = _material.color;
     }
 
+    private void Start()
+    {
+        var comms = ServiceLocator.Get<ICommunicationSystem>(); 
+        comms.OnLocalPlayerChange += RotateToPlayer;
+        RotateToPlayer(comms.LocalPlayer);
+    }
+
     public void OnDraggingSelect()
     {
         _tableMesh.material = _highlightedMaterial;
@@ -74,27 +81,25 @@ public class TableCenter : MonoBehaviour, IActionReceiver
     public Transform GetSnapTransform(PlayerCharacter character)
     {
         var newRot = _defaultEulers;
-        switch (character)
-        {
-            case PlayerCharacter.None:
-            case PlayerCharacter.Sagitario:
-                newRot.z = _sagitarioRotation;
-                break;
-            case PlayerCharacter.Ygdra:
-                newRot.z = _ygdraRotation;
-                break;
-            case PlayerCharacter.Fungaloth:
-                newRot.z = _fungalothRotation;
-                break;
-            case PlayerCharacter.Overlord:
-                newRot.z = _overlordRotation;
-                break;
-
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
+        newRot.z = GetPlayerRotation(character);
 
         SnapTransform.localRotation = Quaternion.Euler(newRot);
         return SnapTransform;
     }
+
+    private void RotateToPlayer(PlayerCharacter player, Camera _ = null)
+    {
+        var rot = GetPlayerRotation(player);
+        transform.Find("Mesh").rotation = Quaternion.AngleAxis(90f - rot, Vector3.up);
+    }
+
+    private float GetPlayerRotation(PlayerCharacter player) => player switch
+    {
+        PlayerCharacter.Sagitario => _sagitarioRotation,
+        PlayerCharacter.Ygdra => _ygdraRotation,
+        PlayerCharacter.Fungaloth => _fungalothRotation,
+        PlayerCharacter.Overlord => _overlordRotation,
+        // PlayerCharacter.None => _sagitarioRotation,
+        _ => throw new ArgumentOutOfRangeException()
+    };
 }

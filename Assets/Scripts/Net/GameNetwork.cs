@@ -126,23 +126,25 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
     {
         if (IsServer)
             DisconnectClientRpc();
-        else Disconnect();
+        else DisconnectAndTransition();
     }
     
     private void OnServerStopped(bool _)
     {
-        Disconnect(); 
+        DisconnectAndTransition(); 
     }
 
     [ClientRpc]
     private void DisconnectClientRpc()
     {
-        Disconnect();
+        DisconnectAndTransition();
     }
+    
+    public void Disconnect() => NetworkManager.Singleton.Shutdown();
 
-    private void Disconnect()
+    private void DisconnectAndTransition()
     {
-        NetworkManager.Singleton.Shutdown();
+        Disconnect();
         SceneTransition.Instance.TransitionToScene("Disconnection");
     }
 

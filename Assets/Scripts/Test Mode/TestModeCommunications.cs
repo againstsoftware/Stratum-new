@@ -39,6 +39,8 @@ public class TestModeCommunications : MonoBehaviour, ICommunicationSystem
         ChangeActivePlayer(_config.TurnOrder[0]);
     }
 
+    public void Disconnect() => Debug.Log("POV: te desconectaste.");
+
     public void SyncRNGs()
     {
         ServiceLocator.Get<IRNG>().Init(new Random().Next());

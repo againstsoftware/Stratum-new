@@ -95,6 +95,9 @@ public abstract class APlayableItem : MonoBehaviour, IInteractable
         if (_destroyed) return;
         _meshTransform.localScale = _defaultMeshScale;
     }
+    
+    public void OnPress() {}
+    public void OnRelease() {}
 
     public virtual void OnDrag()
     {

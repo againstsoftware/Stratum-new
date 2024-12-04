@@ -50,6 +50,8 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
     {
         ServiceLocator.Get<IExecutor>().ExecutePlayerActionEffects(action);
     }
+    
+    public void Disconnect() => Debug.Log("POV: te desconectaste.");
 
     public void EndAction()
     {
