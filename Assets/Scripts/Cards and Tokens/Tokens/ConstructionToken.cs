@@ -21,6 +21,11 @@ public class ConstructionToken : AToken
             return false;
         }
 
+        if (receivers[0].Location is not ValidDropLocation.AnyTerritory)
+        {
+            feedbackKey = "con_token_empty";
+            return false;
+        }
         var owner = ServiceLocator.Get<IModel>().GetPlayer(receivers[0].LocationOwner);
 
         if (owner is null)
@@ -29,8 +34,7 @@ public class ConstructionToken : AToken
             return false;
         }
 
-        if (receivers[0].Location != ValidDropLocation.AnyTerritory ||
-            owner.Territory.HasConstruction)
+        if (owner.Territory.HasConstruction)
         {
             feedbackKey = "con_token_empty";
             return false;

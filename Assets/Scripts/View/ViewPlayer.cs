@@ -241,7 +241,8 @@ public class ViewPlayer : MonoBehaviour
         {
             bool cardReposed = false;
             var card = Cards[i];
-            var newLocation = _cardLocations[i + offset];
+            var index = Mathf.Min(Cards.Count, i + offset);
+            var newLocation = _cardLocations[index];
 
             if (exclude is not null && exclude.Contains(card)) continue;
             if (card.transform.position == newLocation.position) continue;

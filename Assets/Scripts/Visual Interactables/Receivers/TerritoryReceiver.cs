@@ -1,11 +1,12 @@
-
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class TerritoryReceiver : MonoBehaviour, IActionReceiver
 {
-    [field:SerializeField] public PlayerCharacter Owner { get; private set; }
-    [field:SerializeField] public SlotReceiver[] Slots { get; private set; }
-    [field:SerializeField] public Transform SnapTransform { get; private set; }
+    [field: SerializeField] public PlayerCharacter Owner { get; private set; }
+    [field: SerializeField] public SlotReceiver[] Slots { get; private set; }
+    [field: SerializeField] public Transform SnapTransform { get; private set; }
     public Transform GetSnapTransform(PlayerCharacter _) => SnapTransform;
 
     public bool IsDropEnabled { get; private set; } = true;
@@ -17,11 +18,13 @@ public class TerritoryReceiver : MonoBehaviour, IActionReceiver
 
     [SerializeField] private GameObject _construction;
     [SerializeField] private GameObject _preview;
-    
+    [SerializeField] private ParticleSystem _fire;
+
     private Material _material;
     private Color _defaultColor;
     private static readonly int _color = Shader.PropertyToID("_Color");
     private MeshRenderer _meshRenderer;
+
     private void Awake()
     {
         _meshRenderer = transform.Find("Mesh").GetComponent<MeshRenderer>();
@@ -59,8 +62,8 @@ public class TerritoryReceiver : MonoBehaviour, IActionReceiver
     {
         _meshRenderer.material = _material;
     }
-    
-    
+
+
     public void OnChoosingSelect()
     {
         OnDraggingSelect();
@@ -70,7 +73,7 @@ public class TerritoryReceiver : MonoBehaviour, IActionReceiver
     {
         OnDraggingDeselect();
     }
-    
+
     public void OnValidSelect()
     {
         _material.SetColor(_color, _defaultColor * _validSelectedIntensity);
@@ -82,7 +85,20 @@ public class TerritoryReceiver : MonoBehaviour, IActionReceiver
         _material.SetColor(_color, _defaultColor);
         _preview.SetActive(false);
     }
-    
-    public Receiver GetReceiverStruct(ValidDropLocation actionDropLocation) => 
-        new (actionDropLocation, Owner, -1, -1);
+
+    public void SetOnFire(Action callback)
+    {
+        StartCoroutine(PlayFire(callback));
+    }
+
+    private IEnumerator PlayFire(Action callback)
+    {
+        _fire.Play();
+        yield return null;
+        callback?.Invoke();
+    }
+
+
+    public Receiver GetReceiverStruct(ValidDropLocation actionDropLocation) =>
+        new(actionDropLocation, Owner, -1, -1);
 }

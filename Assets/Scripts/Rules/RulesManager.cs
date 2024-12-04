@@ -129,11 +129,13 @@ public class RulesManager : MonoBehaviour, IRulesSystem
     {
         if (onTurn is not PlayerCharacter.None || !_playEcosystem) return;
 
-        PlayEcosystemTurn();
+        StartCoroutine(PlayEcosystemTurn());
     }
 
-    private void PlayEcosystemTurn()
+    private IEnumerator PlayEcosystemTurn()
     {
+
+        yield return new WaitForSeconds(1.5f);
         var effects = RulesCheck.CheckEcosystem();
         if (!effects.Any())
         {
@@ -159,10 +161,12 @@ public class RulesManager : MonoBehaviour, IRulesSystem
     {
     }
 
-
-    private void EndRound() //comprueba si hay algun efecto de final de ronda que se deba aplicar y lo aplica
+    private void EndRound() => StartCoroutine(EndRoundCoroutine());
+    private IEnumerator EndRoundCoroutine() //comprueba si hay algun efecto de final de ronda que se deba aplicar y lo aplica
     {
         Debug.Log("fin de ronda.");
+        yield return new WaitForSeconds(1.5f);
+        
         List<IEffectCommand> roundEndCommands = new();
         //comprobacion de destruir construccion si no tiene animales
         var destroyConstructionCommands = RulesCheck.CheckConstructions();

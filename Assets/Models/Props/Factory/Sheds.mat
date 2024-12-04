@@ -118,6 +118,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Highlighted: 0
+    - _LightingCutoff_2: -0.35
     - _Lighting_cutoff: 0.3
     - _Metallic: 0
     - _OcclusionStrength: 1
@@ -137,7 +138,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 0.16862746, g: 0.23137257, b: 0.24705884, a: 1}
     - _Border_Color: {r: 0.10957635, g: 0.14696355, b: 0.16981131, a: 1}
-    - _Color: {r: 0.20697756, g: 0.27865052, b: 0.3207547, a: 1}
+    - _Color: {r: 0.028301895, g: 0.028301895, b: 0.028301895, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []

@@ -34,7 +34,7 @@ public class GameModel : IModel
         }
     }
 
-    public Player GetPlayer(PlayerCharacter character) => _players[character];
+        public Player GetPlayer(PlayerCharacter character) => _players[character];
 
 
     public void RemoveCardFromHand(PlayerCharacter player, ACard card)

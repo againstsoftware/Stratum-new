@@ -33,13 +33,18 @@ public class Deck : ScriptableObject
     private int _size;
     private bool _initialized;
     private ACard[] _deck;
-    
+    private List<ACard> _shuffledDeck;
     
     public ACard DrawCard()
     {
         if (!_initialized) Initialize();
-        int index = ServiceLocator.Get<IRNG>().Range(0, _size);
-        return _deck[index];
+        
+        if(_shuffledDeck.Count == 0) Shuffle();
+        
+        var card = _shuffledDeck[^1];
+        _shuffledDeck.RemoveAt(_shuffledDeck.Count - 1);
+        
+        return card;
     }
 
     private void Initialize()
@@ -61,5 +66,15 @@ public class Deck : ScriptableObject
     private void OnValidate()
     {
         _initialized = false;
+    }
+    
+    private void Shuffle() 
+    {
+        _shuffledDeck = new(_deck);
+        for (var i = 0; i < _shuffledDeck.Count - 1; ++i)
+        {
+            var r = ServiceLocator.Get<IRNG>().Range(0, _shuffledDeck.Count);
+            (_shuffledDeck[i], _shuffledDeck[r]) = (_shuffledDeck[r], _shuffledDeck[i]);
+        }
     }
 }

@@ -39,6 +39,7 @@ public static class EffectCommands
         Effect.ObserveMushroomPredator => new ObserveMushroomPredator(),
         Effect.ObserveParasite => new ObserveParasite(),
         Effect.RushEcosystemTurn => new RushEcosystemTurn(),
+        Effect.FireInTerritory => new FireInTerritory(),
 
         _ => throw new ArgumentOutOfRangeException()
     };
@@ -661,6 +662,14 @@ public static class EffectCommands
             foreach (var effect in ecosystemEffects)
                 ServiceLocator.Get<IExecutor>().PushDelayedCommand(Get(effect));
             callback?.Invoke();
+        }
+    }
+
+    public class FireInTerritory : IEffectCommand
+    {
+        public void Execute(PlayerAction action, Action callback)
+        {
+            ServiceLocator.Get<IView>().GetViewPlayer(action.Receivers[0].LocationOwner).Territory.SetOnFire(callback);
         }
     }
 
