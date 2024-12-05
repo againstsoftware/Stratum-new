@@ -33,7 +33,7 @@ public class Deck : ScriptableObject
     private int _size;
     private bool _initialized;
     private ACard[] _deck;
-    private List<ACard> _shuffledDeck;
+    private List<ACard> _shuffledDeck = new();
     
     public ACard DrawCard()
     {

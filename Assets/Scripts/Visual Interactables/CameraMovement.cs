@@ -1,111 +1,134 @@
 using UnityEngine;
 using System;
+
 public class CameraMovement : MonoBehaviour
 {
-    [SerializeField] private float _transitionDuration;
-    [SerializeField] private Transform _defaultTransform, _overviewTransform;
+    [SerializeField] private float _transitionDuration = 1f;
+    [SerializeField] private Transform _defaultTransform;
+    [SerializeField] private Transform _overviewTransform;
 
-    private (Vector3, Quaternion) _defaultPerspective, _overviewPerspective, _startPerspective, _targetPerspective;
-
-    private bool _isInDefault = true;
-    private bool _isChangingPerspective;
-    private float t = 0f;
-    private Action _onFinishCallback = null;
-    
-    
-    private void Awake()
+    private enum CameraState
     {
-        _defaultPerspective = (_defaultTransform.position, _defaultTransform.rotation);
-        _overviewPerspective = (_overviewTransform.position, _overviewTransform.rotation);
+        Default,
+        Overview,
+        Transitioning
     }
 
+    private CameraState _currentState = CameraState.Default;
+    private float _transitionProgress = 0f;
+    private Vector3 _startPosition;
+    private Quaternion _startRotation;
+    private Vector3 _targetPosition;
+    private Quaternion _targetRotation;
+    private Action _onTransitionCompleteCallback;
 
+    private Vector3 _handDefaultPosition;
+
+    private void Awake()
+    {
+        _defaultTransform.SetParent(null);
+        _overviewTransform.SetParent(null);
+    }
 
     private void Update()
     {
-        if (!_isChangingPerspective) return;
-
-        transform.position = Vector3.Slerp(_startPerspective.Item1, _targetPerspective.Item1, t);
-        transform.rotation = Quaternion.Slerp(_startPerspective.Item2, _targetPerspective.Item2, t);
-        t += Time.deltaTime / _transitionDuration;
-
-        if (t >= 1f)
-        {
-            _isChangingPerspective = false;
-            // _isInDefault = !_isInDefault;
-            _onFinishCallback?.Invoke();
-            _onFinishCallback = null;
-        }
+        UpdateCameraTransition();
     }
-    
-    public void MoveCameraOnScroll(float scroll)
+
+    private void UpdateCameraTransition()
     {
-        switch (scroll)
+        if (_currentState != CameraState.Transitioning) return;
+
+        // Use Mathf.Clamp01 to prevent potential floating-point precision issues
+        _transitionProgress = Mathf.Clamp01(_transitionProgress + Time.deltaTime / _transitionDuration);
+
+        // Use more precise interpolation methods
+        transform.position = Vector3.Lerp(_startPosition, _targetPosition, GetEaseInOutQuad(_transitionProgress));
+        transform.rotation = Quaternion.Slerp(_startRotation, _targetRotation, GetEaseInOutQuad(_transitionProgress));
+        
+
+        if (_transitionProgress >= 1f)
         {
-            case 0f:
-                return;
-            case > 0f when _isInDefault:
-                ChangeToOverview();
-                break;
-            case < 0f when !_isInDefault:
-                ChangeToDefault();
-                break;
+            CompleteTransition();
         }
     }
 
-    public void ChangeToOverview(Action callback = null)
+    // Smoother easing function to improve transition feel
+    private float GetEaseInOutQuad(float t)
     {
-        if (!_isInDefault)
-        {
-            callback?.Invoke();
-            return;
-        }
-        
-        _isInDefault = false;
+        return t < 0.5f ? 2f * t * t : 1f - Mathf.Pow(-2f * t + 2f, 2f) / 2f;
+    }
 
-        //if (!_isInDefault && !_isChangingPerspective) return;
-        
-        
-        _targetPerspective = _overviewPerspective;
-        _startPerspective = _defaultPerspective;
-        if (!_isChangingPerspective)
+    private void CompleteTransition()
+    {
+        _currentState = (_targetPosition == _overviewTransform.position) 
+            ? CameraState.Overview 
+            : CameraState.Default;
+
+        _onTransitionCompleteCallback?.Invoke();
+        _onTransitionCompleteCallback = null;
+    }
+
+    public void MoveCameraOnScroll(float ScrollDelta)
+    {
+        // Use epsilon to handle small floating-point inaccuracies
+        if (Mathf.Abs(ScrollDelta) < float.Epsilon) return;
+
+        if (ScrollDelta > 0 && _currentState != CameraState.Overview)
         {
-            _isChangingPerspective = true;
-            t = 0f;
+            ChangeToOverview();
+        }
+        else if (ScrollDelta < 0 && _currentState != CameraState.Default)
+        {
+            ChangeToDefault();
+        }
+    }
+
+    public void ChangeToOverview(Action Callback = null)
+    {
+        StartTransition(_overviewTransform.position, _overviewTransform.rotation, Callback);
+    }
+
+    public void ChangeToDefault(Action Callback = null)
+    {
+        StartTransition(_defaultTransform.position, _defaultTransform.rotation, Callback);
+    }
+
+    private void StartTransition(Vector3 TargetPos, Quaternion TargetRot, Action Callback)
+    {
+        // If already transitioning, capture current interpolated position as new start
+        if (_currentState == CameraState.Transitioning)
+        {
+            _startPosition = transform.position;
+            _startRotation = transform.rotation;
         }
         else
         {
-            _onFinishCallback?.Invoke();
-            t = 1f - t;
+            _startPosition = _currentState == CameraState.Default 
+                ? _defaultTransform.position 
+                : _overviewTransform.position;
+            _startRotation = _currentState == CameraState.Default 
+                ? _defaultTransform.rotation 
+                : _overviewTransform.rotation;
         }
-        _onFinishCallback = callback;
+
+        // Set new target and reset progress
+        _targetPosition = TargetPos;
+        _targetRotation = TargetRot;
+        _transitionProgress = 0f;
+        _currentState = CameraState.Transitioning;
+        
+        // Set callback
+        _onTransitionCompleteCallback = Callback;
     }
 
-    public void ChangeToDefault(Action callback = null)
+    public void SnapToState(bool IsOverview)
     {
-        if(_isInDefault)
-        {
-            callback?.Invoke();
-            return;
-        }
-
-
+        Transform targetTransform = IsOverview ? _overviewTransform : _defaultTransform;
         
-        _isInDefault = true;
+        transform.position = targetTransform.position;
+        transform.rotation = targetTransform.rotation;
         
-       // if (_isInDefault && !_isChangingPerspective) return;
-        _targetPerspective = _defaultPerspective;
-        _startPerspective = _overviewPerspective;
-        if (!_isChangingPerspective)
-        {
-            _isChangingPerspective = true;
-            t = 0f;
-        }
-        else
-        {
-            _onFinishCallback?.Invoke();
-            t = 1f - t;
-        }
-        _onFinishCallback = callback;
+        _currentState = IsOverview ? CameraState.Overview : CameraState.Default;
     }
 }
