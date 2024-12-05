@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EffectExecutor : IExecutor
@@ -19,6 +20,9 @@ public class EffectExecutor : IExecutor
 
         var effects = action.ActionItem.GetEffects(effectsIndex);
 
+        // if(effects.First() is not Effect.OverviewSwitch)
+        //     EnqueueCommand(new EffectCommands.OverviewSwitch());
+        
         foreach (var e in effects) EnqueueCommand(EffectCommands.Get(e));
 
         if(!IsOnTutorial) UpdatePlayedCardsInModel(action);
@@ -26,10 +30,14 @@ public class EffectExecutor : IExecutor
         TryExecuteNextCommand();
     }
 
-    public void ExecuteRulesEffects(IEnumerable<Effect> effects, Action rulesCallback)
+    public void ExecuteRulesEffects(IEnumerable<Effect> effects, Action rulesCallback)  
     {
         _commandDEQueue = new();
         _rulesCallback = rulesCallback;
+        
+        // if(effects.First() is not Effect.OverviewSwitch)
+        //     EnqueueCommand(new EffectCommands.OverviewSwitch());
+            
         foreach (var e in effects) EnqueueCommand(EffectCommands.Get(e));
         TryExecuteNextCommand();
     }
@@ -38,6 +46,10 @@ public class EffectExecutor : IExecutor
     {
         _commandDEQueue = new();
         _rulesCallback = rulesCallback;
+        
+        // if(commands.First() is not EffectCommands.OverviewSwitch)
+        //     EnqueueCommand(new EffectCommands.OverviewSwitch());
+        
         foreach (var c in commands) EnqueueCommand(c);
         TryExecuteNextCommand();
     }

@@ -103,7 +103,7 @@ public class ViewManager : MonoBehaviour, IView
 
     public void SwitchCamToOverview(Action callback)
     {
-        _cameraMovement.ChangeToOverview(callback);
+        _cameraMovement.ChangeToOverview(() => StartCoroutine(DelayCall(callback, .01f)));
     }
 
     public void GrowPopulation(CardLocation location, Population population, Action callback,
@@ -224,9 +224,9 @@ public class ViewManager : MonoBehaviour, IView
         var targetPos = targetSlot.transform.position;
         targetPos.y = position.y;
         birds.transform.LookAt(targetPos);
-        
+
         Destroy(birds, 4f);
-            
+
         StartCoroutine(DelayCall(callback, .01f));
     }
 
@@ -237,8 +237,20 @@ public class ViewManager : MonoBehaviour, IView
 
         var fireworks = Instantiate(_config.FireworksPrefab, card.transform.position,
             _config.FireworksPrefab.transform.rotation);
-        
+
         Destroy(fireworks, 6f);
+        StartCoroutine(DelayCall(callback, .6f));
+    }
+
+    public void ShowDirt(CardLocation location, Action callback)
+    {
+        var playerOwner = _players[location.Owner];
+        var slot = playerOwner.Territory.Slots[location.SlotIndex];
+
+        var dirt = Instantiate(_config.DirtPrefab, slot.transform.position,
+            _config.DirtPrefab.transform.rotation);
+
+        Destroy(dirt, 3f);
         StartCoroutine(DelayCall(callback, .6f));
     }
 

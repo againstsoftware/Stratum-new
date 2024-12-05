@@ -46,7 +46,7 @@ public class CameraMovement : MonoBehaviour
         transform.position = Vector3.Lerp(_startPosition, _targetPosition, GetEaseInOutQuad(_transitionProgress));
         transform.rotation = Quaternion.Slerp(_startRotation, _targetRotation, GetEaseInOutQuad(_transitionProgress));
         
-
+    
         if (_transitionProgress >= 1f)
         {
             CompleteTransition();

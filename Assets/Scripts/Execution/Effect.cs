@@ -36,5 +36,6 @@ public enum Effect
     FireInTerritory,
     ShowBirds,
     ShowFireworks,
+    ShowDirt,
     
 }
