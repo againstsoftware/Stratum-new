@@ -275,6 +275,7 @@ Transform:
   - {fileID: 4718661896136491138}
   - {fileID: 826979739767311515}
   - {fileID: 2207488566774495240}
+  - {fileID: 1858158035744860843}
   m_Father: {fileID: 1233086927245546197}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6351385731013809417
@@ -315,13 +316,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8376519208923990260}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.5015, z: -0}
-  m_LocalScale: {x: 0.37, y: 0.37, z: 0.37}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 0.0015000105, z: 0}
+  m_LocalScale: {x: 0.39999998, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 1233086927245546197}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_Father: {fileID: 7195710942026173843}
+  m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
 --- !u!33 &8598228969457212551
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -381,7 +382,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1233086927245546197}
-  - component: {fileID: 6039964378561275098}
   - component: {fileID: 8669670714468828389}
   - component: {fileID: 8541876072037180344}
   m_Layer: 9
@@ -410,30 +410,8 @@ Transform:
   - {fileID: 7484563884675476261}
   - {fileID: 90237792667138543}
   - {fileID: 6825473536635263778}
-  - {fileID: 1858158035744860843}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6039964378561275098
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8409131435241446419}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.36, y: 0.01, z: 0.36}
-  m_Center: {x: 0, y: 0.495, z: 0}
 --- !u!114 &8669670714468828389
 MonoBehaviour:
   m_ObjectHideFlags: 0
