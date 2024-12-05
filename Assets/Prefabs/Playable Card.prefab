@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 76898627352878963}
   - component: {fileID: 7243185845805658137}
   - component: {fileID: 3816485977412938156}
+  - component: {fileID: 3707550859853151776}
+  - component: {fileID: 9085644227598964912}
   m_Layer: 9
   m_Name: Playable Card
   m_TagString: Untagged
@@ -87,11 +89,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 9088813877132267383}
-  _initialCutoff: 2
-  _endCutoff: -1
+  _initialCutoff: 1.3
+  _endCutoff: -3
   _destroyDuration: 2
   _dissolveMaterial: {fileID: 2100000, guid: 9f3805382171768439c5078f34e3209b, type: 2}
   _cardText: {fileID: 8874135323090283735}
+--- !u!114 &3707550859853151776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141958488974887041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 335ea09f19ed4d689602de95e248e776, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 9088813877132267383}
+  _initialCutoff: -2
+  _endCutoff: 1.5
+  _appearDuration: 1.25
+  _materializeMaterial: {fileID: 2100000, guid: 7fd723bb9be304b44aacfab1893088e3, type: 2}
+  _cardText: {fileID: 8874135323090283735}
+  _animator: {fileID: 9085644227598964912}
+--- !u!95 &9085644227598964912
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141958488974887041}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a15bf90ac68a26c49b4b4364cb5e1241, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2967130977452411895
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,7 +542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 78a8f0ed502c19d4e987aa989432fb52, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 78a8f0ed502c19d4e987aa989432fb52, type: 3}
       propertyPath: m_Name
@@ -545,7 +587,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.07, y: 0.40625614, z: 0.25999895}
+  m_Size: {x: 0.1, y: 0.40625614, z: 0.25999895}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &7956410069837673496 stripped
 Transform:

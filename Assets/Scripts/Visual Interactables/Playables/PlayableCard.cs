@@ -152,9 +152,14 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
         CurrentState = State.Played;
         IsDropEnabled = false;
         _canInteractWithoutOwnership = true;
-        transform.parent = cardWherePlaced.transform;
+        // transform.parent = cardWherePlaced.transform;
         CardWherePlaced = cardWherePlaced;
         CardWherePlaced.AddInfluenceCardOnTop(this);
+
+        var col = _mesh.GetComponent<BoxCollider>();
+        var size = col.size;
+        size.x *= 1.25f;
+        col.size = size;
     }
 
     private void OnPersistendDiscarded()
@@ -318,6 +323,8 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     {
         _destroyableCard.StartDestroying(callback);
         CurrentState = State.Destroying;
+        if(InfluenceCardOnTop is not null)
+            InfluenceCardOnTop.DestroyCard(null);
     }
 
 

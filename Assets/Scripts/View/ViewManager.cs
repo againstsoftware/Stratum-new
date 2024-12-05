@@ -67,10 +67,13 @@ public class ViewManager : MonoBehaviour, IView
         var slot = playerOwner.Territory.Slots[location.SlotIndex]; //la carta de mas arriba del slot
         var card = slot.Cards[^1].Card;
 
-        var newCardGO = Instantiate(_config.CardPrefab, slot.SnapTransform.position, slot.SnapTransform.rotation);
-        var newPlayableCard = newCardGO.GetComponent<PlayableCard>();
-        newPlayableCard.InitializeOnSlot(card, location.Owner, slot);
-        slot.AddCardOnTop(newPlayableCard);
+        // var newCardGO = Instantiate(_config.CardPrefab, slot.SnapTransform.position, slot.SnapTransform.rotation);
+        // var newPlayableCard = newCardGO.GetComponent<PlayableCard>();
+        // newPlayableCard.InitializeOnSlot(card, location.Owner, slot);
+        // slot.AddCardOnTop(newPlayableCard);
+
+        StartCoroutine(AppearCard(card, slot, null, true));
+        
         StartCoroutine(DelayCall(callback, 1f)); //de prueba
     }
 
@@ -110,24 +113,32 @@ public class ViewManager : MonoBehaviour, IView
         var playerOwner = _players[location.Owner];
         var slot = playerOwner.Territory.Slots[location.SlotIndex];
 
-        var newCardGO = Instantiate(_config.CardPrefab, slot.SnapTransform.position, slot.SnapTransform.rotation);
-        var newPlayableCard = newCardGO.GetComponent<PlayableCard>();
-        newPlayableCard.InitializeOnSlot(card, location.Owner, slot);
-        slot.AddCardOnTop(newPlayableCard);
+        // var newCardGO = Instantiate(_config.CardPrefab, slot.SnapTransform.position, slot.SnapTransform.rotation);
+        // var newPlayableCard = newCardGO.GetComponent<PlayableCard>();
+        // newPlayableCard.InitializeOnSlot(card, location.Owner, slot);
+        // slot.AddCardOnTop(newPlayableCard);
+
+        StartCoroutine(AppearCard(card, slot, null, true));
+        
         StartCoroutine(DelayCall(() => { callback?.Invoke(); }, .5f)); //de prueba
     }
 
     public void GrowMushroom(CardLocation location, Action callback, bool isEndOfAction = false)
     {
-        var card = _config.Mushroom;
+        // var card = _config.Mushroom;
         var playerOwner = _players[location.Owner];
         var slot = playerOwner.Territory.Slots[location.SlotIndex];
+        //
+        // var newCardGO = Instantiate(_config.CardPrefab, slot.SnapTransform.position, slot.SnapTransform.rotation);
+        // var newPlayableCard = newCardGO.GetComponent<PlayableCard>();
+        // newPlayableCard.InitializeOnSlot(card, location.Owner, slot);
+        // slot.AddCardAtTheBottom(newPlayableCard);
 
-        var newCardGO = Instantiate(_config.CardPrefab, slot.SnapTransform.position, slot.SnapTransform.rotation);
-        var newPlayableCard = newCardGO.GetComponent<PlayableCard>();
-        newPlayableCard.InitializeOnSlot(card, location.Owner, slot);
-        slot.AddCardAtTheBottom(newPlayableCard);
-        StartCoroutine(DelayCall(() => { callback?.Invoke(); }, .5f)); //de prueba
+
+        StartCoroutine(AppearCard(_config.Mushroom, slot, callback, false));
+        
+        
+        // StartCoroutine(DelayCall(() => { callback?.Invoke(); }, .5f)); //de prueba
     }
 
     public void GrowMacrofungi(CardLocation[] locations, Action callback)
@@ -186,7 +197,15 @@ public class ViewManager : MonoBehaviour, IView
 
         card.Initialize(card.Card, to.Owner);
 
-        card.Play(targetSlot, callback.Invoke);
+        if (card.InfluenceCardOnTop is not null)
+            card.InfluenceCardOnTop.transform.parent = card.transform;
+
+        card.Play(targetSlot, () =>
+        {
+            if (card.InfluenceCardOnTop is not null)
+                card.InfluenceCardOnTop.transform.parent = null;
+            callback?.Invoke();
+        });
     }
 
 
@@ -370,13 +389,15 @@ public class ViewManager : MonoBehaviour, IView
         playerOwner = _players[location.Owner];
         slot = playerOwner.Territory.Slots[location.SlotIndex];
 
-        var newCardGO = Instantiate(_config.CardPrefab, slot.SnapTransform.position, slot.SnapTransform.rotation);
-        var newPlayableCard = newCardGO.GetComponent<PlayableCard>();
-        newPlayableCard.InitializeOnSlot(_config.Macrofungi, location.Owner, slot);
-        slot.AddCardAtTheBottom(newPlayableCard);
+        // var newCardGO = Instantiate(_config.CardPrefab, slot.SnapTransform.position, slot.SnapTransform.rotation);
+        // var newPlayableCard = newCardGO.GetComponent<PlayableCard>();
+        // newPlayableCard.InitializeOnSlot(_config.Macrofungi, location.Owner, slot);
+        // slot.AddCardAtTheBottom(newPlayableCard);
 
-        yield return new WaitForSeconds(.5f);
-        callback?.Invoke();
+        StartCoroutine(AppearCard(_config.Macrofungi, slot, callback, false));
+        
+        // yield return new WaitForSeconds(.5f);
+        // callback?.Invoke();
     }
 
     private IEnumerator DestroyPlantsAndConstruct(CardLocation plant1Location, CardLocation plant2Location,
@@ -406,5 +427,23 @@ public class ViewManager : MonoBehaviour, IView
     {
         slot.RemoveCard(card);
         card.DestroyCard(callback);
+    }
+
+    private IEnumerator AppearCard(ACard card, SlotReceiver slot, Action callback, bool onTop)
+    {
+        var newCardGO = Instantiate(_config.CardPrefab, slot.SnapTransform.position, slot.SnapTransform.rotation);
+        var materializableCard = newCardGO.GetComponent<AppearableCard>();
+        var newPlayableCard = newCardGO.GetComponent<PlayableCard>();
+        newPlayableCard.InitializeOnSlot(card, slot.Owner, slot);
+
+        bool isMaterialized = false;
+        materializableCard.AppearCard(card, () => isMaterialized = true);
+        
+        yield return new WaitUntil(() => isMaterialized);
+
+        if(onTop) slot.AddCardOnTop(newPlayableCard);
+        else slot.AddCardAtTheBottom(newPlayableCard);
+        
+        callback?.Invoke();
     }
 }

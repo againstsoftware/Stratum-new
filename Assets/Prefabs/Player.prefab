@@ -11857,8 +11857,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.3392094, y: 0.0788331, z: 2.4911382}
-  m_Center: {x: -0.3944142, y: 0.035653148, z: -0.000000019075195}
+  m_Size: {x: 0.3392094, y: 0.054466534, z: 2.4911382}
+  m_Center: {x: -0.39441422, y: 0.023469865, z: -0.000000019075204}
 --- !u!1001 &5296856769424123134
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11875,21 +11875,29 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3707550859853151776, guid: a7cfe0d9aa4629d4d88d94ac908f43b2, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3707550859853151776, guid: a7cfe0d9aa4629d4d88d94ac908f43b2, type: 3}
+      propertyPath: _cardText
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3816485977412938156, guid: a7cfe0d9aa4629d4d88d94ac908f43b2, type: 3}
       propertyPath: _cardText
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3816485977412938156, guid: a7cfe0d9aa4629d4d88d94ac908f43b2, type: 3}
       propertyPath: _endCutoff
-      value: -0.2
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3816485977412938156, guid: a7cfe0d9aa4629d4d88d94ac908f43b2, type: 3}
       propertyPath: _initialCutoff
-      value: 1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 3816485977412938156, guid: a7cfe0d9aa4629d4d88d94ac908f43b2, type: 3}
       propertyPath: _destroyDuration
-      value: 0.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 7176350047098553346, guid: a7cfe0d9aa4629d4d88d94ac908f43b2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12142,6 +12150,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3707550859853151776, guid: a7cfe0d9aa4629d4d88d94ac908f43b2, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3707550859853151776, guid: a7cfe0d9aa4629d4d88d94ac908f43b2, type: 3}
+      propertyPath: _cardText
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3816485977412938156, guid: a7cfe0d9aa4629d4d88d94ac908f43b2, type: 3}
       propertyPath: _cardText
       value: 
@@ -12246,6 +12262,10 @@ PrefabInstance:
     - target: {fileID: 2141958488974887041, guid: a7cfe0d9aa4629d4d88d94ac908f43b2, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3707550859853151776, guid: a7cfe0d9aa4629d4d88d94ac908f43b2, type: 3}
+      propertyPath: _cardText
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3816485977412938156, guid: a7cfe0d9aa4629d4d88d94ac908f43b2, type: 3}
       propertyPath: _cardText

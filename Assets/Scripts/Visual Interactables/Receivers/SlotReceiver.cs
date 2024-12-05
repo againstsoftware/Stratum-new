@@ -98,7 +98,14 @@ public class SlotReceiver : MonoBehaviour, IActionReceiver
         {
             c.IndexOnSlot = i;
             SnapTransform.localPosition = SnapTransformBottom.localPosition + i * _offset;
+            
+            if (c.InfluenceCardOnTop is not null)
+                c.InfluenceCardOnTop.transform.parent = c.transform;
+            
             c.transform.position = SnapTransform.position;
+            
+            if (c.InfluenceCardOnTop is not null)
+                c.InfluenceCardOnTop.transform.parent = null;
 
             i++;
         }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class DestroyableCard : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class DestroyableCard : MonoBehaviour
 
     private static readonly int _mainTex = Shader.PropertyToID("_MainTex");
     private static readonly int _cutoffHeight = Shader.PropertyToID("_CutoffHeight");
+    private static readonly int _randomSeed = Shader.PropertyToID("_RandomSeed");
 
     private float _t = 0f;
     private Action _callback;
@@ -37,6 +39,11 @@ public class DestroyableCard : MonoBehaviour
 
         _renderer.materials[0].SetFloat(_cutoffHeight, _initialCutoff);
         _renderer.materials[1].SetFloat(_cutoffHeight, _initialCutoff);
+
+        var randomSeed = new Vector2(Random.Range(0f, 10f), Random.Range(0f, 10f));
+        _renderer.materials[0].SetVector(_randomSeed, randomSeed);
+        _renderer.materials[1].SetVector(_randomSeed, randomSeed);
+        
     }
 
     private void Update()
@@ -50,7 +57,7 @@ public class DestroyableCard : MonoBehaviour
         if (_cardText is not null)
         {
             var color = _cardText.color;
-            color.a = 1f - _t;
+            color.a = Mathf.Clamp01((1f - _t) / 2f);
             _cardText.color = color;
         }
 
