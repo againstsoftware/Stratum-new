@@ -48,6 +48,9 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
     private Material _opaqueObverse, _opaqueReverse;
 
     private Color _defaultColor;
+
+    private static float _persistentVerticalOffset = 0f;
+    private static float _persistentIncrement =  0.0007f;
     
     protected override void Awake()
     {
@@ -160,6 +163,12 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
         var size = col.size;
         size.x *= 1.25f;
         col.size = size;
+        
+        //para que 2 cartas de influencia persistentes lado a lado no se overlapeen y causen tearing
+        _mesh.transform.Translate(0f, _persistentVerticalOffset, 0f, Space.World);
+        _persistentVerticalOffset += _persistentIncrement;
+        if (_persistentVerticalOffset is <= 0f or > .007f)
+            _persistentIncrement *= -1f;
     }
 
     private void OnPersistendDiscarded()

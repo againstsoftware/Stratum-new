@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerOrientedCenter : MonoBehaviour
 {
+    public event Action OnRotateToPlayer;
     private void Start()
     {
         var comms = ServiceLocator.Get<ICommunicationSystem>();
@@ -18,5 +19,6 @@ public class PlayerOrientedCenter : MonoBehaviour
         var camPos = cam.transform.position;
         camPos.y = transform.position.y;
         transform.LookAt(camPos);
+        OnRotateToPlayer?.Invoke();
     }
 }
