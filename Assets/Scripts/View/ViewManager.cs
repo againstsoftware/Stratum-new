@@ -73,7 +73,7 @@ public class ViewManager : MonoBehaviour, IView
         // slot.AddCardOnTop(newPlayableCard);
 
         StartCoroutine(AppearCard(card, slot, null, true));
-        
+
         StartCoroutine(DelayCall(callback, 1f)); //de prueba
     }
 
@@ -119,7 +119,7 @@ public class ViewManager : MonoBehaviour, IView
         // slot.AddCardOnTop(newPlayableCard);
 
         StartCoroutine(AppearCard(card, slot, null, true));
-        
+
         StartCoroutine(DelayCall(() => { callback?.Invoke(); }, .5f)); //de prueba
     }
 
@@ -136,8 +136,8 @@ public class ViewManager : MonoBehaviour, IView
 
 
         StartCoroutine(AppearCard(_config.Mushroom, slot, callback, false));
-        
-        
+
+
         // StartCoroutine(DelayCall(() => { callback?.Invoke(); }, .5f)); //de prueba
     }
 
@@ -208,6 +208,40 @@ public class ViewManager : MonoBehaviour, IView
         });
     }
 
+    public void ShowBirds(CardLocation from, CardLocation to, Action callback)
+    {
+        var playerOwner = _players[from.Owner];
+        var slot = playerOwner.Territory.Slots[from.SlotIndex];
+        var card = playerOwner.Territory.Slots[from.SlotIndex].Cards[from.CardIndex];
+
+        var targetOwner = _players[to.Owner];
+        var targetSlot = targetOwner.Territory.Slots[to.SlotIndex];
+
+        var position = card.transform.position;
+        position.y = _config.BirdsPrefab.transform.position.y;
+        var birds = Instantiate(_config.BirdsPrefab, position, Quaternion.identity);
+
+        var targetPos = targetSlot.transform.position;
+        targetPos.y = position.y;
+        birds.transform.LookAt(targetPos);
+        
+        Destroy(birds, 4f);
+            
+        StartCoroutine(DelayCall(callback, .01f));
+    }
+
+    public void ShowFireworks(CardLocation location, Action callback)
+    {
+        var playerOwner = _players[location.Owner];
+        var card = playerOwner.Territory.Slots[location.SlotIndex].Cards[location.CardIndex];
+
+        var fireworks = Instantiate(_config.FireworksPrefab, card.transform.position,
+            _config.FireworksPrefab.transform.rotation);
+        
+        Destroy(fireworks, 6f);
+        StartCoroutine(DelayCall(callback, .6f));
+    }
+
 
     public void PlaceInfluenceOnPopulation(PlayerCharacter actor, AInfluenceCard influenceCard, CardLocation location,
         Action callback, bool isEndOfAction = false)
@@ -255,7 +289,7 @@ public class ViewManager : MonoBehaviour, IView
             while (toBeRemoved.Any())
             {
                 var card = toBeRemoved.Pop();
-                
+
                 DestroyCard(card, slot, null);
             }
         }
@@ -304,7 +338,6 @@ public class ViewManager : MonoBehaviour, IView
         _localPlayer = localPlayer;
         _cameraMovement = cam.GetComponent<CameraMovement>();
     }
-    
 
 
     private void InitPlayers()
@@ -395,7 +428,7 @@ public class ViewManager : MonoBehaviour, IView
         // slot.AddCardAtTheBottom(newPlayableCard);
 
         StartCoroutine(AppearCard(_config.Macrofungi, slot, callback, false));
-        
+
         // yield return new WaitForSeconds(.5f);
         // callback?.Invoke();
     }
@@ -438,12 +471,12 @@ public class ViewManager : MonoBehaviour, IView
 
         bool isMaterialized = false;
         materializableCard.AppearCard(card, () => isMaterialized = true);
-        
+
         yield return new WaitUntil(() => isMaterialized);
 
-        if(onTop) slot.AddCardOnTop(newPlayableCard);
+        if (onTop) slot.AddCardOnTop(newPlayableCard);
         else slot.AddCardAtTheBottom(newPlayableCard);
-        
+
         callback?.Invoke();
     }
 }

@@ -16,6 +16,8 @@ public class GameConfig : ScriptableObject
     [field:SerializeField] public MacrofungiCard Macrofungi { get; private set; }
     
     [field:SerializeField] public PopulationCard[] InitialCards { get; private set; }
+    [field:SerializeField] public GameObject BirdsPrefab { get; private set; }
+    [field:SerializeField] public GameObject FireworksPrefab { get; private set; }
 
     [SerializeField] private AActionItem[] _actionItems;
 

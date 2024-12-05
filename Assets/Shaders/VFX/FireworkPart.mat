@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Particle Pixel Mat
+  m_Name: FireworkPart
   m_Shader: {fileID: -6465566751694194690, guid: 4b15bbc91ac7c5349a8f8a23d1c9cea9, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -59,7 +59,7 @@ Material:
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
-    - _Color: {r: 256, g: 256, b: 256, a: 1}
+    - _Color: {r: 191.74904, g: 191.74904, b: 191.74904, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &4874717220159368605
 MonoBehaviour:

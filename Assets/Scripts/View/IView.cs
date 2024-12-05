@@ -39,6 +39,9 @@ public interface IView : IService
 
     public void MovePopulationToEmptySlot(PlayerCharacter actor, CardLocation from, CardLocation to, Action callback);
 
+    public void ShowBirds(CardLocation from, CardLocation to, Action callback);
+    public void ShowFireworks(CardLocation location, Action callback);
+
     public void PlaceInfluenceOnPopulation(PlayerCharacter actor, AInfluenceCard influenceCard, CardLocation location,
         Action callback, bool isEndOfAction = false);
 

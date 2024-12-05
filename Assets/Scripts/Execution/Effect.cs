@@ -34,5 +34,7 @@ public enum Effect
     RushEcosystemTurn,
     PutLeash,
     FireInTerritory,
+    ShowBirds,
+    ShowFireworks,
     
 }

@@ -40,6 +40,8 @@ public static class EffectCommands
         Effect.ObserveParasite => new ObserveParasite(),
         Effect.RushEcosystemTurn => new RushEcosystemTurn(),
         Effect.FireInTerritory => new FireInTerritory(),
+        Effect.ShowBirds => new ShowBirds(),
+        Effect.ShowFireworks => new ShowFireworks(),
 
         _ => throw new ArgumentOutOfRangeException()
     };
@@ -301,8 +303,50 @@ public static class EffectCommands
                 Owner = targetSlotOwner,
                 SlotIndex = targetSlotIndex
             };
-
+            
             ServiceLocator.Get<IView>().MovePopulationToEmptySlot(action.Actor, from, to, callback);
+        }
+    }
+    
+    public class ShowBirds : IEffectCommand
+    {
+        public void Execute(PlayerAction action, Action callback)
+        {
+            var slotOwner = action.Receivers[0].LocationOwner;
+            var slotIndex = action.Receivers[0].Index;
+            var cardIndex = action.Receivers[0].SecondIndex;
+            var targetSlotOwner = action.Receivers[1].LocationOwner;
+            var targetSlotIndex = action.Receivers[1].Index;
+            var from = new IView.CardLocation
+            {
+                Owner = slotOwner,
+                SlotIndex = slotIndex,
+                CardIndex = cardIndex
+            };
+
+            var to = new IView.CardLocation
+            {
+                Owner = targetSlotOwner,
+                SlotIndex = targetSlotIndex
+            };
+            ServiceLocator.Get<IView>().ShowBirds(from, to, callback);
+        }
+    }
+    
+    public class ShowFireworks : IEffectCommand
+    {
+        public void Execute(PlayerAction action, Action callback)
+        {
+            var slotOwner = action.Receivers[0].LocationOwner;
+            var slotIndex = action.Receivers[0].Index;
+            var cardIndex = action.Receivers[0].SecondIndex;
+            var location = new IView.CardLocation
+            {
+                Owner = slotOwner,
+                SlotIndex = slotIndex,
+                CardIndex = cardIndex
+            };
+            ServiceLocator.Get<IView>().ShowFireworks(location, callback);
         }
     }
 
