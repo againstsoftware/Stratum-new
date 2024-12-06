@@ -7,6 +7,7 @@ public class Radio : AInteractableObject
 {
     [SerializeField] private List<GameObject> _radioWheels;
     [SerializeField] private LobbyInteraction _lobbyInteraction;
+    [SerializeField] private UserInfo _userInfo;
 
     private List<float> _targetRot;
     private List<float> _currentRot;
@@ -43,6 +44,23 @@ public class Radio : AInteractableObject
         }
     }
 
+    public void InitWheels()
+    {
+         _targetRot.Clear();
+        _currentRot.Clear();
+
+        for (int i = 0; i < _radioWheels.Count; i++)
+        {
+            if (_radioWheels[i] != null)
+            {
+                _targetRot.Add(Random.Range(45f, 270f));
+                _currentRot.Add(0f);
+            }
+        }
+
+        _WheelsMoving = true;
+    }
+
     private void RotateWheels(int i)
     {
         float step = Mathf.Min(Time.deltaTime * _rotSpeed, _targetRot[i] - _currentRot[i]); 
@@ -64,33 +82,31 @@ public class Radio : AInteractableObject
     {
         Debug.Log("Crear lobby pulsado");
 
-        if (_lobbyInteraction != null)
-        {
-            _lobbyInteraction.HostButton();
-        }
+        _lobbyInteraction.HostButton();
 
-        _targetRot.Clear();
-        _currentRot.Clear();
-
-        for (int i = 0; i < _radioWheels.Count; i++)
-        {
-            if (_radioWheels[i] != null)
-            {
-                _targetRot.Add(Random.Range(45f, 270f));
-                _currentRot.Add(0f);
-            }
-        }
-
-        _WheelsMoving = true;
+        InitWheels();
+       
     }
 
     public void OnButtonJoinLobby()
     {
-        // Join lobby
-        Debug.Log("Join lobby pulsado");
-
         // te deja escribir en el cuadro de texto (se activa o como lo haga)
         _lobbyInteraction.ClientButton();
+    }
+
+    public void OnButtonMatchMaking()
+    {
+        if(_userInfo.AreCredentialsSet) 
+        {
+            // iniciar matchmaking
+            _lobbyInteraction.MatchmakingButton();
+
+        }
+        else
+        {
+            // llevar a web
+            Application.OpenURL("https://againstsoftware.github.io/Stratum/login/");
+        }
     }
 
 
