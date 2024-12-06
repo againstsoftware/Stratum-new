@@ -19,6 +19,7 @@ public class GameConfig : ScriptableObject
     [field:SerializeField] public GameObject BirdsPrefab { get; private set; }
     [field:SerializeField] public GameObject FireworksPrefab { get; private set; }
     [field:SerializeField] public GameObject DirtPrefab { get; private set; }
+    [field:SerializeField] public GameObject FragrancePrefab { get; private set; }
 
     [SerializeField] private AActionItem[] _actionItems;
 

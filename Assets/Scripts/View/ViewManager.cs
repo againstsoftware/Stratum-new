@@ -258,6 +258,28 @@ public class ViewManager : MonoBehaviour, IView
         StartCoroutine(DelayCall(callback, .6f));
     }
 
+    public void ShowFragrance(CardLocation from, CardLocation to, Action callback)
+    {
+        var cardOwner = _players[from.Owner];
+        var card = cardOwner.Territory.Slots[from.SlotIndex].Cards[from.CardIndex];
+
+        var slotOwner = _players[to.Owner];
+        var slot = slotOwner.Territory.Slots[to.SlotIndex];
+
+        var position = slot.transform.position;
+        position.y = _config.FragrancePrefab.transform.position.y;
+        
+        var fragrance = Instantiate(_config.FragrancePrefab, position, Quaternion.identity);
+
+        var targetPos = card.transform.position;
+        targetPos.y = position.y;
+        fragrance.transform.LookAt(targetPos);
+
+        Destroy(fragrance, 5f);
+
+        StartCoroutine(DelayCall(callback, 1.75f));
+    }
+
 
     public void PlaceInfluenceOnPopulation(PlayerCharacter actor, AInfluenceCard influenceCard, CardLocation location,
         Action callback, bool isEndOfAction = false)
