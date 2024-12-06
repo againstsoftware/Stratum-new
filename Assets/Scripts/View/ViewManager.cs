@@ -101,9 +101,13 @@ public class ViewManager : MonoBehaviour, IView
         StartCoroutine(Draw(cardsDrawn, callback));
     }
 
-    public void SwitchCamToOverview(Action callback)
+    public void SwitchCamToOverview(PlayerCharacter actor, Action callback)
     {
-        _cameraMovement.ChangeToOverview(() => StartCoroutine(DelayCall(callback, .01f)));
+        if (actor == _localPlayer)
+            StartCoroutine(DelayCall(callback, .01f));
+        
+        else
+            _cameraMovement.ChangeToOverview(() => StartCoroutine(DelayCall(callback, .01f)));
     }
 
     public void GrowPopulation(CardLocation location, Population population, Action callback,

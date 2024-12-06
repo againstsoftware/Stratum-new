@@ -134,7 +134,7 @@ public static class EffectCommands
     {
         public void Execute(PlayerAction action, Action callback)
         {
-            ServiceLocator.Get<IView>().SwitchCamToOverview(callback);
+            ServiceLocator.Get<IView>().SwitchCamToOverview(action.Actor, callback);
         }
     }
 

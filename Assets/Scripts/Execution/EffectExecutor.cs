@@ -18,10 +18,10 @@ public class EffectExecutor : IExecutor
 
         var effectsIndex = action.EffectsIndex;
 
-        var effects = action.ActionItem.GetEffects(effectsIndex);
+        var effects = action.ActionItem.GetEffects(effectsIndex).ToArray();
 
-        // if(effects.First() is not Effect.OverviewSwitch)
-        //     EnqueueCommand(new EffectCommands.OverviewSwitch());
+        if(effects.First() is not Effect.OverviewSwitch)
+            EnqueueCommand(new EffectCommands.OverviewSwitch());
         
         foreach (var e in effects) EnqueueCommand(EffectCommands.Get(e));
 
@@ -30,25 +30,25 @@ public class EffectExecutor : IExecutor
         TryExecuteNextCommand();
     }
 
-    public void ExecuteRulesEffects(IEnumerable<Effect> effects, Action rulesCallback)  
+    public void ExecuteRulesEffects(IEnumerable<Effect> effects, Action rulesCallback)
     {
+        _currentAction = default;
+        _currentAction.Actor = PlayerCharacter.None;
+        
         _commandDEQueue = new();
         _rulesCallback = rulesCallback;
-        
-        // if(effects.First() is not Effect.OverviewSwitch)
-        //     EnqueueCommand(new EffectCommands.OverviewSwitch());
-            
+ 
         foreach (var e in effects) EnqueueCommand(EffectCommands.Get(e));
         TryExecuteNextCommand();
     }
 
     public void ExecuteRulesEffects(IEnumerable<IEffectCommand> commands, Action rulesCallback)
     {
+        _currentAction = default;
+        _currentAction.Actor = PlayerCharacter.None;
+
         _commandDEQueue = new();
         _rulesCallback = rulesCallback;
-        
-        // if(commands.First() is not EffectCommands.OverviewSwitch)
-        //     EnqueueCommand(new EffectCommands.OverviewSwitch());
         
         foreach (var c in commands) EnqueueCommand(c);
         TryExecuteNextCommand();

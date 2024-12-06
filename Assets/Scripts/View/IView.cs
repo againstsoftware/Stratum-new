@@ -24,7 +24,7 @@ public interface IView : IService
     public void KillPopulationCardEcosystem(CardLocation location, Action callback);
     public void Discard(PlayerCharacter actor, Action callback);
     public void DrawCards(IReadOnlyDictionary<PlayerCharacter, IReadOnlyList<ACard>> cardsDrawn, Action callback);
-    public void SwitchCamToOverview(Action callback);
+    public void SwitchCamToOverview(PlayerCharacter actor, Action callback);
 
     public void GrowPopulation(CardLocation location, Population population,
         Action callback, bool isEndOfAction = false);

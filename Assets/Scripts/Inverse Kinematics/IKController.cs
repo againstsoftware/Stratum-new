@@ -25,6 +25,11 @@ public class IKCardInteractionController : MonoBehaviour
 
     public float fingersBendAngle = 18.8f; // Ángulo de flexión de los otros dedos (sincronizado para ambas manos)
 
+    
+    [Header("IK Hints")]
+    public Transform RightElbowHint;
+    public Transform LeftElbowHint;
+    
 
     private bool _leftReset, _rightReset;
     private Action _leftResetCallback, _rightResetCallback;
@@ -139,39 +144,47 @@ public class IKCardInteractionController : MonoBehaviour
 
     private void OnAnimatorIK(int layerIndex)
     {
-        if (animator)
+        if (animator is null) return;
+        if (!ikActive)
         {
-            if (ikActive)
-            {
-                // === MANO DERECHA ===
-                if (RightHandTarget != null)
-                {
-                    // Mantener la posición y rotación de la mano derecha fija en el objetivo
-                    animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
-                    animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
-                    animator.SetIKPosition(AvatarIKGoal.RightHand, RightHandTarget.position);
-                    animator.SetIKRotation(AvatarIKGoal.RightHand, RightHandTarget.rotation);
-                }
-
-                // === MANO IZQUIERDA ===
-                if (LeftHandTarget != null)
-                {
-                    // Mantener la posición y rotación de la mano izquierda fija en el objetivo
-                    animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
-                    animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
-                    animator.SetIKPosition(AvatarIKGoal.LeftHand, LeftHandTarget.position);
-                    animator.SetIKRotation(AvatarIKGoal.LeftHand, LeftHandTarget.rotation);
-                }
-
-                // === CONTROL DE DEDOS ===
-                ControlFingers();
-            }
-            else
-            {
-                // === DESACTIVAR IK ===
-                ResetIK();
-            }
+            ResetIK();
+            return;
         }
+
+        // === MANO DERECHA ===
+        if (RightHandTarget != null)
+        {
+            // Mantener la posición y rotación de la mano derecha fija en el objetivo
+            animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
+            animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
+            animator.SetIKPosition(AvatarIKGoal.RightHand, RightHandTarget.position);
+            animator.SetIKRotation(AvatarIKGoal.RightHand, RightHandTarget.rotation);
+        }
+
+        // === MANO IZQUIERDA ===
+        if (LeftHandTarget != null)
+        {
+            // Mantener la posición y rotación de la mano izquierda fija en el objetivo
+            animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
+            animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
+            animator.SetIKPosition(AvatarIKGoal.LeftHand, LeftHandTarget.position);
+            animator.SetIKRotation(AvatarIKGoal.LeftHand, LeftHandTarget.rotation);
+        }
+        
+        if (RightElbowHint != null)
+        {
+            animator.SetIKHintPositionWeight(AvatarIKHint.RightElbow, 1);
+            animator.SetIKHintPosition(AvatarIKHint.RightElbow, RightElbowHint.position);
+        }
+
+        if (LeftElbowHint != null)
+        {
+            animator.SetIKHintPositionWeight(AvatarIKHint.LeftElbow, 1);
+            animator.SetIKHintPosition(AvatarIKHint.LeftElbow, LeftElbowHint.position);
+        }
+
+        // === CONTROL DE DEDOS ===
+        ControlFingers();
     }
 
     private void ControlFingers()
