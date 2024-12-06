@@ -10,7 +10,7 @@ public class Radio : AInteractableObject
 
     private List<float> _targetRot;
     private List<float> _currentRot;
-    private float rotSpeed = 100f;
+    private float _rotSpeed = 100f;
     private bool _WheelsMoving = false;
 
     private void Start()
@@ -32,9 +32,7 @@ public class Radio : AInteractableObject
             {
                 if (_radioWheels[i] != null && (_targetRot[i] - _currentRot[i] > 0.1f))
                 {
-                    float step = Mathf.Min(Time.deltaTime * rotSpeed, _targetRot[i] - _currentRot[i]); 
-                    _radioWheels[i].transform.rotation = Quaternion.AngleAxis(step, Vector3.forward) * _radioWheels[i].transform.rotation;
-                    _currentRot[i] += step;
+                    RotateWheels(i);
                 }
             }
 
@@ -43,6 +41,13 @@ public class Radio : AInteractableObject
                 _WheelsMoving = false;
             }
         }
+    }
+
+    private void RotateWheels(int i)
+    {
+        float step = Mathf.Min(Time.deltaTime * _rotSpeed, _targetRot[i] - _currentRot[i]); 
+        _radioWheels[i].transform.rotation = Quaternion.AngleAxis(step, Vector3.forward) * _radioWheels[i].transform.rotation;
+        _currentRot[i] += step;
     }
 
     private bool AllWheelsStopped()
@@ -83,5 +88,10 @@ public class Radio : AInteractableObject
     {
         // Join lobby
         Debug.Log("Join lobby pulsado");
+
+        // te deja escribir en el cuadro de texto (se activa o como lo haga)
+        _lobbyInteraction.ClientButton();
     }
+
+
 }

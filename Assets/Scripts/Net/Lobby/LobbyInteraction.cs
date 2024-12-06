@@ -71,9 +71,11 @@ public class LobbyInteraction : MonoBehaviour
 
     private void OnClientStartedLocal()
     {
+        /*
         _hostButton.SetActive(false);
         _clientButton.SetActive(false);
         _mmButton.SetActive(false);
         _codeInput.SetActive(false);
+        */
     }
 }
