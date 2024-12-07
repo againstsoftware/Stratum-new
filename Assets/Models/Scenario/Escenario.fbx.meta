@@ -78,7 +78,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Gold.001
-    second: {fileID: 2100000, guid: cfa5032c699b04a419d9a36566e88cc3, type: 2}
+    second: {fileID: 2100000, guid: 9b2e12afb31f52548a5d6690ae98b6d8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -127,11 +127,6 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Patas_Mesa
-    second: {fileID: 2100000, guid: 7519e0f898eecaa4cabc193d547bf9eb, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: Photo
     second: {fileID: 2100000, guid: 6cbb9e7cc79867045b0556b29271fb39, type: 2}
   - first:
@@ -158,7 +153,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Shelf.001
-    second: {fileID: 2100000, guid: 7e931e6d3642c6747b015cc908e598bb, type: 2}
+    second: {fileID: 2100000, guid: 7f8319938fbcbd049b4ff6ecf0cea4ea, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -197,178 +192,138 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: White_Cards
-    second: {fileID: 2100000, guid: 13265bed5a41975429780e9b3a6b1eba, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: Window
     second: {fileID: 2100000, guid: 18b0f25e6be46f04cab89c554ef96b9c, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: AgainstSoftware
-    second: {fileID: 2800000, guid: 6d35ad009ce20384fbd91865ea3ca0ea, type: 3}
+    second: {fileID: 2800000, guid: 3b0cf8652e5be084abde4b05c22da282, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Beam
-    second: {fileID: 2800000, guid: 13724e020676f8b4ca6a4bab12fb0dab, type: 3}
+    second: {fileID: 2800000, guid: e117b3a1eaee002438bebd890b1e28b0, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: BigCandelabra
-    second: {fileID: 2800000, guid: 1982c13905193924bbded2caf9b1f01b, type: 3}
+    second: {fileID: 2800000, guid: e7e648b1a7c3e01428a572588157ca0a, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Book
-    second: {fileID: 2800000, guid: d3e9f230048a21045b44305d26de0590, type: 3}
+    second: {fileID: 2800000, guid: 916f5245b7cdb3449b8a2fae3cdd5282, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Bookshelf
-    second: {fileID: 2800000, guid: 9338d20a860f5a045a626e90a898cc5f, type: 3}
+    second: {fileID: 2800000, guid: 055f42d066f994d4c873f0024c15f4e6, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Clock
-    second: {fileID: 2800000, guid: 9e663725de66f984b99ff64334895aa8, type: 3}
+    second: {fileID: 2800000, guid: c3554c7f6b643c44187ae02b85e7ce6b, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Column
-    second: {fileID: 2800000, guid: aa86d237e60bef0418f7a71d0acf65eb, type: 3}
+    second: {fileID: 2800000, guid: 5f6a3003294d7fe479c4a9e3a3e240d6, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Door
-    second: {fileID: 2800000, guid: 548bd98ec845e2948b6df50f3f778d6b, type: 3}
+    second: {fileID: 2800000, guid: 71298bccce1263141a94090696a43d0e, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Floor
-    second: {fileID: 2800000, guid: 3f175b3ad3505fd4b91249164e743b30, type: 3}
+    second: {fileID: 2800000, guid: 332b1f8a899b47e4eacadcf435d6a367, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Glass
-    second: {fileID: 2800000, guid: 41e306acc9cede5428a8506e833ce9ac, type: 3}
+    second: {fileID: 2800000, guid: 216cb3da6c7f54d4a961fbec4eba6cf9, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Gloria
-    second: {fileID: 2800000, guid: a4d72cbc8309deb438d29c515688b877, type: 3}
+    second: {fileID: 2800000, guid: 9edfb862cfce1cd449ffaeddba1fe317, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Hanger
-    second: {fileID: 2800000, guid: 4816b2ee854010e4186a82e48f425af9, type: 3}
+    second: {fileID: 2800000, guid: 11470c869ff22f3459173d26518539e6, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Lamp1
-    second: {fileID: 2800000, guid: 826b5d2b247c04145940645bb97a37a6, type: 3}
+    second: {fileID: 2800000, guid: b000e1afac3876a42a3b5ac8607f98e5, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Lamp2
-    second: {fileID: 2800000, guid: 9ba02b6a93f465442bbebec2a65bd19f, type: 3}
+    second: {fileID: 2800000, guid: 1d1ee2b28ec632141ad900768f2af2e0, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: MidleCandelabra
-    second: {fileID: 2800000, guid: 54de7870aee5ec740a90d2d1c546cde6, type: 3}
+    second: {fileID: 2800000, guid: c91eb32afb7c94f4a88670249aa08acc, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Shelf
-    second: {fileID: 2800000, guid: 0a40a7b9cd958c34a8b78dea8c862ce6, type: 3}
+    second: {fileID: 2800000, guid: c9d25c61513eaa645bb823bd49e90830, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: SmallCandelabra
-    second: {fileID: 2800000, guid: f589949afc929d946b421fc64735be5a, type: 3}
+    second: {fileID: 2800000, guid: 09db239633d8e9b4283686694f1b9577, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Sofa2
-    second: {fileID: 2800000, guid: a19106c2b50110044b1c0bac47b3dc98, type: 3}
+    second: {fileID: 2800000, guid: 6689765b1c3138940b8f76a2f9b358b4, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Stratum
-    second: {fileID: 2800000, guid: b0053154c486dd5499c89b2a7b15bd4c, type: 3}
+    second: {fileID: 2800000, guid: 57c137d7c8b27c54b885d765bd5916b3, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Velvet
-    second: {fileID: 2800000, guid: 93f58a4548e51df47a6bc761269b82cb, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Wood027_1K-PNG_Color
-    second: {fileID: 2800000, guid: 1d3817d6f8254c0469d091254c5c5984, type: 3}
+    second: {fileID: 2800000, guid: f1026058c7378744195218aa39d1c714, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: carpet
-    second: {fileID: 2800000, guid: fa1a02fd662288a40af0d46bed5b6ccf, type: 3}
+    second: {fileID: 2800000, guid: 96b2db6f178e79a4aa4a5d620a1de783, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: chimney
-    second: {fileID: 2800000, guid: 9195404b4594603498d17ab878f3b283, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: m_alfombra
-    second: {fileID: 2800000, guid: cab51cc5ba6061e4d8101cc2da189519, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: m_pared_papel
-    second: {fileID: 2800000, guid: 84f0ddaa8ec9c6843b01691c4865ea2f, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: m_props
-    second: {fileID: 2800000, guid: f976c122d15dd61499759e71291bf657, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: m_silla_terciopelo
-    second: {fileID: 2800000, guid: 665453d9c0e16ef4490af04af3b9b0de, type: 3}
+    second: {fileID: 2800000, guid: 71b9344dc615d5a4c9b6b7b92698644d, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: pared
-    second: {fileID: 2800000, guid: 927b545be8de7704eabb2010e4b25003, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: reves
-    second: {fileID: 2800000, guid: 65ba9515d289cb54b999f23b077c156c, type: 3}
+    second: {fileID: 2800000, guid: d3912ff8b500f804da20633f2605917b, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: roundcarpet
-    second: {fileID: 2800000, guid: 2ba349c493aa48d4d9ebd91b9a80f6d2, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: tiles_0051_color_1k
-    second: {fileID: 2800000, guid: 017bb96ad25ed334a80718334e3b8490, type: 3}
+    second: {fileID: 2800000, guid: 5e83faa41f5267245af0e32c8c974c42, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: window
-    second: {fileID: 2800000, guid: e2fe76c3b0688034a81a0f8998360bff, type: 3}
+    second: {fileID: 2800000, guid: c6f862bd3a067c641b670ab38123e3a5, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: zapatero_hijas
-    second: {fileID: 2800000, guid: 995eaa199de71df4290a8fe50ba0deea, type: 3}
+    second: {fileID: 2800000, guid: b060a2bcaffc37e41b8789df8cf21e78, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
