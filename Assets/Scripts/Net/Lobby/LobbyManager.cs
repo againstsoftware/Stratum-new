@@ -15,7 +15,6 @@ using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
 using Random = UnityEngine.Random;
 
-
 public class LobbyManager : MonoBehaviour
 {
     [SerializeField] private int _maxConnections;
@@ -45,7 +44,6 @@ public class LobbyManager : MonoBehaviour
         StartCoroutine(CreateorJoinMatchmakingLobbyCoroutine(callback));
     }
 
-
     private IEnumerator StartHostCoroutine(Action<string> callback)
     {
         Task<string> hostTask = StartHostWithRelay();
@@ -58,7 +56,7 @@ public class LobbyManager : MonoBehaviour
         }
         else
         {
-            Debug.Log($"Host Task Canceled or Faulted:  {hostTask.Exception}");
+            Debug.Log($"Host Task Canceled or Faulted: {hostTask.Exception}");
         }
     }
 
@@ -78,11 +76,10 @@ public class LobbyManager : MonoBehaviour
         }
         else
         {
-            Debug.Log($"Client Task Canceled or Faulted:  {clientTask.Exception}");
+            Debug.Log($"Client Task Canceled or Faulted: {clientTask.Exception}");
         }
     }
 
-    // Corrutina para crear una sala de matchmaking
     private IEnumerator CreateorJoinMatchmakingLobbyCoroutine(Action<string> callback)
     {
         Task<string> matchmakingTask = CreateOrJoinMatchmakingLobbyAsync();
@@ -98,7 +95,6 @@ public class LobbyManager : MonoBehaviour
             Debug.LogError($"Matchmaking Task Canceled or Faulted: {matchmakingTask.Exception}");
         }
     }
-
 
     private async Task<string> StartHostWithRelay()
     {
@@ -138,13 +134,17 @@ public class LobbyManager : MonoBehaviour
         AuthenticationService.Instance.SignOut();
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
 
-        var playerId = AuthenticationService.Instance.PlayerId;
         string info = "Client";
         _connectedLobby = await QuickJoinLobby();
         if (_connectedLobby is null)
         {
             info = "Host";
             _connectedLobby = await CreateLobby();
+        }
+
+        if (_connectedLobby != null)
+        {
+            StartMonitoringLobby(_connectedLobby.Id);
         }
 
         return info + ", Lobby ID -> " + _connectedLobby.Id;
@@ -154,11 +154,9 @@ public class LobbyManager : MonoBehaviour
     {
         try
         {
-            // Create a relay allocation and generate a join code to share with the lobby
             var a = await RelayService.Instance.CreateAllocationAsync(_maxConnections);
             var joinCode = await RelayService.Instance.GetJoinCodeAsync(a.AllocationId);
 
-            // Create a lobby, adding the relay join code to the lobby data
             var options = new CreateLobbyOptions
             {
                 Data = new Dictionary<string, DataObject>
@@ -166,14 +164,12 @@ public class LobbyManager : MonoBehaviour
             };
             var lobby = await Lobbies.Instance.CreateLobbyAsync("Useless Lobby Name", _maxConnections, options);
 
-            // Send a heartbeat every 15 seconds to keep the room alive
             StartCoroutine(HeartbeatLobbyCoroutine(lobby.Id, 15));
+            StartMonitoringLobby(lobby.Id);
 
-            // Set the game room to use the relay allocation
             _unityTransport.SetRelayServerData(new RelayServerData(a, "wss"));
             _unityTransport.UseWebSockets = true;
 
-            // Start the room. I'm doing this immediately, but maybe you want to wait for the lobby to fill up
             NetworkManager.Singleton.StartHost();
             Debug.Log("Matchmaking lobby created!");
 
@@ -181,7 +177,7 @@ public class LobbyManager : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.LogFormat("Failed creating a lobby");
+            Debug.LogError("Failed creating a lobby");
             return null;
         }
     }
@@ -190,24 +186,19 @@ public class LobbyManager : MonoBehaviour
     {
         try
         {
-            // Attempt to join a lobby in progress
             var lobby = await Lobbies.Instance.QuickJoinLobbyAsync();
-
-            // If we found one, grab the relay allocation details
             var a = await RelayService.Instance.JoinAllocationAsync(lobby.Data[JoinCodeKey].Value);
 
-            // Set the details to the transform
             _unityTransport.SetRelayServerData(new RelayServerData(a, "wss"));
             _unityTransport.UseWebSockets = true;
 
-            // Join the game room as a client
             NetworkManager.Singleton.StartClient();
             Debug.Log("Matchmaking lobby joined!");
             return lobby;
         }
         catch (Exception e)
         {
-            Debug.Log($"No lobbies available via quick join");
+            Debug.LogError("No lobbies available via quick join");
             return null;
         }
     }
@@ -216,9 +207,8 @@ public class LobbyManager : MonoBehaviour
 {
     while (_connectedLobby != null)
     {
-        // Llamar a una función async y esperar que termine usando UnityWebRequest-like pattern
-        var task = SendHeartbeatAsync(lobbyId);
-        while (!task.IsCompleted) yield return null;
+        Task task = SendHeartbeatAsync(lobbyId);
+        yield return new WaitUntil(() => task.IsCompleted);
 
         if (task.IsFaulted)
         {
@@ -230,16 +220,62 @@ public class LobbyManager : MonoBehaviour
     }
 }
 
-private async Task SendHeartbeatAsync(string lobbyId)
-{
-    try
+
+    private async Task SendHeartbeatAsync(string lobbyId)
     {
-        await Lobbies.Instance.SendHeartbeatPingAsync(lobbyId);
+        try
+        {
+            await Lobbies.Instance.SendHeartbeatPingAsync(lobbyId);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Error sending heartbeat: {e.Message}");
+            throw;
+        }
     }
-    catch (Exception e)
+
+    private async Task MonitorLobbyAsync(string lobbyId, float updateInterval)
     {
-        Debug.LogError($"Error sending heartbeat: {e.Message}");
-        throw; // Lanza el error para que sea manejado en la corrutina
+        while (_connectedLobby != null)
+        {
+            try
+            {
+                _connectedLobby = await GetLobbyStateAsync(lobbyId);
+                UpdatePlayerCount(_connectedLobby);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Failed to fetch lobby state: {e.Message}");
+                break;
+            }
+
+            // Espera asíncrona sin bloqueo (permite que otros procesos se ejecuten mientras esperamos)
+            await Task.Delay(TimeSpan.FromSeconds(updateInterval));
+        }
     }
-}
+
+    private async Task<Lobby> GetLobbyStateAsync(string lobbyId)
+    {
+        try
+        {
+            return await Lobbies.Instance.GetLobbyAsync(lobbyId);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Error fetching lobby state: {e.Message}");
+            throw;
+        }
+    }
+
+
+    private void UpdatePlayerCount(Lobby lobby)
+    {
+        int currentPlayers = lobby.Players.Count;
+        Debug.Log($"Players in lobby: {currentPlayers}/{_maxConnections}");
+    }
+
+    private async void StartMonitoringLobby(string lobbyId)
+    {
+        await MonitorLobbyAsync(lobbyId, 0.5f);
+    }
 }
