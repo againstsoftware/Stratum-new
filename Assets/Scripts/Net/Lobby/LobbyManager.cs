@@ -167,7 +167,7 @@ public class LobbyManager : MonoBehaviour
             var lobby = await Lobbies.Instance.CreateLobbyAsync("Useless Lobby Name", _maxConnections, options);
 
             // Send a heartbeat every 15 seconds to keep the room alive
-            // StartCoroutine(HeartbeatLobbyCoroutine(lobby.Id, 15));
+            StartCoroutine(HeartbeatLobbyCoroutine(lobby.Id, 15));
 
             // Set the game room to use the relay allocation
             _unityTransport.SetRelayServerData(new RelayServerData(a, "wss"));
@@ -211,4 +211,35 @@ public class LobbyManager : MonoBehaviour
             return null;
         }
     }
+
+    private IEnumerator HeartbeatLobbyCoroutine(string lobbyId, float intervalSeconds)
+{
+    while (_connectedLobby != null)
+    {
+        // Llamar a una función async y esperar que termine usando UnityWebRequest-like pattern
+        var task = SendHeartbeatAsync(lobbyId);
+        while (!task.IsCompleted) yield return null;
+
+        if (task.IsFaulted)
+        {
+            Debug.LogError($"Failed to send heartbeat: {task.Exception.Message}");
+            break;
+        }
+
+        yield return new WaitForSeconds(intervalSeconds);
+    }
+}
+
+private async Task SendHeartbeatAsync(string lobbyId)
+{
+    try
+    {
+        await Lobbies.Instance.SendHeartbeatPingAsync(lobbyId);
+    }
+    catch (Exception e)
+    {
+        Debug.LogError($"Error sending heartbeat: {e.Message}");
+        throw; // Lanza el error para que sea manejado en la corrutina
+    }
+}
 }

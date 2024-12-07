@@ -62,10 +62,12 @@ public class LobbyInteraction : MonoBehaviour
     
     private void OnMatchmakingStartedLocal(string info)
     {
+        /*
         _hostButton.SetActive(false);
         _clientButton.SetActive(false);
         _mmButton.SetActive(false);
         _codeInput.SetActive(false);
+        */
         _hostCodeText.text = $"En sala de Matchmaking: {info}";
     }
 

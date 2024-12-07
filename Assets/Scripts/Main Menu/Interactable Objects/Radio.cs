@@ -46,7 +46,7 @@ public class Radio : AInteractableObject
 
     public void InitWheels()
     {
-         _targetRot.Clear();
+        _targetRot.Clear();
         _currentRot.Clear();
 
         for (int i = 0; i < _radioWheels.Count; i++)
@@ -96,7 +96,8 @@ public class Radio : AInteractableObject
 
     public void OnButtonMatchMaking()
     {
-        if(_userInfo.AreCredentialsSet) 
+        // ESTÁ AL REVÉS PARA HACER PRUEBAS!!!!!!!!!!!!!!!!!!!!
+        if(!_userInfo.AreCredentialsSet) 
         {
             // iniciar matchmaking
             _lobbyInteraction.MatchmakingButton();
