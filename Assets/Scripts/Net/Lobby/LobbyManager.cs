@@ -142,10 +142,6 @@ public class LobbyManager : MonoBehaviour
             _connectedLobby = await CreateLobby();
         }
 
-        if (_connectedLobby != null)
-        {
-            StartMonitoringLobby(_connectedLobby.Id);
-        }
 
         return info + ", Lobby ID -> " + _connectedLobby.Id;
     }
@@ -164,15 +160,18 @@ public class LobbyManager : MonoBehaviour
             };
             var lobby = await Lobbies.Instance.CreateLobbyAsync("Useless Lobby Name", _maxConnections, options);
 
-            StartCoroutine(HeartbeatLobbyCoroutine(lobby.Id, 15));
-            StartMonitoringLobby(lobby.Id);
+            StartCoroutine(WaitUntil(() => lobby != null, () =>
+            {
+                StartCoroutine(HeartbeatLobbyCoroutine(lobby.Id, 5f));
+                Debug.Log("HeartbeatLobbyCoroutine started for lobby: " + lobby.Id);
+            }));
 
             _unityTransport.SetRelayServerData(new RelayServerData(a, "wss"));
             _unityTransport.UseWebSockets = true;
 
             NetworkManager.Singleton.StartHost();
             Debug.Log("Matchmaking lobby created!");
-
+            Debug.Log("lobby created: " + lobby);
             return lobby;
         }
         catch (Exception e)
@@ -180,6 +179,12 @@ public class LobbyManager : MonoBehaviour
             Debug.LogError("Failed creating a lobby");
             return null;
         }
+    }
+    private IEnumerator WaitUntil(Func<bool> condition, Action onComplete)
+    {
+        yield return new WaitUntil(condition);
+
+        onComplete?.Invoke();
     }
 
     private async Task<Lobby> QuickJoinLobby()
@@ -204,27 +209,29 @@ public class LobbyManager : MonoBehaviour
     }
 
     private IEnumerator HeartbeatLobbyCoroutine(string lobbyId, float intervalSeconds)
-{
-    while (_connectedLobby != null)
     {
-        Task task = SendHeartbeatAsync(lobbyId);
-        yield return new WaitUntil(() => task.IsCompleted);
-
-        if (task.IsFaulted)
+        while (_connectedLobby != null)
         {
-            Debug.LogError($"Failed to send heartbeat: {task.Exception.Message}");
-            break;
-        }
+            Task task = SendHeartbeatAsync(lobbyId);
+            yield return new WaitUntil(() => task.IsCompleted);
 
-        yield return new WaitForSeconds(intervalSeconds);
+            if (task.IsFaulted)
+            {
+                Debug.LogError($"Failed to send heartbeat: {task.Exception.Message}");
+                break;
+            }
+
+            yield return new WaitForSeconds(intervalSeconds);
+        }
+        Debug.Log("connected lobby: " + _connectedLobby);
     }
-}
 
 
     private async Task SendHeartbeatAsync(string lobbyId)
     {
         try
         {
+            Debug.Log("heartbeat");
             await Lobbies.Instance.SendHeartbeatPingAsync(lobbyId);
         }
         catch (Exception e)
@@ -233,49 +240,5 @@ public class LobbyManager : MonoBehaviour
             throw;
         }
     }
-
-    private async Task MonitorLobbyAsync(string lobbyId, float updateInterval)
-    {
-        while (_connectedLobby != null)
-        {
-            try
-            {
-                _connectedLobby = await GetLobbyStateAsync(lobbyId);
-                UpdatePlayerCount(_connectedLobby);
-            }
-            catch (Exception e)
-            {
-                Debug.LogError($"Failed to fetch lobby state: {e.Message}");
-                break;
-            }
-
-            // Espera asíncrona sin bloqueo (permite que otros procesos se ejecuten mientras esperamos)
-            await Task.Delay(TimeSpan.FromSeconds(updateInterval));
-        }
-    }
-
-    private async Task<Lobby> GetLobbyStateAsync(string lobbyId)
-    {
-        try
-        {
-            return await Lobbies.Instance.GetLobbyAsync(lobbyId);
-        }
-        catch (Exception e)
-        {
-            Debug.LogError($"Error fetching lobby state: {e.Message}");
-            throw;
-        }
-    }
-
-
-    private void UpdatePlayerCount(Lobby lobby)
-    {
-        int currentPlayers = lobby.Players.Count;
-        Debug.Log($"Players in lobby: {currentPlayers}/{_maxConnections}");
-    }
-
-    private async void StartMonitoringLobby(string lobbyId)
-    {
-        await MonitorLobbyAsync(lobbyId, 0.5f);
-    }
+    
 }
