@@ -54,7 +54,7 @@ public abstract class ACard : AActionItem
         var p = ServiceLocator.Get<IModel>().GetPlayer(action.Actor);
         if (!p.HandOfCards.Contains(this))
         {
-            Debug.Log($"rechazada porque la carta no esta en la mano del model");
+            // Debug.Log($"rechazada porque la carta no esta en la mano del model");
             feedbackKey = "fatal_error";
             return false;
         }
@@ -68,7 +68,7 @@ public abstract class ACard : AActionItem
             if (owner == action.Actor) return true;
             
             feedbackKey = "fatal_error";
-            Debug.Log("rechazada porque la pila de descarte no es del que jugo la carta!");
+            // Debug.Log("rechazada porque la pila de descarte no es del que jugo la carta!");
             return false;
         }
 

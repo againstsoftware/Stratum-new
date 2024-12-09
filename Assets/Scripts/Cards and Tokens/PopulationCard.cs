@@ -23,7 +23,7 @@ public class PopulationCard : ACard
         if (action.Receivers[0].Location is not ValidDropLocation.OwnerSlot)
         {
             feedbackKey = "foreign_slot";
-            Debug.Log($"rechazada porque la carta de poblacion se jugo en {action.Receivers[0].Location}");
+            // Debug.Log($"rechazada porque la carta de poblacion se jugo en {action.Receivers[0].Location}");
             return false;
         }
 
@@ -31,7 +31,7 @@ public class PopulationCard : ACard
         if (slotOwner != action.Actor)
         {
             feedbackKey = "foreign_slot";
-            Debug.Log("rechazada porque el slot no es del que jugo la carta de poblacion!");
+            // Debug.Log("rechazada porque el slot no es del que jugo la carta de poblacion!");
             return false;
         }
 
@@ -39,7 +39,7 @@ public class PopulationCard : ACard
                 .PlacedCards.Count != 0)
         {
             feedbackKey = "foreign_slot";
-            Debug.Log("rechazada porque el slot donde se jugo la carta de poblacion no esta vacio");
+            // Debug.Log("rechazada porque el slot donde se jugo la carta de poblacion no esta vacio");
             return false;
         }
 

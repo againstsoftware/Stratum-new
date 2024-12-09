@@ -186,15 +186,15 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         if (CurrentState is not IInteractionSystem.State.Idle)
         {
             Debug.Log($"el IM no esta en idle, esta en {CurrentState}");
-
-            if (_draggingItem is not null)
-            {
-                CurrentState = IInteractionSystem.State.Idle;
-                _draggingItem.OnDragCancel();
-                if (!_draggingItem.OnlyVisibleOnOverview) _cameraMovement.ChangeToDefault();
-                _draggingItem = null;
-                return;
-            }
+            //
+            // if (_draggingItem is not null)
+            // {
+            //     CurrentState = IInteractionSystem.State.Idle;
+            //     _draggingItem.OnDragCancel();
+            //     if (!_draggingItem.OnlyVisibleOnOverview) _cameraMovement.ChangeToDefault();
+            //     _draggingItem = null;
+            //     return;
+            // }
             
             return;
             
