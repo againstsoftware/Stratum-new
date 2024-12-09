@@ -11,7 +11,8 @@ public class CameraMovement : MonoBehaviour
     {
         Default,
         Overview,
-        Transitioning
+        TransitioningToDefault,
+        TransitioningToOverview
     }
 
     private CameraState _currentState = CameraState.Default;
@@ -37,7 +38,8 @@ public class CameraMovement : MonoBehaviour
 
     private void UpdateCameraTransition()
     {
-        if (_currentState != CameraState.Transitioning) return;
+        if (_currentState != CameraState.TransitioningToDefault &&
+            _currentState != CameraState.TransitioningToOverview) return;
 
         // Use Mathf.Clamp01 to prevent potential floating-point precision issues
         _transitionProgress = Mathf.Clamp01(_transitionProgress + Time.deltaTime / _transitionDuration);
@@ -86,22 +88,26 @@ public class CameraMovement : MonoBehaviour
 
     public void ChangeToOverview(Action Callback = null)
     {
-        StartTransition(_overviewTransform.position, _overviewTransform.rotation, Callback);
+        StartTransition(_overviewTransform.position, _overviewTransform.rotation, Callback, CameraState.TransitioningToOverview);
     }
 
     public void ChangeToDefault(Action Callback = null)
     {
-        StartTransition(_defaultTransform.position, _defaultTransform.rotation, Callback);
+        StartTransition(_defaultTransform.position, _defaultTransform.rotation, Callback, CameraState.TransitioningToDefault);
     }
 
-    private void StartTransition(Vector3 TargetPos, Quaternion TargetRot, Action Callback)
+    private void StartTransition(Vector3 TargetPos, Quaternion TargetRot, Action Callback, CameraState state)
     {
+        if (_currentState == state) return;
+        
         // If already transitioning, capture current interpolated position as new start
-        if (_currentState == CameraState.Transitioning)
+        else if (_currentState is CameraState.TransitioningToDefault ||
+            _currentState is CameraState.TransitioningToOverview)
         {
             _startPosition = transform.position;
             _startRotation = transform.rotation;
         }
+        
         else
         {
             _startPosition = _currentState == CameraState.Default 
@@ -116,7 +122,7 @@ public class CameraMovement : MonoBehaviour
         _targetPosition = TargetPos;
         _targetRotation = TargetRot;
         _transitionProgress = 0f;
-        _currentState = CameraState.Transitioning;
+        _currentState = state;
         
         // Set callback
         _onTransitionCompleteCallback = Callback;

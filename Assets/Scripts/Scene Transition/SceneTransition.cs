@@ -58,7 +58,6 @@ public class SceneTransition : MonoBehaviour
         if (_animator.enabled) _animator.enabled = false;
         var color = _fadeImg.color;
         color.a = opacity;
-        Debug.Log(opacity);
         _fadeImg.color = color;
     }
 
