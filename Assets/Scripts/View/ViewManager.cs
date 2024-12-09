@@ -280,6 +280,20 @@ public class ViewManager : MonoBehaviour, IView
         StartCoroutine(DelayCall(callback, 1.75f));
     }
 
+    public void SpinTurnMarker(Action callback)
+    {
+        var turnMarker = FindObjectOfType<TurnMarker>();
+        var onTurn = ServiceLocator.Get<ITurnSystem>().PlayerOnTurn;
+        turnMarker.OnTurnChanged(PlayerCharacter.None);
+        StartCoroutine(DelayCall(callback, .01f));
+
+        StartCoroutine(DelayCall(() =>
+        {
+            if(turnMarker.CurrentState is TurnMarker.State.Spinning)
+                turnMarker.OnTurnChanged(onTurn);
+        }, 1.2f));
+    }
+
 
     public void PlaceInfluenceOnPopulation(PlayerCharacter actor, AInfluenceCard influenceCard, CardLocation location,
         Action callback, bool isEndOfAction = false)

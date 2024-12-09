@@ -808,6 +808,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _arrowPivot: {fileID: 2018598242977115113}
   _rotationDuration: 1
+  _spinningSpeed: -600
 --- !u!4 &2018598242977115113 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 372578528363410442, guid: 79f369ab87c909e4e85e61d0cc93cafd, type: 3}

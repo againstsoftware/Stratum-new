@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class TurnMarker : MonoBehaviour
 {
+    public enum State { Idle, Turning, Spinning }
+    public State CurrentState { get; private set; }
+
+    
     [SerializeField] private Transform _arrowPivot;
     [SerializeField] private float _rotationDuration = .25f;
+    [SerializeField] private float _spinningSpeed;
     private Quaternion _defaultRot;
     private float _defaultAngle;
-    private bool _isRotating;
+
+    
     private float _t;
     private Quaternion _initialRot, _targetRot;
 
@@ -26,16 +32,30 @@ public class TurnMarker : MonoBehaviour
 
     private void Update()
     {
-        if (!_isRotating) return;
-
-        _t += Time.deltaTime / _rotationDuration;
-        _arrowPivot.rotation = Quaternion.Lerp(_initialRot, _targetRot, _t);
-
-        if (_t >= 1f)
+        switch (CurrentState)
         {
-            _isRotating = false;
-            _arrowPivot.rotation = _targetRot;
+            case State.Idle:
+                break;
+            
+            case State.Turning:
+                _t += Time.deltaTime / _rotationDuration;
+                _arrowPivot.rotation = Quaternion.Lerp(_initialRot, _targetRot, _t);
+
+                if (_t >= 1f)
+                {
+                    CurrentState = State.Idle;
+                    _arrowPivot.rotation = _targetRot;
+                }
+                break;
+            
+            case State.Spinning:
+                _arrowPivot.Rotate(Vector3.up, _spinningSpeed * Time.deltaTime);
+                break;
+
         }
+        
+
+
     }
 
     private void OnRotateToPlayer()
@@ -43,14 +63,18 @@ public class TurnMarker : MonoBehaviour
         transform.rotation = _defaultRot;
     }
 
-    private void OnTurnChanged(PlayerCharacter player)
+    public void OnTurnChanged(PlayerCharacter player)
     {
-        if (player is PlayerCharacter.None) return;
+        if (player is PlayerCharacter.None)
+        {
+            CurrentState = State.Spinning;
+            return;
+        }
 
+        CurrentState = State.Turning;
         _initialRot = _arrowPivot.rotation;
         _targetRot = Quaternion.AngleAxis(GetAngle(player), Vector3.up);
         _t = 0f;
-        _isRotating = true;
     }
 
     private float GetAngle(PlayerCharacter player) => player switch

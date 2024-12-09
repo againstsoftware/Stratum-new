@@ -745,6 +745,7 @@ public static class EffectCommands
         {
             var ecosystemEffects = RulesCheck.CheckEcosystem();
             ecosystemEffects.Reverse();
+            ServiceLocator.Get<IView>().SpinTurnMarker(null);
             foreach (var effect in ecosystemEffects)
                 ServiceLocator.Get<IExecutor>().PushDelayedCommand(Get(effect));
             callback?.Invoke();
