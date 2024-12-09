@@ -239,5 +239,5 @@ public class LobbyManager : MonoBehaviour
             throw;
         }
     }
-    
+
 }
