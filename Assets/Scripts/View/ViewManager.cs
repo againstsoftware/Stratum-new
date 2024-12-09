@@ -279,6 +279,29 @@ public class ViewManager : MonoBehaviour, IView
 
         StartCoroutine(DelayCall(callback, 1.75f));
     }
+    
+    public void ShowAppetizingMushroom(CardLocation from, CardLocation to, Action callback)
+    {
+        var cardOwner = _players[from.Owner];
+        var card = cardOwner.Territory.Slots[from.SlotIndex].Cards[from.CardIndex];
+
+        var slotOwner = _players[to.Owner];
+        var slot = slotOwner.Territory.Slots[to.SlotIndex];
+
+        var position = slot.transform.position;
+        position.y = _config.FragrancePrefab.transform.position.y;
+        
+        var appMush = Instantiate(_config.AppetizingMushroomPrefab, position, Quaternion.identity);
+
+        var targetPos = card.transform.position;
+        targetPos.y = position.y;
+        appMush.transform.LookAt(targetPos);
+
+        Destroy(appMush, 5f);
+
+        StartCoroutine(DelayCall(callback, 1.75f));
+    }
+
 
     public void SpinTurnMarker(Action callback)
     {

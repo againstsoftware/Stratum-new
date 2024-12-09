@@ -38,5 +38,6 @@ public enum Effect
     ShowFireworks,
     ShowDirt,
     ShowFragrance,
+    ShowAppetizingMushroom,
     
 }

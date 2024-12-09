@@ -44,6 +44,7 @@ public static class EffectCommands
         Effect.ShowFireworks => new ShowFireworks(),
         Effect.ShowDirt => new ShowDirt(),
         Effect.ShowFragrance => new ShowFragrance(),
+        Effect.ShowAppetizingMushroom => new ShowAppetizingMushroom(),
 
         _ => throw new ArgumentOutOfRangeException()
     };
@@ -389,6 +390,31 @@ public static class EffectCommands
                 SlotIndex = targetSlotIndex
             };
             ServiceLocator.Get<IView>().ShowFragrance(from, to, callback);
+        }
+    }
+    
+    public class ShowAppetizingMushroom : IEffectCommand
+    {
+        public void Execute(PlayerAction action, Action callback)
+        {
+            var slotOwner = action.Receivers[0].LocationOwner;
+            var slotIndex = action.Receivers[0].Index;
+            var cardIndex = action.Receivers[0].SecondIndex;
+            var targetSlotOwner = action.Receivers[1].LocationOwner;
+            var targetSlotIndex = action.Receivers[1].Index;
+            var from = new IView.CardLocation
+            {
+                Owner = slotOwner,
+                SlotIndex = slotIndex,
+                CardIndex = cardIndex
+            };
+
+            var to = new IView.CardLocation
+            {
+                Owner = targetSlotOwner,
+                SlotIndex = targetSlotIndex
+            };
+            ServiceLocator.Get<IView>().ShowAppetizingMushroom(from, to, callback);
         }
     }
 

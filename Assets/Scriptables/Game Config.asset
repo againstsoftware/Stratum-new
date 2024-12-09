@@ -27,6 +27,7 @@ MonoBehaviour:
   <FireworksPrefab>k__BackingField: {fileID: 1555619401500859919, guid: 828b085bd02f51c40aa1ec86e1def307, type: 3}
   <DirtPrefab>k__BackingField: {fileID: 5790008542440436955, guid: e6e3979d32bd27b49a6254b385d0f731, type: 3}
   <FragrancePrefab>k__BackingField: {fileID: 4655658388260595800, guid: 868cc95257a0c5a408b0d0593b357298, type: 3}
+  <AppetizingMushroomPrefab>k__BackingField: {fileID: 7374527982258540577, guid: 55f2d3e990b791a4686affa4ef278495, type: 3}
   _actionItems:
   - {fileID: 11400000, guid: 6181fded5cad13a4faf491db26c1a0de, type: 2}
   - {fileID: 11400000, guid: cb4d7773b65c8644791d211c81c30775, type: 2}

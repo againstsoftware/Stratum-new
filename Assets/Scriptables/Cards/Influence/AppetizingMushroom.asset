@@ -23,9 +23,9 @@ MonoBehaviour:
   - ValidAction:
       <DropLocation>k__BackingField: 4
       <Receivers>k__BackingField: 01000000
-    Effects: 0d0000000e000000
+    Effects: 0d000000250000000e000000
   - ValidAction:
       <DropLocation>k__BackingField: 5
       <Receivers>k__BackingField: 0400000001000000
-    Effects: 0d0000000e000000
+    Effects: 0d000000250000000e000000
   <IsPersistent>k__BackingField: 0
