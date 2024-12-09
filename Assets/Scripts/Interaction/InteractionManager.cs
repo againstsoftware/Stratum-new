@@ -30,9 +30,9 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
 
     [SerializeField] private float _dragCardHeight = .2f;
     [SerializeField] private float _dragCardSpeed = .2f;
-
+    [SerializeField] private float _dragEnableTime = .5f;
     [SerializeField] private GameConfig _config;
-
+    
 
     private InputAction _pointerPosAction;
 
@@ -53,6 +53,9 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     private IActionReceiver[] _allReceivers;
 
     private int _actionsLeft;
+
+    private float _draggingTimer;
+    private bool _canDrag = true;
 
 
     #region Callbacks
@@ -111,8 +114,13 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
                 // _dragItemTransform.position = newPos;
                 _dragItemTransform.position = Vector3.MoveTowards(_dragItemTransform.position, newPos,
                     _dragCardSpeed * Time.deltaTime);
+
+                _draggingTimer += Time.deltaTime;
+                if (_draggingTimer < _dragEnableTime) return;
+                
                 _dropLocationCheckTimer += Time.deltaTime;
                 if (_dropLocationCheckTimer < _dropLocationCheckPeriod) return;
+                
                 _dropLocationCheckTimer = 0f;
                 CheckDropLocations();
                 break;
@@ -174,10 +182,22 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
 
     public void DragPlayableItem(APlayableItem item)
     {
+        if (!_canDrag) return;
         if (CurrentState is not IInteractionSystem.State.Idle)
         {
             Debug.Log($"el IM no esta en idle, esta en {CurrentState}");
+
+            if (_draggingItem is not null)
+            {
+                CurrentState = IInteractionSystem.State.Idle;
+                _draggingItem.OnDragCancel();
+                if (!_draggingItem.OnlyVisibleOnOverview) _cameraMovement.ChangeToDefault();
+                _draggingItem = null;
+                return;
+            }
+            
             return;
+            
         }
 
         if (item.CurrentState is not APlayableItem.State.Playable)
@@ -194,12 +214,17 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
 
         if (item != SelectedInteractable as APlayableItem)
         {
-            throw new Exception("drag called with non selected item!");
+            Debug.Log("drag called with non selected item!");
+            return;
         }
 
+        _canDrag = false;
+        Invoke(nameof(ResetCanDrag), _dragEnableTime);
+        
         _draggingItem = item;
         item.OnDrag();
         CurrentState = IInteractionSystem.State.Dragging;
+        _draggingTimer = 0f;
         _dragItemTransform = item.transform;
         // _screenOffsetOnDrag = _cam.WorldToScreenPoint(_dragItemTransform.position) - _screenPointerPosition;
         // _screenOffsetOnDrag.z = _itemCamOffsetOnDrag;
@@ -230,6 +255,8 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         }
         
     }
+
+    private void ResetCanDrag() => _canDrag = true;
 
     public void DropPlayableItem(APlayableItem item)
     {
