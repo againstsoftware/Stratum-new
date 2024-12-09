@@ -20,6 +20,11 @@ public class LobbyNetwork : NetworkBehaviour
             NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
             NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnected;
         }
+
+        if(IsClient)
+        {
+            NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnectedCheckIfHost;
+        }
         
         _playerCount.OnValueChanged += OnPlayerCountChanged;
         
@@ -36,6 +41,23 @@ public class LobbyNetwork : NetworkBehaviour
         _playerCount.OnValueChanged -= OnPlayerCountChanged;
         
         base.OnNetworkDespawn();
+    }
+
+    private void OnClientDisconnectedCheckIfHost(ulong clientID)
+    {
+        Debug.Log("OnclientdisconnectedCheckIfHost");
+        if(IsClient)
+        {
+            if(clientID == NetworkManager.ServerClientId)
+            {
+                HandleHostDisconnection();
+            }
+        }
+    }
+
+    private void HandleHostDisconnection()
+    {
+        Debug.Log("host desconetaod");
     }
 
     private void OnClientConnected(ulong clientID)

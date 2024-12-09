@@ -142,7 +142,6 @@ public class LobbyManager : MonoBehaviour
             _connectedLobby = await CreateLobby();
         }
 
-
         return info + ", Lobby ID -> " + _connectedLobby.Id;
     }
 

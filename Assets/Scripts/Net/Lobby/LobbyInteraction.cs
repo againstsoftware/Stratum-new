@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -69,6 +70,7 @@ public class LobbyInteraction : MonoBehaviour
         _codeInput.SetActive(false);
         */
         _hostCodeText.text = $"En sala de Matchmaking: {info}";
+        Debug.Log("isHost: " + NetworkManager.Singleton.IsHost);
     }
 
     private void OnClientStartedLocal()
