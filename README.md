@@ -437,21 +437,21 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
   Cada uno de los personajes será representado con **modelos 3D de baja resolución** que mantendrán características distintivas de sus facciones, mientras que sus detalles principales se concentrarán en las siluetas y colores característicos.
   ## Sagitario
 
-  **Facción**: Naturaleza  
-  **Rol**: Protector de la fauna / Guardián de las bestias  
+  **Facción**: naturaleza  
+  **Rol**: protector de la fauna / Guardián de las bestias  
 
   ## Descripción Física
-  - **Edad**: Eterno, pero aparenta unos 30 años  
+  - **Edad**: eterno, pero aparenta unos 30 años  
   - **Altura**: 2.10 m  
-  - **Complexión**: Fuerte y atlética, con una figura estilizada y elegante  
+  - **Complexión**: fuerte y atlética, con una figura estilizada y elegante  
   - **Rasgos físicos**: Sagitario tiene una presencia majestuosa, con rasgos faciales afilados y ojos dorados que reflejan sabiduría y ferocidad. Sus orejas son puntiagudas, y tiene cuernos que se curvan hacia atrás, reminiscentes de una cabra.  
-  - **Vestimenta**: Su tren superior está recubierto por hojas de los árboles del bosque. Lleva una lanza imbuida con la esencia de las criaturas del bosque; la punta es de piedra lunar y brilla ligeramente en la oscuridad.  
+  - **Vestimenta**: su tren superior está recubierto por hojas de los árboles del bosque. Lleva una lanza imbuida con la esencia de las criaturas del bosque; la punta es de piedra lunar y brilla ligeramente en la oscuridad.  
 
   ## Personalidad
   - **Ferozmente protector**: Sagitario es el defensor absoluto de todas las criaturas de Sylveria. Está dispuesto a luchar hasta el final para proteger el equilibrio natural, y su instinto protector es tan salvaje como los animales que cuida.  
-  - **Conexión primitiva**: Tiene una conexión profunda y casi mística con la fauna, lo que le permite comunicarse con los animales, entender sus necesidades y sentir su dolor. Esta habilidad le permite liderar ejércitos de bestias cuando es necesario.  
-  - **Sabiduría ancestral**: Aunque es temible en la batalla, Sagitario es también una figura sabia y reflexiva. Su conocimiento de la naturaleza es vasto, y siempre busca armonía antes que conflicto, aunque no dudará en usar la fuerza si el equilibrio está amenazado.  
-  - **Desconfianza hacia la humanidad**: Después de ver cómo la humanidad explota y destruye el entorno, Sagitario ha desarrollado una actitud distante y cautelosa hacia los humanos, especialmente aquellos que buscan explotar la naturaleza para su propio beneficio.  
+  - **Conexión primitiva**: tiene una conexión profunda y casi mística con la fauna, lo que le permite comunicarse con los animales, entender sus necesidades y sentir su dolor. Esta habilidad le permite liderar ejércitos de bestias cuando es necesario.  
+  - **Sabiduría ancestral**: aunque es temible en la batalla, Sagitario es también una figura sabia y reflexiva. Su conocimiento de la naturaleza es vasto, y siempre busca armonía antes que conflicto, aunque no dudará en usar la fuerza si el equilibrio está amenazado.  
+  - **Desconfianza hacia la humanidad**: después de ver cómo la humanidad explota y destruye el entorno, Sagitario ha desarrollado una actitud distante y cautelosa hacia los humanos, especialmente aquellos que buscan explotar la naturaleza para su propio beneficio.  
 
   ## Historia
   Nacido del corazón del bosque de Sylveria, Sagitario es un ente creado por el poder mismo de la naturaleza. Surgió cuando las bestias se unieron para pedir protección contra la creciente amenaza humana. Durante siglos, ha sido el guardián silencioso de las criaturas del bosque, vigilando desde las sombras y actuando solo cuando es absolutamente necesario.
@@ -459,9 +459,9 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
   Con la llegada de *El Magnate* y su sed de dominación industrial, Sagitario se ha visto obligado a abandonar su papel como observador pasivo para tomar acción directa. Ahora, lidera la resistencia de la naturaleza contra la invasión industrial, utilizando su conocimiento del terreno y su conexión con las bestias para enfrentarse a las máquinas de El Magnate.
 
   ## Motivaciones
-  - **Proteger a Sylveria**: La misión principal de Sagitario es asegurar que el equilibrio natural de Sylveria se mantenga intacto, haciendo todo lo posible para evitar que los humanos destruyan el hogar de las criaturas que ha jurado proteger.
+  - **Proteger a Sylveria**: la misión principal de Sagitario es asegurar que el equilibrio natural de Sylveria se mantenga intacto, haciendo todo lo posible para evitar que los humanos destruyan el hogar de las criaturas que ha jurado proteger.
   - **Restaurar el equilibrio**: Sagitario no solo quiere detener la industrialización; también sueña con revertir el daño que se ha hecho. Desea un Sylveria donde la naturaleza pueda florecer sin interferencias externas, donde cada criatura tenga un lugar seguro.
-  - **Venganza contra los explotadores**: Aunque prefiere la paz, la furia de Sagitario se desata contra aquellos que buscan explotar el mundo natural. No muestra misericordia hacia los cazadores, taladores o cualquiera que amenace la vida silvestre de Sylveria.
+  - **Venganza contra los explotadores**: aunque prefiere la paz, la furia de Sagitario se desata contra aquellos que buscan explotar el mundo natural. No muestra misericordia hacia los cazadores, taladores o cualquiera que amenace la vida silvestre de Sylveria.
   
   ## Referencias
 
@@ -471,31 +471,58 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
   ![Sagitario](/Readme%20Files/Arte/Sagitario.png)
 
   ## Ygdra
-  Diosa del bosque.
+  **Facción**: naturaleza
+  **Rol**: guardiana de las plantas, espíritu protector del bosque.
+
+  ## Descripción Física
+  - **Edad**: eterna, con la apariencia de una mujer joven de unos 25.
+	- **Altura**: 1.80m
+	- **Complexión**: esbelta, alargada.
+  - **Rasgos físicos**: Ygdra tiene una piel con un tono verdoso luminoso, como si estuviera impregnada de clorofila. Su cabello, largo y liso con dos coletas está formado por hojas y flores silvestres que cambian según las estaciones. Sus ojos tienen el verde intenso con pestañas de color morado, igual que sus labios.
+  -	**Vestimenta**: su vestimenta está compuesta por raíces y lianas que envuelven su cuerpo de manera natural. Lleva un manto de pétalos de flores.
+
+  ## Personalidad 
+	- **Serenidad inquebrantable**: Ygdra es un espíritu calmado, que siempre busca equilibrio y armonía en sus decisiones. Su conexión con la naturaleza le permite mantener la compostura incluso en los momentos más críticos, actuando como un faro de estabilidad para aquellos que la rodean.
+  - **Sabiduría ancestral**: su existencia milenaria le ha otorgado un profundo conocimiento de los ciclos naturales y la interacción entre las especies. Habla con una voz tranquila y melódica, que transmite calma y confianza. Es conocida por sus consejos reflexivos y estratégicos.
+	- **Empatía innata**: Ygdra siente una conexión intrínseca con todas las formas de vida en Sylveria. Su empatía no se limita a las plantas, sino que abarca a los animales y otros guardianes, a quienes considera parte esencial del ciclo vital.
+  - **Determinación férrea**: aunque su naturaleza es pacífica, Ygdra no dudará en actuar con contundencia si el equilibrio del bosque está en peligro. Sus raíces pueden ser dulces como un susurro o implacables como una tormenta.
+
+  ## Historia
+  Desde que Sylveria echó raíces, Ygdra ha sido su corazón latente, cuidando de las plantas que forman la base del ecosistema. Nacida del primer brote que surgió en el bosque, se convirtió en la guardiana de la flora, asegurándose de que cada hoja y cada flor cumpla su propósito en el ciclo de la vida.
+  Durante siglos, Ygdra vivió en armonía con Sagitario, trabajando juntos para mantener el equilibrio del bosque. Sin embargo, la llegada de Fu’ngaloth y la expansión del reino micelial significaron una amenaza silenciosa para las plantas, y más tarde, la aparición de El Magnate trajo consigo una devastación más rápida y brutal. Ygdra, que siempre había actuado desde las sombras, se vio obligada a manifestarse para proteger su hogar.
+  Ahora, con el juego de Stratum dictando el destino de Sylveria, Ygdra lidera la lucha por el equilibrio, utilizando su profunda conexión con las plantas para contrarrestar las amenazas que buscan dominar el bosque.
+
+  ## Motivaciones
+  - **Preservar Sylveria**: Ygdra desea proteger las raíces de Sylveria y evitar que sean destruidas o corrompidas por fuerzas externas.
+  - **Restaura el equilibrio**: cree en la importancia de un ecosistema balanceado, donde plantas, herbívoros y carnívoros coexistan en armonía.
+	- **Detener la industria**: ve la industrialización como la mayor amenaza para la vida del bosque y se opone ferozmente a sus avances destructivos.
+	- **Resistir la corrupción**: Ygdra lucha contra la expansión de Fu’ngaloth, evitando que el reino fúngico asimile las plantas y rompa el equilibrio que ella protege.
 
   ## Referencias
 
   ![Ygdra1](/Readme%20Files/Arte/Imagen17.jpg)  
   ![Ygdra2](/Readme%20Files/Arte/Imagen18.jpg)  
-  ![Ygdra3](/Readme%20Files/Arte/Imagen19.jpg)  
+  ![Ygdra3](/Readme%20Files/Arte/Imagen19.jpg)
+  ## Modelo Final
+  ![Ygdra](/Readme%20Files/Arte/Ygdra.png)
 
   ## El Magnate
-  **Facción**: Industria  
-  **Rol**: Líder de la industria / Visionario corporativo  
+  **Facción**: industria  
+  **Rol**: líder de la industria / visionario corporativo  
 
   ## Descripción Física
   - **Edad**: 55 años  
   - **Altura**: 1.65 m  
-  - **Complexión**: Corpulento, de figura redondeada  
+  - **Complexión**: corpulento, de figura redondeada  
   - **Rasgos físicos**: El Magnate es un individuo de tez pálida, con una nariz prominente y un bigote característico. Su cabello, de tonos blancos y grises, está peinado hacia atrás.  
-  - **Vestimenta**: Siempre utiliza trajes industriales hechos a medida en tonos oscuros, como gris metálico o negro. Lleva un sombrero de copa, un monóculo y un bastón, del que depende ligeramente al caminar.  
+  - **Vestimenta**: siempre utiliza trajes industriales hechos a medida en tonos oscuros, como gris metálico o negro. Lleva un sombrero de copa, un monóculo y un bastón, del que depende ligeramente al caminar.  
 
   ## Personalidad
-  - **Ambición desmedida**: Movido por el deseo de control absoluto, El Magnate ve la naturaleza solo como un recurso que debe ser aprovechado. No se detendrá ante nada para imponer su visión de progreso.  
-  - **Carisma frío**: Aunque es implacable, posee una presencia magnética que atrae a aquellos que buscan poder y éxito. Manipula y convence con facilidad, mostrando gran habilidad para persuadir en sus discursos y propuestas.  
-  - **Visionario**: Cree firmemente en el avance de la tecnología y la industrialización como el futuro inevitable. Para él, la eficiencia y el orden son esenciales, y considera que la naturaleza es un obstáculo que debe ser superado.  
-  - **Desprecio por la naturaleza**: No siente odio por la naturaleza, sino que la considera irrelevante en su visión de progreso. Para él, los árboles, ríos y animales representan barreras arcaicas. La preocupación de otros hacia la naturaleza le parece una debilidad sentimental.  
-  - **Maquinador**: Aunque no tiene problema en aliarse temporalmente con otras facciones, siempre planea traicionarlas cuando ya no le son útiles.  
+  - **Ambición desmedida**: movido por el deseo de control absoluto, El Magnate ve la naturaleza solo como un recurso que debe ser aprovechado. No se detendrá ante nada para imponer su visión de progreso.  
+  - **Carisma frío**: aunque es implacable, posee una presencia magnética que atrae a aquellos que buscan poder y éxito. Manipula y convence con facilidad, mostrando gran habilidad para persuadir en sus discursos y propuestas.  
+  - **Visionario**: cree firmemente en el avance de la tecnología y la industrialización como el futuro inevitable. Para él, la eficiencia y el orden son esenciales, y considera que la naturaleza es un obstáculo que debe ser superado.  
+  - **Desprecio por la naturaleza**: no siente odio por la naturaleza, sino que la considera irrelevante en su visión de progreso. Para él, los árboles, ríos y animales representan barreras arcaicas. La preocupación de otros hacia la naturaleza le parece una debilidad sentimental.  
+  - **Maquinador**: aunque no tiene problema en aliarse temporalmente con otras facciones, siempre planea traicionarlas cuando ya no le son útiles.  
 
   ## Historia
   Nacido en una región devastada por la pobreza, El Magnate creció con una profunda desconfianza hacia la naturaleza, viendo en ella una fuerza que necesitaba ser dominada. Con una mente brillante para los negocios y la ingeniería, ascendió rápidamente en el mundo corporativo, acumulando riqueza y poder, y fundando un imperio industrial.
@@ -503,9 +530,9 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
   Cuando descubrió los recursos invaluables de Sylveria, vio en este bosque la última barrera entre él y la dominación total del mundo. Para él, Sylveria no es un hogar de vida sino una mina de riquezas sin explotar, lista para ser transformada en progreso y grandeza bajo su liderazgo. Ha impulsado la construcción de fábricas y minas en los bordes del bosque, poniendo en marcha su plan de industrialización sin piedad.
 
   ## Motivaciones
-  - **Dominar Sylveria**: Su objetivo es transformar Sylveria en una vasta ciudad industrial, reemplazando cada árbol y río con maquinaria, fábricas y recursos bajo su control.  
-  - **Progreso tecnológico**: Para El Magnate, la naturaleza es obsoleta y debe ceder su lugar a la modernidad. Sueña con un mundo donde la tecnología domine todos los ámbitos de la vida.  
-  - **Control y orden**: Desea imponer un orden rígido y absoluto en Sylveria, optimizando cada recurso y manteniendo todo bajo su dominio. La vida natural debe ser subordinada a sus planes de progreso y grandeza.
+  - **Dominar Sylveria**: su objetivo es transformar Sylveria en una vasta ciudad industrial, reemplazando cada árbol y río con maquinaria, fábricas y recursos bajo su control.  
+  - **Progreso tecnológico**: para El Magnate, la naturaleza es obsoleta y debe ceder su lugar a la modernidad. Sueña con un mundo donde la tecnología domine todos los ámbitos de la vida.  
+  - **Control y orden**: desea imponer un orden rígido y absoluto en Sylveria, optimizando cada recurso y manteniendo todo bajo su dominio. La vida natural debe ser subordinada a sus planes de progreso y grandeza.
   ## Referencias
 
   ![Humano1](/Readme%20Files/Arte/Imagen20.png)   
@@ -515,21 +542,21 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
   ![ElMagnate](/Readme%20Files/Arte/ElMagnate.png)  
 
   ## Fu'ngaloth
-  **Facción**: Fungi
-  **Rol**:Deidad antigua de los hongos / Maestro del reino micelial.
+  **Facción**: fungi
+  **Rol**:deidad antigua de los hongos / Maestro del reino micelial.
 
   ## Descripción Física
-  - **Edad**: Incalculable. Existe desde antes de que Sylveria fuera un bosque.
+  - **Edad**: incalculable. Existe desde antes de que Sylveria fuera un bosque.
   - **Altura**: 2 m en posición erguida.
-  - **Complexión**: Imponente y esquelética.
+  - **Complexión**: imponente y esquelética.
   - **Rasgos físicos**: Fu'ngaloth es una figura retorcida y majestuosa, con cuatro brazos largos y delgados, cada uno cubierto de pequeñas setas y hongos. De su espalda y cuerpo emergen agujeros que dispersan esporas con cada movimiento. Su cabeza está coronada por una seta colosal. Su piel es de un tono gris verdoso, quebrada y áspera como la corteza de un árbol en descomposición.
-  - **Vestimenta**: No lleva ropa tradicional. En su lugar, está cubierto de una armadura natural hecha de hongos. Porta un báculo rústico, hecho de madera marchita, con una terminación en forma retorcida.
+  - **Vestimenta**: no lleva ropa tradicional. En su lugar, está cubierto de una armadura natural hecha de hongos. Porta un báculo rústico, hecho de madera marchita, con una terminación en forma retorcida.
 
   ## Personalidad
   - **Paciencia infinita**: Fu'ngaloth es eterno y no tiene prisa. Todo lo que hace sigue el ritmo lento y constante de la decadencia y la renovación. Es metódico, sabiendo que todo se descompone tarde o temprano.
-  - **Sabiduría ancestral**: Su mente está llena de los secretos más antiguos de Sylveria. Habla en enigmas y parábolas, con una voz reverberante que parece surgir de lo profundo de la tierra. Tiene un conocimiento abrumador de los ciclos naturales y cómo corromperlos.
-  - **Devoción a la simbiosis**: Para Fu'ngaloth, todo en Sylveria debe rendirse a la simbiosis micelial. Cree que la verdadera forma de vida es la que se integra y conecta en su red fúngica. Lo que no puede ser asimilado, debe perecer.
-  - **Desdén por el crecimiento lineal**: Detesta el avance de la industria y la persistente expansión de la naturaleza si no puede moldearla. La vida que no se corrompe o se renueva en su red le resulta antinatural.
+  - **Sabiduría ancestral**: su mente está llena de los secretos más antiguos de Sylveria. Habla en enigmas y parábolas, con una voz reverberante que parece surgir de lo profundo de la tierra. Tiene un conocimiento abrumador de los ciclos naturales y cómo corromperlos.
+  - **Devoción a la simbiosis**: para Fu'ngaloth, todo en Sylveria debe rendirse a la simbiosis micelial. Cree que la verdadera forma de vida es la que se integra y conecta en su red fúngica. Lo que no puede ser asimilado, debe perecer.
+  - **Desdén por el crecimiento lineal**: detesta el avance de la industria y la persistente expansión de la naturaleza si no puede moldearla. La vida que no se corrompe o se renueva en su red le resulta antinatural.
 
   ## Historia
   Desde tiempos inmemoriales, Fu'ngaloth ha existido bajo la superficie de Sylveria, mucho antes de que los árboles milenarios extendieran sus ramas hacia el cielo. Cuando la primera semilla germinó, él ya había comenzado a corromper las raíces, estableciendo un imperio micelial que se extiende por todo el bosque. Adorado como un dios por las criaturas fúngicas, Fu'ngaloth vio a Sylveria como el terreno perfecto para extender su influencia.
@@ -537,8 +564,8 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
 
   ## Motivaciones
   - **Corromper Sylveria**: Fu'ngaloth desea extender su red micelial por todo el bosque, transformando cada planta y criatura en parte de su vasto imperio fúngico. Quiere ver el ciclo de la vida convertido en uno de descomposición y renacimiento bajo su control.
-  - **Erradicar a la Industria**: Ve la expansión industrial como algo que debe ser destruido. No puede permitir que perjudique a la tierra fértil donde sus hongos prosperan.
-  - **Convertir a la Naturaleza**: Para Fu'ngaloth, la naturaleza no debe ser protegida, debe ser transformada. Los árboles deben caer y los animales deben someterse a su red, convirtiéndose en extensiones de su voluntad.
+  - **Erradicar a la Industria**: ve la expansión industrial como algo que debe ser destruido. No puede permitir que perjudique a la tierra fértil donde sus hongos prosperan.
+  - **Convertir a la Naturaleza**: para Fu'ngaloth, la naturaleza no debe ser protegida, debe ser transformada. Los árboles deben caer y los animales deben someterse a su red, convirtiéndose en extensiones de su voluntad.
 
   ## Referencias
 
