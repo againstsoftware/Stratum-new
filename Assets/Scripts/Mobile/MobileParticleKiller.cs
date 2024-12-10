@@ -6,7 +6,7 @@ public class MobileParticleKiller : MonoBehaviour
 {
     private void Awake()
     {
-        if (MobileDetection.Mobile)
+        if (MobileDetection.Mobile())
         {
             foreach (var ps in GetComponentsInChildren<ParticleSystem>())
             {

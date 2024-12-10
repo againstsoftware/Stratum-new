@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6418031643214513069}
   - component: {fileID: 8957584279560121540}
   - component: {fileID: 3954374630263109212}
+  - component: {fileID: 1996089664600614164}
   m_Layer: 0
   m_Name: Birds
   m_TagString: Untagged
@@ -4828,3 +4829,15 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &1996089664600614164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536364946761003774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebd4ec74f0db4f9892948b0c279bcc9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

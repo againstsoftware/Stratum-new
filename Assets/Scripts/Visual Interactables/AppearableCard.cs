@@ -75,7 +75,7 @@ public class AppearableCard : MonoBehaviour
         if (_cardText is not null)
         {
             var color = _cardText.color;
-            color.a = Mathf.Clamp01(_t/2f);
+            color.a = Mathf.Clamp01(_t/3f);
             _cardText.color = color;
         }
 

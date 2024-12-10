@@ -25,6 +25,8 @@ public class TerritoryReceiver : MonoBehaviour, IActionReceiver
     private static readonly int _color = Shader.PropertyToID("_Color");
     private MeshRenderer _meshRenderer;
 
+    private ParticleSystem _destroySmoke, _constructionVine;
+
     private void Awake()
     {
         _meshRenderer = transform.Find("Mesh").GetComponent<MeshRenderer>();
@@ -37,11 +39,25 @@ public class TerritoryReceiver : MonoBehaviour, IActionReceiver
         }
     }
 
+    private void Start()
+    {
+        //en el start porque en el awake a lo mejor el script de mobiles no las ha destruido
+        _construction.transform.Find("Destroy Smoke").TryGetComponent<ParticleSystem>(out _destroySmoke);
+        if (_destroySmoke is not null)
+        {
+            _destroySmoke.transform.parent = null;
+        }
+        _construction.transform.Find("Construction Vine").TryGetComponent<ParticleSystem>(out _constructionVine);
+        if (_destroySmoke is not null)
+        {
+            _constructionVine.transform.parent = null;
+        }
+    }
+
     public void BuildConstruction()
     {
         _construction.SetActive(true);
-        _construction.transform.Find("Destroy Smoke").TryGetComponent<ParticleSystem>(out var smoke);
-        if(smoke) smoke.Play();
+        if(_destroySmoke is not null) _destroySmoke.Play();
         HasConstruction = true;
         OnChoosingDeselect();
     }
@@ -49,13 +65,8 @@ public class TerritoryReceiver : MonoBehaviour, IActionReceiver
     public void DestroyConstruction(bool isIvy)
     {
         _construction.SetActive(false);
-        _construction.transform.Find("Destroy Smoke").TryGetComponent<ParticleSystem>(out var smoke);
-        if(smoke) smoke.Play();
-        if (isIvy)
-        {
-            _construction.transform.Find("Construction Vine").TryGetComponent<ParticleSystem>(out var vine);
-            if(vine) vine.Play();
-        }
+        if(_destroySmoke is not null) _destroySmoke.Play();
+        if (isIvy && _constructionVine is not null) _constructionVine.Play();
         HasConstruction = false;
     }
 
