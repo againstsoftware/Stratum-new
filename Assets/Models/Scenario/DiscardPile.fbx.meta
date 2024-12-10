@@ -13,7 +13,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Pila_Descarte
-    second: {fileID: 2100000, guid: 46eedcc2751385e409bface61bbcbbfd, type: 2}
+    second: {fileID: 2100000, guid: c22cc3730f58e8843b4604b386dfade3, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

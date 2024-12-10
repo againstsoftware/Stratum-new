@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d1c81f8852217ee44acf92186ed8bd00
+guid: ffa29ac703cd0a5458efa51b4a5e853b
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,13 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Base_martillo
-    second: {fileID: 2100000, guid: 3b29c8bf85047334586cf2d4d40d2162, type: 2}
+      name: Back
+    second: {fileID: 2100000, guid: 9028e56f828ae264b959f9b1f2529d67, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Martillo
-    second: {fileID: 2100000, guid: 3b29c8bf85047334586cf2d4d40d2162, type: 2}
+      name: Front
+    second: {fileID: 2100000, guid: 91eddcc33fd55dd42aeec2ee0453882d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -45,7 +45,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1.5
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -100,7 +100,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1.5
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
