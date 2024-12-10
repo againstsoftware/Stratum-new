@@ -40,16 +40,22 @@ public class TerritoryReceiver : MonoBehaviour, IActionReceiver
     public void BuildConstruction()
     {
         _construction.SetActive(true);
-        // _construction.transform.localPosition = prefab.transform.position;
-        //_construction.transform.localPosition = Vector3.zero;
-        // _construction.transform.localRotation = prefab.transform.rotation;
+        _construction.transform.Find("Destroy Smoke").TryGetComponent<ParticleSystem>(out var smoke);
+        if(smoke) smoke.Play();
         HasConstruction = true;
         OnChoosingDeselect();
     }
 
-    public void DestroyConstruction()
+    public void DestroyConstruction(bool isIvy)
     {
         _construction.SetActive(false);
+        _construction.transform.Find("Destroy Smoke").TryGetComponent<ParticleSystem>(out var smoke);
+        if(smoke) smoke.Play();
+        if (isIvy)
+        {
+            _construction.transform.Find("Construction Vine").TryGetComponent<ParticleSystem>(out var vine);
+            if(vine) vine.Play();
+        }
         HasConstruction = false;
     }
 
@@ -93,7 +99,7 @@ public class TerritoryReceiver : MonoBehaviour, IActionReceiver
 
     private IEnumerator PlayFire(Action callback)
     {
-        _fire.Play();
+        if(_fire) _fire.Play();
         yield return null;
         callback?.Invoke();
     }

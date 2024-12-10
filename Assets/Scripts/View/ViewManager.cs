@@ -376,17 +376,17 @@ public class ViewManager : MonoBehaviour, IView
 
         if (playerOwner.Territory.HasConstruction)
         {
-            DestroyConstruction(territoryOwner, callback);
+            DestroyConstruction(territoryOwner, callback, false);
             return;
         }
 
         StartCoroutine(DelayCall(() => { callback?.Invoke(); }, 0.75f));
     }
 
-    public void DestroyConstruction(PlayerCharacter territoryOwner, Action callback)
+    public void DestroyConstruction(PlayerCharacter territoryOwner, Action callback, bool isIvy)
     {
         var playerOwner = _players[territoryOwner];
-        playerOwner.Territory.DestroyConstruction();
+        playerOwner.Territory.DestroyConstruction(isIvy);
         StartCoroutine(DelayCall(() => { callback?.Invoke(); }, 0.75f));
     }
 

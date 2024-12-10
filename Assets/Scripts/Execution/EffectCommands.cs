@@ -715,7 +715,7 @@ public static class EffectCommands
             ServiceLocator.Get<IRulesSystem>().RemoveRoundEndObserver(this);
 
             var discard = new DelayedDiscardPlayedInfluence(_tableCardWherePlaced);
-            var destroyConstruction = new DelayedDestroyConstruction(_territory);
+            var destroyConstruction = new DelayedDestroyConstruction(_territory, true);
             return new IEffectCommand[] { discard, destroyConstruction };
         }
     }
@@ -890,16 +890,18 @@ public static class EffectCommands
     public class DelayedDestroyConstruction : IEffectCommand
     {
         private Territory _territory;
+        private bool _isIvy = false;
 
-        public DelayedDestroyConstruction(Territory territory)
+        public DelayedDestroyConstruction(Territory territory, bool isIvy)
         {
             _territory = territory;
+            _isIvy = isIvy;
         }
 
         public void Execute(PlayerAction _, Action callback)
         {
             ServiceLocator.Get<IModel>().RemoveConstruction(_territory.Owner);
-            ServiceLocator.Get<IView>().DestroyConstruction(_territory.Owner, callback);
+            ServiceLocator.Get<IView>().DestroyConstruction(_territory.Owner, callback, _isIvy);
         }
     }
 

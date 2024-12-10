@@ -165,7 +165,7 @@ public static class RulesCheck
             var territory = ServiceLocator.Get<IModel>().GetPlayer(character).Territory; 
             if(!territory.HasConstruction) continue;
             if(!HasAnimals(territory)) 
-                commands.Add(new EffectCommands.DelayedDestroyConstruction(territory));
+                commands.Add(new EffectCommands.DelayedDestroyConstruction(territory, false));
         }
 
         return commands;
