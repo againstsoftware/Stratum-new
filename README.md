@@ -476,27 +476,29 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
 
   ## Descripción Física
   - **Edad**: eterna, con la apariencia de una mujer joven de unos 25.
-	- **Altura**: 1.80m
-	- **Complexión**: esbelta, alargada.
+  - **Altura**: 1.80m
+  - **Complexión**: esbelta, alargada.
   - **Rasgos físicos**: Ygdra tiene una piel con un tono verdoso luminoso, como si estuviera impregnada de clorofila. Su cabello, largo y liso con dos coletas está formado por hojas y flores silvestres que cambian según las estaciones. Sus ojos tienen el verde intenso con pestañas de color morado, igual que sus labios.
   -	**Vestimenta**: su vestimenta está compuesta por raíces y lianas que envuelven su cuerpo de manera natural. Lleva un manto de pétalos de flores.
 
   ## Personalidad 
-	- **Serenidad inquebrantable**: Ygdra es un espíritu calmado, que siempre busca equilibrio y armonía en sus decisiones. Su conexión con la naturaleza le permite mantener la compostura incluso en los momentos más críticos, actuando como un faro de estabilidad para aquellos que la rodean.
+  - **Serenidad inquebrantable**: Ygdra es un espíritu calmado, que siempre busca equilibrio y armonía en sus decisiones. Su conexión con la naturaleza le permite mantener la compostura incluso en los momentos más críticos, actuando como un faro de estabilidad para aquellos que la rodean.
   - **Sabiduría ancestral**: su existencia milenaria le ha otorgado un profundo conocimiento de los ciclos naturales y la interacción entre las especies. Habla con una voz tranquila y melódica, que transmite calma y confianza. Es conocida por sus consejos reflexivos y estratégicos.
-	- **Empatía innata**: Ygdra siente una conexión intrínseca con todas las formas de vida en Sylveria. Su empatía no se limita a las plantas, sino que abarca a los animales y otros guardianes, a quienes considera parte esencial del ciclo vital.
+  - **Empatía innata**: Ygdra siente una conexión intrínseca con todas las formas de vida en Sylveria. Su empatía no se limita a las plantas, sino que abarca a los animales y otros guardianes, a quienes considera parte esencial del ciclo vital.
   - **Determinación férrea**: aunque su naturaleza es pacífica, Ygdra no dudará en actuar con contundencia si el equilibrio del bosque está en peligro. Sus raíces pueden ser dulces como un susurro o implacables como una tormenta.
 
   ## Historia
   Desde que Sylveria echó raíces, Ygdra ha sido su corazón latente, cuidando de las plantas que forman la base del ecosistema. Nacida del primer brote que surgió en el bosque, se convirtió en la guardiana de la flora, asegurándose de que cada hoja y cada flor cumpla su propósito en el ciclo de la vida.
+  
   Durante siglos, Ygdra vivió en armonía con Sagitario, trabajando juntos para mantener el equilibrio del bosque. Sin embargo, la llegada de Fu’ngaloth y la expansión del reino micelial significaron una amenaza silenciosa para las plantas, y más tarde, la aparición de El Magnate trajo consigo una devastación más rápida y brutal. Ygdra, que siempre había actuado desde las sombras, se vio obligada a manifestarse para proteger su hogar.
+  
   Ahora, con el juego de Stratum dictando el destino de Sylveria, Ygdra lidera la lucha por el equilibrio, utilizando su profunda conexión con las plantas para contrarrestar las amenazas que buscan dominar el bosque.
 
   ## Motivaciones
   - **Preservar Sylveria**: Ygdra desea proteger las raíces de Sylveria y evitar que sean destruidas o corrompidas por fuerzas externas.
   - **Restaura el equilibrio**: cree en la importancia de un ecosistema balanceado, donde plantas, herbívoros y carnívoros coexistan en armonía.
-	- **Detener la industria**: ve la industrialización como la mayor amenaza para la vida del bosque y se opone ferozmente a sus avances destructivos.
-	- **Resistir la corrupción**: Ygdra lucha contra la expansión de Fu’ngaloth, evitando que el reino fúngico asimile las plantas y rompa el equilibrio que ella protege.
+  - **Detener la industria**: ve la industrialización como la mayor amenaza para la vida del bosque y se opone ferozmente a sus avances destructivos.
+  - **Resistir la corrupción**: Ygdra lucha contra la expansión de Fu’ngaloth, evitando que el reino fúngico asimile las plantas y rompa el equilibrio que ella protege.
 
   ## Referencias
 
