@@ -217,7 +217,37 @@ public static class EffectCommands
             PlayerCharacter slotOwner = default;
             int slotIndex = default;
 
-            foreach (var receiver in action.Receivers)
+            var receivers = new List<Receiver>(action.Receivers);
+
+            
+            //cuando se eligen 2 setas que esten en el mismo slot, hay que eliminarlas de mayoer a menor indice
+            //de lo contrario al quitar la de menor indice la otra cambia de indice y da error
+            bool needsSorting = false;
+            for (int i = 0; i < receivers.Count; i++)
+            {
+                var r1 = receivers[i];
+                for (int j = 0; j < receivers.Count; j++)
+                {
+                    var r2 = receivers[j];
+                    
+                    if (!r1.Equals(r2) &&
+                        r1.LocationOwner == r2.LocationOwner &&
+                        r1.Index == r2.Index)
+                    {
+                        needsSorting = true;
+                        break;
+                    }
+                }
+            }
+
+            if (needsSorting)
+            {
+                Debug.Log("needs sorting");
+                receivers.Sort((a, b) => a.SecondIndex.CompareTo(b.SecondIndex));
+                receivers.Reverse();
+            }
+            
+            foreach (var receiver in receivers)
             {
                 slotOwner = receiver.LocationOwner;
                 slotIndex = receiver.Index;

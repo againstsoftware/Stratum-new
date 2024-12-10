@@ -30,7 +30,7 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
 
     [SerializeField] private GameConfig _config;
 
-
+    private bool _isDisconnected;
     private void Awake()
     {
         var localID = NetworkManager.Singleton.LocalClientId;
@@ -131,6 +131,7 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
     
     private void OnServerStopped(bool _)
     {
+        if (_isDisconnected) return;
         DisconnectAndTransition(); 
     }
 
@@ -140,7 +141,13 @@ public class GameNetwork : NetworkBehaviour, ICommunicationSystem
         DisconnectAndTransition();
     }
     
-    public void Disconnect() => NetworkManager.Singleton.Shutdown();
+    public void Disconnect()
+    {
+        if (_isDisconnected) return;
+
+        NetworkManager.Singleton.Shutdown();
+        _isDisconnected = true;
+    }
 
     private void DisconnectAndTransition()
     {

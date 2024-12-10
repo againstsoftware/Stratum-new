@@ -219,6 +219,7 @@ public class ViewPlayer : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1f);
+        ServiceLocator.Get<ICommunicationSystem>().Disconnect();
         SceneTransition.Instance.TransitionToScene("MainMenu");
     }
 
@@ -232,6 +233,7 @@ public class ViewPlayer : MonoBehaviour
 
         yield return DestroyCardsInHand();
         yield return new WaitForSeconds(3f);
+        ServiceLocator.Get<ICommunicationSystem>().Disconnect();
         SceneTransition.Instance.TransitionToScene("MainMenu");
     }
 
