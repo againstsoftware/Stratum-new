@@ -25,7 +25,8 @@ public class GameOver : MonoBehaviour, IGameOverService
 
             if (winners.Contains(player))
             {
-                
+                ServiceLocator.Get<IView>().GetViewPlayer(player).Win();
+        
             }
             else
             {

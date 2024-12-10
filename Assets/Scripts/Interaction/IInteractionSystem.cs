@@ -14,7 +14,8 @@ public interface IInteractionSystem : IService
     public IReadOnlyList<IActionReceiver> CurrentActionReceivers { get; }
     public APlayableItem CurrentActionPlayableItem { get; }
     public PlayerCharacter LocalPlayer { get; }
-
+    
+    public bool InputEnabled { get; }
 
     public void SelectInteractable(IInteractable item);
     public void DeselectInteractable(IInteractable item);
@@ -25,5 +26,7 @@ public interface IInteractionSystem : IService
     public void ClickReceiver(IActionReceiver receiver);
     public void Disable();
     public void Enable();
+    public void DisableInput();
+    public void EnableInput();
 
 }

@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using Random = UnityEngine.Random;
 
 public class ViewPlayer : MonoBehaviour
@@ -38,6 +40,8 @@ public class ViewPlayer : MonoBehaviour
     private PlayableCard _droppedCard;
 
     private IKCardInteractionController _ikController;
+    private Animator _camAnimator;
+
     private static readonly int _dieHash = Animator.StringToHash("Die");
 
     private void Awake()
@@ -46,6 +50,9 @@ public class ViewPlayer : MonoBehaviour
 
         if (Mesh.TryGetComponent<Animator>(out var animator))
             animator.Play("Idle", 0, Random.Range(0f, 1f));
+
+        _camAnimator = MainCamera.GetComponent<Animator>();
+        _camAnimator.enabled = false;
     }
 
     public void Initialize(PlayerCharacter character)
@@ -176,13 +183,59 @@ public class ViewPlayer : MonoBehaviour
 
     public void Die()
     {
-        if (!_isLocalPlayer)
-        {
-            StartCoroutine(DieCoroutine());
-        }
+        StartCoroutine(DieCoroutine());
+    }
+
+    public void Win()
+    {
+        StartCoroutine(WinCoroutine());
     }
 
     private IEnumerator DieCoroutine()
+    {
+        yield return DestroyCardsInHand();
+
+        if (!_isLocalPlayer)
+        {
+            Mesh.GetComponent<Animator>().SetTrigger(_dieHash);
+            yield return new WaitForSeconds(2f);
+        }
+
+        else
+        {
+            _camAnimator.enabled = true;
+            yield return null;
+            _camAnimator.Play(_dieHash);
+
+            MainCamera.GetComponent<Volume>().profile.TryGet<ColorAdjustments>(out var colorAdjustments);
+            float initSaturation = colorAdjustments.saturation.value;
+            float progress = 0f;
+            while (progress <= 1f)
+            {
+                colorAdjustments.saturation.value = Mathf.Lerp(initSaturation, -100f, progress);
+                progress += Time.deltaTime / 2f;
+                yield return null;
+            }
+        }
+
+        yield return new WaitForSeconds(1f);
+        SceneTransition.Instance.TransitionToScene("MainMenu");
+    }
+
+    private IEnumerator WinCoroutine()
+    {
+        if (IsLocalPlayer)
+        {
+            ServiceLocator.Get<IInteractionSystem>().Disable();
+            ServiceLocator.Get<IInteractionSystem>().DisableInput();
+        }
+
+        yield return DestroyCardsInHand();
+        yield return new WaitForSeconds(3f);
+        SceneTransition.Instance.TransitionToScene("MainMenu");
+    }
+
+    private IEnumerator DestroyCardsInHand()
     {
         bool[] destroyed = new bool[Cards.Count];
         for (int i = 0; i < Cards.Count; i++)
@@ -192,10 +245,10 @@ public class ViewPlayer : MonoBehaviour
             card.DestroyCard(() => destroyed[index] = true);
         }
 
-        _ikController.enabled = false;
+        _ikController.DropHandTragets();
         // yield return new WaitUntil(() => destroyed.All(d => d));
         yield return new WaitForSeconds(1f);
-        Mesh.GetComponent<Animator>().SetTrigger(_dieHash);
+        _ikController.enabled = false;
     }
 
 

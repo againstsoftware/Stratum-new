@@ -18,6 +18,9 @@ public class IKCardInteractionController : MonoBehaviour
     [FormerlySerializedAs("leftHandTarget")] [SerializeField]
     private Transform _leftHandTargetBase = null; // Objetivo de la mano derecha
 
+    [SerializeField] private Transform _leftDieTarget;
+    [SerializeField] private Transform _rightDieTarget;
+    
     private float _resetTime = .45f;
 
     [Header("Finger Control")]
@@ -41,6 +44,8 @@ public class IKCardInteractionController : MonoBehaviour
     private readonly Quaternion _rotationOffsetFromCard = Quaternion.Euler(-52f, 0f, 180f);
 
     private bool _isAssignedTargetLeft;
+
+    private bool _isDropping;
 
     private void Awake()
     {
@@ -86,6 +91,12 @@ public class IKCardInteractionController : MonoBehaviour
                 _rightResetCallback = null;
             }
         }
+
+        if (_isDropping)
+        {
+            RightHandTarget.Translate(Vector3.down * Time.deltaTime / _resetTime, Space.World);
+            LeftHandTarget.Translate(Vector3.down * Time.deltaTime / _resetTime, Space.World);
+        }
     }
 
     public void AssignTarget(Transform target)
@@ -95,6 +106,13 @@ public class IKCardInteractionController : MonoBehaviour
 
         if (leftDistance <= rightDistance) AssignLeftTarget(target);
         else AssignRightTarget(target);
+    }
+
+    public void DropHandTragets()
+    {
+        _isDropping = true;
+        _rightReset = false;
+        _leftReset = false;
     }
 
 

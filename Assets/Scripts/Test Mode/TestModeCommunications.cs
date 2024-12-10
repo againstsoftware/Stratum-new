@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using Random = System.Random;
 
 public class TestModeCommunications : MonoBehaviour, ICommunicationSystem
@@ -81,7 +82,7 @@ public class TestModeCommunications : MonoBehaviour, ICommunicationSystem
                 cam.enabled = false;
                 cam.GetComponent<AudioListener>().enabled = false;
                 cam.GetComponent<PhysicsRaycaster>().enabled = false;
-
+                cam.GetComponent<Volume>().enabled = false;
                 uicam.enabled = false;
 
                 viewPlayer.IsLocalPlayer = false;
@@ -93,6 +94,7 @@ public class TestModeCommunications : MonoBehaviour, ICommunicationSystem
                 cam.enabled = true;
                 cam.GetComponent<AudioListener>().enabled = true;
                 cam.GetComponent<PhysicsRaycaster>().enabled = true;
+                cam.GetComponent<Volume>().enabled = true;
                 uicam.enabled = true;
                 _playerOnTurn.IsLocalPlayer = true;
 

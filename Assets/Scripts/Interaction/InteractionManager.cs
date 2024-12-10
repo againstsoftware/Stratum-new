@@ -22,7 +22,8 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
 
     public PlayerCharacter LocalPlayer { get; private set; }
 
-
+    public bool InputEnabled => !_inputDisabled;
+    
     [SerializeField] private InputActionAsset _inputActions;
 
     [SerializeField] private float _itemCamOffsetOnDrag;
@@ -54,9 +55,10 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
 
     private int _actionsLeft;
 
-    private float _draggingTimer;
+    // private float _draggingTimer;
     private bool _canDrag = true;
 
+    private bool _inputDisabled = false;
 
     #region Callbacks
 
@@ -115,9 +117,9 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
                 _dragItemTransform.position = Vector3.MoveTowards(_dragItemTransform.position, newPos,
                     _dragCardSpeed * Time.deltaTime);
 
-                _draggingTimer += Time.deltaTime;
-                if (_draggingTimer < _dragEnableTime) return;
-                
+                // _draggingTimer += Time.deltaTime;
+                // if (_draggingTimer < _dragEnableTime) return;
+                //
                 _dropLocationCheckTimer += Time.deltaTime;
                 if (_dropLocationCheckTimer < _dropLocationCheckPeriod) return;
                 
@@ -140,7 +142,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
 
     private void OnScroll(float scroll)
     {
-        if (CurrentState is IInteractionSystem.State.Dragging || scroll == 0f) return;
+        if (CurrentState is IInteractionSystem.State.Dragging || scroll == 0f || _inputDisabled) return;
         _cameraMovement.MoveCameraOnScroll(scroll);
     }
 
@@ -149,7 +151,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
 
     public void SelectInteractable(IInteractable item)
     {
-        if (CurrentState is IInteractionSystem.State.Dragging) return;
+        if (CurrentState is IInteractionSystem.State.Dragging || _inputDisabled) return;
         if (item is null)
         {
             throw new Exception("select called with null item!");
@@ -224,7 +226,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         _draggingItem = item;
         item.OnDrag();
         CurrentState = IInteractionSystem.State.Dragging;
-        _draggingTimer = 0f;
+        // _draggingTimer = 0f;
         _dragItemTransform = item.transform;
         // _screenOffsetOnDrag = _cam.WorldToScreenPoint(_dragItemTransform.position) - _screenPointerPosition;
         // _screenOffsetOnDrag.z = _itemCamOffsetOnDrag;
@@ -374,6 +376,13 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     {
         CurrentState = IInteractionSystem.State.Idle;
     }
+
+    public void DisableInput()
+    {
+        _inputDisabled = true;
+    }
+
+    public void EnableInput() => _inputDisabled = false;
 
 
     private void CheckDropLocations()

@@ -37,7 +37,7 @@ public class InteractableInput : MonoBehaviour, IPointerEnterHandler, IPointerEx
         if (_playable is not null) _interactionSystem.DragPlayableItem(_playable);
         if (_receiver is not null) _interactionSystem.ClickReceiver(_receiver);
         
-        if(_interactable is not null) _interactable.OnPress();
+        if(_interactable is not null && _interactionSystem.InputEnabled) _interactable.OnPress();
     }                                                        
 
     public void OnPointerUp(PointerEventData eventData)
