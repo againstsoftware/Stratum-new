@@ -154,7 +154,9 @@ public class LobbyManager : MonoBehaviour
             var options = new CreateLobbyOptions
             {
                 Data = new Dictionary<string, DataObject>
-                    { { JoinCodeKey, new DataObject(DataObject.VisibilityOptions.Public, joinCode) } }
+                { 
+                    { JoinCodeKey, new DataObject(DataObject.VisibilityOptions.Public, joinCode) } 
+                },
             };
             var lobby = await Lobbies.Instance.CreateLobbyAsync("Useless Lobby Name", _maxConnections, options);
 

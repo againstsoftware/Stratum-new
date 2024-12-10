@@ -11,7 +11,7 @@ using System.Collections;
 public class LobbyNetwork : NetworkBehaviour
 {
     public event System.Action<int> OnPlayerCountChange;
-    private NetworkVariable<int> _playerCount;
+    private NetworkVariable<int> _playerCount = new(0);
 
     //server only
     private Dictionary<PlayerCharacter, NetworkPlayer> _networkPlayers = new();
@@ -20,7 +20,7 @@ public class LobbyNetwork : NetworkBehaviour
     {
         if (IsServer)
         {
-            _playerCount = new(0);
+            _playerCount.Value = 0;
             // Host updates player count when players connect/disconnect
             NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
             NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnected;

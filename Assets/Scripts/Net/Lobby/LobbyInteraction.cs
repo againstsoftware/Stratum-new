@@ -70,6 +70,8 @@ public class LobbyInteraction : MonoBehaviour
         _codeInput.SetActive(false);
         */
         _hostCodeText.text = $"En sala de Matchmaking: {info}";
+
+        // debug
         Debug.Log("isHost: " + NetworkManager.Singleton.IsHost);
     }
 
