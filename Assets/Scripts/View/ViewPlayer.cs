@@ -38,6 +38,7 @@ public class ViewPlayer : MonoBehaviour
     private PlayableCard _droppedCard;
 
     private IKCardInteractionController _ikController;
+    private static readonly int _dieHash = Animator.StringToHash("Die");
 
     private void Awake()
     {
@@ -135,7 +136,8 @@ public class ViewPlayer : MonoBehaviour
 
     public void DiscardInfluenceFromPopulation(PlayableCard influenceCard, Action callback)
     {
-        influenceCard.Play(DiscardPile, () => { StartCoroutine(DestroyDiscardedCard(influenceCard.gameObject, callback)); });
+        influenceCard.Play(DiscardPile,
+            () => { StartCoroutine(DestroyDiscardedCard(influenceCard.gameObject, callback)); });
     }
 
     public void PlaceCardFromDeck(ACard card, SlotReceiver slot, Action callback)
@@ -172,6 +174,30 @@ public class ViewPlayer : MonoBehaviour
         }, isEndOfAction, !IsLocalPlayer);
     }
 
+    public void Die()
+    {
+        if (!_isLocalPlayer)
+        {
+            StartCoroutine(DieCoroutine());
+        }
+    }
+
+    private IEnumerator DieCoroutine()
+    {
+        bool[] destroyed = new bool[Cards.Count];
+        for (int i = 0; i < Cards.Count; i++)
+        {
+            var card = Cards[i];
+            var index = i;
+            card.DestroyCard(() => destroyed[index] = true);
+        }
+
+        _ikController.enabled = false;
+        // yield return new WaitUntil(() => destroyed.All(d => d));
+        yield return new WaitForSeconds(1f);
+        Mesh.GetComponent<Animator>().SetTrigger(_dieHash);
+    }
+
 
     private IEnumerator DrawCardsAux(IReadOnlyList<ACard> cards, Action callback)
     {
@@ -201,6 +227,7 @@ public class ViewPlayer : MonoBehaviour
             yield return new WaitUntil(() => isDone);
             yield return null;
         }
+
         yield return ReposCardsInHand();
 
         callback?.Invoke();
@@ -235,7 +262,7 @@ public class ViewPlayer : MonoBehaviour
 
     private IEnumerator ReposCardsInHand(PlayableCard[] exclude = null)
     {
-        int offset =  (5 - Cards.Count) / 2;
+        int offset = (5 - Cards.Count) / 2;
 
         for (int i = 0; i < Cards.Count; i++)
         {
@@ -251,14 +278,13 @@ public class ViewPlayer : MonoBehaviour
 
             yield return new WaitUntil(() => cardReposed);
         }
-        
     }
 
     private IEnumerator DestroyDiscardedCard(GameObject card, Action callback = null)
     {
         yield return null;
         Destroy(card);
-        
+
         DiscardPile.ShowDiscarded();
         callback?.Invoke();
     }

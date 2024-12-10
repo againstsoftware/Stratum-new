@@ -27,6 +27,8 @@ public class GameInitializer : MonoBehaviour
         
         ServiceLocator.Register<IRulesSystem>(FindAnyObjectByType<RulesManager>()); 
         
+        ServiceLocator.Register<IGameOverService>(FindAnyObjectByType<GameOver>()); 
+        
         ServiceLocator.Register<IView>(FindAnyObjectByType<ViewManager>());
 
 

@@ -1,7 +1,8 @@
-﻿key;tal;esp;eng
+﻿Column1;Column2;Column3;Column4
+key;tal;esp;eng
 assembler_card;;La carta no se puede jugar sobre ese receptor.;The card cannot be played on that receiver.
 assembler_token;;La ficha no se puede jugar sobre ese receptor.;The token cannot be played on that receiver.
-forced;;Tienes que jugar la carta que te ha dicho el Manuel de Reglas.;You have to play the card that the Rulebrook told you.
+forced;;Tienes que jugar la carta que te ha dicho el Manuel de Reglas.;You have to play the card that the Rules Manuel told you.
 fatal_error;;Si lees esto el juego esta roto;Si lees esto el juego esta roto (en ingles)
 foreign_slot;;Sólo puedes jugar una carta de Población en un espacio vacío de tu territorio.;You can only play a Population card on an empty slot in your territory.
 influence_played;;Ya has jugado una carta de Influencia este turno.;You have already played an Influence card this turn.
@@ -11,20 +12,20 @@ con_token_rabies;;El territorio elegido tiene una carta de Herbívoro con Rabia.
 con_token_plants;;El territorio elegido no tiene 2 plantas. No se puede construir.;The chosen territory doesn't have 2 plants. Construction is not possible.
 macrofungi;;Debes elegir 3 cartas de Seta para usar la Ficha de Macrohongo.;You must choose 3 Mushroom cards to use the Macrofungi Token.
 token_played;;Ya has jugado tu Ficha este turno.;You have already played your Token this turn.
-on_carnivore;;Esta carta debe ser jugada sobre una carta de Carnívoro.;
-on_herbivore;;Esta carta debe ser jugada sobre una carta de Herbívoro.;
-on_animal;;Esta carta debe ser jugada sobre una carta de Carnívoro o Herbívoro.;
-on_plant;;Esta carta debe ser jugada sobre una carta de Planta.;
-on_empty_slot;;Esta carta debe ser jugada sobre un espacio de territorio vacío.;
-ap_mush;;El segundo elemento seleccionado debe ser un espacio vacío en un territorio distinto al del animal seleccionado. En el territorio debe haber al menos 1 carta de Seta.;
-on_fungi_terr;;Esta carta debe ser jugada sobre un territorio con al menos una Seta o Macrohongo.;
-has_leash;;El animal seleccionado tiene la carta de Influencia Correa, que impide que lo puedas mover.;
-firew;;El segundo elemento seleccioando debe ser un espacio vacío en el territorio opuesto al del animal seleccionado.;
-influence_ontop;;La carta seleccionada ya tiene una carta de Influencia puesta.;
-mig;;El segundo elemento seleccionado debe ser un espacio vacío en un territorio distinto al del animal seleccionado.;
-mold;;Esta carta debe ser jugada en un espacion vacío de un territorio que tenga construcción.;
-frag1;;El Herbívoro o Carnívoro seleccioando debe estar en un territorio que no sea el tuyo.;
-frag2;;El segundo elemento seleccionado debe ser un espacio vacío en tu territorio.;
+on_carnivore;;Esta carta debe ser jugada sobre una carta de Carnívoro.;This card must be played on a Carnivore card.
+on_herbivore;;Esta carta debe ser jugada sobre una carta de Herbívoro.;This card must be played on a Herbivore card.
+on_animal;;Esta carta debe ser jugada sobre una carta de Carnívoro o Herbívoro.;This card must be played on a Carnivore or Herbivore card.
+on_plant;;Esta carta debe ser jugada sobre una carta de Planta.;This card must be played on a Plant card.
+on_empty_slot;;Esta carta debe ser jugada sobre un espacio de territorio vacío.;This card must be played on an empty territory slot.
+ap_mush;;El segundo elemento seleccionado debe ser un espacio vacío en un territorio distinto al del animal seleccionado. En el territorio debe haber al menos 1 carta de Seta.;The second selected element must be an empty slot in a territory different from the selected animal's. There must be at least 1 Mushroom card in the territory.
+on_fungi_terr;;Esta carta debe ser jugada sobre un territorio con al menos una Seta o Macrohongo.;This card must be played on a territory with at least one Mushroom or Macrofungi.
+has_leash;;El animal seleccionado tiene la carta de Influencia Correa, que impide que lo puedas mover.;The selected animal has the Leash Influence card, which blocks you from moving it.
+firew;;El segundo elemento seleccioando debe ser un espacio vacío en el territorio opuesto al del animal seleccionado.;The second element to be selected must be an empty slot in the territory opposite to the selected animal's.
+influence_ontop;;La carta seleccionada ya tiene una carta de Influencia puesta.;The selected card already has an Influence card on it.
+mig;;El segundo elemento seleccionado debe ser un espacio vacío en un territorio distinto al del animal seleccionado.;The second selected element must be an empty slot in a territory different from the selected animal's.
+mold;;Esta carta debe ser jugada en un espacio vacío de un territorio que tenga construcción.;This card must be played on an empty space in a constructed territory.
+frag1;;El Herbívoro o Carnívoro seleccionado debe estar en un territorio que no sea el tuyo.;The selected Herbivore or Carnivore must be in a territory other than your own.
+frag2;;El segundo elemento seleccionado debe ser un espacio vacío en tu territorio.;The second element selected must be an empty slot in your territory.
 ;;;
 ;;;
 ;;;

@@ -30,9 +30,10 @@ public class LastPopulationTracker : MonoBehaviour
     {
         if (!_isTraveling) return;
 
-        transform.position = Vector3.MoveTowards(transform.position, _destination, _speed * Time.deltaTime);
-
         if (Vector3.Distance(transform.position, _destination) < .01f) _isTraveling = false;
+        
+        else transform.position = Vector3.MoveTowards(transform.position, _destination, _speed * Time.deltaTime);
+
     }
 
     private TableCard GetLast() => _population switch
@@ -46,7 +47,7 @@ public class LastPopulationTracker : MonoBehaviour
     private void OnEcosystemChange()
     {
         var newLast = GetLast();
-        if (newLast == _last) return;
+        // if (newLast == _last) return;
 
         if (newLast is null) Travel(_defaultPos);
 

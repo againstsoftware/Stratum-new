@@ -184,5 +184,7 @@ public class Ecosystem
         {
             RemovePopulation(tableCard);
         }
+        
+        OnEcosystemChange?.Invoke();
     }
 }
