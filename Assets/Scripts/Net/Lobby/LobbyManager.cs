@@ -18,7 +18,6 @@ using Random = UnityEngine.Random;
 public class LobbyManager : MonoBehaviour
 {
     [SerializeField] private int _maxConnections;
-
     private const string JoinCodeKey = "j";
     private UnityTransport _unityTransport;
     private Lobby _connectedLobby;

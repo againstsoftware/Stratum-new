@@ -11,7 +11,7 @@ using System.Collections;
 public class LobbyNetwork : NetworkBehaviour
 {
     public event System.Action<int> OnPlayerCountChange;
-    private NetworkVariable<int> _playerCount = new(0);
+    private NetworkVariable<int> _playerCount;
 
     //server only
     private Dictionary<PlayerCharacter, NetworkPlayer> _networkPlayers = new();
@@ -20,6 +20,7 @@ public class LobbyNetwork : NetworkBehaviour
     {
         if (IsServer)
         {
+            _playerCount = new(0);
             // Host updates player count when players connect/disconnect
             NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
             NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnected;
@@ -83,6 +84,7 @@ public class LobbyNetwork : NetworkBehaviour
         // Aquí puedes continuar con otras acciones después del apagado
     }
 
+    // BORRAR esto es para debug
     private IEnumerator ExecuteEverySecond()
     {
         bool isRunning = true;
@@ -101,6 +103,8 @@ public class LobbyNetwork : NetworkBehaviour
             {
                 Debug.Log("es cliente conectado");
             }
+
+            Debug.Log("playersCount: " + _playerCount.Value);
 
             yield return new WaitForSeconds(1f);
         }
@@ -147,8 +151,5 @@ public class LobbyNetwork : NetworkBehaviour
 
 
     }
-
-
-
 
 }
