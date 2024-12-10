@@ -46,7 +46,11 @@ public class Abacus : MonoBehaviour
 
     private void OnDestroy()
     {
-        ServiceLocator.Get<IModel>().Ecosystem.OnEcosystemChange -= UpdateInfo;
+        try
+        {
+            ServiceLocator.Get<IModel>().Ecosystem.OnEcosystemChange -= UpdateInfo;
+        }
+        catch {}
     }
 
 

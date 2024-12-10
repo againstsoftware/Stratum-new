@@ -33,10 +33,14 @@ public class RulesManager : MonoBehaviour, IRulesSystem
 
     private void OnDisable()
     {
-        ServiceLocator.Get<ITurnSystem>().OnGameStart -= OnGameStart;
-        ServiceLocator.Get<ITurnSystem>().OnTurnChanged -= OnTurnChanged;
-        ServiceLocator.Get<IModel>().OnPopulationGrow -= OnPopulationGrow;
-        ServiceLocator.Get<IModel>().OnPopulationDie -= OnPopulationDie;
+        try
+        {
+            ServiceLocator.Get<ITurnSystem>().OnGameStart -= OnGameStart;
+            ServiceLocator.Get<ITurnSystem>().OnTurnChanged -= OnTurnChanged;
+            ServiceLocator.Get<IModel>().OnPopulationGrow -= OnPopulationGrow;
+            ServiceLocator.Get<IModel>().OnPopulationDie -= OnPopulationDie;
+        }
+        catch {}
     }
 
 

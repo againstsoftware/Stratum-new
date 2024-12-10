@@ -23,7 +23,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     public PlayerCharacter LocalPlayer { get; private set; }
 
     public bool InputEnabled => !_inputDisabled;
-    
+
     [SerializeField] private InputActionAsset _inputActions;
 
     [SerializeField] private float _itemCamOffsetOnDrag;
@@ -33,7 +33,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     [SerializeField] private float _dragCardSpeed = .2f;
     [SerializeField] private float _dragEnableTime = .5f;
     [SerializeField] private GameConfig _config;
-    
+
 
     private InputAction _pointerPosAction;
 
@@ -90,12 +90,15 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
 
     private void OnDisable()
     {
-        Input.PointerPosition -= OnPointerPositionChanged;
-        var ts = ServiceLocator.Get<ITurnSystem>();
-        if (ts is null) return;
-        ts.OnTurnChanged -= OnTurnChanged;
-        ts.OnActionEnded -= OnActionEnded;
-        ServiceLocator.Get<ICommunicationSystem>().OnLocalPlayerChange -= SetLocalPlayer;
+        try
+        {
+            Input.PointerPosition -= OnPointerPositionChanged;
+            var ts = ServiceLocator.Get<ITurnSystem>();
+            ts.OnTurnChanged -= OnTurnChanged;
+            ts.OnActionEnded -= OnActionEnded;
+            ServiceLocator.Get<ICommunicationSystem>().OnLocalPlayerChange -= SetLocalPlayer;
+        }
+        catch {}
     }
 
 
@@ -122,7 +125,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
                 //
                 _dropLocationCheckTimer += Time.deltaTime;
                 if (_dropLocationCheckTimer < _dropLocationCheckPeriod) return;
-                
+
                 _dropLocationCheckTimer = 0f;
                 CheckDropLocations();
                 break;
@@ -197,9 +200,8 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
             //     _draggingItem = null;
             //     return;
             // }
-            
+
             return;
-            
         }
 
         if (item.CurrentState is not APlayableItem.State.Playable)
@@ -222,7 +224,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
 
         _canDrag = false;
         Invoke(nameof(ResetCanDrag), _dragEnableTime);
-        
+
         _draggingItem = item;
         item.OnDrag();
         CurrentState = IInteractionSystem.State.Dragging;
@@ -240,22 +242,21 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
             _isSelectedRulebookOpener = false;
             _rulebook.HideRulebook();
         }
-        
+
         //ahora vamos a coger a todos los receivers de la escena y pasarlos por el isvalid del action item para 
         //si son validos medio highlightearlos par que el jugador sepa donde jugar
-        
+
         //esto si el juego va lento hay que optimizarlo
         var allComponents = FindObjectsOfType<Component>();
         _allReceivers = allComponents
             .OfType<IActionReceiver>()
             .ToArray();
-        
+
         foreach (var receiver in _allReceivers)
         {
-            if(ActionAssembler.CheckFirstReceiver(_draggingItem, receiver))
+            if (ActionAssembler.CheckFirstReceiver(_draggingItem, receiver))
                 receiver.OnValidSelect();
         }
-        
     }
 
     private void ResetCanDrag() => _canDrag = true;
@@ -269,8 +270,8 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
             // throw new Exception("drop called with non selected item!");
             return;
         }
-        
-        foreach(var receiver in _allReceivers) receiver.OnValidDeselect();
+
+        foreach (var receiver in _allReceivers) receiver.OnValidDeselect();
 
 
         var dropLocation = SelectedDropLocation;
@@ -286,7 +287,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
 
         SelectedDropLocation.OnDraggingDeselect();
         SelectedDropLocation = null;
-        
+
 
         switch (ActionAssembler.TryAssembleAction(item, dropLocation, out string feedbackKey))
         {
@@ -294,7 +295,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
                 CurrentState = IInteractionSystem.State.Idle;
                 item.OnDragCancel();
                 if (!item.OnlyVisibleOnOverview) _cameraMovement.ChangeToDefault();
-                
+
                 _rulebook.DisplayDialogue(LocalizationGod.GetLocalized("Feedback", feedbackKey), null, null);
 
                 break;
@@ -312,7 +313,6 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
                 item.OnDrop(dropLocation);
                 break;
         }
-        
     }
 
 
@@ -329,7 +329,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
                 _draggingItem.OnDragCancel();
                 if (!_draggingItem.OnlyVisibleOnOverview) _cameraMovement.ChangeToDefault();
                 if (_selectedReceiver is not null) _selectedReceiver.OnChoosingDeselect();
-                foreach(var r in _selectedReceivers) r.OnChoosingDeselect();
+                foreach (var r in _selectedReceivers) r.OnChoosingDeselect();
                 _rulebook.DisplayDialogue(LocalizationGod.GetLocalized("Feedback", feedbackKey), null, null);
                 break;
 
@@ -341,7 +341,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
                 CurrentState = IInteractionSystem.State.Waiting;
                 Debug.Log("accion ensamblada!!!");
                 if (_selectedReceiver is not null) _selectedReceiver.OnChoosingDeselect();
-                foreach(var r in _selectedReceivers) r.OnChoosingDeselect();
+                foreach (var r in _selectedReceivers) r.OnChoosingDeselect();
                 break;
         }
     }
@@ -351,7 +351,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         if (CurrentState is not IInteractionSystem.State.Choosing) return;
         if (!receiver.CanInteractWithoutOwnership) return;
         if (_selectedReceivers.Contains(receiver)) return;
-        if (_selectedReceiver is not null && !_selectedReceivers.Contains(_selectedReceiver)) 
+        if (_selectedReceiver is not null && !_selectedReceivers.Contains(_selectedReceiver))
             _selectedReceiver.OnChoosingDeselect();
         _selectedReceiver = receiver;
         receiver.OnChoosingSelect();
@@ -465,7 +465,7 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         LocalPlayer = character;
         Camera = cam;
         if (Camera is null || LocalPlayer is PlayerCharacter.None) return;
-        
+
         _cameraMovement = Camera.GetComponent<CameraMovement>();
         _rulebook = Camera.GetComponentInChildren<Rulebook>();
     }

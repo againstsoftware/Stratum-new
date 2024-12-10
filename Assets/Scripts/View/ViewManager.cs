@@ -30,7 +30,11 @@ public class ViewManager : MonoBehaviour, IView
 
     private void OnDestroy()
     {
-        ServiceLocator.Get<ICommunicationSystem>().OnLocalPlayerChange -= SetLocalPlayer;
+        try
+        {
+            ServiceLocator.Get<ICommunicationSystem>().OnLocalPlayerChange -= SetLocalPlayer;
+        }
+        catch {}
     }
 
 
