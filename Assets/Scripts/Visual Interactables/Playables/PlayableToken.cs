@@ -81,7 +81,9 @@ public class PlayableToken : APlayableItem, IRulebookEntry
     {
         foreach (var r in _renderers)
         {
-            r.material = on ? _transparentMat : _defaultMaterial;
+            r.materials = on 
+                ? new[]{_transparentMat, _transparentMat} 
+                : new[]{_defaultMaterial, _defaultMaterial};
         }
     }
     

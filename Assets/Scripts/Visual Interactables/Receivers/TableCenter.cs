@@ -1,5 +1,6 @@
 
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -21,15 +22,18 @@ public class TableCenter : MonoBehaviour, IActionReceiver
     
     
     private static readonly int _color = Shader.PropertyToID("_Color");
-    private Material _material;
+    private Material[] _defaultMaterials, _highlightedMaterials;
     private Color _defaultColor;
     private Vector3 _defaultEulers;
     
     private void Awake()
     {
-        _material = _tableMesh.material;
+        _defaultMaterials = _tableMesh.materials.ToArray();
         _defaultEulers = SnapTransform.localRotation.eulerAngles;
-        _defaultColor = _material.color;
+        _defaultColor = _defaultMaterials[1].color;
+
+        _highlightedMaterials = _defaultMaterials.ToArray();
+        _highlightedMaterials[1] = _highlightedMaterial;
     }
 
     private void Start()
@@ -41,12 +45,13 @@ public class TableCenter : MonoBehaviour, IActionReceiver
 
     public void OnDraggingSelect()
     {
-        _tableMesh.material = _highlightedMaterial;
+
+        _tableMesh.materials = _highlightedMaterials;
     }
 
     public void OnDraggingDeselect()
     {
-        _tableMesh.material = _material;
+        _tableMesh.materials = _defaultMaterials;
     }
     
     
@@ -62,13 +67,13 @@ public class TableCenter : MonoBehaviour, IActionReceiver
     
     public void OnValidSelect()
     {
-        _material.SetColor(_color, _defaultColor * _validSelectedIntensity);
+        _defaultMaterials[1].SetColor(_color, _defaultColor * _validSelectedIntensity);
         _preview.SetActive(true);
     }
 
     public void OnValidDeselect()
     {
-        _material.SetColor(_color, _defaultColor);
+        _defaultMaterials[1].SetColor(_color, _defaultColor);
         _preview.SetActive(false);
     }
 
@@ -90,7 +95,7 @@ public class TableCenter : MonoBehaviour, IActionReceiver
     private void RotateToPlayer(PlayerCharacter player, Camera _ = null)
     {
         var rot = GetPlayerRotation(player);
-        transform.Find("Mesh").rotation = Quaternion.AngleAxis(90f - rot, Vector3.up);
+        transform.Find("Mesh").rotation = Quaternion.AngleAxis(0f - rot, Vector3.up);
     }
 
     private float GetPlayerRotation(PlayerCharacter player) => player switch
