@@ -15,11 +15,9 @@ using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
 using Random = UnityEngine.Random;
 
-
 public class LobbyManager : MonoBehaviour
 {
     [SerializeField] private int _maxConnections;
-
     private const string JoinCodeKey = "j";
     private UnityTransport _unityTransport;
     private Lobby _connectedLobby;
@@ -45,7 +43,6 @@ public class LobbyManager : MonoBehaviour
         StartCoroutine(CreateorJoinMatchmakingLobbyCoroutine(callback));
     }
 
-
     private IEnumerator StartHostCoroutine(Action<string> callback)
     {
         Task<string> hostTask = StartHostWithRelay();
@@ -58,7 +55,7 @@ public class LobbyManager : MonoBehaviour
         }
         else
         {
-            Debug.Log($"Host Task Canceled or Faulted:  {hostTask.Exception}");
+            Debug.Log($"Host Task Canceled or Faulted: {hostTask.Exception}");
         }
     }
 
@@ -78,11 +75,10 @@ public class LobbyManager : MonoBehaviour
         }
         else
         {
-            Debug.Log($"Client Task Canceled or Faulted:  {clientTask.Exception}");
+            Debug.Log($"Client Task Canceled or Faulted: {clientTask.Exception}");
         }
     }
 
-    // Corrutina para crear una sala de matchmaking
     private IEnumerator CreateorJoinMatchmakingLobbyCoroutine(Action<string> callback)
     {
         Task<string> matchmakingTask = CreateOrJoinMatchmakingLobbyAsync();
@@ -98,7 +94,6 @@ public class LobbyManager : MonoBehaviour
             Debug.LogError($"Matchmaking Task Canceled or Faulted: {matchmakingTask.Exception}");
         }
     }
-
 
     private async Task<string> StartHostWithRelay()
     {
@@ -138,7 +133,6 @@ public class LobbyManager : MonoBehaviour
         AuthenticationService.Instance.SignOut();
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
 
-        var playerId = AuthenticationService.Instance.PlayerId;
         string info = "Client";
         _connectedLobby = await QuickJoinLobby();
         if (_connectedLobby is null)
@@ -154,61 +148,97 @@ public class LobbyManager : MonoBehaviour
     {
         try
         {
-            // Create a relay allocation and generate a join code to share with the lobby
             var a = await RelayService.Instance.CreateAllocationAsync(_maxConnections);
             var joinCode = await RelayService.Instance.GetJoinCodeAsync(a.AllocationId);
 
-            // Create a lobby, adding the relay join code to the lobby data
             var options = new CreateLobbyOptions
             {
                 Data = new Dictionary<string, DataObject>
-                    { { JoinCodeKey, new DataObject(DataObject.VisibilityOptions.Public, joinCode) } }
+                { 
+                    { JoinCodeKey, new DataObject(DataObject.VisibilityOptions.Public, joinCode) } 
+                },
             };
             var lobby = await Lobbies.Instance.CreateLobbyAsync("Useless Lobby Name", _maxConnections, options);
 
-            // Send a heartbeat every 15 seconds to keep the room alive
-            // StartCoroutine(HeartbeatLobbyCoroutine(lobby.Id, 15));
+            StartCoroutine(WaitUntil(() => lobby != null, () =>
+            {
+                StartCoroutine(HeartbeatLobbyCoroutine(lobby.Id, 1f));
+                Debug.Log("HeartbeatLobbyCoroutine started for lobby: " + lobby.Id);
+            }));
 
-            // Set the game room to use the relay allocation
             _unityTransport.SetRelayServerData(new RelayServerData(a, "wss"));
             _unityTransport.UseWebSockets = true;
 
-            // Start the room. I'm doing this immediately, but maybe you want to wait for the lobby to fill up
             NetworkManager.Singleton.StartHost();
             Debug.Log("Matchmaking lobby created!");
-
+            Debug.Log("lobby created: " + lobby);
             return lobby;
         }
         catch (Exception e)
         {
-            Debug.LogFormat("Failed creating a lobby");
+            Debug.LogError("Failed creating a lobby");
             return null;
         }
+    }
+    private IEnumerator WaitUntil(Func<bool> condition, Action onComplete)
+    {
+        yield return new WaitUntil(condition);
+
+        onComplete?.Invoke();
     }
 
     private async Task<Lobby> QuickJoinLobby()
     {
         try
         {
-            // Attempt to join a lobby in progress
             var lobby = await Lobbies.Instance.QuickJoinLobbyAsync();
-
-            // If we found one, grab the relay allocation details
             var a = await RelayService.Instance.JoinAllocationAsync(lobby.Data[JoinCodeKey].Value);
 
-            // Set the details to the transform
             _unityTransport.SetRelayServerData(new RelayServerData(a, "wss"));
             _unityTransport.UseWebSockets = true;
 
-            // Join the game room as a client
             NetworkManager.Singleton.StartClient();
             Debug.Log("Matchmaking lobby joined!");
             return lobby;
         }
         catch (Exception e)
         {
-            Debug.Log($"No lobbies available via quick join");
+            Debug.LogError("No lobbies available via quick join");
             return null;
         }
     }
+
+    private IEnumerator HeartbeatLobbyCoroutine(string lobbyId, float intervalSeconds)
+    {
+        while (_connectedLobby != null)
+        {
+            Task task = SendHeartbeatAsync(lobbyId);
+            yield return new WaitUntil(() => task.IsCompleted);
+
+            if (task.IsFaulted)
+            {
+                Debug.LogError($"Failed to send heartbeat: {task.Exception.Message}");
+                break;
+            }
+
+            yield return new WaitForSeconds(intervalSeconds);
+        }
+        Debug.Log("connected lobby: " + _connectedLobby);
+    }
+
+
+    private async Task SendHeartbeatAsync(string lobbyId)
+    {
+        try
+        {
+            Debug.Log("heartbeat");
+            await Lobbies.Instance.SendHeartbeatPingAsync(lobbyId);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Error sending heartbeat: {e.Message}");
+            throw;
+        }
+    }
+
 }
