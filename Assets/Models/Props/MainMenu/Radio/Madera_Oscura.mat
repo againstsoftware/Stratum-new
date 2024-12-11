@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Material
+  m_Name: Madera_Oscura
   m_Shader: {fileID: -6465566751694194690, guid: 2d29dc3b7cc50c24a8d572ba836b0caa, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -52,7 +52,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Main_Texture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: e59562ea0196ece4bb8dd8eeab166468, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -125,13 +125,13 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.40196925, g: 0.40196925, b: 0.40196925, a: 1}
+    - _BaseColor: {r: 0.05951263, g: 0.01938217, b: 0.0047770697, a: 1}
     - _Border_Color: {r: 1, g: 0.1271363, b: 0, a: 1}
-    - _Color: {r: 0.40196925, g: 0.40196925, b: 0.40196925, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &5764623548572652127
+--- !u!114 &7396380778451479337
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
