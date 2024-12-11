@@ -20,6 +20,7 @@ public class Radio : AInteractableObject
         _currentRot = new List<float>();
     }
 
+
     public override void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("Radio pulsada");
@@ -63,7 +64,7 @@ public class Radio : AInteractableObject
 
     private void RotateWheels(int i)
     {
-        float step = Mathf.Min(Time.deltaTime * _rotSpeed, _targetRot[i] - _currentRot[i]); 
+        float step = Mathf.Min(Time.deltaTime * _rotSpeed, _targetRot[i] - _currentRot[i]);
         _radioWheels[i].transform.rotation = Quaternion.AngleAxis(step, Vector3.forward) * _radioWheels[i].transform.rotation;
         _currentRot[i] += step;
     }
@@ -85,7 +86,7 @@ public class Radio : AInteractableObject
         _lobbyInteraction.HostButton();
 
         InitWheels();
-       
+
     }
 
     public void OnButtonJoinLobby()
@@ -97,7 +98,7 @@ public class Radio : AInteractableObject
     public void OnButtonMatchMaking()
     {
         // ESTÁ AL REVÉS PARA HACER PRUEBAS!!!!!!!!!!!!!!!!!!!!
-        if(!_userInfo.AreCredentialsSet) 
+        if (!_userInfo.AreCredentialsSet)
         {
             // iniciar matchmaking
             _lobbyInteraction.MatchmakingButton();
@@ -110,5 +111,11 @@ public class Radio : AInteractableObject
         }
     }
 
-
+    public override void UpdateText()
+    {
+        if(_lobbyInteraction.lastTableKey != null)
+        {
+            _lobbyInteraction.UpdateStateText(_lobbyInteraction.lastTableKey);
+        } 
+    }
 }

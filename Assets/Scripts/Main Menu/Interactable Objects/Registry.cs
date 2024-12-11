@@ -10,6 +10,7 @@ public class Registry : AInteractableObject
     [SerializeField] private Canvas _canvas;
     [SerializeField] private TMP_Text _leftText, _rightText;
     [SerializeField] private Collider _Link;
+
     private float waitTime = 0.5f;
 
     protected override void Awake()
@@ -17,7 +18,8 @@ public class Registry : AInteractableObject
         base.Awake();
         
         _animator = GetComponent<Animator>();
-        ShowText();
+        //ShowText();
+        StartCoroutine(WaitForInitialization());
         _Link.enabled = false;
     }
 
@@ -61,7 +63,13 @@ public class Registry : AInteractableObject
         {
             child.gameObject.SetActive(true);   
         }
-
+        foreach (Transform child in _canvas.transform)
+        {
+            child.gameObject.SetActive(true);
+        }
+        _leftText.text = LocalizationGod.GetLocalized("MenuBooks", "registry_left");
+        _rightText.text = LocalizationGod.GetLocalized("MenuBooks", "registry_right");
+        /*
         string language = PlayerPrefs.GetString(GamePrefs.LanguagePrefKey, "en");
         if(language == "en")
         {
@@ -73,6 +81,8 @@ public class Registry : AInteractableObject
             _leftText.text = "CRÉDITOS";
             _rightText.text = "¡Pulsa para visitar nuestras redes sociales!";
         }
+        */
+        
     }
 
     private void HideText()
@@ -95,4 +105,19 @@ public class Registry : AInteractableObject
         }
         
     }
+
+    public override void UpdateText()
+    {
+       _leftText.text = LocalizationGod.GetLocalized("MenuBooks", "registry_left");
+       _rightText.text = LocalizationGod.GetLocalized("MenuBooks", "registry_right");
+    }
+
+     private IEnumerator WaitForInitialization()
+    {
+        while (!LocalizationGod.IsInitialized)
+        {
+            yield return null;
+        }
+        ShowText();
+    }  
 }

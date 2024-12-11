@@ -11,6 +11,7 @@ public class InteractionSystemMenu : MonoBehaviour, IInteractionSystemMenu
     public InputHandlerMenu Input { get; private set; }
     [SerializeField] private InputActionAsset _inputActions;
     [field: SerializeField] public LayerMask InteractablesLayer { get; private set; }
+    public event Action OnChangedLanguage;
 
     private void Awake()
     {
@@ -40,6 +41,13 @@ public class InteractionSystemMenu : MonoBehaviour, IInteractionSystemMenu
             _interactable = null;
         }
     }
+
+    public void TriggerChangedLanguage()
+    {
+        OnChangedLanguage?.Invoke();
+    }
+
+
 
     private void Update()
     {

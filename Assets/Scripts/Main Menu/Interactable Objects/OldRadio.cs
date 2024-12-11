@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-
+/*
 public class OldRadio : AInteractableObject
 {
     [SerializeField] private GameObject _ButtonLobby;
@@ -26,3 +26,4 @@ public class OldRadio : AInteractableObject
     }
    
 }
+*/

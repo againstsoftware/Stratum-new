@@ -12,7 +12,7 @@ public class Gramophone : AInteractableObject
     [SerializeField] private Collider _Language, _Graphics, _Volume;
     [SerializeField] private RenderPipelineAsset[] _qualityLevels;
     [SerializeField] private GramophoneAnimations _animations;
-    [SerializeField] private InteractionSystemMenu _interactionSystemMenu;
+    //[SerializeField] private InteractionSystemMenu _interactionSystemMenu;
 
 
     public override void OnPointerClick(PointerEventData eventData)
@@ -44,6 +44,8 @@ public class Gramophone : AInteractableObject
         PlayerPrefs.SetString(GamePrefs.LanguagePrefKey, LocalizationGod.Spanish ? "es" : "en");
         PlayerPrefs.Save();
         
+        _interactionSystemMenu.TriggerChangedLanguage();
+
         _animations.VinylAnim();
 
         // para no liarla mientras se mueve el disco
@@ -80,5 +82,10 @@ public class Gramophone : AInteractableObject
         PlayerPrefs.Save();
 
         _animations.VolumeAnim();
+    }
+
+    public override void UpdateText()
+    {
+        //
     }
 }

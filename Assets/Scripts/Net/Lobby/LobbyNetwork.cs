@@ -36,7 +36,7 @@ public class LobbyNetwork : NetworkBehaviour
         base.OnNetworkSpawn();
 
         //BORRAR
-        StartCoroutine(ExecuteEverySecond());
+        //StartCoroutine(ExecuteEverySecond());
     }
 
     public override void OnNetworkDespawn()

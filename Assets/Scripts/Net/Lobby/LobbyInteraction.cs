@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.Purchasing;
 using UnityEngine.UI;
 
 public class LobbyInteraction : MonoBehaviour
@@ -12,12 +13,14 @@ public class LobbyInteraction : MonoBehaviour
     private string _clientCode;
     private LobbyManager _lobbyManager;
     private LobbyNetwork _lobbyNetwork;
+    public string lastTableKey;
 
     private void Awake()
     {
         _lobbyManager = GetComponent<LobbyManager>();
         _lobbyNetwork = GetComponent<LobbyNetwork>();
         _lobbyNetwork.OnPlayerCountChange += UpdatePlayerCount;
+        lastTableKey = null;
     }
 
     private void OnDisable()
@@ -37,6 +40,7 @@ public class LobbyInteraction : MonoBehaviour
 
     public void MatchmakingButton()
     {
+        UpdateStateText("searching_state");
         _lobbyManager.CreateorJoinMatchmakingLobby(OnMatchmakingStartedLocal);
     }
 
@@ -73,7 +77,7 @@ public class LobbyInteraction : MonoBehaviour
         _hostCodeText.text = $"En sala de Matchmaking: {info}";
 
         // debug
-        Debug.Log("isHost: " + NetworkManager.Singleton.IsHost);
+        //Debug.Log("isHost: " + NetworkManager.Singleton.IsHost);
     }
 
     private void OnClientStartedLocal()
@@ -86,8 +90,9 @@ public class LobbyInteraction : MonoBehaviour
         */
     }
 
-    public void UpdateStateText(string text)
+    public void UpdateStateText(string tableKey)
     {
-        _stateInfoText.text = text;
+        lastTableKey = tableKey;
+        _stateInfoText.text = LocalizationGod.GetLocalized("RadioInfo", tableKey);
     }
 }

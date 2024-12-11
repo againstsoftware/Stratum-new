@@ -9,6 +9,9 @@ public abstract class AInteractableObject : MonoBehaviour, IMenuInteractable
     protected Vector3 _defaultScale;
     protected bool _isEnabled;
     public abstract void OnPointerClick(PointerEventData eventData);
+    public abstract void UpdateText();
+    [SerializeField] protected InteractionSystemMenu _interactionSystemMenu;
+
 
     public virtual void OnPointerEnter(PointerEventData eventData)
     {
@@ -36,4 +39,22 @@ public abstract class AInteractableObject : MonoBehaviour, IMenuInteractable
     {
         _defaultScale = transform.localScale;
     }
+
+    protected void OnEnable()
+    {
+        if (_interactionSystemMenu != null)
+        {
+            Debug.Log("on enable");
+            _interactionSystemMenu.OnChangedLanguage += UpdateText;
+        }
+    }
+
+    protected void OnDisable()
+    {
+        if (_interactionSystemMenu != null)
+        {
+            _interactionSystemMenu.OnChangedLanguage -= UpdateText;
+        }
+    }
+
 }

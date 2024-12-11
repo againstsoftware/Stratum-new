@@ -22,10 +22,12 @@ public class LobbyManager : MonoBehaviour
     private UnityTransport _unityTransport;
     private Lobby _connectedLobby;
     private QueryResponse _lobbies;
+    private LobbyInteraction _lobbyInteraction;
 
     private void Awake()
     {
         _unityTransport = FindObjectOfType<UnityTransport>();
+        _lobbyInteraction = GetComponent<LobbyInteraction>();
     }
 
     public void StartHostAsync(Action<string> callback)
@@ -231,7 +233,7 @@ public class LobbyManager : MonoBehaviour
     {
         try
         {
-            Debug.Log("heartbeat");
+            //Debug.Log("heartbeat");
             await Lobbies.Instance.SendHeartbeatPingAsync(lobbyId);
         }
         catch (Exception e)

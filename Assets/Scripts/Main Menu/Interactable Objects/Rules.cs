@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -7,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class Rules : AInteractableObject
 {
     [SerializeField] private Canvas _canvas;
+    [SerializeField] private TextMeshProUGUI _leftPage;
     private Animator _animator;
     private float waitTime = 0.3f;
 
@@ -15,7 +17,7 @@ public class Rules : AInteractableObject
         base.Awake();
         
         _animator = GetComponent<Animator>();
-        ShowText();
+       StartCoroutine(WaitForInitialization());
     }
 
     public override void OnPointerClick(PointerEventData eventData)
@@ -49,6 +51,8 @@ public class Rules : AInteractableObject
         {
             child.gameObject.SetActive(true);
         }
+        _leftPage.text = LocalizationGod.GetLocalized("MenuBooks", "rules_left");
+
     }
 
     private void HideText()
@@ -67,4 +71,18 @@ public class Rules : AInteractableObject
             ShowText();
         }
     }
+
+    public override void UpdateText()
+    {
+        _leftPage.text = LocalizationGod.GetLocalized("MenuBooks", "rules_left");
+    }
+
+    private IEnumerator WaitForInitialization()
+    {
+        while (!LocalizationGod.IsInitialized)
+        {
+            yield return null;
+        }
+        ShowText();
+    }  
 }

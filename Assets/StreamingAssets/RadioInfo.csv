@@ -1,0 +1,6 @@
+﻿Key;Id;Spanish(es);English(en);Column1;
+searching_state;1;Buscando partida…;Searching for game…;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+createdlobby_state;2;"Lobby creado; esperando a otros jugadores…";"Lobby created; waiting for other players…";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+joinedlobby_state;3;"Te has unido a un lobby; esperando a otros jugadores…";"Lobby joined; waiting for other players…";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+host_disconnected;4;Se ha perdido la conexión con el host;Lost connection with host;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+starting_game;5;Iniciando partida…;Starting game…

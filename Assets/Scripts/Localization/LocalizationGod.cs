@@ -92,12 +92,14 @@ public static class LocalizationGod
 
     public static bool IsInitialized
     {
-        get => _cardsLoaded && _tutorialLoaded && _feedbackLoaded;
+        get => _cardsLoaded && _tutorialLoaded && _feedbackLoaded && _radioInfoLoaded && _menuBooksLoaded;
     }
     
     private static bool _cardsLoaded = false;
     private static bool _tutorialLoaded = false;
     private static bool _feedbackLoaded = false;
+    private static bool _radioInfoLoaded = false;
+    private static bool _menuBooksLoaded = false;
 
     public static void Init()
     {
@@ -107,6 +109,8 @@ public static class LocalizationGod
         LoadTable("Cards", () => _cardsLoaded = true);
         LoadTable("Tutorial", () => _tutorialLoaded = true);
         LoadTable("Feedback", () => _feedbackLoaded = true);
+        LoadTable("RadioInfo", () => _radioInfoLoaded = true);
+        LoadTable("MenuBooks", () => _menuBooksLoaded = true);
     }
 
     public static string GetLocalized(string tableName, string tablekey)
@@ -116,7 +120,6 @@ public static class LocalizationGod
             // table = LoadTable(tableName);
             throw new Exception($"tabla {tableName} no encontrada o no cargada");
         }
-
         return GetFromTable(table, tablekey);
     }
 
