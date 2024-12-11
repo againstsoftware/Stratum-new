@@ -8,6 +8,7 @@ public class LobbyInteraction : MonoBehaviour
 {
     [SerializeField] private GameObject _hostButton, _clientButton, _codeInput, _mmButton;
     [SerializeField] private TextMeshProUGUI _hostCodeText, _playerCountText;
+    [SerializeField] private TextMeshProUGUI _stateInfoText;
     private string _clientCode;
     private LobbyManager _lobbyManager;
     private LobbyNetwork _lobbyNetwork;
@@ -83,5 +84,10 @@ public class LobbyInteraction : MonoBehaviour
         _mmButton.SetActive(false);
         _codeInput.SetActive(false);
         */
+    }
+
+    public void UpdateStateText(string text)
+    {
+        _stateInfoText.text = text;
     }
 }

@@ -162,7 +162,7 @@ public class LobbyManager : MonoBehaviour
 
             StartCoroutine(WaitUntil(() => lobby != null, () =>
             {
-                StartCoroutine(HeartbeatLobbyCoroutine(lobby.Id, 5f));
+                StartCoroutine(HeartbeatLobbyCoroutine(lobby.Id, 1f));
                 Debug.Log("HeartbeatLobbyCoroutine started for lobby: " + lobby.Id);
             }));
 
