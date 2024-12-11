@@ -207,6 +207,10 @@ public class ViewPlayer : MonoBehaviour
             yield return null;
             _camAnimator.Play(_dieHash);
 
+            var rulebookMesh = GetComponentInChildren<Rulebook>().transform.GetChild(0).GetComponent<MeshRenderer>();
+            var rulebookCanvas = rulebookMesh.transform.GetChild(0).gameObject;
+            Destroy(rulebookMesh);
+            Destroy(rulebookCanvas);
             MainCamera.GetComponent<Volume>().profile.TryGet<ColorAdjustments>(out var colorAdjustments);
             float initSaturation = colorAdjustments.saturation.value;
             float progress = 0f;

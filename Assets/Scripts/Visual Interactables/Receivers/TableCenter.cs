@@ -80,7 +80,7 @@ public class TableCenter : MonoBehaviour, IActionReceiver
     public Receiver GetReceiverStruct(ValidDropLocation actionDropLocation)
     {
         return new Receiver(ValidDropLocation.TableCenter, PlayerCharacter.None, -1, -1);   
-        throw new Exception("El centro de la mesa no es un receiver valido!! solo sirve para ensamblar la jugada!");
+        // throw new Exception("El centro de la mesa no es un receiver valido!! solo sirve para ensamblar la jugada!");
     }
 
     public Transform GetSnapTransform(PlayerCharacter character)

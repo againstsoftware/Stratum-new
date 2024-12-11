@@ -54,6 +54,12 @@ public class TerritoryReceiver : MonoBehaviour, IActionReceiver
         }
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.C) && HasConstruction) DestroyConstruction(false);
+        if(Input.GetKeyDown(KeyCode.V) && HasConstruction) DestroyConstruction(true);
+    }
+
     public void BuildConstruction()
     {
         _construction.SetActive(true);
@@ -64,10 +70,19 @@ public class TerritoryReceiver : MonoBehaviour, IActionReceiver
 
     public void DestroyConstruction(bool isIvy)
     {
+        HasConstruction = false;
+        StartCoroutine(ShowDestroyParticles(isIvy));
+    }
+
+    private IEnumerator ShowDestroyParticles(bool isIvy)
+    {
+        if (isIvy && _constructionVine is not null)
+        {
+            _constructionVine.Play();
+            yield return new WaitForSeconds(1.25f);
+        }
         _construction.SetActive(false);
         if(_destroySmoke is not null) _destroySmoke.Play();
-        if (isIvy && _constructionVine is not null) _constructionVine.Play();
-        HasConstruction = false;
     }
 
     public void OnDraggingSelect()
