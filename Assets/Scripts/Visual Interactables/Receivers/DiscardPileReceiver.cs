@@ -31,6 +31,7 @@ public class DiscardPileReceiver : MonoBehaviour, IActionReceiver
             SnapTransform.GetChild(0).gameObject.SetActive(true);
         else
         {
+            SoundManager.Instance.PlaySound("BurnDiscard");
             SnapTransform.GetChild(1).gameObject.SetActive(false);
             SnapTransform.GetChild(1).gameObject.SetActive(true);
         }

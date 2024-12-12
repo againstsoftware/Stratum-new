@@ -218,6 +218,8 @@ public class ViewManager : MonoBehaviour, IView
 
     public void ShowBirds(CardLocation from, CardLocation to, Action callback)
     {
+        SoundManager.Instance.PlaySound("Birds");
+
         var playerOwner = _players[from.Owner];
         var slot = playerOwner.Territory.Slots[from.SlotIndex];
         var card = playerOwner.Territory.Slots[from.SlotIndex].Cards[from.CardIndex];
@@ -240,6 +242,8 @@ public class ViewManager : MonoBehaviour, IView
 
     public void ShowFireworks(CardLocation location, Action callback)
     {
+        SoundManager.Instance.PlaySound("Fireworks");
+
         var playerOwner = _players[location.Owner];
         var card = playerOwner.Territory.Slots[location.SlotIndex].Cards[location.CardIndex];
 

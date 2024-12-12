@@ -41,6 +41,9 @@ public class PlayableToken : APlayableItem, IRulebookEntry
             return;
         }
 
+        if(ActionItem is MacrofungiToken) SoundManager.Instance.PlaySound("Mushroom");
+        else SoundManager.Instance.PlaySound("Construction");
+
         //no se ha jugado visualmente a la mesa
         Travel(playLocation.GetSnapTransform(Owner), _playTravelDuration, State.Played, () =>
         {

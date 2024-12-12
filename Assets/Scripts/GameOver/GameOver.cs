@@ -35,5 +35,6 @@ public class GameOver : MonoBehaviour, IGameOverService
                 ServiceLocator.Get<IView>().GetViewPlayer(player).Die();
             }
         }
+        SoundManager.Instance.PlaySound("GameOver");
     }
 }

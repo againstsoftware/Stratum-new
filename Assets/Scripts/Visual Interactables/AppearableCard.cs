@@ -35,6 +35,7 @@ public class AppearableCard : MonoBehaviour
 
     private void StartMaterializing(ACard card, Action callback)
     {
+        SoundManager.Instance.PlaySound("Dig");
         _isMaterializing = true;
 
         _callback = callback;
@@ -52,6 +53,7 @@ public class AppearableCard : MonoBehaviour
 
     private void StartGrowing(ACard card, Action callback)
     {
+        SoundManager.Instance.PlaySound("Dig");
         _animator.enabled = true;
         _animator.Play("grow");
         _callback = callback;

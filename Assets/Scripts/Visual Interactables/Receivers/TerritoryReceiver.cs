@@ -121,6 +121,7 @@ public class TerritoryReceiver : MonoBehaviour, IActionReceiver
     public void SetOnFire(Action callback)
     {
         StartCoroutine(PlayFire(callback));
+        SoundManager.Instance.PlaySound("Fire");
     }
 
     private IEnumerator PlayFire(Action callback)
