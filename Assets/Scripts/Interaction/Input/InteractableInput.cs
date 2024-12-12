@@ -32,7 +32,7 @@ public class InteractableInput : MonoBehaviour, IPointerEnterHandler, IPointerEx
         if(_receiver is not null) _interactionSystem.DeselectReceiver(_receiver);
     }
     
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnPointerDown(PointerEventData eventData) //pulsan
     {
         if (_playable is not null) _interactionSystem.DragPlayableItem(_playable);
         if (_receiver is not null) _interactionSystem.ClickReceiver(_receiver);
@@ -46,11 +46,11 @@ public class InteractableInput : MonoBehaviour, IPointerEnterHandler, IPointerEx
         
         if(_interactable is not null) _interactable.OnRelease();
     }
-    //
-    // public void OnTap()
-    // {
-    //     if(_interactable is not null) _interactionSystem.SelectInteractable(_interactable);
-    //     if(_receiver is not null) _interactionSystem.SelectReceiver(_receiver);
-    // }
+    
+    public void OnTap()
+    {
+        // if(_interactable is not null) _interactionSystem.SelectInteractable(_interactable);
+        if(_receiver is not null) _interactionSystem.ClickReceiver(_receiver);
+    }
 
 }

@@ -104,6 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6867347033489190595}
   - component: {fileID: 4214868870773955501}
+  - component: {fileID: 264572671485815376}
   m_Layer: 0
   m_Name: View
   m_TagString: Untagged
@@ -148,6 +149,21 @@ MonoBehaviour:
   _overlord: {fileID: 4599489396821619977}
   _tableCenter: {fileID: 0}
   _config: {fileID: 11400000, guid: 00c45f89111b6ac4f9b8c6ebeb9d9e38, type: 2}
+--- !u!114 &264572671485815376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5624158560371537065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7f92d070a29ecc4aa32fa6e3ba4afac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shaderMaterial: {fileID: 2100000, guid: d0277d639f2470d449428e6c185b95d5, type: 2}
+  _scaledScreenHeight: 600
+  _logOnUpdate: 0
 --- !u!1 &8169473843149107580
 GameObject:
   m_ObjectHideFlags: 0

@@ -55,6 +55,7 @@ MonoBehaviour:
   _dropLocationCheckFrequency: 10
   _dragCardHeight: 0.2
   _dragCardSpeed: 100
+  _dragEnableTime: 0.5
   _config: {fileID: 11400000, guid: 00c45f89111b6ac4f9b8c6ebeb9d9e38, type: 2}
 --- !u!114 &1994111580498935405
 MonoBehaviour:
@@ -144,6 +145,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: a6e577d6-31cb-4859-b77f-2515feda05e8
     m_ActionName: PlayerMap/Tap
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 323f0397-281a-48fd-a63a-f72830c1933d
+    m_ActionName: PlayerMap/TapPress[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Touch
   m_DefaultActionMap: PlayerMap

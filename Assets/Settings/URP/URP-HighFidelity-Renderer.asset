@@ -16,6 +16,23 @@ MonoBehaviour:
   _settings:
     RenderPassEvent: 550
     ScreenHeight: 360
+--- !u!114 &-8197392815766326671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d613f08f173d4dd895bb07b3230baa9, type: 3}
+  m_Name: FullScreenPassRendererFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  passMaterial: {fileID: 2100000, guid: d0277d639f2470d449428e6c185b95d5, type: 2}
+  injectionPoint: 550
+  requirements: 4
+  passIndex: 1
 --- !u!114 &-7668880307110528863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,7 +134,8 @@ MonoBehaviour:
   m_RendererFeatures:
   - {fileID: -1878332245247344467}
   - {fileID: -5339089972497645448}
-  m_RendererFeatureMap: adc0de57c6d2eee578806d2df5bde7b5
+  - {fileID: -8197392815766326671}
+  m_RendererFeatureMap: adc0de57c6d2eee578806d2df5bde7b571b2e86baa023d8e
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}

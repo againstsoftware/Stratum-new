@@ -35,7 +35,11 @@ public class TutorialRulebook : MonoBehaviour
 
     private void OnDestroy()
     {
-        ServiceLocator.Get<ICommunicationSystem>().OnLocalPlayerChange += SetLocalPlayer;
+        try
+        {
+            ServiceLocator.Get<ICommunicationSystem>().OnLocalPlayerChange -= SetLocalPlayer;
+        }
+        catch {}
     }
 
     private void Update()

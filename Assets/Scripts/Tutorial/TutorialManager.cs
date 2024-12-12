@@ -27,6 +27,21 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
     [SerializeField] private TutorialRulebook _tutorialRulebook;
     [SerializeField] private float _delayBetweenElements;
 
+
+    [Header("IK Targets")] 
+    [SerializeField] private Transform _sagitarioL;
+    [SerializeField] private Transform _sagitarioR;
+    
+    [SerializeField] private Transform _fungalothL;
+    [SerializeField] private Transform _fungalothR;
+    
+    [SerializeField] private Transform _ygdraL;
+    [SerializeField] private Transform _ygdraR;
+    
+    [SerializeField] private Transform _overlordL;
+    [SerializeField] private Transform _overlordR;
+    
+    
     private Queue<ITutorialElement> _tutorialElements;
     private ATutorialSequence _tutorialSequence;
     private bool _isCurrentPlayerAction;
@@ -184,6 +199,42 @@ public class TutorialManager : MonoBehaviour, ITurnSystem, ICommunicationSystem
             {
                 _dialogueBatches.Add(batch.ToArray());
                 batch.Clear();
+            }
+        }
+
+        if (_tutorialSequence.SetIdleHandTargets)
+            SetIdleHandTargets();
+    }
+
+    private void SetIdleHandTargets()
+    {
+        foreach (var character in ServiceLocator.Get<IModel>().Config.TurnOrder)
+        {
+            if(character is PlayerCharacter.None) continue;
+
+            var player = ServiceLocator.Get<IView>().GetViewPlayer(character);
+
+            var ik = player.GetComponentInChildren<IKCardInteractionController>();
+
+            switch (character)
+            {
+                case PlayerCharacter.Ygdra:
+                    ik.AssignTarget(_ygdraL);
+                    ik.AssignTarget(_ygdraR);
+                    break;
+                case PlayerCharacter.Sagitario:
+                    ik.AssignTarget(_sagitarioL);
+                    ik.AssignTarget(_sagitarioR);
+                    break;
+                case PlayerCharacter.Fungaloth:
+                    ik.AssignTarget(_fungalothL);
+                    ik.AssignTarget(_fungalothR);
+                    break;
+                case PlayerCharacter.Overlord:
+                    ik.AssignTarget(_overlordL);
+                    ik.AssignTarget(_overlordR);
+                    ik.DisableElbows();
+                    break;
             }
         }
     }
