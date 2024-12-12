@@ -94,8 +94,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.075
-  m_fontSizeBase: 0.075
+  m_fontSize: 0.065
+  m_fontSizeBase: 0.065
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactionSystemMenu: {fileID: 0}
-  cameraOffset: {x: 0, y: 1, z: -1.5}
+  cameraOffset: {x: 0, y: 1.5, z: -1.5}
   _interactableOnObjects: []
   _key: note1
   _text: {fileID: 2666555585016870054}

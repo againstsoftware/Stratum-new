@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public abstract class AInteractableObject : MonoBehaviour, IMenuInteractable
 {
-    protected float scaleIncrease = 1.2f;
+    protected float scaleIncrease = 1.1f;
     protected Vector3 _defaultScale;
     protected bool _isEnabled;
     public abstract void OnPointerClick(PointerEventData eventData);
