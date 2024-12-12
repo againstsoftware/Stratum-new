@@ -8,11 +8,15 @@ public abstract class AInteractableObject : MonoBehaviour, IMenuInteractable
     protected float scaleIncrease = 1.1f;
     protected Vector3 _defaultScale;
     protected bool _isEnabled;
-    public abstract void OnPointerClick(PointerEventData eventData);
     public abstract void UpdateText();
     [SerializeField] protected InteractionSystemMenu _interactionSystemMenu;
     public Vector3 cameraOffset;
     [SerializeField] protected List<InteractableOnObject> _interactableOnObjects;
+    
+    public virtual void OnPointerClick(PointerEventData eventData)
+    {
+        
+    }
 
     public virtual void OnPointerEnter(PointerEventData eventData)
     {
@@ -32,6 +36,8 @@ public abstract class AInteractableObject : MonoBehaviour, IMenuInteractable
         {
             interactableOnObject.isEnabled = true;
         }
+
+        SoundManager.Instance.PlaySound("Click");
     }
 
     public virtual void DisableInteraction()

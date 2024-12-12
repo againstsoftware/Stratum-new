@@ -23,9 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Disconnection.unity
     guid: c8946332195be9a48974ac801dac1fa1
-  - enabled: 0
-    path: Assets/Scenes/MainMenuOscar.unity
-    guid: d08f7a3d8bb774d4c98a9337bb7caf38
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 1b6fc65c44efdef48a5786528fc9d374, type: 2}
     com.unity.localization.addressable-group-rules: {fileID: 11400000, guid: 36677d74d0165884ebcc73877ac0734e, type: 2}

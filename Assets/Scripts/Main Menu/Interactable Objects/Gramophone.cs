@@ -25,18 +25,25 @@ public class Gramophone : AInteractableObject
         if (_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == _Language))
         {
             StartCoroutine(ToggleLanguage());
+            SoundManager.Instance.PlaySound("Click");
+
         }
 
         // sfx
         if (_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == _SfxVolume))
         {
             SfxVolume();
+            SoundManager.Instance.PlaySound("Click");
+
         }
 
         // volumen
         if (_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == _Volume))
         {
+                        SoundManager.Instance.PlaySound("Click");
+
             AudioVolume();
+
         }
     }
     

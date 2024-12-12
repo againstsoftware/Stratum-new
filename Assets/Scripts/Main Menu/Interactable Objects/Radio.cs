@@ -28,17 +28,23 @@ public class Radio : AInteractableObject
     {
         if (_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == _matchMaking))
         {
-           OnButtonMatchMaking();
+            OnButtonMatchMaking();
+            SoundManager.Instance.PlaySound("Click");
+
         }
 
         if (_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == _createLobby))
         {
             OnButtonCreateLobby();
+            SoundManager.Instance.PlaySound("Click");
+
         }
 
         if (_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == _joinLobby))
         {
             OnButtonJoinLobby();
+            SoundManager.Instance.PlaySound("Click");
+
         }
     }
 
@@ -46,7 +52,7 @@ public class Radio : AInteractableObject
     {
         base.EnableInteraction();
 
-        foreach(Transform transform in _canvas.transform)
+        foreach (Transform transform in _canvas.transform)
         {
             transform.gameObject.SetActive(true);
         }
@@ -56,7 +62,7 @@ public class Radio : AInteractableObject
     {
         base.DisableInteraction();
 
-        foreach(Transform transform in _canvas.transform)
+        foreach (Transform transform in _canvas.transform)
         {
             transform.gameObject.SetActive(false);
         }
@@ -143,9 +149,9 @@ public class Radio : AInteractableObject
 
     public override void UpdateText()
     {
-        if(_lobbyInteraction.lastTableKey != null)
+        if (_lobbyInteraction.lastTableKey != null)
         {
             _lobbyInteraction.UpdateStateText(_lobbyInteraction.lastTableKey);
-        } 
+        }
     }
 }

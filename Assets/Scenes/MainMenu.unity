@@ -459,6 +459,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: b415c3aa7fcc56e468b8c1d63a349c87, type: 3}
   - sfxID: Fireworks
     clip: {fileID: 8300000, guid: 6d7b800e49ab1d044b0b7180111532d1, type: 3}
+  - sfxID: Click
+    clip: {fileID: 8300000, guid: 517642ce25cf94f409a12768d7452fd0, type: 3}
 --- !u!1001 &99636896
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1297,8 +1299,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.24503176, y: 0.32556847, z: 0.32556853}
-  m_Center: {x: -0.122517906, y: -0.0013388398, z: -0.0022664077}
+  m_Size: {x: 0.38113713, y: 0.42564362, z: 0.5917912}
+  m_Center: {x: -0.19057055, y: 0.048698682, z: -0.019668017}
 --- !u!65 &329571063
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1318,8 +1320,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.21551353, y: 0.844773, z: 1.691193}
-  m_Center: {x: 0.0019923528, y: -0.35061464, z: -0.8456076}
+  m_Size: {x: 1.0312302, y: 0.84477305, z: 1.6911932}
+  m_Center: {x: -0.4058658, y: -0.35061467, z: -0.8456075}
 --- !u!114 &329571064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1676,6 +1678,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5671356537161303096, guid: 4d805e3e48052c64b85751eb95769bd6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 665352174}
+    - targetCorrespondingSourceObject: {fileID: -795745068517433712, guid: 4d805e3e48052c64b85751eb95769bd6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 462980674}
+    - targetCorrespondingSourceObject: {fileID: -795745068517433712, guid: 4d805e3e48052c64b85751eb95769bd6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 462980673}
   m_SourcePrefab: {fileID: 100100000, guid: 4d805e3e48052c64b85751eb95769bd6, type: 3}
 --- !u!4 &403150665 stripped
 Transform:
@@ -1743,7 +1751,7 @@ MonoBehaviour:
   cameraOffset: {x: 0, y: 0, z: 0}
   _interactableOnObjects:
   - {fileID: 1960180808}
-  - {fileID: 0}
+  - {fileID: 1960180808}
   - {fileID: 665352175}
   _radioWheels:
   - {fileID: 403150674}
@@ -1755,7 +1763,7 @@ MonoBehaviour:
   _lobbyInteraction: {fileID: 875197735}
   _userInfo: {fileID: 1265809505}
   _canvas: {fileID: 2139406404}
-  _matchMaking: {fileID: 0}
+  _matchMaking: {fileID: 462980673}
   _createLobby: {fileID: 1960180807}
   _joinLobby: {fileID: 665352174}
 --- !u!65 &403150677
@@ -2149,6 +2157,45 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &462980669 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -795745068517433712, guid: 4d805e3e48052c64b85751eb95769bd6, type: 3}
+  m_PrefabInstance: {fileID: 403150664}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &462980673
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462980669}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.16153583, y: 0.24609695, z: 0.3}
+  m_Center: {x: 0, y: 0.04213694, z: -0.0014039542}
+--- !u!114 &462980674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462980669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dac2fd773d995e14b90be59786e162f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isEnabled: 0
 --- !u!1 &463568369
 GameObject:
   m_ObjectHideFlags: 0
