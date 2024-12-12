@@ -40,7 +40,7 @@ Material:
     - _Screen_Height: 600
     m_Colors:
     - _BlockPosition: {r: 0, g: 0, b: 0, a: 0}
-    - _Block_Count: {r: 1067, g: 600, b: 0, a: 0}
-    - _Block_Size: {r: 0.00093720714, g: 0.0016666667, b: 0, a: 0}
-    - _Half_Block_Size: {r: 0.00046860357, g: 0.00083333335, b: 0, a: 0}
+    - _Block_Count: {r: 1333, g: 750, b: 0, a: 0}
+    - _Block_Size: {r: 0.00075018755, g: 0.0013333333, b: 0, a: 0}
+    - _Half_Block_Size: {r: 0.00037509378, g: 0.00066666666, b: 0, a: 0}
   m_BuildTextureStacks: []

@@ -10,12 +10,6 @@ public class GameOver : MonoBehaviour, IGameOverService
         ServiceLocator.Get<IRulesSystem>().OnGameOver += OnGameOver;
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.N)) OnGameOver(new [] { PlayerCharacter.Sagitario , PlayerCharacter.Ygdra});
-        else if(Input.GetKeyDown(KeyCode.F)) OnGameOver(new [] { PlayerCharacter.Fungaloth});
-        else if(Input.GetKeyDown(KeyCode.O)) OnGameOver(new [] { PlayerCharacter.Overlord});
-    }
 
     private void OnGameOver(PlayerCharacter[] winners)
     {

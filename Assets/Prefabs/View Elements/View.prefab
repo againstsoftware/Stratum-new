@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shaderMaterial: {fileID: 2100000, guid: d0277d639f2470d449428e6c185b95d5, type: 2}
-  _scaledScreenHeight: 600
+  _scaledScreenHeight: 750
   _logOnUpdate: 0
 --- !u!1 &8169473843149107580
 GameObject:
@@ -365,8 +365,6 @@ MonoBehaviour:
   LeftHandTarget: {fileID: 0}
   _rightHandTargetBase: {fileID: 3855230845447534418}
   _leftHandTargetBase: {fileID: 2309816027783085759}
-  _leftDieTarget: {fileID: 0}
-  _rightDieTarget: {fileID: 0}
   thumbBendAngle: 7.2
   fingersBendAngle: 18.8
   RightElbowHint: {fileID: 0}
@@ -463,6 +461,10 @@ PrefabInstance:
       propertyPath: <Owner>k__BackingField
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3119209494757908229, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8690904226079759030, guid: d875ab9f36442de4bbe546d167ecc873, type: 2}
     - target: {fileID: 3251081852582280195, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
       propertyPath: <Owner>k__BackingField
       value: 1
@@ -479,6 +481,14 @@ PrefabInstance:
       propertyPath: <Owner>k__BackingField
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4745718592156401698, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8690904226079759030, guid: d875ab9f36442de4bbe546d167ecc873, type: 2}
+    - target: {fileID: 5679800059317483762, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8690904226079759030, guid: d875ab9f36442de4bbe546d167ecc873, type: 2}
     - target: {fileID: 5982451065699023978, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
       propertyPath: <Owner>k__BackingField
       value: 1
@@ -701,6 +711,10 @@ PrefabInstance:
       propertyPath: <Owner>k__BackingField
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3119209494757908229, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8690904226079759030, guid: d875ab9f36442de4bbe546d167ecc873, type: 2}
     - target: {fileID: 3251081852582280195, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
       propertyPath: <Owner>k__BackingField
       value: 3
@@ -721,6 +735,14 @@ PrefabInstance:
       propertyPath: <Owner>k__BackingField
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4745718592156401698, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8690904226079759030, guid: d875ab9f36442de4bbe546d167ecc873, type: 2}
+    - target: {fileID: 5679800059317483762, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8690904226079759030, guid: d875ab9f36442de4bbe546d167ecc873, type: 2}
     - target: {fileID: 5982451065699023978, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
       propertyPath: <Owner>k__BackingField
       value: 3
@@ -1071,8 +1093,6 @@ MonoBehaviour:
   LeftHandTarget: {fileID: 0}
   _rightHandTargetBase: {fileID: 4850533770069269282}
   _leftHandTargetBase: {fileID: 6259470994525065935}
-  _leftDieTarget: {fileID: 0}
-  _rightDieTarget: {fileID: 0}
   thumbBendAngle: 7.2
   fingersBendAngle: 18.8
   RightElbowHint: {fileID: 7561322045423229056}
@@ -1174,6 +1194,10 @@ PrefabInstance:
       propertyPath: <Owner>k__BackingField
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3119209494757908229, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8690904226079759030, guid: d875ab9f36442de4bbe546d167ecc873, type: 2}
     - target: {fileID: 3251081852582280195, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
       propertyPath: <Owner>k__BackingField
       value: 2
@@ -1194,6 +1218,14 @@ PrefabInstance:
       propertyPath: <Owner>k__BackingField
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4745718592156401698, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8690904226079759030, guid: d875ab9f36442de4bbe546d167ecc873, type: 2}
+    - target: {fileID: 5679800059317483762, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8690904226079759030, guid: d875ab9f36442de4bbe546d167ecc873, type: 2}
     - target: {fileID: 5982451065699023978, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
       propertyPath: <Owner>k__BackingField
       value: 2
@@ -1542,8 +1574,6 @@ MonoBehaviour:
   LeftHandTarget: {fileID: 0}
   _rightHandTargetBase: {fileID: 3036841742014690852}
   _leftHandTargetBase: {fileID: 4587921234793725897}
-  _leftDieTarget: {fileID: 0}
-  _rightDieTarget: {fileID: 0}
   thumbBendAngle: 7.2
   fingersBendAngle: 18.8
   RightElbowHint: {fileID: 0}
@@ -1605,10 +1635,22 @@ PrefabInstance:
       propertyPath: <Mesh>k__BackingField
       value: 
       objectReference: {fileID: 2037044745496696262}
+    - target: {fileID: 3119209494757908229, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8690904226079759030, guid: d875ab9f36442de4bbe546d167ecc873, type: 2}
     - target: {fileID: 3777926153977100254, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
       propertyPath: m_Name
       value: Ygdra
       objectReference: {fileID: 0}
+    - target: {fileID: 4745718592156401698, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8690904226079759030, guid: d875ab9f36442de4bbe546d167ecc873, type: 2}
+    - target: {fileID: 5679800059317483762, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8690904226079759030, guid: d875ab9f36442de4bbe546d167ecc873, type: 2}
     - target: {fileID: 7723506995728141716, guid: 35342ae149e635a41bf38c43fdae0942, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.267
@@ -1970,8 +2012,6 @@ MonoBehaviour:
   LeftHandTarget: {fileID: 0}
   _rightHandTargetBase: {fileID: 8271966931894009394}
   _leftHandTargetBase: {fileID: 7441489673284040671}
-  _leftDieTarget: {fileID: 0}
-  _rightDieTarget: {fileID: 0}
   thumbBendAngle: 7.2
   fingersBendAngle: 18.8
   RightElbowHint: {fileID: 0}

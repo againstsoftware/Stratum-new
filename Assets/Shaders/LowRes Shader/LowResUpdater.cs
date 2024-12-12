@@ -6,18 +6,20 @@ using UnityEditor;
 #endif
 
 [ExecuteAlways]
-public class ResolutionManager : MonoBehaviour
+public class LowResUpdater : MonoBehaviour
 {
-    [FormerlySerializedAs("shaderMaterial")] 
-    [SerializeField] private Material _shaderMaterial; // Asigna tu material en el inspector
-    [FormerlySerializedAs("scaledScreenHeight")] 
-    [SerializeField] private int _scaledScreenHeight = 600; // Altura de pantalla deseada (editable en el inspector)
+    [FormerlySerializedAs("shaderMaterial")] [SerializeField]
+    private Material _shaderMaterial; // Asigna tu material en el inspector
+
+    [FormerlySerializedAs("scaledScreenHeight")] [SerializeField]
+    private int _scaledScreenHeight = 600; // Altura de pantalla deseada (editable en el inspector)
+
     [SerializeField] private bool _logOnUpdate;
-    
+
     private int _lastScreenWidth, _lastScreenHeight;
     private int _lastScaledScreenHeight;
-    
-    
+
+
     private static readonly int _blockCountHash = Shader.PropertyToID("_Block_Count");
     private static readonly int _blockSizeHash = Shader.PropertyToID("_Block_Size");
     private static readonly int _halfBlockSizeHash = Shader.PropertyToID("_Half_Block_Size");
@@ -32,7 +34,8 @@ public class ResolutionManager : MonoBehaviour
         if (Application.isPlaying)
         {
             // Detecta cambios en el modo de juego
-            if (Screen.width != _lastScreenWidth || Screen.height != _lastScreenHeight || _scaledScreenHeight != _lastScaledScreenHeight)
+            if (Screen.width != _lastScreenWidth || Screen.height != _lastScreenHeight ||
+                _scaledScreenHeight != _lastScaledScreenHeight)
             {
                 UpdateResolutionScale();
             }
@@ -61,14 +64,14 @@ public class ResolutionManager : MonoBehaviour
         // Calcula la escala de resolución
         float aspectRatio = screenSize.x / screenSize.y;
         float scaledWidth = _scaledScreenHeight * aspectRatio;
-        
-        float scaledScreenWidth = (int) ( _scaledScreenHeight * aspectRatio + 0.5f );
+
+        float scaledScreenWidth = (int)(_scaledScreenHeight * aspectRatio + 0.5f);
 
         Vector2 blockCount = new Vector2(scaledScreenWidth, _scaledScreenHeight);
         Vector2 blockSize = new Vector2(1f / scaledScreenWidth, 1f / _scaledScreenHeight);
         Vector2 halfBlockSize = new Vector2(.5f / scaledScreenWidth, .5f / _scaledScreenHeight);
 
-        
+
         // Pasa los valores al material si está asignado
         if (_shaderMaterial is not null)
         {
@@ -78,20 +81,23 @@ public class ResolutionManager : MonoBehaviour
         }
 
         // Log para depuración
-        if(_logOnUpdate) Debug.Log($"Updated Low Res. (Screen: {screenSize})");
+        if (_logOnUpdate) Debug.Log($"Updated Low Res. (Screen: {screenSize})");
     }
 
-#if UNITY_EDITOR
     private Vector2 GetEditorGameViewSize()
     {
+#if UNITY_EDITOR
         System.Type gameViewType = System.Type.GetType("UnityEditor.GameView,UnityEditor");
         if (gameViewType == null) return new Vector2(1920, 1080); // Valor predeterminado si no se encuentra el GameView
 
         // Usar reflexión para obtener el tamaño del Game View sin abrir ventanas
-        var getSizeMethod = gameViewType.GetMethod("GetMainGameViewSize", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+        var getSizeMethod = gameViewType.GetMethod("GetMainGameViewSize",
+            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
         if (getSizeMethod == null) return new Vector2(1920, 1080);
 
         return (Vector2)getSizeMethod.Invoke(null, null);
-    }
+#else
+return Vector2.zero;
 #endif
+    }
 }

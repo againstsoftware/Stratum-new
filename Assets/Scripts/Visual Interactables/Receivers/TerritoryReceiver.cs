@@ -53,13 +53,7 @@ public class TerritoryReceiver : MonoBehaviour, IActionReceiver
             _constructionVine.transform.parent = null;
         }
     }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.C) && HasConstruction) DestroyConstruction(false);
-        if(Input.GetKeyDown(KeyCode.V) && HasConstruction) DestroyConstruction(true);
-    }
-
+    
     public void BuildConstruction()
     {
         _construction.SetActive(true);
