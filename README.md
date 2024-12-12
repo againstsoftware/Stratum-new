@@ -61,6 +61,18 @@
 
 * [6.5. Monetización](#65-monetización)
 
+[7. Post-Mortem de Stratum: Desarrollo de la Beta](#7-post-mortem-de-stratum-desarrollo-de-la-beta)
+
+* [7.1. Introducción](#71-introducción)
+  
+* [7.2. ¿Qué ha ido bien?](#72-qué-ha-ido-bien)
+  
+* [7.3. Flujo de correcciones](#73-flujo-de-correcciones)
+  
+* [7.4. ¿Qué se podría haber mejorado?](#74-qué-se-podría-haber-mejorado)
+  
+* [7.5. Reflexión final](#75-reflexión-final)
+
 
 
 
@@ -823,3 +835,85 @@ El modelo de monetización de este juego está diseñado para ser **justo** y **
 
 Este modelo de monetización ofrece a los jugadores la posibilidad de disfrutar de todas las cartas y mecánicas del juego sin necesidad de gastar dinero, mientras que aquellos que busquen una experiencia más competitiva y progresiva pueden optar por una suscripción mensual. Esto no solo evita las controversias relacionadas con modelos "pay-to-win", sino que también asegura una experiencia equilibrada y justa para toda la base de jugadores.
 
+# 7. Post-Mortem de Stratum: Desarrollo de la Beta
+
+## 7.1. Introducción
+
+El desarrollo de la beta de *Stratum* ha sido un proceso desafiante que nos ha permitido lograr avances significativos y aprender de las dificultades encontradas. Este post-mortem recoge lo que ha ido bien, lo que se pudo mejorar y las lecciones aprendidas, con aportaciones de cada miembro del equipo.
+
+## 7.2. ¿Qué ha ido bien?
+
+- **Programación**: se logró implementar todas las cartas con sus mecánicas y se implementó tutorial para tres personajes.
+- **Arte 2D y 3D**: se completó el diseño de las cartas, se finalizaron los modelos 3D de los personajes restantes y se adelantó la decoración del escenario.
+- **Menú principal**: se implementó los elementos interactivos del menú, como la radio, el gramófono y los libros.
+- **Contenido multimedia**: se creó la página web principal, un video explicativo y un teaser, gracias al esfuerzo conjunto.
+- **Redes sociales**: se mantuvo una estrategia constante en redes, captando atención y generando interés.
+- **Música**: se implementó música en el juego.
+
+Miguel: "La implementación de las cartas fue un gran avance."
+
+Gloria: "El arte de las cartas está completo y alineado con el estilo del juego."
+
+Javier: "Los modelos 3D se completaron según lo planeado."
+
+Ángel: "El rigging permitió que los personajes estuvieran listos para animarse."
+
+Óscar: "El menú principal ofrece interactividad y claridad."
+
+Ezequiel: "Logramos mantener el interés en redes sociales."
+
+## 7.3. Flujo de correcciones
+
+- Se ajustaron las mecánicas y el balance de cartas mediante pruebas internas.
+- Mejoramos la integración de los elementos visuales y tutoriales para una experiencia más pulida.
+
+Miguel: "Revisamos las mecánicas para equilibrar las cartas."
+
+Óscar: "Se pulieron los elementos del menú para hacerlos funcionales."
+
+Gloria: "Refinamos los diseños para alinearlos con el estilo general."
+
+Javier: "Optimizamos los modelos para integrarlos mejor."
+
+Ángel: "Se arreglaron algunas texturas para mantener la misma estética"
+
+Ezequiel: "El feedback de redes nos ayudó a identificar mejoras visuales."
+
+## 7.4. Feedback o retroalimentación externa
+
+- Los testers destacaron el concepto original, el estilo visual y el potencial del juego.
+- Se sugirió mejorar descripciones de cartas y el tutorial del juego.
+
+Miguel: "Algunos testers pidieron más detalle en las descripciones de cartas."
+
+Gloria: "Sugirieron hacer los diseños de cartas más explicativos."
+
+Javier: "El estilo visual fue bien recibido en general."
+
+Ángel: "Se valoró la coherencia en los modelos 3D."
+
+Óscar: "El menú y su interactividad gustaron bastante."
+
+Ezequiel: "Los comentarios en redes mostraron un interés positivo en el juego."
+
+## 7.4. ¿Qué se podría haber mejorado?
+
+- **Problemas técnicos**: Los fallos en GitHub retrasaron el desarrollo y obligaron a crear un nuevo repositorio.
+- **Falta de tiempo**: No se logró implementar todas las texturas de las cartas ni terminar el tutorial de "El Magnate".
+- **Coordinación**: Hubo dificultades en la comunicación entre arte 2D, 3D y programación.
+
+Miguel: "Los problemas con GitHub retrasaron el progreso en programación."
+
+Óscar: "La falta de tiempo complicó la integración final del contenido."
+
+Gloria: "Pude haber mostrado más avances del proceso, no solo los resultados finales."
+
+Javier: "Nos faltó tiempo para hacer más pruebas y ajustes intermedios."
+
+Ángel: "Hubo momentos de desconexión entre los equipos de arte y programación."
+
+Ezequiel: "La planificación pudo haber sido más precisa para evitar solapamientos."
+
+## 7.5. Reflexión final
+
+La beta de *Stratum* ha sido un paso importante hacia la versión final del juego. A pesar de los retos técnicos y de tiempo, el equipo logró avances notables en programación, arte y contenido multimedia. Las lecciones aprendidas nos permitirán mejorar la organización, la comunicación y el testeo en futuras etapas. Seguiremos adelante con determinación.
