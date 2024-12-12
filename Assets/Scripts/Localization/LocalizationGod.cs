@@ -40,7 +40,7 @@ public static class LocalizationGod
 
     public static bool IsInitialized
     {
-        get => _cardsLoaded && _tutorialLoaded && _feedbackLoaded && _radioInfoLoaded && _menuBooksLoaded;
+        get => _cardsLoaded && _tutorialLoaded && _feedbackLoaded && _radioInfoLoaded && _menuBooksLoaded && _letterLoaded;
     }
     
     private static bool _cardsLoaded = false;

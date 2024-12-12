@@ -369,14 +369,16 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
     }
 
 
+    private IInteractionSystem.State? _stateBeforeDisabled = null;
     public void Disable()
     {
+        _stateBeforeDisabled = CurrentState;
         CurrentState = IInteractionSystem.State.Waiting;
     }
 
     public void Enable()
     {
-        CurrentState = IInteractionSystem.State.Idle;
+        CurrentState = _stateBeforeDisabled ?? IInteractionSystem.State.Idle;
     }
 
     public void DisableInput()
