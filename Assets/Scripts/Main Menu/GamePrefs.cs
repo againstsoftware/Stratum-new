@@ -10,7 +10,7 @@ public static class GamePrefs
     // PlayerPrefs    
     public const string LanguagePrefKey = "language_selected";
     public const string AudioPrefKey = "audio_volume";
-    public const string QualityPrefKey = "graphics_quality"; 
+    public const string SfxPrefKey = "sfx_volume"; 
 
     
 }

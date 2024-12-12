@@ -59,6 +59,7 @@ public class TurnManager : MonoBehaviour, ITurnSystem
         _actionsLeft = _numberOfActions;
         
         ServiceLocator.Get<ICommunicationSystem>().SendTurnChange(PlayerOnTurn);
+        SoundManager.Instance.PlaySound("FinishTurnBell");
     }
 
     public void ChangeTurn(PlayerCharacter playerOnTurn) //en los clientes

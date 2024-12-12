@@ -72,6 +72,8 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
 
         bool isAlreadyPlayed = CurrentState is not State.Playable && IsOnPlayLocation(playLocation);
 
+        if(playLocation is not DiscardPileReceiver) SoundManager.Instance.PlaySound("PlayCard");
+
         if (isAlreadyPlayed)
         {
             if (Card is AInfluenceCard { IsPersistent: true })
@@ -330,6 +332,7 @@ public class PlayableCard : APlayableItem, IActionReceiver, IRulebookEntry
 
     public void DestroyCard(Action callback)
     {
+        SoundManager.Instance.PlaySound("BurnDiscard");
         _destroyableCard.StartDestroying(callback);
         CurrentState = State.Destroying;
         if(InfluenceCardOnTop is not null)

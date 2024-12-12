@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4366757, g: 0.48427194, b: 0.5645252, a: 1}
+  m_IndirectSpecularColor: {r: 0.43667555, g: 0.48427176, b: 0.5645241, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -282,6 +282,183 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -382213238590597874, guid: d2e799c0bb99cf643b5c696430d3ca4c, type: 3}
   m_PrefabInstance: {fileID: 329571055}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &87893454
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 87893455}
+  - component: {fileID: 87893458}
+  - component: {fileID: 87893457}
+  - component: {fileID: 87893456}
+  m_Layer: 0
+  m_Name: SfxManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &87893455
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87893454}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1327833464}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &87893456
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87893454}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 122
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &87893457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87893454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5cfd6dd1198d64ab353621b67ca242, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sfxSource: {fileID: 87893456}
+  _sfxLibrary: {fileID: 87893458}
+--- !u!114 &87893458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87893454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67ac4e00bfccd534ca3b7fddde9c6526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffects:
+  - sfxID: FinishTurnBell
+    clip: {fileID: 8300000, guid: 167e8ca2364a6aa43bf05581455d6140, type: 3}
+  - sfxID: GameOver
+    clip: {fileID: 8300000, guid: 34e331b26ab38cc48909d70e39f1c8f7, type: 3}
+  - sfxID: BurnDiscard
+    clip: {fileID: 8300000, guid: 8d7fb2027bd61f34195312630e73cb8a, type: 3}
+  - sfxID: PlayCard
+    clip: {fileID: 8300000, guid: f9db74ae63938f845b06eb3513c7da63, type: 3}
+  - sfxID: Mushroom
+    clip: {fileID: 8300000, guid: 3e5a775f46b9b5a438269a8658bc41ff, type: 3}
+  - sfxID: Construction
+    clip: {fileID: 8300000, guid: ef808e2dedaf7ce44a69a53e82eb32e4, type: 3}
+  - sfxID: Dig
+    clip: {fileID: 8300000, guid: c962875fe48acc2498aa3d3b05b17537, type: 3}
+  - sfxID: Fire
+    clip: {fileID: 8300000, guid: 7517d33b0d881604f8c8c9b6670db500, type: 3}
+  - sfxID: Birds
+    clip: {fileID: 8300000, guid: b415c3aa7fcc56e468b8c1d63a349c87, type: 3}
+  - sfxID: Fireworks
+    clip: {fileID: 8300000, guid: 6d7b800e49ab1d044b0b7180111532d1, type: 3}
 --- !u!65 &91110437
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1196,7 +1373,7 @@ MonoBehaviour:
   - {fileID: 329571070}
   - {fileID: 1382086772}
   _Language: {fileID: 329571061}
-  _Graphics: {fileID: 329571063}
+  _SfxVolume: {fileID: 329571063}
   _Volume: {fileID: 329571062}
   _qualityLevels:
   - {fileID: 11400000, guid: d0e2fc18fe036412f8223b3b3d9ad574, type: 2}
@@ -1261,30 +1438,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 898053510}
     m_Modifications:
-    - target: {fileID: -8645254154881266922, guid: 3e4cc6088a8dd5b42b42af7204cecba9, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: -4669766886046185034, guid: 3e4cc6088a8dd5b42b42af7204cecba9, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: -2569629438533561786, guid: 3e4cc6088a8dd5b42b42af7204cecba9, type: 3}
-      propertyPath: m_Name
-      value: "Bot\xF3n_JoinLobby"
-      objectReference: {fileID: 0}
-    - target: {fileID: -2569629438533561786, guid: 3e4cc6088a8dd5b42b42af7204cecba9, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: -1896722507624430924, guid: 3e4cc6088a8dd5b42b42af7204cecba9, type: 3}
-      propertyPath: m_Name
-      value: "Bot\xF3n_CreateLobby"
-      objectReference: {fileID: 0}
-    - target: {fileID: -1896722507624430924, guid: 3e4cc6088a8dd5b42b42af7204cecba9, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: -8926980663068393505, guid: 845d03719540524478fb5c3d5a84f4b9, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -1426,6 +1579,30 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6722004056784982226, guid: 845d03719540524478fb5c3d5a84f4b9, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -8645254154881266922, guid: 3e4cc6088a8dd5b42b42af7204cecba9, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -4669766886046185034, guid: 3e4cc6088a8dd5b42b42af7204cecba9, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -2569629438533561786, guid: 3e4cc6088a8dd5b42b42af7204cecba9, type: 3}
+      propertyPath: m_Name
+      value: "Bot\xF3n_JoinLobby"
+      objectReference: {fileID: 0}
+    - target: {fileID: -2569629438533561786, guid: 3e4cc6088a8dd5b42b42af7204cecba9, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -1896722507624430924, guid: 3e4cc6088a8dd5b42b42af7204cecba9, type: 3}
+      propertyPath: m_Name
+      value: "Bot\xF3n_CreateLobby"
+      objectReference: {fileID: 0}
+    - target: {fileID: -1896722507624430924, guid: 3e4cc6088a8dd5b42b42af7204cecba9, type: 3}
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
@@ -14459,6 +14636,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1603596716}
+  - {fileID: 87893455}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1351955123
