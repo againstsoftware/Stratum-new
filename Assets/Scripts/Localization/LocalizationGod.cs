@@ -19,59 +19,7 @@ public static class LocalizationGod
         {
             Name = name;
         }
-        
-        // private void LoadCSV()
-        // {
-        //     string filePath = Path.Combine(Application.streamingAssetsPath, $"{Name}.csv");
-        //
-        //     // Inicializar los diccionarios
-        //     English = new Dictionary<string, string>();
-        //     Spanish = new Dictionary<string, string>();
-        //
-        //     // Verificar si el archivo existe
-        //     if (!File.Exists(filePath))
-        //     {
-        //         throw new Exception($"El archivo CSV no existe en la ruta: {filePath}");
-        //         
-        //     }
-        //
-        //     // Leer las líneas del archivo
-        //     string[] lines;
-        //     using (StreamReader reader = new StreamReader(filePath, Encoding.UTF8))
-        //     {
-        //         var content = reader.ReadToEnd();
-        //         lines = content.Split('\n');
-        //     }
-        //
-        //     // Procesar cada línea del CSV (suponiendo que la primera línea no contiene encabezados)
-        //     foreach (string line in lines)
-        //     {
-        //         // Dividir la línea por el delimitador ';'
-        //         string[] columns = line.Split(';');
-        //
-        //         // Verificar si tiene al menos 4 columnas (0, 1, 2, 3)
-        //         if (columns.Length < 4)
-        //         {
-        //             UnityEngine.Debug.LogWarning($"Línea ignorada por no tener suficientes columnas: {line}");
-        //             continue;
-        //         }
-        //
-        //         string key = columns[0].Trim();
-        //         string valueSpanish = columns[2].Trim();
-        //         string valueEnglish = columns[3].Trim();
-        //
-        //         // Agregar al diccionario si la clave no es nula o vacía
-        //         if (!string.IsNullOrEmpty(key))
-        //         {
-        //             Spanish[key] = valueSpanish;
-        //             English[key] = valueEnglish;
-        //         }
-        //     }
-        //
-        //     UnityEngine.Debug.Log("Archivo CSV procesado exitosamente.");
-        // }
-        
-        public void LoadCSV(Action onCompleted = null)
+        public void LoadCSV(Action onCompleted = null, bool hasLinebreaks = false)
         {
             // Llamar a un MonoBehaviour para hacer la solicitud asíncrona
             var loaderGameObject = new GameObject("CSVLoader");
@@ -81,7 +29,7 @@ public static class LocalizationGod
                 English = loaderComponent.English;
                 Spanish = loaderComponent.Spanish;
                 onCompleted?.Invoke();
-            });
+            }, hasLinebreaks);
         }
     }
 
@@ -100,6 +48,7 @@ public static class LocalizationGod
     private static bool _feedbackLoaded = false;
     private static bool _radioInfoLoaded = false;
     private static bool _menuBooksLoaded = false;
+    private static bool _letterLoaded = false;
 
     public static void Init()
     {
@@ -111,6 +60,7 @@ public static class LocalizationGod
         LoadTable("Feedback", () => _feedbackLoaded = true);
         LoadTable("RadioInfo", () => _radioInfoLoaded = true);
         LoadTable("MenuBooks", () => _menuBooksLoaded = true);
+        LoadTable("Letter", () => _letterLoaded = true, hasLineBreaks: true);
     }
 
     public static string GetLocalized(string tableName, string tablekey)
@@ -140,7 +90,7 @@ public static class LocalizationGod
         throw new Exception($"Key {key} no encontrada en la tabla {table.Name}:");
     }
 
-    private static void LoadTable(string tableName, Action callback)
+    private static void LoadTable(string tableName, Action callback, bool hasLineBreaks = false)
     {
         var table = new Table(tableName);
 
@@ -148,10 +98,6 @@ public static class LocalizationGod
         {
             _tables.Add(tableName, table);
             callback?.Invoke();
-        });
-
+        }, hasLineBreaks);
     }
-    
-    
-    
 }
