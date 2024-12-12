@@ -36,6 +36,7 @@ public class LobbyInteraction : MonoBehaviour
 
     public void ClientButton()
     {
+        if(NetworkManager.Singleton.IsHost) return;
         _lobbyManager.StartClientAsync(_clientCode, OnClientStartedLocal);
     }
 

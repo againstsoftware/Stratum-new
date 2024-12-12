@@ -10,6 +10,7 @@ public class Radio : AInteractableObject
     [SerializeField] private LobbyInteraction _lobbyInteraction;
     [SerializeField] private UserInfo _userInfo;
     [SerializeField] private Canvas _canvas;
+    [SerializeField] private Collider _matchMaking, _createLobby, _joinLobby;
 
     private List<float> _targetRot;
     private List<float> _currentRot;
@@ -21,6 +22,24 @@ public class Radio : AInteractableObject
         _targetRot = new List<float>();
         _currentRot = new List<float>();
         cameraOffset = new Vector3(0, 2.5f, -3.3f);
+    }
+
+    public override void OnPointerClick(PointerEventData eventData)
+    {
+        if (_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == _matchMaking))
+        {
+           OnButtonMatchMaking();
+        }
+
+        if (_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == _createLobby))
+        {
+            OnButtonCreateLobby();
+        }
+
+        if (_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == _joinLobby))
+        {
+            OnButtonJoinLobby();
+        }
     }
 
     public override void EnableInteraction()
@@ -41,12 +60,6 @@ public class Radio : AInteractableObject
         {
             transform.gameObject.SetActive(false);
         }
-    }
-
-
-    public override void OnPointerClick(PointerEventData eventData)
-    {
-        Debug.Log("Radio pulsada");
     }
 
     private void Update()
