@@ -4001,7 +4001,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 875197735}
         m_TargetAssemblyTypeName: LobbyInteraction, Assembly-CSharp
         m_MethodName: OnEnterCode
         m_Mode: 0
