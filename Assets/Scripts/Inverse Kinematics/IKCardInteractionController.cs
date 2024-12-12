@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Animator))]
@@ -17,9 +18,6 @@ public class IKCardInteractionController : MonoBehaviour
 
     [FormerlySerializedAs("leftHandTarget")] [SerializeField]
     private Transform _leftHandTargetBase = null; // Objetivo de la mano derecha
-
-    [SerializeField] private Transform _leftDieTarget;
-    [SerializeField] private Transform _rightDieTarget;
     
     private float _resetTime = .45f;
 
@@ -94,8 +92,17 @@ public class IKCardInteractionController : MonoBehaviour
 
         if (_isDropping)
         {
-            RightHandTarget.Translate(Vector3.down * Time.deltaTime / _resetTime, Space.World);
-            LeftHandTarget.Translate(Vector3.down * Time.deltaTime / _resetTime, Space.World);
+            var newRPos = RightHandTarget.position + Vector3.down * Time.deltaTime / _resetTime;
+            newRPos.y = Mathf.Max(-30f, newRPos.y);
+            RightHandTarget.position = newRPos;
+
+            var newLPos = LeftHandTarget.position + Vector3.down * Time.deltaTime / _resetTime;
+            newLPos.y = Mathf.Max(-30f, newLPos.y);
+            LeftHandTarget.position = newRPos;
+            
+            
+            // RightHandTarget.Translate(Vector3.down * Time.deltaTime / _resetTime, Space.World);
+            // LeftHandTarget.Translate(Vector3.down * Time.deltaTime / _resetTime, Space.World);
         }
     }
 
@@ -113,6 +120,12 @@ public class IKCardInteractionController : MonoBehaviour
         _isDropping = true;
         _rightReset = false;
         _leftReset = false;
+    }
+
+    public void DisableElbows()
+    {
+        LeftElbowHint = null;
+        RightElbowHint = null;
     }
 
 

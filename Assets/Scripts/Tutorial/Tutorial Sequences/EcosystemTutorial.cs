@@ -39,7 +39,8 @@ public class EcosystemTutorial : ATutorialSequence
     //turno del ecosistema crecen ambos
     [SerializeField] private TutorialDialogue[] _dialoguesCarnHerbGrowAfter;
 
-
+    public override bool SetIdleHandTargets => true;
+    
     public override IEnumerable<ITutorialElement> GetTutorialElements()
     {
         List<ITutorialElement> elements = new();

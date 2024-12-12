@@ -10,7 +10,8 @@ public abstract class ATutorialSequence : ScriptableObject
     public abstract IEnumerable<ITutorialElement> GetTutorialElements();
 
     public abstract void OnTutorialFinished();
-    
+
+    public virtual bool SetIdleHandTargets { get; } = false;    
     protected TutorialAction DrawFixed(List<ACard> cards)
     {
         return new TutorialAction(false, new IEffectCommand[]

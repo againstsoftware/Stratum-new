@@ -53,6 +53,7 @@ public class InputHandler
         var newTapped = hitInfo.collider.GetComponentInParent<InteractableInput>();
         if(_lastTapped is not null && newTapped == _lastTapped) _lastTapped.OnPointerExit(null);
         newTapped.OnPointerEnter(null);
+        newTapped.OnTap();
         _lastTapped = newTapped;
     }
 

@@ -93,6 +93,8 @@ public class InteractionManager : MonoBehaviour, IInteractionSystem
         try
         {
             Input.PointerPosition -= OnPointerPositionChanged;
+            Input.Scroll -= OnScroll;
+            
             var ts = ServiceLocator.Get<ITurnSystem>();
             ts.OnTurnChanged -= OnTurnChanged;
             ts.OnActionEnded -= OnActionEnded;
