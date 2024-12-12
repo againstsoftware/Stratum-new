@@ -42,11 +42,25 @@ public class LobbyManager : MonoBehaviour
 
     public void CreateorJoinMatchmakingLobby(Action<string> callback)
     {
+        if(NetworkManager.Singleton.IsHost) 
+        {
+            _lobbyInteraction.UpdateStateText("deleting_lobby");
+            StartCoroutine(ShutdownAndWaitCoroutine());
+            
+            return;
+        }
+        
+        _lobbyInteraction.UpdateStateText("searching_state");
         StartCoroutine(CreateorJoinMatchmakingLobbyCoroutine(callback));
     }
 
     private IEnumerator StartHostCoroutine(Action<string> callback)
     {
+        if(NetworkManager.Singleton.IsClient || NetworkManager.Singleton.IsHost)
+        {
+            NetworkManager.Singleton.Shutdown();
+        }
+
         Task<string> hostTask = StartHostWithRelay();
         while (!hostTask.IsCompleted) yield return null;
 
@@ -63,6 +77,11 @@ public class LobbyManager : MonoBehaviour
 
     private IEnumerator StartClientCoroutine(string joinCode, Action callback)
     {
+        if(NetworkManager.Singleton.IsClient || NetworkManager.Singleton.IsHost)
+        {
+            NetworkManager.Singleton.Shutdown();
+        }
+
         Task<bool> clientTask = StartClientWithRelay(joinCode);
         while (!clientTask.IsCompleted) yield return null;
 
@@ -140,6 +159,10 @@ public class LobbyManager : MonoBehaviour
         if (_connectedLobby is null)
         {
             info = "Host";
+            if(NetworkManager.Singleton.IsClient)
+            {
+                NetworkManager.Singleton.Shutdown();
+            }
             _connectedLobby = await CreateLobby();
         }
 
@@ -174,6 +197,9 @@ public class LobbyManager : MonoBehaviour
             NetworkManager.Singleton.StartHost();
             Debug.Log("Matchmaking lobby created!");
             Debug.Log("lobby created: " + lobby);
+
+            _lobbyInteraction.UpdateStateText("createdlobby_state");
+
             return lobby;
         }
         catch (Exception e)
@@ -201,6 +227,9 @@ public class LobbyManager : MonoBehaviour
 
             NetworkManager.Singleton.StartClient();
             Debug.Log("Matchmaking lobby joined!");
+
+            _lobbyInteraction.UpdateStateText("joinedlobby_state");
+
             return lobby;
         }
         catch (Exception e)
@@ -225,7 +254,6 @@ public class LobbyManager : MonoBehaviour
 
             yield return new WaitForSeconds(intervalSeconds);
         }
-        Debug.Log("connected lobby: " + _connectedLobby);
     }
 
 
@@ -233,7 +261,7 @@ public class LobbyManager : MonoBehaviour
     {
         try
         {
-            //Debug.Log("heartbeat");
+            Debug.Log("heartbeat");
             await Lobbies.Instance.SendHeartbeatPingAsync(lobbyId);
         }
         catch (Exception e)
@@ -241,6 +269,21 @@ public class LobbyManager : MonoBehaviour
             Debug.LogError($"Error sending heartbeat: {e.Message}");
             throw;
         }
+    }
+
+    private IEnumerator ShutdownAndWaitCoroutine()
+    {
+        Debug.Log("Iniciando el apagado de NetworkManager...");
+
+        NetworkManager.Singleton.Shutdown();
+        _connectedLobby = null;
+
+        yield return new WaitUntil(() => !NetworkManager.Singleton.IsServer && !NetworkManager.Singleton.IsClient);
+
+        _lobbyInteraction.UpdateStateText("initial_state");
+        _lobbyInteraction._playerCountText.text = "";
+
+        Debug.Log("NetworkManager se ha apagado completamente.");
     }
 
 }

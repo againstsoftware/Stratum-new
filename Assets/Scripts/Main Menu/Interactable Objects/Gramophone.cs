@@ -14,6 +14,10 @@ public class Gramophone : AInteractableObject
     [SerializeField] private GramophoneAnimations _animations;
     //[SerializeField] private InteractionSystemMenu _interactionSystemMenu;
 
+    private void Start()
+    {
+        cameraOffset = new Vector3(0f,3.5f,-4f);
+    }
 
     public override void OnPointerClick(PointerEventData eventData)
     {

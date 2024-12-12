@@ -13,15 +13,19 @@ public class LobbyNetwork : NetworkBehaviour
     public event System.Action<int> OnPlayerCountChange;
     private NetworkVariable<int> _playerCount = new(0);
 
+    private LobbyInteraction _lobbyInteraction;
+
+
     //server only
     private Dictionary<PlayerCharacter, NetworkPlayer> _networkPlayers = new();
 
     public override void OnNetworkSpawn()
     {
+        _lobbyInteraction = GetComponent<LobbyInteraction>();
+
         if (IsServer)
         {
             _playerCount.Value = 0;
-            // Host updates player count when players connect/disconnect
             NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
             NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnected;
         }
@@ -67,21 +71,18 @@ public class LobbyNetwork : NetworkBehaviour
     {
         Debug.Log("host desconectado");
         StartCoroutine(ShutdownAndWaitCoroutine());
+
+        _lobbyInteraction.UpdateStateText("host_disconnected");
+
         Debug.Log("networkmanager " + NetworkManager.Singleton);
     }
 
     private IEnumerator ShutdownAndWaitCoroutine()
     {
-        Debug.Log("Iniciando el apagado de NetworkManager...");
 
-        // Llamar al apagado
         NetworkManager.Singleton.Shutdown();
 
-        // Esperar hasta que el NetworkManager deje de estar activo
         yield return new WaitUntil(() => !NetworkManager.Singleton.IsServer && !NetworkManager.Singleton.IsClient);
-
-        Debug.Log("NetworkManager se ha apagado completamente.");
-        // Aquí puedes continuar con otras acciones después del apagado
     }
 
     // BORRAR esto es para debug
@@ -127,6 +128,8 @@ public class LobbyNetwork : NetworkBehaviour
         OnPlayerCountChange?.Invoke(newV);
 
         if (newV != 4 || !IsServer) return;
+
+        _lobbyInteraction.UpdateStateText("starting_game");
 
         var players =
             new List<NetworkPlayer>(FindObjectsByType<NetworkPlayer>(FindObjectsInactive.Exclude,

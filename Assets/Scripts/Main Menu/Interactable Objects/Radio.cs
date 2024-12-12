@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -8,6 +9,7 @@ public class Radio : AInteractableObject
     [SerializeField] private List<GameObject> _radioWheels;
     [SerializeField] private LobbyInteraction _lobbyInteraction;
     [SerializeField] private UserInfo _userInfo;
+    [SerializeField] private Canvas _canvas;
 
     private List<float> _targetRot;
     private List<float> _currentRot;
@@ -18,6 +20,27 @@ public class Radio : AInteractableObject
     {
         _targetRot = new List<float>();
         _currentRot = new List<float>();
+        cameraOffset = new Vector3(0, 2.5f, -3.3f);
+    }
+
+    public override void EnableInteraction()
+    {
+        base.EnableInteraction();
+
+        foreach(Transform transform in _canvas.transform)
+        {
+            transform.gameObject.SetActive(true);
+        }
+    }
+
+    public override void DisableInteraction()
+    {
+        base.DisableInteraction();
+
+        foreach(Transform transform in _canvas.transform)
+        {
+            transform.gameObject.SetActive(false);
+        }
     }
 
 
@@ -81,17 +104,12 @@ public class Radio : AInteractableObject
 
     public void OnButtonCreateLobby()
     {
-        Debug.Log("Crear lobby pulsado");
-
         _lobbyInteraction.HostButton();
-
         InitWheels();
-
     }
 
     public void OnButtonJoinLobby()
     {
-        // te deja escribir en el cuadro de texto (se activa o como lo haga)
         _lobbyInteraction.ClientButton();
     }
 
@@ -102,7 +120,6 @@ public class Radio : AInteractableObject
         {
             // iniciar matchmaking
             _lobbyInteraction.MatchmakingButton();
-
         }
         else
         {

@@ -14,7 +14,7 @@ public class MenuCameraMovement : MonoBehaviour
     private Vector3 _objectPos;
     [SerializeField] private float _smoothVelocity = 0.3f;
     [SerializeField] private float _rotationSpeed = 2f;
-    [SerializeField] private Vector3 _cameraOffset = new Vector3(0, 2, -3);
+    //[SerializeField] private Vector3 _cameraOffset = new Vector3(0, 2, -3);
 
     private void Start()
     {
@@ -40,9 +40,9 @@ public class MenuCameraMovement : MonoBehaviour
         }
     }
 
-    public void StartMoving(Vector3 pos)
+    public void StartMoving(Vector3 pos, Vector3 cameraOffset)
     {
-        _posToMove = pos + _cameraOffset;;
+        _posToMove = pos + cameraOffset;
         _objectPos = pos;
         _currentState = CameraState.Moving;
     }

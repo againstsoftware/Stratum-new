@@ -23,6 +23,11 @@ public class Registry : AInteractableObject
         _Link.enabled = false;
     }
 
+    private void Start()
+    {
+        cameraOffset = new Vector3(0f, 0.8f, -1.5f);
+    }
+
     public override void OnPointerClick(PointerEventData eventData)
     {
         if(_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == _Link))

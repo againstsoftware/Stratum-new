@@ -11,7 +11,8 @@ public abstract class AInteractableObject : MonoBehaviour, IMenuInteractable
     public abstract void OnPointerClick(PointerEventData eventData);
     public abstract void UpdateText();
     [SerializeField] protected InteractionSystemMenu _interactionSystemMenu;
-
+    public Vector3 cameraOffset;
+    [SerializeField] protected List<InteractableOnObject> _interactableOnObjects;
 
     public virtual void OnPointerEnter(PointerEventData eventData)
     {
@@ -26,6 +27,11 @@ public abstract class AInteractableObject : MonoBehaviour, IMenuInteractable
     public virtual void EnableInteraction()
     {
         _isEnabled = true;
+
+        foreach(InteractableOnObject interactableOnObject in _interactableOnObjects)
+        {
+            interactableOnObject.isEnabled = true;
+        }
     }
 
     public virtual void DisableInteraction()
@@ -33,6 +39,11 @@ public abstract class AInteractableObject : MonoBehaviour, IMenuInteractable
         _isEnabled = false;
 
         gameObject.transform.localScale = _defaultScale;
+
+        foreach(InteractableOnObject interactableOnObject in _interactableOnObjects)
+        {
+            interactableOnObject.isEnabled = false;
+        }
     }
 
     protected virtual void Awake()

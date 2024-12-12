@@ -51,7 +51,7 @@ public class InputHandlerMenu
                 _interactionSystem.ClearState();
 
                 //hitInfo.collider.GetComponent<IMenuInteractable>().OnPointerPress();
-                _interactionSystem.Camera.GetComponent<MenuCameraMovement>().StartMoving(hitInfo.transform.position);
+                _interactionSystem.Camera.GetComponent<MenuCameraMovement>().StartMoving(hitInfo.transform.position, hitInfo.collider.GetComponent<AInteractableObject>().cameraOffset);
                 _interactionSystem.SetState(hitInfo.collider.GetComponent<IMenuInteractable>());
             }
 

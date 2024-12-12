@@ -7,8 +7,9 @@ using UnityEngine.UI;
 
 public class LobbyInteraction : MonoBehaviour
 {
-    [SerializeField] private GameObject _hostButton, _clientButton, _codeInput, _mmButton;
-    [SerializeField] private TextMeshProUGUI _hostCodeText, _playerCountText;
+    //[SerializeField] private GameObject _hostButton, _clientButton, _codeInput, _mmButton;
+    [SerializeField] public TextMeshProUGUI  _playerCountText;
+    [SerializeField] private TMP_InputField _hostCodeText;
     [SerializeField] private TextMeshProUGUI _stateInfoText;
     private string _clientCode;
     private LobbyManager _lobbyManager;
@@ -40,7 +41,6 @@ public class LobbyInteraction : MonoBehaviour
 
     public void MatchmakingButton()
     {
-        UpdateStateText("searching_state");
         _lobbyManager.CreateorJoinMatchmakingLobby(OnMatchmakingStartedLocal);
     }
 
@@ -52,7 +52,7 @@ public class LobbyInteraction : MonoBehaviour
 
     public void UpdatePlayerCount(int count)
     {
-        _playerCountText.text = $"players: {count}";
+        _playerCountText.text = $"{count} / 4";
     }
 
     private void OnHostStartedLocal(string joinCode)
@@ -63,7 +63,9 @@ public class LobbyInteraction : MonoBehaviour
         _mmButton.SetActive(false);
         _codeInput.SetActive(false);
         */
+        UpdateStateText("createdlobby_state");
         _hostCodeText.text = $"{joinCode}";
+
     }
     
     private void OnMatchmakingStartedLocal(string info)
@@ -74,7 +76,7 @@ public class LobbyInteraction : MonoBehaviour
         _mmButton.SetActive(false);
         _codeInput.SetActive(false);
         */
-        _hostCodeText.text = $"En sala de Matchmaking: {info}";
+        //_hostCodeText.text = $"En sala de Matchmaking: {info}";
 
         // debug
         //Debug.Log("isHost: " + NetworkManager.Singleton.IsHost);
@@ -88,6 +90,7 @@ public class LobbyInteraction : MonoBehaviour
         _mmButton.SetActive(false);
         _codeInput.SetActive(false);
         */
+        UpdateStateText("joinedlobby_state");
     }
 
     public void UpdateStateText(string tableKey)

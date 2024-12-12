@@ -20,6 +20,11 @@ public class Rules : AInteractableObject
        StartCoroutine(WaitForInitialization());
     }
 
+    private void Start()
+    {
+        cameraOffset = new Vector3(0f, 0.8f, -1.5f);
+    }
+
     public override void OnPointerClick(PointerEventData eventData)
     {
     }
