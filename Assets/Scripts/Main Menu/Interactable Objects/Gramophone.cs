@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 
 public class Gramophone : AInteractableObject
 {
-    [SerializeField] private Collider _Language, _Graphics, _Volume;
+    [SerializeField] private Collider _Language, _SfxVolume, _Volume;
     [SerializeField] private RenderPipelineAsset[] _qualityLevels;
     [SerializeField] private GramophoneAnimations _animations;
     //[SerializeField] private InteractionSystemMenu _interactionSystemMenu;
@@ -27,10 +27,10 @@ public class Gramophone : AInteractableObject
             StartCoroutine(ToggleLanguage());
         }
 
-        // gráficos
-        if (_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == _Graphics))
+        // sfx
+        if (_isEnabled && (eventData.pointerCurrentRaycast.gameObject.GetComponent<Collider>() == _SfxVolume))
         {
-            ToggleGraphicsQuality();
+            SfxVolume();
         }
 
         // volumen
@@ -62,26 +62,23 @@ public class Gramophone : AInteractableObject
 
 
     }
-    private void ToggleGraphicsQuality()
+
+    private void SfxVolume()
     {
-        int currentQuality = QualitySettings.GetQualityLevel();
+        AudioSource audioSource = SoundManager.Instance.GetComponent<AudioSource>();
+        audioSource.volume = (audioSource.volume + 0.25f > 0.5) ? 0f : audioSource.volume + 0.25f;
 
-        int newQuality = (currentQuality + 1) % 2;
-        QualitySettings.SetQualityLevel(newQuality);
-
-        QualitySettings.renderPipeline = _qualityLevels[newQuality];
-
-        PlayerPrefs.SetInt(GamePrefs.QualityPrefKey, newQuality);
+        PlayerPrefs.SetFloat(GamePrefs.SfxPrefKey, audioSource.volume);
         PlayerPrefs.Save();
 
         _animations.HandleAnim();
-
     }
 
     private void AudioVolume()
     {
         AudioSource audioSource = MusicManager.Instance.GetComponent<AudioSource>();
         audioSource.volume = (audioSource.volume + 0.2f > 1.0f) ? 0f : audioSource.volume + 0.2f;
+
         PlayerPrefs.SetFloat(GamePrefs.AudioPrefKey, audioSource.volume);
         PlayerPrefs.Save();
 
