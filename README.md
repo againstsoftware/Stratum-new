@@ -942,3 +942,43 @@ Ezequiel: "La planificación pudo haber sido más precisa para evitar solapamien
 ## 8.6. Reflexión final
 
 La beta de *Stratum* ha sido un paso importante hacia la versión final del juego. A pesar de los retos técnicos y de tiempo, el equipo logró avances notables en programación, arte y contenido multimedia. Las lecciones aprendidas nos permitirán mejorar la organización, la comunicación y el testeo en futuras etapas. Seguiremos adelante con determinación.
+
+
+# 9. Recursos y licencias
+
+## 9.1. Animaciones
+### [Mixamo](https://www.mixamo.com/#/)
+- **Licencia**: [Mixamo FAQ](https://helpx.adobe.com/la/creative-cloud/faq/mixamo-faq.html)
+
+## 9.2. Texturas
+### [AmbientCG](https://ambientcg.com/)
+- **Licencia**: [Licencia de AmbientCG](https://docs.ambientcg.com/license/)
+
+### [Freepik](https://www.freepik.es/)
+- **Licencia**: [Attribution Guidelines](https://support.freepik.com/s/article/Attribution-How-when-and-where?language=es)
+
+### Itchio Packs de Screaming Brain Studios
+| **Pack**           | **Enlace**                                                                                     |
+|---------------------|-----------------------------------------------------------------------------------------------|
+| Tiny Texture Pack   | [Pack 1](https://screamingbrainstudios.itch.io/tiny-texture-pack)                              |
+| Tiny Texture Pack 2 | [Pack 2](https://screamingbrainstudios.itch.io/tiny-texture-pack-2)                            |
+| Tiny Texture Pack 3 | [Pack 3](https://screamingbrainstudios.itch.io/tiny-texture-pack-3)                            |
+
+- **Autor**: [Screaming Brain Studios](https://screamingbrainstudios.itch.io/)
+- **Licencia**: 
+  - Todos los recursos de Screaming Brain Studios están bajo la licencia **CC0/Public Domain**.
+  - Puedes usar estos recursos en proyectos comerciales o no comerciales, con o sin atribución. [Detalles de la Licencia](https://creativecommons.org/publicdomain/zero/1.0/)
+- **Agradecimientos especiales**:
+  - Dwayne Jarvis
+  - Peardox
+
+### [Texturecan](https://www.texturecan.com/)
+- **Licencia**: [Términos de Texturecan](https://www.texturecan.com/terms/)
+
+### Alfons Mucha
+
+
+
+
+
+
