@@ -294,7 +294,7 @@ Al pulsar la manivela, va cambiando entre 3 estados, haciendo que el volumen de 
 Al pulsar la rueda va girando entre 5 estados de volumen, de menos a más. Al pulsarla en el estado de mayor volúmen, pasa al estado de 0 volumen.
 
 ### Libro de registro
-![Libro de registro](/Readme%20Files/Libro_de_registro.png)
+![Libro de registro](/Readme%20Files/Arte/Libro_de_registro.png)
 
 Al pulsarlo, se abre por la mitad y aparecen 2 páginas:
  1. **Créditos:** en la primera página aparecen los créditos del juego, escritos "a mano" en el libro.
@@ -302,7 +302,7 @@ Al pulsarlo, se abre por la mitad y aparecen 2 páginas:
 
  ### **Manual de reglas:** 
  
- ![Manual de reglas](/Readme%20Files/Manueal_de_reglas.png)
+ ![Manual de reglas](/Readme%20Files/Arte/Manual_de_reglas.png)
 
  Al pulsarlo, se abre por el principio, y empieza una animacion de "entrar en el manual". Este transporta al jugador al tutorial del juego.
 
@@ -561,7 +561,7 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
   ![Humano2](/Readme%20Files/Arte/Imagen21.png)  
   
   ## Modelo Final
-  ![ElMagnate](/Readme%20Files/Arte/ElMagnate.png) 
+  ![ElMagnate](/Readme%20Files/Arte/ElMagnate_update.png) 
   
   ## Beauty
   ![Beauty ElMagnate](/Readme%20Files/Arte/Pose_Magnate_sin_fondo.png)
