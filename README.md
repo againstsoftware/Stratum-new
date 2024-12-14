@@ -61,19 +61,25 @@
 
 * [6.5. Monetización](#65-monetización)
 
-[7. Post-Mortem de Stratum: Desarrollo de la Beta](#7-post-mortem-de-stratum-desarrollo-de-la-beta)
+[7. Publicación, marketing y redes sociales](#7-publicación-marketing-y-redes-sociales)
 
-* [7.1. Introducción](#71-introducción)
-  
-* [7.2. ¿Qué ha ido bien?](#72-qué-ha-ido-bien)
-  
-* [7.3. Flujo de correcciones](#73-flujo-de-correcciones)
-  
-* [7.4. ¿Qué se podría haber mejorado?](#74-qué-se-podría-haber-mejorado)
-  
-* [7.5. Reflexión final](#75-reflexión-final)
+* [7.1. Estrategia de publicación](#71-estrategia-de-publicación)
 
+* [7.2. Plan de marketing](#72-plan-de-marketing)
 
+* [7.3. Estrategia en redes](#73-estrategia-en-redes)
+
+[8. Post-Mortem de Stratum: Desarrollo de la Beta](#8-post-mortem-de-stratum-desarrollo-de-la-beta)
+
+* [8.1. Introducción](#81-introducción)
+  
+* [8.2. ¿Qué ha ido bien?](#82-qué-ha-ido-bien)
+  
+* [8.3. Flujo de correcciones](#83-flujo-de-correcciones)
+  
+* [8.4. ¿Qué se podría haber mejorado?](#84-qué-se-podría-haber-mejorado)
+  
+* [8.5. Reflexión final](#85-reflexión-final)
 
 
 # 0. Introducción
@@ -261,32 +267,34 @@ El macrohongo no puede ser destruido por cartas de influencia, a menos que la de
 **Stratum** es un videojuego sin interfaz externa al escenario (Head-Up Display), por lo tanto todas las interacciones del usuario se realizan tocando, moviendo y manipulando objetos del escenario, tridimensionales. La cámara es en primera persona, con movimientos entre posiciones fijas. En esta sección se explicarán todas esas interacciones, y el flujo de pantallas del juego.
 
 ## 2.1. Menú principal
-Es una escena que consta de un pasillo tipo vestíbulo, con una mesa alta al final, y 1 puerta a cada lado, también al final. El jugador podrá cambiar entre 2 posiciones fijas: lejos y cerca de la mesa. Al acercarse verá varios objetos con los que puede interactuar.
+Es una escena que consta de un pasillo tipo vestíbulo, con una mesa alta al final, y 1 puerta a la izquierda. El jugador podrá cambiar entre 2 posiciones fijas: lejos y cerca de la mesa. Al acercarse verá varios objetos con los que puede interactuar.
 
 ### Radio de onda corta:
 ![Radio de onda corta](https://c8.alamy.com/comp/2B41YF7/am-shortwave-radio-dial-2B41YF7.jpg)
 
-Tiene 6 perillas con caracteres alfanuméricos encima que cambian cuando gira su manivela. Además tiene 2 botones: Crear sala y Unirse a sala. 
+Tiene 6 perillas con una placa encima en la que escribir el código. Además tiene 3 botones: crear sala, unirse a sala y matchmaking. 
 
 Pulsar el de crear sala hace que las perillas giren para mostrar el código de 6 caracteres de la sala, para compartirlo con el resto de jugadores. 
 
-Pulsar el de unirse a sala hace que, cuando escribas un caracter con el teclado, se gire la manivela para mostrarlo, y se pase a la siguiente manivela. De esta forma se puede escribir el código, y cuando se haya escrito entero se intentará unir a esa sala.
+Pulsar el de unirse a sala hace que, cuando escribas el código las 6 perillas giren. De esta forma se puede escribir el código, y cuando se haya escrito entero se intentará unir a esa sala.
 
-Cuando haya 4 jugadores en la sala, se deseleccionará la radio en el juego de los 4, y se activará una animación de caminar hacia la puerta de la izquierda. Cuando llegue, se abrirá, y se transicionará a la habitación del juego.
+Pulsar el botón de matchmaking hará que te empareje con 3 personas para dar comienzo a la partida.
+
+Cuando haya 4 jugadores en la sala, se deseleccionará la radio en el juego de los 4, y se activará una animación de caminar hacia la puerta de la izquierda. Cuando llegue, se abrirá, y se transicionará a la habitación del juego (no implementado por el momento).
 
 ### Gramófono
 ![Gramófono](https://djvitage.com/wp-content/uploads/2024/08/gramofono-retro-19645057.webp)
 
-Tiene un vinilo, una manivela y una perilla. También tiene una nota sobre él, explicando el uso de cada elemento.
+Tiene un vinilo, una manivela y una perilla. También tiene una nota delante de él, explicando el uso de cada elemento.
 
-Al pulsar el disco, este cambia de lado, cambiando también el idioma del juego.
+Al pulsar el disco, este cambia de lado, cambiando también el idioma del juego (español e inglés).
 
-Al pulsar la manivela, va cambiando entre 3 estados, haciendo que el disco gire a 3 respectivas velocidades, cada una representa una configuración de gráficos: baja, media y alta.
+Al pulsar la manivela, va cambiando entre 3 estados, haciendo que el volumen de los efectos de sonido suban o bajen.
 
 Al pulsar la rueda va girando entre 5 estados de volumen, de menos a más. Al pulsarla en el estado de mayor volúmen, pasa al estado de 0 volumen.
 
 ### Libro de registro
-![Libro de registro](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjbXQIXsjSDk2vS0vi9g5FosehG5gd_0V73FQA_tYth6aq8Fm_nBGIXLb8WmYs5X2ZXQFP0v-yQtK5auyxeElZxf6-_ct2ztjjSwOxgVcNwqh7xPrvV5jknyDd_lVV1P2wmNylsW3gqOSmN/w1200-h630-p-k-no-nu/20180913_FLR_HistoricLedgers-56.jpg)
+![Libro de registro](/Readme%20Files/Libro_de_registro.png)
 
 Al pulsarlo, se abre por la mitad y aparecen 2 páginas:
  1. **Créditos:** en la primera página aparecen los créditos del juego, escritos "a mano" en el libro.
@@ -294,7 +302,7 @@ Al pulsarlo, se abre por la mitad y aparecen 2 páginas:
 
  ### **Manual de reglas:** 
  
- ![Reglas](https://static.wikia.nocookie.net/nickelodeon/images/a/a5/Darules.jpg/revision/latest/scale-to-width-down/250?cb=20170212060658)
+ ![Manual de reglas](/Readme%20Files/Manueal_de_reglas.png)
 
  Al pulsarlo, se abre por el principio, y empieza una animacion de "entrar en el manual". Este transporta al jugador al tutorial del juego.
 
@@ -553,8 +561,11 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
   ![Humano2](/Readme%20Files/Arte/Imagen21.png)  
   
   ## Modelo Final
-  ![ElMagnate](/Readme%20Files/Arte/ElMagnate.png)  
-
+  ![ElMagnate](/Readme%20Files/Arte/ElMagnate.png) 
+  
+  ## Beauty
+  ![Beauty ElMagnate](/Readme%20Files/Arte/Pose_Magnate_sin_fondo.png)
+  
   ## Fu'ngaloth
   **Facción**: fungi
   **Rol**:deidad antigua de los hongos / Maestro del reino micelial.
@@ -589,6 +600,9 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
 
   ## Modelo Final
   ![Fu'ngaloth](/Readme%20Files/Arte/Fu'ngaloth.png)  
+
+  ## Beauty
+  ![Beauty Fu'ngaloth](/Readme%20Files/Arte/Pose_Fungaloth_sin_fondo.png)
 
 ## 4.4. Escenarios y ambientación
 En **Stratum**, el entorno de juego se divide en dos planos principales: la mesa de juego física y el ecosistema en el centro de la mesa.
@@ -835,13 +849,23 @@ El modelo de monetización de este juego está diseñado para ser **justo** y **
 
 Este modelo de monetización ofrece a los jugadores la posibilidad de disfrutar de todas las cartas y mecánicas del juego sin necesidad de gastar dinero, mientras que aquellos que busquen una experiencia más competitiva y progresiva pueden optar por una suscripción mensual. Esto no solo evita las controversias relacionadas con modelos "pay-to-win", sino que también asegura una experiencia equilibrada y justa para toda la base de jugadores.
 
-# 7. Post-Mortem de Stratum: Desarrollo de la Beta
 
-## 7.1. Introducción
+# 7. Publicación, marketing y redes sociales
+
+## 7.1. Estrategia de publicación
+
+## 7.2. Plan de marketing
+
+## 7.3. Estrategia en redes
+
+
+# 8. Post-Mortem de Stratum: Desarrollo de la Beta
+
+## 8.1. Introducción
 
 El desarrollo de la beta de *Stratum* ha sido un proceso desafiante que nos ha permitido lograr avances significativos y aprender de las dificultades encontradas. Este post-mortem recoge lo que ha ido bien, lo que se pudo mejorar y las lecciones aprendidas, con aportaciones de cada miembro del equipo.
 
-## 7.2. ¿Qué ha ido bien?
+## 8.2. ¿Qué ha ido bien?
 
 - **Programación**: se logró implementar todas las cartas con sus mecánicas y se implementó tutorial para tres personajes.
 - **Arte 2D y 3D**: se completó el diseño de las cartas, se finalizaron los modelos 3D de los personajes restantes y se adelantó la decoración del escenario.
@@ -862,7 +886,7 @@ Javier: "Los modelos 3D se completaron según lo planeado."
 
 Ezequiel: "Logramos mantener el interés en redes sociales."
 
-## 7.3. Flujo de correcciones
+## .3. Flujo de correcciones
 
 - Se ajustaron las mecánicas y el balance de cartas mediante pruebas internas.
 - Mejoramos la integración de los elementos visuales y tutoriales para una experiencia más pulida.
@@ -879,7 +903,7 @@ Javier: "Optimizamos los modelos para integrarlos mejor."
 
 Ezequiel: "El feedback de redes nos ayudó a identificar mejoras visuales."
 
-## 7.4. Feedback o retroalimentación externa
+## 8.4. Feedback o retroalimentación externa
 
 - Los testers destacaron el concepto original, el estilo visual y el potencial del juego.
 - Se sugirió mejorar descripciones de cartas y el tutorial del juego.
@@ -896,7 +920,7 @@ Javier: "El estilo visual fue bien recibido en general."
 
 Ezequiel: "Los comentarios en redes mostraron un interés positivo en el juego."
 
-## 7.4. ¿Qué se podría haber mejorado?
+## 8.5. ¿Qué se podría haber mejorado?
 
 - **Problemas técnicos**: Los fallos en GitHub retrasaron el desarrollo y obligaron a crear un nuevo repositorio.
 - **Falta de tiempo**: No se logró implementar todas las texturas de las cartas ni terminar el tutorial de "El Magnate".
@@ -914,6 +938,6 @@ Javier: "Nos faltó tiempo para hacer más pruebas y ajustes intermedios."
 
 Ezequiel: "La planificación pudo haber sido más precisa para evitar solapamientos."
 
-## 7.5. Reflexión final
+## 8.6. Reflexión final
 
 La beta de *Stratum* ha sido un paso importante hacia la versión final del juego. A pesar de los retos técnicos y de tiempo, el equipo logró avances notables en programación, arte y contenido multimedia. Las lecciones aprendidas nos permitirán mejorar la organización, la comunicación y el testeo en futuras etapas. Seguiremos adelante con determinación.
