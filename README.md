@@ -202,7 +202,7 @@ Para ganar, debe, junto con Ygdra, conseguir que al final de una ronda, después
 ### El Magnate
 Representa la voluntad indomable de la humanidad, el deseo de imponerse a la naturaleza.
 
-Para ganar debe conseguir que al final de una ronda, después del turno del ecosistema, haya construcciones en los 4 territorios.
+Para ganar debe conseguir que al final de una ronda, después del turno del ecosistema, haya construcciones en 2 de los 4 territorios.
 
 #### Construcción
 Es una acción exclusiva de El Magnate. En su turno, puede elegir gastar una acción para construir sobre uno de los 4 territorios. Para poder construir sobre un territorio se deben cumplir las siguientes condiciones:
@@ -268,8 +268,9 @@ El macrohongo no puede ser destruido por cartas de influencia, a menos que la de
 
 ## 2.1. Menú principal
 Es una escena que consta de un pasillo tipo vestíbulo, con una mesa alta al final, y 1 puerta a la izquierda. El jugador podrá cambiar entre 2 posiciones fijas: lejos y cerca de la mesa. Al acercarse verá varios objetos con los que puede interactuar.
+![Menú principal](/Readme%20Files/Arte/Menu_Principal.png)
 
-### Radio de onda corta:
+### Radio de onda corta
 ![Radio de onda corta](https://c8.alamy.com/comp/2B41YF7/am-shortwave-radio-dial-2B41YF7.jpg)
 
 Tiene 6 perillas con una placa encima en la que escribir el código. Además tiene 3 botones: crear sala, unirse a sala y matchmaking. 
@@ -298,18 +299,18 @@ Al pulsar la rueda va girando entre 5 estados de volumen, de menos a más. Al pu
 
 Al pulsarlo, se abre por la mitad y aparecen 2 páginas:
  1. **Créditos:** en la primera página aparecen los créditos del juego, escritos "a mano" en el libro.
- 2. **Contacto:** en la segunda página hay iconos de las redes sociales del estudio. Al pulsarlos, abren en el navegador del jugador el vínculo elegido.
+ 2. **Contacto:** en la segunda página hay un texto con el que poder acceder a las redes. Al pulsarlo, se abre en el navegador del jugador el vínculo con el linktree. Desde él, podrá acceder a las diferentes webs y redes sociales de Against Software y sus miembros.
 
  ### **Manual de reglas:** 
  
  ![Manual de reglas](/Readme%20Files/Arte/Manual_de_reglas.png)
 
- Al pulsarlo, se abre por el principio, y empieza una animacion de "entrar en el manual". Este transporta al jugador al tutorial del juego.
+ Al pulsarlo, se abre por el principio, y empieza una animacion de "entrar en el manual". En la página de la izquierda aparece una introducción a Sylveria y en la de la derecha, en la parte inferior está situado el botón para acceder al tutorial.
 
 
 ## 2.2. Habitación del juego
 
-En esta escena el jugador empieza entrando por la puerta de la habitación, viendo que los otros 3 personajes ya están sentados en la mesa del centro de la habitación. El jugador avanza automáticamente y se sienta. y comienza la partida.
+En esta escena el jugador empieza entrando por la puerta de la habitación, viendo que los otros 3 personajes ya están sentados en la mesa del centro de la habitación. El jugador avanza automáticamente, se sienta y comienza la partida.
 
 Cuando gana una de las facciones, sucede:
 
@@ -458,7 +459,7 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
   ## Sagitario
 
   **Facción**: naturaleza  
-  **Rol**: protector de la fauna / Guardián de las bestias  
+  **Rol**: protector de la fauna / guardián de las bestias  
 
   ## Descripción Física
   - **Edad**: eterno, pero aparenta unos 30 años  
@@ -568,7 +569,7 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
   
   ## Fu'ngaloth
   **Facción**: fungi
-  **Rol**:deidad antigua de los hongos / Maestro del reino micelial.
+  **Rol**: deidad antigua de los hongos / maestro del reino micelial.
 
   ## Descripción Física
   - **Edad**: incalculable. Existe desde antes de que Sylveria fuera un bosque.
