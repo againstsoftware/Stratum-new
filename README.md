@@ -271,7 +271,7 @@ Es una escena que consta de un pasillo tipo vestíbulo, con una mesa alta al fin
 ![Menú principal](/Readme%20Files/Arte/Menu_Principal.png)
 
 ### Radio de onda corta
-![Radio de onda corta](https://c8.alamy.com/comp/2B41YF7/am-shortwave-radio-dial-2B41YF7.jpg)
+![Radio de onda corta](/Readme%20Files/Arte/Radio.png)
 
 Tiene 6 perillas con una placa encima en la que escribir el código. Además tiene 3 botones: crear sala, unirse a sala y matchmaking. 
 
@@ -284,7 +284,7 @@ Pulsar el botón de matchmaking hará que te empareje con 3 personas para dar co
 Cuando haya 4 jugadores en la sala, se deseleccionará la radio en el juego de los 4, y se activará una animación de caminar hacia la puerta de la izquierda. Cuando llegue, se abrirá, y se transicionará a la habitación del juego (no implementado por el momento).
 
 ### Gramófono
-![Gramófono](https://djvitage.com/wp-content/uploads/2024/08/gramofono-retro-19645057.webp)
+![Gramófono](/Readme%20Files/Arte/Gramofono.png)
 
 Tiene un vinilo, una manivela y una perilla. También tiene una nota delante de él, explicando el uso de cada elemento.
 
