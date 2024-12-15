@@ -376,37 +376,15 @@ Como jugador, ahora es tu turno. **Stratum**, el juego ancestral que ha determin
 ## 4.1. Estilo visual general
 El estilo visual de **Stratum** se inspira en una combinación de arte **low-poly** y elementos estilizados del **Art Nouveau**. Este enfoque se alinea con la temática del juego, que enfrenta la preservación de los ecosistemas contra su explotación industrial y la expansión de los hongos.
 
-Inspiración:
-
-![Cartas1](/Readme%20Files/Arte/Imagen1.jpg)  
-![Cartas2](/Readme%20Files/Arte/Imagen2.jpg)  
-![Sofá](/Readme%20Files/Arte/Imagen3.jpg)  
-![Marcos](/Readme%20Files/Arte/Imagen4.png)  
-![Paleta](/Readme%20Files/Arte/Imagen5.jpg)   
-![Ascensor](/Readme%20Files/Arte/Imagen6.jpg)  
-![Gato](/Readme%20Files/Arte/Imagen7.jpg)  
-
 ### Modelado 3D
 Los modelos tridimensionales del entorno de juego y los personajes se desarrollarán con un estilo **low-poly**, evocando la estética de juegos de la era **PSX**. Este enfoque simplificado ayuda a capturar la esencia visual de cada elemento sin sobrecargar la representación gráfica, manteniendo un aspecto nítido y comprensible en un entorno 3D.
 
--	**Entornos**: Los territorios donde los jugadores colocarán sus cartas serán diseñados con geometría simple y texturas planas que respeten el estilo low-poly. Las texturas y colores de cada territorio reflejarán los temas de la facción a la que pertenecen (naturaleza, industria, hongos).   
-![Escenario](/Readme%20Files/Arte/Imagen8.png)  
-![Hongos1](/Readme%20Files/Arte/Imagen9.jpg)  
-![Hongos2](/Readme%20Files/Arte/Imagen10.png)  
-![Fabrica](/Readme%20Files/Arte/Imagen11.png)  
-![Lobo](/Readme%20Files/Arte/Imagen12.jpg)  
-![Ciervo](/Readme%20Files/Arte/Imagen13.jpg)  
-![Animales](/Readme%20Files/Arte/Imagen14.jpg)  
-
-
+-	**Entornos**: Los territorios donde los jugadores colocarán sus cartas serán diseñados con geometría simple y texturas planas pero con algún patrón que respeten el estilo low-poly.  
     
 ### Renderizado y texturizado
-El juego utilizará **cel-shading** para lograr un estilo visual estilizado. Este enfoque, junto con el uso de modelos **low-poly** y texturas simples y planas, se ha seleccionado para optimizar el rendimiento en todos los dispositivos, ofreciendo una experiencia fluida y accesible sin sacrificar el estilo visual del juego.
+El juego utilizará **cell-shading** para lograr un estilo visual estilizado. Este enfoque, junto con el uso de modelos **low-poly** y texturas simples y planas, se ha seleccionado para optimizar el rendimiento en todos los dispositivos, ofreciendo una experiencia fluida y accesible sin sacrificar el estilo visual del juego.
 
 - **Volumetría y luces**: Se emplearán luces volumétricas sutiles para enfatizar momentos clave del juego, como cuando un jugador realiza una acción importante o cuando se producen cambios dramáticos en el ecosistema.
-
-![Lethal Company](/Readme%20Files/Arte/Imagen25.jpg)  
-![Jet Set Radio](/Readme%20Files/Arte/Imagen26.jpg)  
 
 ## 4.2. Arte de las cartas
 ### Cartas de población
@@ -416,27 +394,18 @@ Las cartas de población representan a plantas, herbívoros y carnívoros. Cada 
 ## Plantas 
 Diseñadas con tonos azulados. Las ilustración mostrará una flor enmarcada por patrones orgánicos.   
 
-## Referencias
-![Flor1](/Readme%20Files/Arte/Imagen27.jpg)   
-![Flor2](/Readme%20Files/Arte/Imagen28.jpg)   
-![Flor3](/Readme%20Files/Arte/Imagen29.jpg)
-
 ## Arte Final
 ![CartaPlantas](/Arte/Carta/cartas/plants.png)
 
 ## Herbívoros
 Representados con colores cálidos y suaves destacando el equilibrio en el ecosistema.  
-## Referencias
-![Ciervo2](/Readme%20Files/Arte/Imagen30.jpg)  
-![Ciervo3](/Readme%20Files/Arte/Imagen31.jpg)
+
 ## Arte Final
 ![Carta Herbívoros](/Arte/Carta/cartas/hervibores.png)
 
 ## Carnívoros
 Con tonos más rojizos y formas agresivas, pero siempre respetando la estética estilizada y orgánica del juego.  
-## Referencias
-![Lobo2](/Readme%20Files/Arte/Imagen32.jpg)  
-![Oso](/Readme%20Files/Arte/Imagen33.jpg)  
+  
 ## Arte Final
 ![Carta Carnívoros](/Arte/Carta/cartas/carnivores.png)
 
@@ -484,10 +453,6 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
   - **Restaurar el equilibrio**: Sagitario no solo quiere detener la industrialización; también sueña con revertir el daño que se ha hecho. Desea un Sylveria donde la naturaleza pueda florecer sin interferencias externas, donde cada criatura tenga un lugar seguro.
   - **Venganza contra los explotadores**: aunque prefiere la paz, la furia de Sagitario se desata contra aquellos que buscan explotar el mundo natural. No muestra misericordia hacia los cazadores, taladores o cualquiera que amenace la vida silvestre de Sylveria.
   
-  ## Referencias
-
-  ![Centauro1](/Readme%20Files/Arte/Imagen15.jpg)  
-  ![Centauro2](/Readme%20Files/Arte/Imagen16.jpg) 
   ## Modelo Final
   ![Sagitario](/Readme%20Files/Arte/Sagitario.png)
 
@@ -521,11 +486,6 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
   - **Detener la industria**: ve la industrialización como la mayor amenaza para la vida del bosque y se opone ferozmente a sus avances destructivos.
   - **Resistir la corrupción**: Ygdra lucha contra la expansión de Fu’ngaloth, evitando que el reino fúngico asimile las plantas y rompa el equilibrio que ella protege.
 
-  ## Referencias
-
-  ![Ygdra1](/Readme%20Files/Arte/Imagen17.jpg)  
-  ![Ygdra2](/Readme%20Files/Arte/Imagen18.jpg)  
-  ![Ygdra3](/Readme%20Files/Arte/Imagen19.jpg)
   ## Modelo Final
   ![Ygdra](/Readme%20Files/Arte/Ygdra.png)
 
@@ -556,11 +516,7 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
   - **Dominar Sylveria**: su objetivo es transformar Sylveria en una vasta ciudad industrial, reemplazando cada árbol y río con maquinaria, fábricas y recursos bajo su control.  
   - **Progreso tecnológico**: para El Magnate, la naturaleza es obsoleta y debe ceder su lugar a la modernidad. Sueña con un mundo donde la tecnología domine todos los ámbitos de la vida.  
   - **Control y orden**: desea imponer un orden rígido y absoluto en Sylveria, optimizando cada recurso y manteniendo todo bajo su dominio. La vida natural debe ser subordinada a sus planes de progreso y grandeza.
-  ## Referencias
-
-  ![Humano1](/Readme%20Files/Arte/Imagen20.png)   
-  ![Humano2](/Readme%20Files/Arte/Imagen21.png)  
-  
+    
   ## Modelo Final
   ![ElMagnate](/Readme%20Files/Arte/ElMagnate_update.png) 
   
@@ -592,12 +548,6 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
   - **Corromper Sylveria**: Fu'ngaloth desea extender su red micelial por todo el bosque, transformando cada planta y criatura en parte de su vasto imperio fúngico. Quiere ver el ciclo de la vida convertido en uno de descomposición y renacimiento bajo su control.
   - **Erradicar a la Industria**: ve la expansión industrial como algo que debe ser destruido. No puede permitir que perjudique a la tierra fértil donde sus hongos prosperan.
   - **Convertir a la Naturaleza**: para Fu'ngaloth, la naturaleza no debe ser protegida, debe ser transformada. Los árboles deben caer y los animales deben someterse a su red, convirtiéndose en extensiones de su voluntad.
-
-  ## Referencias
-
-  ![Fu'ngaloth1](/Readme%20Files/Arte/Imagen22.jpg)  
-  ![Fu'ngaloth2](/Readme%20Files/Arte/Imagen23.png)  
-  ![Fu'ngaloth3](/Readme%20Files/Arte/Imagen24.png)  
 
   ## Modelo Final
   ![Fu'ngaloth](/Readme%20Files/Arte/Fu'ngaloth.png)  
@@ -887,7 +837,7 @@ Javier: "Los modelos 3D se completaron según lo planeado."
 
 Ezequiel: "Logramos mantener el interés en redes sociales."
 
-## .3. Flujo de correcciones
+## 8.3. Flujo de correcciones
 
 - Se ajustaron las mecánicas y el balance de cartas mediante pruebas internas.
 - Mejoramos la integración de los elementos visuales y tutoriales para una experiencia más pulida.
