@@ -499,7 +499,7 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
   ![Ygdra](/Readme%20Files/Arte/Ygdra.png)
 
   ## Beauty
-  ![Beauty Ygdra](Pose_Ygdra.png)
+  ![Beauty Ygdra](/Readme%20Files/Arte/Pose_Ygdra.png)
 
   ## El Magnate
   **Facción**: industria  
