@@ -311,7 +311,7 @@ Al pulsarlo, se abre por la mitad y aparecen 2 páginas:
 En esta escena el jugador empieza sentado en su posición correspondiente viendo que los otros 3 personajes.
 
 Cuando gana una de las facciones, el resto de jugadores mueren y se ejecuta una animación en la que caen sobre la mesa y a continuación se produce un fundido en negro.
-
+![Imagen Habitación de juego](/Readme%20Files/Arte/.png)
 
 ## 2.3. Controles
 
@@ -375,8 +375,10 @@ Los modelos tridimensionales del entorno de juego y los personajes se desarrolla
     
 ### Renderizado y texturizado
 El juego utilizará **cell-shading** para lograr un estilo visual estilizado. Este enfoque, junto con el uso de modelos **low-poly** y texturas simples y planas, se ha seleccionado para optimizar el rendimiento en todos los dispositivos, ofreciendo una experiencia fluida y accesible sin sacrificar el estilo visual del juego.
+![Shader](/Readme%20Files/Arte/Cell-Shading_Muestra_sin_fondo.png)
 
-- **Volumetría y luces**: Se emplearán luces volumétricas sutiles para enfatizar momentos clave del juego, como cuando un jugador realiza una acción importante o cuando se producen cambios dramáticos en el ecosistema.
+- **Ayuda visual**: se emplean ayudas visuales para dar pistas al jugador de las acciones que puede realizar.
+![Ayuda Visual](/Readme%20Files/Arte/Espacios_resaltados.png)
 
 - **Postprocesado**:
 
