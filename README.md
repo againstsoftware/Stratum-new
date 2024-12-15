@@ -421,6 +421,18 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
 - **Industria**: las cartas de El magnate destacarán la maquinaria y la destrucción del ecosistema con tonos grises y metálicos.
 - **Fungi**: las cartas de Fu’ngaloth tendrán elementos que evoquen corrupción y expansión de hongos, usando una paleta de colores oscuros y púrpuras.
 
+### Cartas de influencia Sagitario
+![Cartas de influencia Sagitario](/Readme%20Files/Arte/Cartas%20Influencia/Cartas_Influencia_Sagitario.png)
+
+### Cartas de influencia Ygdra
+![Cartas de influencia Ygdra](/Readme%20Files/Arte/Cartas%20Influencia/Cartas_Influencia_Ygdra.png)
+
+### Cartas de influencia Fu'ngaloth
+![Cartas de influencia Fu'ngaloth](/Readme%20Files/Arte/Cartas%20Influencia/Cartas_Influencia_Fungaloth.png)
+
+### Cartas de influencia El Magnate
+![Cartas de influencia El Magnate](/Readme%20Files/Arte/Cartas%20Influencia/Cartas_Influencia_Magnate.png)
+
 ## 4.3. Fichas y arte de los personajes
   ### Personajes
 
@@ -456,6 +468,9 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
   ## Modelo Final
   ![Sagitario](/Readme%20Files/Arte/Sagitario.png)
 
+  ## Beauty
+  ![Beauty Sagitario](Pose_Sagitario.png)
+
   ## Ygdra
   **Facción**: naturaleza
   **Rol**: guardiana de las plantas, espíritu protector del bosque.
@@ -487,7 +502,10 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
   - **Resistir la corrupción**: Ygdra lucha contra la expansión de Fu’ngaloth, evitando que el reino fúngico asimile las plantas y rompa el equilibrio que ella protege.
 
   ## Modelo Final
-  ![Ygdra](/Readme%20Files/Arte/Ygdra.png)
+  ![Ygdra](/Readme%20Files/Arte/Pose_Ygdra.png)
+
+  ## Beauty
+  ![Beauty Ygdra](.png)
 
   ## El Magnate
   **Facción**: industria  
@@ -556,47 +574,38 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
   ![Beauty Fu'ngaloth](/Readme%20Files/Arte/Pose_Fungaloth_sin_fondo.png)
 
 ## 4.4. Escenarios y ambientación
-En **Stratum**, el entorno de juego se divide en dos planos principales: la mesa de juego física y el ecosistema en el centro de la mesa.
+En **Stratum**, el entorno de juego se divide en dos planos principales: la mesa de juego física y la visión en la que se ven las cartas de la mano.
 
 ### La mesa de juego
 La mesa, que sirve de escenario principal, está diseñada con una decoración estilo Art Nouveau. El jugador verá su propia mano de cartas en primer plano y alrededor podrá observar a los demás personajes que se encuentran en las otras posiciones de la mesa.
 
--	**Decoración de la mesa**: la mesa está adornada con elementos temáticos que evocan el mundo de **Sylveria**, el bosque legendario donde tiene lugar el conflicto. Los bordes de la mesa pueden estar decorados con grabados de ramas y hojas que representen a la naturaleza, tuberías o engranajes industriales que evoquen a la industria, y hongos que brotan del borde en representación de fungi. La ambientación busca transmitir la sensación de que la mesa es un reflejo físico del conflicto entre las facciones.
+-	**Elementos**: en la mesa se encuentran situados los diferentes elementos con los que puede interactuar cada jugador a lo largo de la partida como son los territorios, espacios de territorio, pila de descarte, puerta para abandonar la partida...
 
 -	**Los personajes**: además de ver su propia mano, el jugador puede ver representaciones estilizadas en **low-poly** de los otros personajes (Sagitario, Ygdra, El magnate, Fu’ngaloth) sentados alrededor de la mesa.
 
--	**Detalles en la habitación**: Más allá de la mesa, el entorno visible puede incluir una habitación decorada con objetos que aluden al lore del juego. 
-
-
-### El ecosistema
-El ecosistema es la manifestación visual de las cartas jugadas en la mesa, cobrando vida en un espacio mágico sobre la superficie de juego. Cada vez que un jugador coloca una carta de población (plantas, herbívoros, carnívoros, fábricas o macrohongos), esta se traduce en una representación tridimensional en el ecosistema.
-
--	**Visualización del ecosistema**: El ecosistema se expande sobre el centro de la mesa, con cada carta jugada reflejándose en el entorno. Este espacio mágico se desarrolla frente a los ojos del jugador, cambiando de forma constante en función de las jugadas.
-
--	**Reacción del escenario**: El ecosistema no es estático. A medida que se desequilibra o se estabiliza con nuevas cartas, el ambiente responde: cuando la naturaleza predomina, el entorno se llena de vida, con colores verdes vibrantes, crecimiento de plantas y fauna visible. Si la industria gana terreno, la atmósfera se vuelve más fría y mecánica, con humo y fábricas emergiendo. Si fungi toma el control, el entorno se cubre de hongos, la vegetación se marchita y el escenario adquiere un tono oscuro y decadente.
-
--	**Interacción visual**: Cuando se coloca una carta en uno de los cinco espacios del jugador, su efecto se proyecta instantáneamente en el ecosistema. Este cambio en el ecosistema es dinámico y afecta a la atmósfera general, añadiendo una capa de interacción visual entre las decisiones de los jugadores y el estado del juego.
-
-## 4.5. El ecosistema
-Las animaciones y efectos especiales no solo añaden dinamismo visual al juego, sino que también refuerzan la narrativa y el impacto de las jugadas, haciendo que las interacciones entre los jugadores y el ecosistema sean más inmersivas. Cada jugada cobra vida con animaciones que destacan tanto el acto de colocar cartas como los efectos de las cartas de influencia.
+-	**Detalles en la habitación**: Más allá de la mesa, el entorno visible incluye una habitación decorada con objetos que aluden al estilo artístico art nouveau. 
 
 ### Colocación de cartas
 Cuando un jugador coloca una carta en uno de sus cinco espacios de territorio, el personaje correspondiente realiza una animación para posicionarla en el tablero:
 
--	**Animación de colocación**: desde la perspectiva en primera persona, el jugador ve la mano del personaje levantarse, tomar una carta de la mano disponible, y colocarla suavemente sobre el espacio seleccionado en la mesa. Simultáneamente, la representación visual de esa carta en el ecosistema (planta, animal, fábrica o hongo) aparece mágicamente en su lugar sobre la mesa.
+-	**Animación de colocación**: desde la perspectiva en primera persona, el jugador ve la mano del personaje sujetando las cartas. Cuando juega estas cartas, se ve cómo el personaje estira el brazo para colocarla en la posición correspondiente.
 
 ### Cartas de influencia con animaciones especiales
 Varias cartas de influencia tienen efectos visuales únicos que afectan tanto al ecosistema como al escenario general, reflejando el poder de las facciones en el conflicto.
 
--	**Animación del incendio**: cuando un jugador usa una carta de incendio, se muestra una rápida propagación de fuego a partir del territorio seleccionado. El fuego consume todas las cartas de población y construcciones en esa área, con animaciones de llamas naranjas y rojas que devoran el ecosistema.
+-	**Animación del incendio forestal e incendio provocado**: cuando un jugador usa una carta de incendio, se muestra una rápida propagación de fuego a partir del territorio seleccionado. El fuego consume todas las cartas de población y construcciones en esa área, con animaciones de llamas naranjas y rojas que devoran el ecosistema.
 
 -	**Animación de fuegos artificiales**: al activarse, varios cohetes luminosos se disparan hacia el cielo desde el territorio seleccionado, estallando en luces brillantes de diferentes colores. Las criaturas en ese territorio, ya sean herbívoros o carnívoros, se sobresaltan y son movidas a otro espacio vacío en el tablero.
 
 -	**Animación de esporas explosivas**: cuando se juega esta carta, se ve cómo el territorio objetivo es cubierto por una nube densa de esporas púrpuras que se extiende rápidamente por el área, cubriendo a todas las cartas de población en una neblina tóxica. Las cartas afectadas mueren al instante, y la nube de esporas permanece unos momentos, antes de disiparse lentamente, dejando el territorio vacío y sin vida.
 
-### Impacto general en el ecosistema
-Cada vez que una carta de influencia es jugada, los cambios en el ecosistema afectan el ambiente visual general. Si el ecosistema es dominado por la naturaleza, el escenario se vuelve más brillante y lleno de vida. Si la industria toma el control, el ambiente se torna más sombrío, con tonos metálicos y nubes de humo. Cuando fungi prevalece, el escenario se oscurece y se cubre de hongos y esporas.
-Estas animaciones no solo complementan el aspecto estratégico del juego, sino que también crean una atmósfera envolvente que mantiene al jugador inmerso en el conflicto entre las facciones, reforzando el impacto de cada jugada.
+- **Hiedra verde**: al final de la ronda, se muestra como la construcción es destruida por una hiedra en forma de espiral y este efecto es acompañado de un efecto de humo.
+
+- **Seta apetitosa**: al desplazar a los individuos, aparecen partículas de setas.
+
+- **Madre naturaleza**: al usar esta carta, la rueda de turnos se pone a dar vueltas simulando la realización de cálculos.
+
+- **Migración**: una bandada de pájaros aparece volando desde el espacio de territorio original al nuevo espacio de territorio al que es desplazado el individuo.
 
 ## 4.6. Iconografía y tipografía
 La iconografía y tipografía en **Stratum** jugarán un papel crucial en la transmisión clara de información sin romper la inmersión, ya que todo estará integrado en el entorno de manera diegética. No habrá una interfaz convencional en pantalla; en su lugar, los elementos visuales y textuales estarán presentes directamente en los objetos del entorno, asegurando que el jugador reciba la información necesaria sin salir de la experiencia.
