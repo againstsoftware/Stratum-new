@@ -883,6 +883,17 @@ Este modelo de monetización ofrece a los jugadores la posibilidad de disfrutar 
 - **Métricas de éxito:** Se realizarán estudios sobre el éxito del videojuego en las RRSS y en itch.io. Si se publicase el juego en más plataformas también se añadirían a este estudio. 
 
 ## 7.3. Estrategia en redes
+La estrategia de marketing partió con un post de presentación en las redes sociales de Against Software (Twitter, Instagram y YouTube), acompañado de hashtags que maximicen la audiencia objetiva. Un par de días más tarde se publicó el “manifiesto” del estudio, explicando el por qué de nuestro nombre. Durante los días siguientes, se fueron añadiendo progresivamente a las redes las presentaciones de los miembros del equipo. Al poco tiempo, se publicó un vídeo con el “reveal” del nombre y el logo del juego. El siguiente post fue un vídeo devlog del desarrollo hasta el momento, en el que se muestra, desde el modelado y texturizado de personajes, hasta la integración de nuevas mecánicas. 
+
+El próximo movimiento que se hizo fue subir un vídeo con las reglas básicas de Stratum. Como el equipo de desarrollo es consciente de que el juego puede ser tedioso para un jugador novato, este vídeo pretende ser una toma de didáctica y animada de las mecánicas base del juego. A partir de este post, las publicaciones tomaron un tono más informal, con múltiples memes relacionados con el juego y su desarrollo. Esta estrategia está inspirada en las redes de empresas como KFC, pionera en el exitoso marketing “shitpost”. También es una forma de que Stratum sea más casual y cercano al público, y se asemeja a las estrategias del resto de estudios de alcance similar a Against Software.
+
+Pese a adoptar un tono más informal, se siguieron haciendo publicaciones sobre la fecha de lanzamiento del juego, buscando crear “hype” entre los seguidores. Por supuesto, también se postearon el enlace al juego y la carátula el día de lanzamiento.
+
+Más allá de las publicaciones fijas, que rondan entorno a una semanal para evitar agobiar a los seguidores, se han publicado historias en Instagram con mucha mayor frecuencia, para recordar la presencia de Stratum en un formato volátil que resulte menos atosigante para el público.
+
+En breves, se creará un canal de Discord para fomentar crear una comunidad de Stratum. Ahora que se acaba de lanzar el juego, es el momento que, según varios estudios de marketing y redes, es cuando debe haber mayor actividad en redes. Está planeada la publicación del tráiler principal del juego para los próximos días, así como un “behind the scenes”.
+
+En resumen, se ha optado por una estrategia activa en redes, pero que no agobie al público para evitar su rechazo y crear interés y expectativa entre publicaciones.
 
 # 8. Post-Mortem de Stratum: Desarrollo del alfa
 
@@ -1181,9 +1192,3 @@ Sin embargo, la Disposición transitoria cuarta. Autores fallecidos antes del 7 
 El artículo 6 de dicha ley de 1879 establecía que el período de duración de los derechos de explotación debían ser 80 años. A su vez, aunque la ley actual es de 1996, se debe tener en cuenta que se trata de un texto refundido de la Ley 22/1987, de 11 de noviembre de 1987, sobre la Propiedad Intelectual, donde ya se rebajaban los años de 80 a 70. Es por esto que nuestra ley actual señala como fecha límite un día concreto del año 1987.
 
 Dado que Alfons Mucha falleció en 1939,​ sus obras son de dominio público desde el año 2019.
-
-
-
-
-
-
