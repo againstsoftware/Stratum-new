@@ -190,13 +190,13 @@ Cada personaje tiene un objetivo único para ganar el juego, excepto los dos de 
 ### Ygdra
 Es el ente protector de los árboles y plantas. Sus cartas de influencia están orientadas a las plantas.
 
-Para ganar, debe, junto con Sagitario, conseguir que al final de una ronda, después del turno del ecosistema, haya en la mesa al menos 4 plantas, 3 herbívoros y 3 carnívoros.
+Para ganar, debe, junto con Sagitario, conseguir que se produzcan un total de 7 crecimientos.
 
 
 ### Sagitario
 Es el ente protector de los animales. Sus cartas de influencia están orientadas a los animales.
 
-Para ganar, debe, junto con Ygdra, conseguir que al final de una ronda, después del turno del ecosistema, haya en la mesa al menos 4 plantas, 3 herbívoros y 3 carnívoros.
+Para ganar, debe, junto con Ygdra, conseguir que que se produzcan un total de 7 crecimientos.
 
 
 ### El Magnate
@@ -211,7 +211,7 @@ Es una acción exclusiva de El Magnate. En su turno, puede elegir gastar una acc
 - El territorio no tiene ninguna carta de población con una  carta de influencia puesta que impida construir.
 - El territorio tiene al menos 2 cartas de población de plantas.
 
-Al construir, se pone una ficha en frente del territorio para indicar que tiene construcción. Mueren las 2 cartas de planta más recientes del territorio.
+Al construir, aparece una fábrica al lado del territorio en el que ha construido para indicar que tiene construcción. Mueren las 2 cartas de planta más recientes del territorio y todos las cartas de población de ese territorio dejan de contar para el ecosistema (no pueden ni crecer ni morir por las reglas del ecosistema) ya que pasan a estar domesticadas.
 
 Después, se puede jugar con normalidad cartas de criatura sobre el territorio construido, y la construcción se puede destruir usando cartas de influencia que lo permitan.
 
@@ -273,15 +273,13 @@ Es una escena que consta de un pasillo tipo vestíbulo, con una mesa alta al fin
 ### Radio de onda corta
 ![Radio de onda corta](/Readme%20Files/Arte/Radio.png)
 
-Tiene 6 perillas con una placa encima en la que escribir el código. Además tiene 3 botones: crear sala, unirse a sala y matchmaking. 
+Tiene 6 perillas con una placa encima en la que escribir el código. Además tiene 3 botones: crear sala (botón de la izquierda), unirse a sala (botón del medio) y matchmaking (botón de la derecha).
 
 Pulsar el de crear sala hace que las perillas giren para mostrar el código de 6 caracteres de la sala, para compartirlo con el resto de jugadores. 
 
-Pulsar el de unirse a sala hace que, cuando escribas el código las 6 perillas giren. De esta forma se puede escribir el código, y cuando se haya escrito entero se intentará unir a esa sala.
+Pulsar el de unirse tras haber escrito el código correctamente te unirá a la partida correspondiente.
 
-Pulsar el botón de matchmaking hará que te empareje con 3 personas para dar comienzo a la partida.
-
-Cuando haya 4 jugadores en la sala, se deseleccionará la radio en el juego de los 4, y se activará una animación de caminar hacia la puerta de la izquierda. Cuando llegue, se abrirá, y se transicionará a la habitación del juego (no implementado por el momento).
+Pulsar el botón de matchmaking busca una sala disponible, si no la hay crea una nueva a la que se pueden conectar otros 3 jugadores.
 
 ### Gramófono
 ![Gramófono](/Readme%20Files/Arte/Gramofono.png)
@@ -290,7 +288,7 @@ Tiene un vinilo, una manivela y una perilla. También tiene una nota delante de 
 
 Al pulsar el disco, este cambia de lado, cambiando también el idioma del juego (español e inglés).
 
-Al pulsar la manivela, va cambiando entre 3 estados, haciendo que el volumen de los efectos de sonido suban o bajen.
+Al pulsar la manivela, cambia el volumen de sfx en 0, 0.25 o 0.5. Si está al máximo (0.5) y se vuelve a pulsar pasa a 0.
 
 Al pulsar la rueda va girando entre 5 estados de volumen, de menos a más. Al pulsarla en el estado de mayor volúmen, pasa al estado de 0 volumen.
 
@@ -310,13 +308,9 @@ Al pulsarlo, se abre por la mitad y aparecen 2 páginas:
 
 ## 2.2. Habitación del juego
 
-En esta escena el jugador empieza entrando por la puerta de la habitación, viendo que los otros 3 personajes ya están sentados en la mesa del centro de la habitación. El jugador avanza automáticamente, se sienta y comienza la partida.
+En esta escena el jugador empieza sentado en su posición correspondiente viendo que los otros 3 personajes.
 
-Cuando gana una de las facciones, sucede:
-
-1. Aparece un orbe (o dos, si ha ganado la facción Naturaleza) en el centro de la mesa, y se dirige hacia la facción ganadora. 
-2. Depende de si ha ganado Naturaleza o no, la facción ganadora absorbe el orbe, o lo destruye, para simbolizar fusionarse o imponerse con el ecosistema que estaba en disputa.
-3. El jugador local se levanta el primero, y sale por la puerta, fundiendo al menú principal.
+Cuando gana una de las facciones, el resto de jugadores mueren y se ejecuta una animación en la que caen sobre la mesa y a continuación se produce un fundido en negro.
 
 
 ## 2.3. Controles
@@ -328,8 +322,6 @@ En móvil, igualmente, se pulsa para seleccionar y se mantiene pulsado para arra
 Para interactuar con los objetos del menú principal, se usa el ratón para destacarlos con el cursor, y el clic para seleccionarlos al pulsar sobre ellos. Para introducir el código de sala en la radio se usa el teclado.
 
 En móvil, al pulsar sobre un objeto se destaca, y al mantener pulsado se selecciona. 
-
-Para introducir el código de sala en la radio, se despliega el teclado táctil mientras esté seleccionada. El equipo de **Against Software** pide perdón a todos los jugadores por este uso de interfaz gráfica, pues se ha tratado de evitar cualquier tipo de _HUD_, pero para que funcione la radio correctamente en navegadores móviles hemos tenido que recurrir a esto.
 
 # 3. Narrativa
 
@@ -385,6 +377,8 @@ Los modelos tridimensionales del entorno de juego y los personajes se desarrolla
 El juego utilizará **cell-shading** para lograr un estilo visual estilizado. Este enfoque, junto con el uso de modelos **low-poly** y texturas simples y planas, se ha seleccionado para optimizar el rendimiento en todos los dispositivos, ofreciendo una experiencia fluida y accesible sin sacrificar el estilo visual del juego.
 
 - **Volumetría y luces**: Se emplearán luces volumétricas sutiles para enfatizar momentos clave del juego, como cuando un jugador realiza una acción importante o cuando se producen cambios dramáticos en el ecosistema.
+
+- **Postprocesado**:
 
 ## 4.2. Arte de las cartas
 ### Cartas de población
@@ -469,7 +463,7 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
   ![Sagitario](/Readme%20Files/Arte/Sagitario.png)
 
   ## Beauty
-  ![Beauty Sagitario](Pose_Sagitario.png)
+  ![Beauty Sagitario](/Readme%20Files/Arte/Pose_Sagitario.png)
 
   ## Ygdra
   **Facción**: naturaleza
@@ -502,10 +496,10 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
   - **Resistir la corrupción**: Ygdra lucha contra la expansión de Fu’ngaloth, evitando que el reino fúngico asimile las plantas y rompa el equilibrio que ella protege.
 
   ## Modelo Final
-  ![Ygdra](/Readme%20Files/Arte/Pose_Ygdra.png)
+  ![Ygdra](/Readme%20Files/Arte/Ygdra.png)
 
   ## Beauty
-  ![Beauty Ygdra](.png)
+  ![Beauty Ygdra](Pose_Ygdra.png)
 
   ## El Magnate
   **Facción**: industria  
@@ -543,6 +537,7 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
   
   ## Fu'ngaloth
   **Facción**: fungi
+  
   **Rol**: deidad antigua de los hongos / maestro del reino micelial.
 
   ## Descripción Física
@@ -572,6 +567,15 @@ Cada facción tendrá cartas de influencia únicas que permitirán alterar el ec
 
   ## Beauty
   ![Beauty Fu'ngaloth](/Readme%20Files/Arte/Pose_Fungaloth_sin_fondo.png)
+
+  ## Manuel de reglas
+  Manuel de reglas es el personaje que introducirá a los usuarios a las mecánicas del juego.
+  Este personaje cómico acompañará al jugador a lo largo del tutorial para darle lecciones sobre cómo jugar.
+
+  - **Animación**: Manuel de reglas cuenta con una animación de abrir y cerrar la boca (animación de hablar) acompañado de una subida y bajada de cejas.
+
+  ## Modelo Final
+  ![Manuel de reglas](/Readme%20Files/Arte/Manuel_de_Reglas.png)  
 
 ## 4.4. Escenarios y ambientación
 En **Stratum**, el entorno de juego se divide en dos planos principales: la mesa de juego física y la visión en la que se ven las cartas de la mano.
