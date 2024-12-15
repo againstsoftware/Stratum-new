@@ -105,6 +105,11 @@
   
 * [10.5. Reflexión final](#105-reflexión-final)
 
+[11. Recursos y licencias](#11-recursos-y-licencias)  
+
+* [11.1. Animaciones](#111-animaciones)  
+* [11.2. Texturas](#112-texturas)  
+
 
 # 0. Introducción
 
@@ -399,9 +404,11 @@ Los modelos tridimensionales del entorno de juego y los personajes se desarrolla
     
 ### Renderizado y texturizado
 El juego utilizará **cell-shading** para lograr un estilo visual estilizado. Este enfoque, junto con el uso de modelos **low-poly** y texturas simples y planas, se ha seleccionado para optimizar el rendimiento en todos los dispositivos, ofreciendo una experiencia fluida y accesible sin sacrificar el estilo visual del juego.
+
 ![Shader](/Readme%20Files/Arte/Cell-Shading_Muestra_sin_fondo.png)
 
 - **Ayuda visual**: se emplean ayudas visuales para dar pistas al jugador de las acciones que puede realizar.
+
 ![Ayuda Visual](/Readme%20Files/Arte/Espacios_resaltados.png)
 
 - **Postprocesado**:
@@ -614,6 +621,20 @@ La mesa, que sirve de escenario principal, está diseñada con una decoración e
 -	**Los personajes**: además de ver su propia mano, el jugador puede ver representaciones estilizadas en **low-poly** de los otros personajes (Sagitario, Ygdra, El magnate, Fu’ngaloth) sentados alrededor de la mesa.
 
 -	**Detalles en la habitación**: Más allá de la mesa, el entorno visible incluye una habitación decorada con objetos que aluden al estilo artístico art nouveau. 
+
+### Elementos especiales de la mesa de juego
+
+![Elementos especiales](/Readme%20Files/Arte/Elementos_especiales.png) 
+
+En el centro de la mesa, sobre el tapete, se encuentran ciertos elementos que darán información al jugador sobre el estado de la partida.
+
+- **Ábaco**: el ábaco está situado en la parte derecha del tapete es un elemento que actúa como contador. En él el jugador podrá ver de izquierda a derecha el número de plantas, herbívoros, carnívoros y crecimientos que se han producido durante la partida. 
+
+- **Rueda de turnos**: la rueda de turnos es un indicador que apunta con una flecha al personaje que tiene acciones disponibles para realizar. Este está dividido en 4 secciones con los 4 colores correspondientes de cada uno de los personajes. En el turno del ecosistema la flecha realizará una animación de girar simulando la realización de cálculos. Esta animación también se reproducirá al utilizar las cartas de influencia de "Madre naturaleza".
+
+- **Puerta de salida**: detrás de los elementos anteriores se sitúa una puerta cuya función es la de abandonar la partida. Para ello el jugador debe de mantener pulsado el click izquierdo. Al hacerlo, se realiza una animación en la que la puerta se abre junto con un efecto de espiral.
+
+
 
 ### Colocación de cartas
 Cuando un jugador coloca una carta en uno de sus cinco espacios de territorio, el personaje correspondiente realiza una animación para posicionarla en el tablero:
