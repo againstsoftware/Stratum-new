@@ -69,7 +69,7 @@
 
 * [7.3. Estrategia en redes](#73-estrategia-en-redes)
 
-[8. Post-Mortem de Stratum: Desarrollo de la Beta](#8-post-mortem-de-stratum-desarrollo-de-la-beta)
+[8. Post-Mortem de Stratum: Desarrollo del alfa](#8-post-mortem-de-stratum-desarrollo-del-alfa)
 
 * [8.1. Introducción](#81-introducción)
   
@@ -80,6 +80,30 @@
 * [8.4. ¿Qué se podría haber mejorado?](#84-qué-se-podría-haber-mejorado)
   
 * [8.5. Reflexión final](#85-reflexión-final)
+
+[9. Post-Mortem de Stratum: Desarrollo de la Beta](#9-post-mortem-de-stratum-desarrollo-de-la-beta)
+
+* [9.1. Introducción](#91-introducción)
+  
+* [9.2. ¿Qué ha ido bien?](#92-qué-ha-ido-bien)
+  
+* [9.3. Flujo de correcciones](#93-flujo-de-correcciones)
+  
+* [9.4. ¿Qué se podría haber mejorado?](#94-qué-se-podría-haber-mejorado)
+  
+* [9.5. Reflexión final](#95-reflexión-final)
+
+[10. Post-Mortem de Stratum: Desarrollo de la Gold Master](#9-post-mortem-de-stratum-desarrollo-de-la-gold-master)
+
+* [10.1. Introducción](#101-introducción)
+  
+* [10.2. ¿Qué ha ido bien?](#102-qué-ha-ido-bien)
+  
+* [10.3. Flujo de correcciones](#103-flujo-de-correcciones)
+  
+* [10.4. ¿Qué se podría haber mejorado?](#104-qué-se-podría-haber-mejorado)
+  
+* [10.5. Reflexión final](#105-reflexión-final)
 
 
 # 0. Introducción
@@ -833,14 +857,107 @@ Este modelo de monetización ofrece a los jugadores la posibilidad de disfrutar 
 
 ## 7.3. Estrategia en redes
 
-
-# 8. Post-Mortem de Stratum: Desarrollo de la Beta
+# 8. Post-Mortem de Stratum: Desarrollo del alfa
 
 ## 8.1. Introducción
 
-El desarrollo de la beta de *Stratum* ha sido un proceso desafiante que nos ha permitido lograr avances significativos y aprender de las dificultades encontradas. Este post-mortem recoge lo que ha ido bien, lo que se pudo mejorar y las lecciones aprendidas, con aportaciones de cada miembro del equipo.
+Desarrollar Stratum ha sido una experiencia llena de aprendizajes y desafíos para todo el
+equipo. Este post-mortem busca recoger lo que salió bien, lo que se pudo mejorar y las
+lecciones aprendidas, con las aportaciones de cada miembro.
 
 ## 8.2. ¿Qué ha ido bien?
+
+- Terminamos el prototipo a tiempo, gracias a la organización y pruebas previas.
+- Las reuniones presenciales fueron clave para coordinar y generar ideas.
+- Usar Trello fue una gran ventaja para mantener todo bajo control.
+
+Óscar: "Logramos cumplir los tiempos gracias a las pruebas iniciales que hicimos en físico."
+
+Ezequiel: "Tener el prototipo físico desde el principio nos ahorró muchos problemas
+después."
+
+Javier: "Las reuniones en persona ayudaron a una comunicación clara y rápida."
+
+Ángel: "Hicimos un buen trabajo al comunicarnos sobre los avances y mantener un
+desarrollo colaborativo."
+
+Gloria: "Desde el inicio, la organización fue muy buena, y todos sabíamos qué hacer."
+
+Miguel: "El GDD detallado nos dio una guía sólida para el desarrollo."
+
+## 8.3. Flujo de correcciones
+
+- Ajustamos las mecánicas y el balance de las cartas en base a las pruebas y el feedback
+    interno.
+- Mejoramos los elementos visuales para mantener la coherencia en el estilo.
+
+Miguel: "Cambiamos varias mecánicas para hacer el juego más dinámico y divertido."
+
+Ángel: "El balance de cartas fue un trabajo constante."
+
+Gloria: "Cambiamos el color de las cartas de herbívoros porque se confundían con las
+plantas."
+
+Javier: "Revisamos los modelos 3D para que encajaran bien en el estilo general."
+
+Óscar: “Había ciertas cartas que no funcionaban bien con el resto, que tuvimos que
+descartar.”
+
+Ezequiel: “Decidimos reducir los polígonos de los modelos, para que encajase mejor todo.”
+
+
+## 8.4. Feedback o retroalimentación externa
+
+- Los comentarios de los pocos testers del juego hasta ahora han sido en su mayoría
+    positivos, destacando el concepto original y el potencial del juego.
+
+Óscar: "Aunque el juego es básico, la idea de la simulación gustó mucho en general."
+
+Ezequiel: "Los posts en redes han llamado la atención y generado bastante interés."
+
+Miguel: “Algunos comentaron que las descripciones de las cartas podrían ser más
+detalladas.”
+
+Gloria: "Sugirieron que el marco de las cartas fuera más llamativo."
+
+Ángel: "El estilo artístico de los modelos 3D fue bien recibido, a pesar de que son bastante
+sencillos.”
+
+Javier: “El modelo de negocio también ha sido bien recibido, la opinión general es que es
+bastante original.”
+
+## 8.5. ¿Qué se podría haber mejorado?
+
+- Había veces en las que las tareas no estaban bien repartidas.
+- Mejorar la conexión entre los equipos de arte y programación.
+
+Óscar: "La programación a veces no se dividió bien, y eso retrasó algunas cosas."
+
+Ezequiel: "Hubo tareas que se solaparon y causaron problemas en la planificación."
+
+Pruebas y balanceo: Habría sido útil hacer más pruebas intermedias.
+
+Javi: "Faltaron pruebas para identificar problemas de balance antes."
+
+Miguel: "Tener más testeo durante el desarrollo nos habría ayudado."
+
+Gloria: "Pude haber mostrado más partes del proceso, no solo los resultados finales."
+
+Ángel: "La sincronización entre 2D y 3D podría haberse manejado mejor."
+
+## 8.6. Reflexión final
+
+Stratum ha sido un proyecto lleno de aprendizajes. El equipo ha trabajado bien en general,
+pero hay áreas claras de mejora. Tomaremos estas lecciones para las siguientes versiones,
+con una mejor gestión de tareas y pruebas más exhaustivas.
+
+# 9. Post-Mortem de Stratum: Desarrollo de la Beta
+
+## 9.1. Introducción
+
+El desarrollo de la beta de *Stratum* ha sido un proceso desafiante que nos ha permitido lograr avances significativos y aprender de las dificultades encontradas. Este post-mortem recoge lo que ha ido bien, lo que se pudo mejorar y las lecciones aprendidas, con aportaciones de cada miembro del equipo.
+
+## 9.2. ¿Qué ha ido bien?
 
 - **Programación**: se logró implementar todas las cartas con sus mecánicas y se implementó tutorial para tres personajes.
 - **Arte 2D y 3D**: se completó el diseño de las cartas, se finalizaron los modelos 3D de los personajes restantes y se adelantó la decoración del escenario.
@@ -861,7 +978,7 @@ Javier: "Los modelos 3D se completaron según lo planeado."
 
 Ezequiel: "Logramos mantener el interés en redes sociales."
 
-## 8.3. Flujo de correcciones
+## 9.3. Flujo de correcciones
 
 - Se ajustaron las mecánicas y el balance de cartas mediante pruebas internas.
 - Mejoramos la integración de los elementos visuales y tutoriales para una experiencia más pulida.
@@ -878,7 +995,7 @@ Javier: "Optimizamos los modelos para integrarlos mejor."
 
 Ezequiel: "El feedback de redes nos ayudó a identificar mejoras visuales."
 
-## 8.4. Feedback o retroalimentación externa
+## 9.4. Feedback o retroalimentación externa
 
 - Los testers destacaron el concepto original, el estilo visual y el potencial del juego.
 - Se sugirió mejorar descripciones de cartas y el tutorial del juego.
@@ -895,7 +1012,7 @@ Javier: "El estilo visual fue bien recibido en general."
 
 Ezequiel: "Los comentarios en redes mostraron un interés positivo en el juego."
 
-## 8.5. ¿Qué se podría haber mejorado?
+## 9.5. ¿Qué se podría haber mejorado?
 
 - **Problemas técnicos**: Los fallos en GitHub retrasaron el desarrollo y obligaron a crear un nuevo repositorio.
 - **Falta de tiempo**: No se logró implementar todas las texturas de las cartas ni terminar el tutorial de "El Magnate".
@@ -913,18 +1030,89 @@ Javier: "Nos faltó tiempo para hacer más pruebas y ajustes intermedios."
 
 Ezequiel: "La planificación pudo haber sido más precisa para evitar solapamientos."
 
-## 8.6. Reflexión final
+## 9.6. Reflexión final
 
 La beta de *Stratum* ha sido un paso importante hacia la versión final del juego. A pesar de los retos técnicos y de tiempo, el equipo logró avances notables en programación, arte y contenido multimedia. Las lecciones aprendidas nos permitirán mejorar la organización, la comunicación y el testeo en futuras etapas. Seguiremos adelante con determinación.
 
+# 10. Post-Mortem de Stratum: Desarrollo de la Gold Master
 
-# 9. Recursos y licencias
+## 10.1. Introducción
 
-## 9.1. Animaciones
+La versión Gold Master de nuestro videojuego ha marcado el final de meses de esfuerzo, aprendizaje y mejoras. En este post-mortem evaluamos lo que ha ido bien, las correcciones implementadas, el feedback recibido y reflexionamos sobre los aspectos que podrían haberse mejorado, con aportaciones de todos los miembros del equipo.
+
+## 10.2. ¿Qué ha ido bien?
+
+- **Programación**: Se implementaron los tutoriales completos, asegurando que fueran claros y funcionales. También se programaron efectos visuales, como el fuego en las velas y shaders para guiar la colocación de cartas, además de corregir errores críticos.
+- **Arte**: Se finalizaron todas las texturas y modelos del escenario, corrigiendo problemas de UVs. Se implementaron animaciones clave como idle, colocar cartas y perder la partida, junto a efectos especiales para destacar acciones. Se implementó un escenario nuevo con muebles y decoración.
+- **Menú y UX**: El menú fue diseñado para integrarse de manera orgánica en la escena del juego, eliminando interfaces convencionales.
+- **Sonido y música**: Se implementaron efectos de sonido, como colocar carta o cambiar turno y más música que enriquecio la atmósfera del juego.
+- **Redes y lanzamiento**: La página web fue mejorada con funcionalidades como perfiles y login. Se incluyó las cartas de invitación de dos personajes en la web para explicar el motivo del juego. Además se subió un post el día de lanzamiento.
+
+- Miguel: "Los tutoriales quedaron funcionales, y corregimos bugs críticos para garantizar un juego estable."
+- Gloria: "El arte 2D y los efectos especiales hicieron que el juego luciera visualmente atractivo."
+- Javier: "Completamos el escenario, solucionamos las UVs y logramos un escenario lleno de detalles."
+- Ángel: "Las animaciones aportaron vida al juego, como las de idle y colocar cartas."
+- Óscar: "El menú integrado y la música mejoraron la experiencia del jugador."
+- Ezequiel: "El lanzamiento fue exitoso, logrando una mayor presencia en redes y plataformas."
+
+## 10.3. Flujo de correcciones
+
+- **Tutoriales y ritmo**: Se añadió la posibilidad de acelerar los textos para mejorar el flujo de aprendizaje.
+- **Claridad de turnos**: Implementamos una ruleta visual que indicaba de manera clara el turno de cada jugador.
+- **Pistas visuales**: Se desarrollaron shaders que ayudaron a identificar dónde colocar las cartas según su tipo.
+- **Optimizaciones de texturas**: Corregimos problemas de UVs y mejoramos texturas de fichas y objetos 3D que no se veían correctamente.
+- **Efectos de sonido**: Añadimos efectos sonoros en momentos clave como cambio de turno y uso de cartas especiales.
+
+- Miguel: "Refinamos los tutoriales para que fueran más rápidos y efectivos."
+- Gloria: "Los shaders mejoraron la claridad visual, facilitando la colocación de cartas."
+- Javier: "Optimizamos las UVs y resolvimos problemas en texturas y decoración."
+- Ángel: "La ruleta visual resolvió de forma efectiva la confusión de turnos."
+- Óscar: "Los efectos sonoros aportaron claridad y feedback a las acciones del jugador."
+- Ezequiel: "La página web fue reorganizada, actualizando su estructura y funciones."
+
+## 10.4. Feedback y retroalimentación externa
+
+- **Tutoriales más rápidos**: Los testers solicitaron que el tutorial pudiera ser más dinámico, lo que resolvimos permitiendo saltar textos.
+- **Indicación de turnos**: Se pidió una forma más clara de mostrar el turno, lo cual solucionamos con una ruleta visual.
+- **Claridad visual**: Los testers sugirieron mejorar la identificación de posiciones para cartas y efectos especiales, implementando shaders.
+- **Texturas y objetos**: Hubo comentarios sobre problemas visuales en fichas y decoraciones, que se corrigieron ajustando las texturas y UVs.
+- **Promoción y contenido**: Los jugadores mostraron interés en ver más contenido promocional en redes sociales y videos.
+
+- Miguel: "El feedback nos ayudó a ajustar los tutoriales para que fueran mucho más fluidos."
+- Gloria: "Las sugerencias sobre claridad visual llevaron a implementar shaders efectivos."
+- Javier: "Corrigiendo las texturas, resolvimos los problemas que se identificaron en los test."
+- Ángel: "La retroalimentación fue clave para implementar la ruleta visual de turnos."
+- Óscar: "El feedback en cuanto a sonido y claridad de acciones fue fundamental."
+- Ezequiel: "Las pruebas dejaron claro que necesitábamos más contenido promocional."
+
+## 10.5. ¿Qué podría haberse mejorado?
+
+- **Transiciones y animaciones**: Faltó implementar animaciones de transición entre el pasillo y la mesa de juego.
+- **Decoración del escenario**: Pudimos haber añadido más detalles y puntos de luz para enriquecer el fondo.
+- **Diseño de cartas**: Algunas cartas podrían haber sido más claras visualmente y en su diseño artístico.
+- **Bugs menores**: Quedaron detalles técnicos menores sin resolver por falta de tiempo.
+- **Contenido promocional**: Faltaron publicaciones y videos adicionales en redes sociales.
+- **Mejora del menú visual**: Aunque funcional, el diseño visual del menú podría haberse perfeccionado.
+
+- Miguel: "Nos faltó tiempo para pulir algunos bugs menores y optimizar más el juego."
+- Gloria: "El diseño de algunas cartas podría haberse refinado más para mejorar su claridad."
+- Javier: "Me hubiera gustado llenar el escenario con más decoraciones y puntos de luz."
+- Ángel: "La transición entre escenas habría aportado mucho a la narrativa visual."
+- Óscar: "El menú funcionó, pero aún podía haberse mejorado visualmente."
+- Ezequiel: "Hubiésemos logrado mayor impacto con más publicaciones y contenido promocional."
+
+## 10.6. Reflexión final
+
+La Gold Master representa un gran logro para el equipo. A pesar de las dificultades y el tiempo limitado, logramos entregar un juego funcional, visualmente atractivo y con una experiencia de usuario mejorada. Cada miembro del equipo contribuyó de manera clave, y las lecciones aprendidas nos ayudarán a enfrentar futuros proyectos con mayor eficiencia y organización.
+
+
+# 11. Recursos y licencias
+
+## 11.1. Animaciones
 ### [Mixamo](https://www.mixamo.com/#/)
 - **Licencia**: [Mixamo FAQ](https://helpx.adobe.com/la/creative-cloud/faq/mixamo-faq.html)
 
-## 9.2. Texturas
+## 11.2. Texturas
 ### [AmbientCG](https://ambientcg.com/)
 - **Licencia**: [Licencia de AmbientCG](https://docs.ambientcg.com/license/)
 
