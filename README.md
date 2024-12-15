@@ -629,7 +629,7 @@ La tipografía en el juego será simple, mínima y sutil, utilizada únicamente 
 
 
 **Estilo y atmósfera:**  
-El juego presenta una estética visual art nouveau por lo que la banda sonora busca continuar esta atmósfera. Por ello, se aparecen dos temas diferentes de jazz, uno más calmado para el menú principal y uno más animado para la pantalla de la partida.  
+El juego presenta una estética visual art nouveau por lo que la banda sonora busca continuar esta atmósfera. Por ello, aparecen dos temas diferentes de jazz, uno más calmado para el menú principal y uno más animado para la pantalla de la partida.  
 
 ## 5.2. Música
 **Estilo de la banda sonora:**  
@@ -637,28 +637,24 @@ La banda sonora está inspirada en el jazz de los años 1930s compuesto principa
 
 **Temas principales:**  
   - **Tema principal:** Se reproducirá durante la partida.  
-  - **Tema del menú principal:** Se escuchará en el menú principal y en las pantallas de búsqueda de partida.
+  - **Tema del menú principal:** Se escuchará en el menú principal y en las pantallas de búsqueda de partida y tutorial.
 
 **Looping y duración:**  
 Todos los temas están diseñados para repetirse en bucle sin interrupciones perceptibles. Las pistas tienen una duración de entre 2 y 4 minutos antes de reiniciarse.
 
 ## 5.3. Efectos de Sonido (SFX)
 **Sonidos de interacción del jugador:**  
-  - Poner cartas de población sobre la mesa: Un sonido correspondiente al tipo  de carta sea este planta, herbívoro o carnívoro.
-  - Jugar una carta de influencia: Un sonido con un suave destello de energía y un toque de reverberación.
+  - Interactuar con los objetos del menú: Sonido corto y metálico. 
+  - Poner cartas sobre la mesa: Un sonido de cartón de carta. 
+  - Carta de influencia de migración: Sonido de pájaros acorde al efecto visual.
+  - Carta de influencia de compost: Sonido de cavar tierra.
+  - Cartas de influencia con efectos de fuego (incendio forestal / esporas explosivas): Sonido de llamarada de fuego.
+  - Carta de influencia de fuegos artificiales: Sonido de fuegos artificiales.
+  - Colocar un macrohongo (Fu'ngaloth): Sonido de tierra siendo removida.
   - Descartar una carta en la pila de descartes: Sonido similar a quemar un objeto en un fuego.
-  - Colocar una construcción (El Magnate): Sonido sólido de madera o piedra ligera.
-  - Finalización de turno: Suave campana o susurro de viento.
- 
-**Sonidos ambientales:**  
-  Durante la partida, se escucharán efectos ambientales naturales:
-  - Cantos de aves lejanas.
-  - Viento meciendo árboles.
-  - Insectos y pequeños animales moviéndose en el fondo.
-  - Animales caminando.
-  
- Estos sonidos ambientales variarán dinámicamente según el estado de la simulación del ecosistema y las cartas jugadas. 
-
+  - Colocar una construcción (El Magnate): Sonido sólido de madera.
+  - Finalización de turno: Suave campana.
+  - Finalización de partida: Sonido de triángulo con reverberación.
 
 # 6. Modelo de negocio y monetización
 ## 6.1. Información sobre el usuario
@@ -819,8 +815,21 @@ Este modelo de monetización ofrece a los jugadores la posibilidad de disfrutar 
 # 7. Publicación, marketing y redes sociales
 
 ## 7.1. Estrategia de publicación
+- **Mejoras a la página de itch.io:** Título atractivo, diseño de la página acorde a la estética del videojuego y carta descargable que sirve como introducción a la historia.
+- **Pruebas y feedback:** Se realizaron beta tests en el que un grupo reducido de personas probó el videojuego y se utilizaron sus sugerencias y errores encontrados para mejorar el videojuego.
+- **Actividad en las RRSS:** Se anunció con antelación la publicación del videojuego y la fecha para así crear atención. 
 
 ## 7.2. Plan de marketing
+- **Objetivo principal:** Alcanzar entre 300 y 500 jugadores únicos en los primeros 3 meses.
+- **Objetivos secundarios:** Crear una comunidad activa de jugadores y conseguir presencia en las RRSS. 
+
+### Estrategia para conseguir objetivos
+- **Identificar público objetivo:** Se conoce que nuestro público objetivo son los jugadores casuales o hardcore de juegos de mesa y/o de cartas. El rango de edad objetivo es entre los 15 y 30 años y la ubicación es global al ser un videjuego online accesible desde todo el mundo.
+- **Lanzamiento:** Una vez se ha lanzado el juego se realizará un tráiler y se mantendrá la actividad en las RRSS comentando los cambios que se vayan a realizar al juego y promover la comunicación con los jugadores y entre ellos. 
+- **Postlanzamiento:** Se realizarán actualizaciones de contenido donde se mejorarán todos los fallos y/o bugs que vayan encontrando los jugadores. A medida que el juego esté en un estado más estable ya se comenzará a probar a incluir nuevo contenido como cartas y expansiones. 
+- **Marketing de guerrilla:** Como se quiere mantener una presencia en las redes se utilizará un marketing basado memes o contenido viran relacionado con el juego para llegar a nuevo público y al ya afianzado. 
+- **Canales de distribución:** Redes sociales como Twitter, Instagram y Youtube.
+- **Métricas de éxito:** Se realizarán estudios sobre el éxito del videojuego en las RRSS y en itch.io. Si se publicase el juego en más plataformas también se añadirían a este estudio. 
 
 ## 7.3. Estrategia en redes
 
