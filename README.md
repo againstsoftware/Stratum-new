@@ -337,10 +337,16 @@ Al pulsarlo, se abre por la mitad y aparecen 2 páginas:
 
 ## 2.2. Habitación del juego
 
+![Imagen Habitación de juego 1](/Readme%20Files/Arte/Escenario_1.png)
+
+![Imagen Habitación de juego 2](/Readme%20Files/Arte/Escenario_2.png)
+
+![Imagen Habitación de juego 3](/Readme%20Files/Arte/Escenario_3.png)
+
 En esta escena el jugador empieza sentado en su posición correspondiente viendo que los otros 3 personajes.
 
 Cuando gana una de las facciones, el resto de jugadores mueren y se ejecuta una animación en la que caen sobre la mesa y a continuación se produce un fundido en negro.
-![Imagen Habitación de juego](/Readme%20Files/Arte/.png)
+
 
 ## 2.3. Controles
 
