@@ -936,6 +936,22 @@ La beta de *Stratum* ha sido un paso importante hacia la versión final del jueg
 
 ### Alfons Mucha
 
+  - Rêverie du soir (1899)
+  - Cigarros job (1896)
+  - Rêverie (1897)
+
+Nuestra Ley de Propiedad Intelectual vigente, Real Decreto Legislativo 1/1996, de 12 de abril, por el que se aprueba el texto refundido de la Ley de Propiedad Intelectual, regularizando, aclarando y armonizando las disposiciones legales vigentes sobre la materia, señala que:
+
+**Artículo 26. Duración y cómputo.**
+
+“Los derechos de explotación de la obra durarán toda la vida del autor y setenta años después de su muerte o declaración de fallecimiento.”
+Sin embargo, la Disposición transitoria cuarta. Autores fallecidos antes del 7 de diciembre de 1987 indica que:
+“Los derechos de explotación de las obras creadas por autores fallecidos antes del 7 de diciembre de 1987 tendrán la duración prevista en la Ley de 10 de enero de 1879 sobre Propiedad Intelectual.”
+
+El artículo 6 de dicha ley de 1879 establecía que el período de duración de los derechos de explotación debían ser 80 años. A su vez, aunque la ley actual es de 1996, se debe tener en cuenta que se trata de un texto refundido de la Ley 22/1987, de 11 de noviembre de 1987, sobre la Propiedad Intelectual, donde ya se rebajaban los años de 80 a 70. Es por esto que nuestra ley actual señala como fecha límite un día concreto del año 1987.
+
+Dado que Alfons Mucha falleció en 1939,​ sus obras son de dominio público desde el año 2019.
+
 
 
 
